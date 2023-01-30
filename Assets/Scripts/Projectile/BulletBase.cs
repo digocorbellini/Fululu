@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Base for a projectiles
+// Extend this class if your project needs custom behavior (i.e. seeking)
+// Or use the GenericBullet if it doesn't
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(AttackHitbox))]
-public abstract class Bullet : MonoBehaviour
+public abstract class BulletBase: MonoBehaviour
 {
     public float Speed;
     protected AttackHitbox hitbox;

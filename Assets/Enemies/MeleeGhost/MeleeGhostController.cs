@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeGhostController : BaseController
+public class MeleeGhostController : ControllerBase
 {
     [HideInInspector]
     public AudioSource audioSource;

@@ -24,8 +24,8 @@ public abstract class State : MonoBehaviour {
     public abstract string getStateName();
 
 
-    protected BaseController manager;
-    public void setManager(BaseController manager) {
+    protected ControllerBase manager;
+    public void setManager(ControllerBase manager) {
         this.manager = manager;
     }
 }

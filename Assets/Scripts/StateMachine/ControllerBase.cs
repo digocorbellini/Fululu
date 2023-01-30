@@ -8,11 +8,11 @@ using UnityEngine;
  * Extend this class to make the controller
  * state machine for your more specific enemy
  * i.e.
- * StateManager
+ * ControllerBase
  * |-GhostController
  * |-Ghost2Controller
  */
-public class BaseController : MonoBehaviour {
+public abstract class ControllerBase : MonoBehaviour {
 
     public bool isStateMachineActive = true;
     public State currentState;
