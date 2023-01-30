@@ -23,6 +23,11 @@ public abstract class BulletBase: MonoBehaviour
         StartCoroutine(runLifetime());
     }
 
+    private void Update()
+    {
+        transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
+    }
+
     private IEnumerator runLifetime()
     {
         yield return new WaitForSeconds(lifetime);

@@ -5,27 +5,57 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerWeapon", menuName = "ScriptableObjects/PlayerWeapon")]
 public class Weapon : ScriptableObject
 {
-    public BulletSpread bulletPrefab;
-    public float fireCooldown = 0.1f;
+    [Header("Firing Options")]
+    public float chargeTime = 1.0f;
 
-    private float lastShot = 0.0f;
+    [Tooltip("Determines number and positioning of bullets each shot")]
+    public BulletSpread spreadPrefab;
+    
+    [Tooltip("Fired when weapon is not fully charged")]
+    public BulletBase bullet;
 
-    private void OnEnable()
+    [Tooltip("Fired when the weapon is fully charged")]
+    public BulletBase chargedBullet;
+
+    [Space(10)]
+
+    [Header("Sacrifice Options")]
+
+    [Tooltip("Determines number and positioning of bullets when sacrificing the weapon")]
+    public BulletSpread sacrificeSpreadPrefab;
+
+    [Tooltip("Fired when sacrificing the weapon")]
+    public BulletBase sacrificeBullet;
+
+    private void SpawnBullets(Transform transform, BulletSpread spread, BulletBase bullet)
     {
-        lastShot = 0.0f;
+        BulletSpread instance = Instantiate(spread, transform);
+
+        instance.Bullet = bullet.gameObject;
+    }
+
+    public bool ChargedFire(Transform transform)
+    {
+        SpawnBullets(transform, spreadPrefab, bullet);
+
+        return true;
     }
 
     public bool Fire(Transform transform)
     {
-        if (Time.time < lastShot + fireCooldown)
-        {
-            return false;
-        }
-
-        Instantiate(bulletPrefab, transform);
-
-        lastShot = Time.time;
+        SpawnBullets(transform, spreadPrefab, chargedBullet);
 
         return true;
+    }
+
+    public bool Sacrifice(Transform transform)
+    {
+        if (sacrificeSpreadPrefab && sacrificeBullet)
+        {
+            SpawnBullets(transform, sacrificeSpreadPrefab, sacrificeBullet);
+            return true;
+        }
+
+        return false;
     }
 }
