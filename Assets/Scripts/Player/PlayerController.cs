@@ -27,10 +27,11 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
 
-    private bool isGrounded;
+    private bool isGrounded = true;
+    private const float COLLSION_SPEED = -0.5f;
 
     // expose for tracking bullets
-    public Vector3 velocity;
+    [HideInInspector] public Vector3 velocity;
 
     void Awake()
     {
@@ -42,8 +43,8 @@ public class PlayerController : MonoBehaviour
         // setup intpu
         input = GetComponent<PlayerInput>();
         input.actions["Jump"].started += jumpStarted;
+        input.actions["Dash"].started += dashStarted;
         moveAction = input.actions["Move"];
-        //jumpAction = input.actions["Jump"];
     }
 
     private void Start()
@@ -55,13 +56,20 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void jumpStarted(InputAction.CallbackContext context)
     {
-        print("JUMPED. Is grounded: " + controller.isGrounded);
-        if (controller.isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
+        print("JUMPED. Is grounded: " + isGrounded);
+        if (isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-
-            //controller.Move(velocity);
+            stateManager.SetState(PlayerState.Jumping);
         }
+    }
+
+    private void dashStarted(InputAction.CallbackContext context)
+    {
+        // TODO: implement dash. Make sure to check in with player state manager
+        // to see if a dash can be performed rn
+
+        print("dashed");
     }
 
     private void performMovement()
@@ -87,6 +95,18 @@ public class PlayerController : MonoBehaviour
 
         Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
 
+        if (isGrounded)
+        {
+            if(newVelocity.magnitude > 0.1f)
+            {
+                stateManager.SetState(PlayerState.Running);
+            }
+            else
+            {
+                stateManager.SetState(PlayerState.Idle);
+            }
+        }
+
         controller.Move(newVelocity);
 
         newVelocity.y = velocity.y;
@@ -98,18 +118,28 @@ public class PlayerController : MonoBehaviour
         performMovement();
 
         // handle gravity
-        if(!controller.isGrounded)
-            velocity.y += gravity * Time.deltaTime;
-
-        // ensure we stop falling once we are grounded
-        if (controller.isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
-            velocity.y = 0;
+            // set y velocity to minimum velocity for
+            // character controller to detect ground collisions
+            velocity.y = COLLSION_SPEED;
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
         }
 
-        // y velocity
+        // apply y velocity
         Vector3 yVelocity = new Vector3(0, velocity.y, 0);
         controller.Move(yVelocity * Time.deltaTime);
+
+        isGrounded = controller.isGrounded;
+    }
+
+    private void OnDestroy()
+    {
+        input.actions["Jump"].started -= jumpStarted;
+        input.actions["Dash"].started -= dashStarted;
     }
 
     private void OnDrawGizmos()
