@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private const float COLLSION_SPEED = -0.5f;
 
     // expose for tracking bullets
-    public Vector3 velocity;
+    [HideInInspector] public Vector3 velocity;
 
     void Awake()
     {
@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
         // setup intpu
         input = GetComponent<PlayerInput>();
         input.actions["Jump"].started += jumpStarted;
+        input.actions["Dash"].started += dashStarted;
         moveAction = input.actions["Move"];
-        //jumpAction = input.actions["Jump"];
     }
 
     private void Start()
@@ -60,7 +60,16 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            stateManager.SetState(PlayerState.Jumping);
         }
+    }
+
+    private void dashStarted(InputAction.CallbackContext context)
+    {
+        // TODO: implement dash. Make sure to check in with player state manager
+        // to see if a dash can be performed rn
+
+        print("dashed");
     }
 
     private void performMovement()
@@ -85,6 +94,18 @@ public class PlayerController : MonoBehaviour
             mesh.forward = moveDirection;
 
         Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
+
+        if (isGrounded)
+        {
+            if(newVelocity.magnitude > 0.1f)
+            {
+                stateManager.SetState(PlayerState.Running);
+            }
+            else
+            {
+                stateManager.SetState(PlayerState.Idle);
+            }
+        }
 
         controller.Move(newVelocity);
 
@@ -113,6 +134,12 @@ public class PlayerController : MonoBehaviour
         controller.Move(yVelocity * Time.deltaTime);
 
         isGrounded = controller.isGrounded;
+    }
+
+    private void OnDestroy()
+    {
+        input.actions["Jump"].started -= jumpStarted;
+        input.actions["Dash"].started -= dashStarted;
     }
 
     private void OnDrawGizmos()
