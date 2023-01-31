@@ -19,6 +19,13 @@ public class PlayerStateManager : MonoBehaviour
 {
     public PlayerState currentState { get; private set; }
 
+    [SerializeField] private PlayerState startingState = PlayerState.Idle;
+
+    private void Awake()
+    {
+        currentState = startingState;
+    }
+
     /// <summary>
     /// Set the current player state to the given state. Will only
     /// occur if it is possible to change to the given state given

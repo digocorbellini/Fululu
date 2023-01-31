@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput input;
     private InputAction moveAction;
+    private InputAction jumpAction;
+
+    private bool isGrounded;
 
     // expose for tracking bullets
     public Vector3 velocity;
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<PlayerInput>();
         input.actions["Jump"].started += jumpStarted;
         moveAction = input.actions["Move"];
+        //jumpAction = input.actions["Jump"];
     }
 
     private void Start()
@@ -48,12 +52,19 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // used for input system callback
     private void jumpStarted(InputAction.CallbackContext context)
     {
-        print("JUMPED");
+        print("JUMPED. Is grounded: " + controller.isGrounded);
+        if (controller.isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
+        {
+            velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+
+            //controller.Move(velocity);
+        }
     }
 
-    void Update()
+    private void performMovement()
     {
         // handle movement 
         Vector2 moveAxis = moveAction.ReadValue<Vector2>();
@@ -69,16 +80,36 @@ public class PlayerController : MonoBehaviour
         moveDirection.y = 0;
         moveDirection.Normalize();
 
+        // rotate mesh to face movement direction
         // TODO: lerp rotation
-        mesh.forward = moveDirection;
+        if (moveDirection != Vector3.zero)
+            mesh.forward = moveDirection;
 
-        velocity = moveDirection * moveSpeed * Time.deltaTime;
+        Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
+
+        controller.Move(newVelocity);
+
+        newVelocity.y = velocity.y;
+        velocity = newVelocity;
+    }
+
+    void Update()
+    {
+        performMovement();
 
         // handle gravity
-        velocity.y += gravity * Time.deltaTime;
+        if(!controller.isGrounded)
+            velocity.y += gravity * Time.deltaTime;
 
-        // apply movement
-        controller.Move(velocity);
+        // ensure we stop falling once we are grounded
+        if (controller.isGrounded && velocity.y < 0)
+        {
+            velocity.y = 0;
+        }
+
+        // y velocity
+        Vector3 yVelocity = new Vector3(0, velocity.y, 0);
+        controller.Move(yVelocity * Time.deltaTime);
     }
 
     private void OnDrawGizmos()
