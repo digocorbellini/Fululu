@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  chargeTime: 1
+  spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
+    type: 3}
+  bullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602, type: 3}
+  chargedBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
+    type: 3}
+  sacrificeSpreadPrefab: {fileID: 0}
+  sacrificeBullet: {fileID: 0}
