@@ -65,7 +65,7 @@ public class BulletSpread : MonoBehaviour
             spawnDirection = (spawnPos - centerOfCircle).normalized;
             Transform bullet = Instantiate(Bullet, spawnPos, Quaternion.LookRotation(spawnDirection)).transform;
             // rotate bullet vertically to match parent vertical rotation
-            bullet.Rotate(Vector3.right, transform.rotation.eulerAngles.x);
+            bullet.RotateAround(centerOfCircle, transform.right, transform.rotation.eulerAngles.x);
 
             currentRotation += rotationAngle;
         }
