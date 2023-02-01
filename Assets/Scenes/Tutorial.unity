@@ -3530,7 +3530,8 @@ MonoBehaviour:
   SpawnChance: 1
   enemies:
   - {fileID: 7524010278573821098, guid: e0b24138d02e7434b8ca7efc236fd770, type: 3}
-  weights: 0a000000
+  - {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218, type: 3}
+  weights: 0a00000008000000
   spawnSFX: {fileID: 1902469769}
 --- !u!4 &1902469772
 Transform:

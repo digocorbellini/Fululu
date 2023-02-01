@@ -18,6 +18,17 @@ public abstract class BulletBase: MonoBehaviour
     public GameObject[] trails;
     public GameObject hitParticles;
 
+
+    public void SetDamage(float dmg)
+    {
+        if(hitbox == null)
+        {
+            hitbox = GetComponent<AttackHitbox>();
+        }
+
+        hitbox.damage = dmg;
+    }
+
     private void Awake()
     {
         StartCoroutine(runLifetime());
@@ -36,7 +47,6 @@ public abstract class BulletBase: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit1");
         if (hitParticles != null)
         {
             var pos = other.ClosestPoint(transform.position);

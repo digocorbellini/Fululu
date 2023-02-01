@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class PlayerFireControl : MonoBehaviour
 {
 
-    public Weapon uncharged;
-    public Weapon charged;
+    public Weapon weapon;
 
     public Transform shootPoint;
 
@@ -59,11 +58,11 @@ public class PlayerFireControl : MonoBehaviour
         if (timeCharging >= fullChargeTime)
         {
             print("Firing charged attack");
-            didFire = charged.Fire(shootPoint);
+            didFire = weapon.ChargedFire(shootPoint);
         }
         else
         {
-            didFire = uncharged.Fire(shootPoint);
+            didFire = weapon.Fire(shootPoint);
         }
 
         timeCharging = 0.0f;
