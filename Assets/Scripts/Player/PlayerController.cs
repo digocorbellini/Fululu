@@ -33,11 +33,11 @@ public class PlayerController : MonoBehaviour
     private PlayerFireControl fcs;
 
     private float lastDash;
-    [SerializeField] private bool isGrounded = true;
+    private bool isGrounded = true;
     private const float COLLSION_SPEED = -0.5f;
 
     // expose for tracking bullets
-    public Vector3 velocity;
+    [HideInInspector] public Vector3 velocity;
 
     void Awake()
     {
