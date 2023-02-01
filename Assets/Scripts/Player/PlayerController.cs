@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         input.actions["Dash"].started += dashStarted;
         input.actions["Attack"].started += StartAttackCharge;
         input.actions["Attack"].canceled += ReleaseAttackCharge;
+        input.actions["Sacrifice"].started += SacrificeWeapon;
         
         moveAction = input.actions["Move"];
     }
@@ -73,6 +74,11 @@ public class PlayerController : MonoBehaviour
     private void ReleaseAttackCharge(InputAction.CallbackContext context)
     {
         fcs.StopCharging();
+    }
+
+    private void SacrificeWeapon(InputAction.CallbackContext context)
+    {
+        fcs.SacrificeWeapon();
     }
 
     // used for input system callback

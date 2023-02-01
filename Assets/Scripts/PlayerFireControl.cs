@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerFireControl : MonoBehaviour
 {
-
+    public Weapon defaultWeapon;
     public Weapon weapon;
 
     public Transform shootPoint;
@@ -25,6 +25,7 @@ public class PlayerFireControl : MonoBehaviour
         maxRingSize = recticleRing.transform.localScale.x;
         recticleRing.enabled = false;
         isCharging = false;
+        weapon = defaultWeapon;
     }
 
     // Update is called once per frame
@@ -69,6 +70,12 @@ public class PlayerFireControl : MonoBehaviour
 
         // returns if the player shot or not;
         return didFire;
+    }
+
+    public void SacrificeWeapon()
+    {
+        weapon.Sacrifice(shootPoint);
+        SwitchWeapon(defaultWeapon);
     }
 
     public void SwitchWeapon(Weapon wep)
