@@ -122,17 +122,18 @@ public class PlayerController : MonoBehaviour
 
         // ignore collision with enemies
         controller.detectCollisions = false;
-        Int32 shouldIgnoreLayer = hurtLayers;
+        Int32 tempLayerMash = hurtLayers.value;
         int playerLayer = gameObject.layer;
         for (int layerNum = 0; layerNum < 32; layerNum++)
         {
             // check to see if current layer should be ignored
-            shouldIgnoreLayer = (((Int32)shouldIgnoreLayer) << 1) * (Int32)1;
+            tempLayerMash >>= 1;
+            int shouldIgnoreLayer = tempLayerMash & 0x1;
             
             if (shouldIgnoreLayer == 1)
             {
                 // layer should be ingored
-                Physics.IgnoreLayerCollision(playerLayer, layerNum, true);
+                Physics.IgnoreLayerCollision(playerLayer, layerNum + 1, true);
             }
         }
 
@@ -160,17 +161,18 @@ public class PlayerController : MonoBehaviour
 
         // stop ignoring collision with enemies
         // ignore collision with enemies
-        controller.detectCollisions = false;
-        shouldIgnoreLayer = hurtLayers;
+        controller.detectCollisions = true;
+        tempLayerMash = hurtLayers.value;
         for (int layerNum = 0; layerNum < 32; layerNum++)
         {
             // check to see if current layer should be ignored
-            shouldIgnoreLayer = (((Int32)shouldIgnoreLayer) << 1) * (Int32)1;
+            tempLayerMash >>= 1;
+            int shouldIgnoreLayer = tempLayerMash & 0x1;
 
             if (shouldIgnoreLayer == 1)
             {
                 // layer should be ingored
-                Physics.IgnoreLayerCollision(playerLayer, layerNum, false);
+                Physics.IgnoreLayerCollision(playerLayer, layerNum + 1, false);
             }
         }
 
