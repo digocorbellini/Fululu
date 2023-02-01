@@ -57,7 +57,7 @@ public abstract class BulletBase: MonoBehaviour
 
         if (hitbox != null && hitbox.destroyOnHit)
         {
-            // Non-piercing bullet hit something. Destroy it
+            // Attack is single hit
             shouldDestroy = true;
         }
             

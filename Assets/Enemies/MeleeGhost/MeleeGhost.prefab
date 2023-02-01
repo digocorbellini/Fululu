@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 5244884856284987113}
   - component: {fileID: 1982866670451792347}
   - component: {fileID: 5730528203802247303}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878503105561538390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 2.12, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 566409363610081429}
@@ -711,6 +711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150993778300637643, guid: 96350f95e3789ca4fa86425978b0eba6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7150993778300637643, guid: 96350f95e3789ca4fa86425978b0eba6,
         type: 3}

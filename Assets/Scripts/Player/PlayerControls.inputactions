@@ -156,7 +156,18 @@
                 {
                     "name": "",
                     "id": "27a1cdb0-81b3-4954-b680-9e5062f33c86",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d96b1b19-4302-431a-b1c5-34e180390dd3",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

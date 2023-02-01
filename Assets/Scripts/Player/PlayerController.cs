@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput input;
     private InputAction moveAction;
     private InputAction jumpAction;
+    private PlayerFireControl fcs;
 
     private bool isGrounded = true;
     private const float COLLSION_SPEED = -0.5f;
@@ -39,11 +40,15 @@ public class PlayerController : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
+        fcs = GetComponent<PlayerFireControl>();
 
         // setup intpu
         input = GetComponent<PlayerInput>();
         input.actions["Jump"].started += jumpStarted;
         input.actions["Dash"].started += dashStarted;
+        input.actions["Attack"].started += StartAttackCharge;
+        input.actions["Attack"].canceled += ReleaseAttackCharge;
+        
         moveAction = input.actions["Move"];
     }
 
@@ -51,6 +56,16 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void StartAttackCharge(InputAction.CallbackContext context)
+    {
+        fcs.StartCharging();
+    }
+
+    private void ReleaseAttackCharge(InputAction.CallbackContext context)
+    {
+        fcs.StopCharging();
     }
 
     // used for input system callback

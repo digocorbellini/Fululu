@@ -32,18 +32,19 @@ public class Weapon : ScriptableObject
         BulletSpread instance = Instantiate(spread, transform);
 
         instance.Bullet = bullet.gameObject;
+        instance.Fire();
     }
 
     public bool ChargedFire(Transform transform)
     {
-        SpawnBullets(transform, spreadPrefab, bullet);
+        SpawnBullets(transform, spreadPrefab, chargedBullet);
 
         return true;
     }
 
     public bool Fire(Transform transform)
     {
-        SpawnBullets(transform, spreadPrefab, chargedBullet);
+        SpawnBullets(transform, spreadPrefab, bullet);
 
         return true;
     }

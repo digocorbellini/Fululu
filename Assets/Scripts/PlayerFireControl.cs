@@ -70,4 +70,11 @@ public class PlayerFireControl : MonoBehaviour
         // returns if the player shot or not;
         return didFire;
     }
+
+    public void SwitchWeapon(Weapon wep)
+    {
+        timeCharging = 0.0f;
+        weapon = wep;
+        fullChargeTime = wep.chargeTime;
+    }
 }

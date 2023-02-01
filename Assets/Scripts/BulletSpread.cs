@@ -19,7 +19,7 @@ public class BulletSpread : MonoBehaviour
     public float DistanceBetweenBullets;
     public bool isOffCentered = true;
 
-    private void Awake()
+    public void Fire()
     {
         // angle between consecutive bullets
         float rotationAngle = DistanceBetweenBullets / SpawnRadius;
@@ -61,10 +61,11 @@ public class BulletSpread : MonoBehaviour
 
             currentRotation += rotationAngle;
         }
-
+        
+        Selfdestruct();
     }
 
-    private void Start()
+    public void Selfdestruct()
     {
         Destroy(this.gameObject);
     }
