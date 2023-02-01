@@ -176,6 +176,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        lastDash = Time.time;
+
         // reset state
         stateManager.SetState(PlayerState.Idle);
     }
