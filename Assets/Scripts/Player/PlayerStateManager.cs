@@ -17,7 +17,19 @@ public enum PlayerState
 
 public class PlayerStateManager : MonoBehaviour
 {
-    public PlayerState currentState { get; private set; }
+    // show in editor for debugging
+    [SerializeField] private PlayerState _currentState;
+    public PlayerState currentState { 
+        get
+        {
+            return _currentState;
+        }
+        private set
+        {
+            _currentState = value;
+            // TODO: update animator value
+        }
+    }
 
     [SerializeField] private PlayerState startingState = PlayerState.Idle;
 
@@ -47,6 +59,65 @@ public class PlayerStateManager : MonoBehaviour
 
     public bool CanChangeState(PlayerState newState)
     {
+        switch (newState)
+        {
+            case PlayerState.Idle:
+                if (currentState != PlayerState.Dead)
+                    return true;
+                return false;
+                break;
+            case PlayerState.Dashing:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.DamageBack
+                    && currentState != PlayerState.DamageFront && currentState != PlayerState.Dashing)
+                    return true;
+                return false;
+                break;
+            case PlayerState.Jumping:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.Dashing && currentState != PlayerState.Jumping
+                    && currentState != PlayerState.DamageBack && currentState != PlayerState.DamageFront)
+                {
+                    return true;
+                }
+                return false;
+                break;
+            case PlayerState.Running:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.Dashing
+                    && currentState != PlayerState.DamageBack && currentState != PlayerState.DamageFront
+                    && currentState != PlayerState.Jumping)
+                {
+                    return true;
+                }
+                return false;
+                break;
+            case PlayerState.DamageFront:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.DamageBack)
+                {
+                    return true;
+                }
+                return false;
+                break;
+            case PlayerState.DamageBack:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.DamageFront)
+                {
+                    return true;
+                }
+                return false;
+                break;
+            case PlayerState.Attacking:
+                if (currentState != PlayerState.Dead && currentState != PlayerState.DamageBack
+                    && currentState != PlayerState.DamageFront && currentState != PlayerState.Dashing)
+                    return true;
+                return false;
+                break;
+            case PlayerState.Dead:
+                return true;
+                break;
+            default:
+                return false;
+                break;
+        }
+
+
         return true;
     }
 }
