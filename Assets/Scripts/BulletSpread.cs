@@ -55,9 +55,17 @@ public class BulletSpread : MonoBehaviour
             float newX = r00 * xin + r01 * zin + x - r00 * x - r01 * z;
             float newZ = r10 * xin + r11 * zin + z - r10 * x - r11 * z;
 
+
+
             Vector3 spawnPos = new Vector3(newX, transform.position.y, newZ);
+            Quaternion xRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
+            spawnPos = xRot * spawnPos;
             Vector3 spawnDirection = (spawnPos - centerOfCircle).normalized;
-            Instantiate(Bullet, spawnPos, Quaternion.LookRotation(spawnDirection));
+            spawnPos = centerOfCircle + (spawnDirection * SpawnRadius);
+            spawnDirection = (spawnPos - centerOfCircle).normalized;
+            Transform bullet = Instantiate(Bullet, spawnPos, Quaternion.LookRotation(spawnDirection)).transform;
+            // rotate bullet vertically to match parent vertical rotation
+            bullet.RotateAround(centerOfCircle, transform.right, transform.rotation.eulerAngles.x);
 
             currentRotation += rotationAngle;
         }
@@ -111,6 +119,11 @@ public class BulletSpread : MonoBehaviour
             float newZ = r10 * xin + r11 * zin + z - r10 * x - r11 * z;
 
             Vector3 spawnPos = new Vector3(newX, transform.position.y, newZ);
+            Quaternion xRot = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
+            spawnPos = xRot * spawnPos;
+            Vector3 spawnDirection = (spawnPos - centerOfCircle).normalized;
+            spawnPos = centerOfCircle + (spawnDirection * SpawnRadius);
+
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(spawnPos, 1);
             Gizmos.color = Color.green;
