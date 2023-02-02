@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         input.actions["Dash"].started += dashStarted;
         input.actions["Attack"].started += StartAttackCharge;
         input.actions["Attack"].canceled += ReleaseAttackCharge;
-        input.actions["Sacrifice"].started += SacrificeWeapon;
+        input.actions["AltFire"].started += HandleAltFire;
         
         moveAction = input.actions["Move"];
     }
@@ -76,9 +76,19 @@ public class PlayerController : MonoBehaviour
         fcs.StopCharging();
     }
 
-    private void SacrificeWeapon(InputAction.CallbackContext context)
+    // used for input system callback
+    private void HandleAltFire(InputAction.CallbackContext context)
     {
-        fcs.SacrificeWeapon();
+        // Sacrifice weapon if equipped
+        if (fcs.weapon != fcs.defaultWeapon)
+        {
+            fcs.SacrificeWeapon();
+        }
+        else
+        {
+            // TODO: Perform gourd swipe to capture enemies
+            fcs.CaptureAttack();
+        }
     }
 
     // used for input system callback
