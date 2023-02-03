@@ -32,7 +32,7 @@ public class EntityHitbox : MonoBehaviour
     public void CallOnStun() => OnStun?.Invoke();
 
     private int targetLayer;
-    private float health;
+    public float health;
     private bool isIframe = false;
     private bool alreadyDead = false;
 

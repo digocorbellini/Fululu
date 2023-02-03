@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // helper variables
     private CharacterController controller;
     private PlayerStateManager stateManager;
+    private EntityHitbox hitbox;
 
     private Transform mainCam;
 
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
+        hitbox = GetComponent<EntityHitbox>();
+        hitbox.OnDeath += HandleOnDeath;
 
         // setup input
         input = GetComponent<PlayerInput>();
@@ -68,6 +71,12 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void HandleOnDeath()
+    {
+        // TODO: handle player death (animations, sounds, etc)
+        stateManager.SetState(PlayerState.Dead);
     }
 
     // used for input system callback
