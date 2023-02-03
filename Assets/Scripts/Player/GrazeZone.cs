@@ -5,12 +5,17 @@ using UnityEngine;
 public class GrazeZone : MonoBehaviour
 {
     public PlayerController player;
+    public ParticleSystem grazeSparks;
+    private ParticleSystem.EmissionModule emission;
+
     private bool alreadyChecked;
+    private bool isGrazing;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        emission = grazeSparks.emission;
+        emission.rateOverTimeMultiplier = 0;
     }
 
     // Update is called once per frame
@@ -29,12 +34,17 @@ public class GrazeZone : MonoBehaviour
         if (!alreadyChecked)
         {
             player.chargeGraze(Time.fixedDeltaTime);
+            print(other.gameObject);
             alreadyChecked = true;
+            emission.rateOverTimeMultiplier = 15;
+
+            grazeSparks.transform.position = other.ClosestPoint(transform.position);
         }
     }
 
     private void FixedUpdate()
     {
         alreadyChecked = false;
+        emission.rateOverTimeMultiplier = 0;
     }
 }
