@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private Transform mesh;
+    [Tooltip("In radians per frame")]
+    [SerializeField] private float meshRotationSpeed = 0.05f;
 
     [Header("Dash")]
     [SerializeField] private float dashDistance = 8.0f;
@@ -262,7 +264,10 @@ public class PlayerController : MonoBehaviour
         // rotate mesh to face movement direction
         // TODO: lerp rotation
         if (moveDirection != Vector3.zero)
-            mesh.forward = moveDirection;
+        {
+            Vector3 direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed, 0.0f);
+            mesh.forward = direction;
+        }
 
         Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
 

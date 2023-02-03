@@ -610,6 +610,7 @@ MonoBehaviour:
   gravity: -9.8
   jumpHeight: 1
   mesh: {fileID: 2002906368086711557}
+  meshRotationSpeed: 0.04
   dashDistance: 8
   dashDuration: 0.35
   dashCooldown: 0.3
