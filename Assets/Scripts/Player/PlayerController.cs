@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<TrailRenderer> dashTrails;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
+
+    [Header("Graze")]
+    [SerializeField] private float grazeChargeTime = 20f;
+    [SerializeField] private Image grazeChargeBar;
+    private float currGrazeCharge = 0.0f;
 
     // helper variables
     private CharacterController controller;
@@ -113,6 +119,30 @@ public class PlayerController : MonoBehaviour
             print("dashed");
         }
     }
+
+    public void chargeGraze(float amount)
+    {
+        currGrazeCharge += amount;
+        updateGrazeUI();
+    }
+
+    public void useGraze()
+    {
+        currGrazeCharge = 0.0f;
+        updateGrazeUI();
+    }
+
+    public bool isGrazeCharged()
+    {
+        return currGrazeCharge >= grazeChargeTime;
+    }
+
+    private void updateGrazeUI()
+    {
+        float fillAmount = Math.Min(1, currGrazeCharge / grazeChargeTime);
+        grazeChargeBar.fillAmount = fillAmount;
+    }
+
 
     private bool DashReady()
     {

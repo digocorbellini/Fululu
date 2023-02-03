@@ -15,8 +15,8 @@ TagManager:
   - Enemy
   - PlayerAttack
   - EnemyAttack
-  - 
-  - 
+  - DashBarrier
+  - Graze
   - 
   - 
   - 
