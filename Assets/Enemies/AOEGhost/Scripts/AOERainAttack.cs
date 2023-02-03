@@ -46,6 +46,8 @@ public class AOERainAttack : MonoBehaviour
         // - make shot dissapear
         // - start spawning rings around player location
         // - Change rain to one projecitle falling
+
+        // - graze while standing in charging circle. Graze just looks for trigger without attack hitbox on EnemyAttack layer
         StartCoroutine(startAttack());
 
     }
