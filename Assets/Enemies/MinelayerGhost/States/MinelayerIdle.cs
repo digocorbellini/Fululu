@@ -15,7 +15,7 @@ public class MinelayerIdle : MinelayerState
     {
         timer = idleTime;
 
-        controller.LayMine();
+        // controller.LayMine();
         controller.ani.Play("Idle");
 
         bool hasNextPoint = false;

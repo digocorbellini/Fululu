@@ -48,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Hi1");
         if (other.gameObject.CompareTag("Player"))
         {
             proximity = true;
