@@ -2881,6 +2881,10 @@ PrefabInstance:
       propertyPath: recticleRing
       value: 
       objectReference: {fileID: 428758114}
+    - target: {fileID: 1161498196, guid: 138c03f94d9cd2e4e9e4907f0839a39b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2002906366636527405, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2963,6 +2967,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002906366990509868, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
+      propertyPath: grazeChargeBar
+      value: 
+      objectReference: {fileID: 1215566474}
+    - target: {fileID: 2002906366990509868, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
+        type: 3}
       propertyPath: hurtLayers.m_Bits
       value: 1664
       objectReference: {fileID: 0}
@@ -3014,17 +3023,17 @@ PrefabInstance:
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15125358
+      value: 0.15125361
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0014702436
+      value: -0.0014702424
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13098288
+      value: 0.13098286
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368399052512, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}

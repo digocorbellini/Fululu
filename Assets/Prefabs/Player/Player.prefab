@@ -619,7 +619,7 @@ MonoBehaviour:
   hurtLayers:
     serializedVersion: 2
     m_Bits: 1664
-  grazeChargeTime: 12
+  grazeChargeTime: 3
   grazeChargeBar: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &2002906366990509869

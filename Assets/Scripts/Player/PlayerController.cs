@@ -90,10 +90,11 @@ public class PlayerController : MonoBehaviour
         {
             fcs.SacrificeWeapon();
         }
-        else
+        else if(isGrazeCharged())
         {
             // TODO: Perform gourd swipe to capture enemies
             fcs.CaptureAttack();
+            useGraze();
         }
     }
 
