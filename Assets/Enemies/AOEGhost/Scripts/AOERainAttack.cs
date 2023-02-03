@@ -45,6 +45,7 @@ public class AOERainAttack : MonoBehaviour
         // - shoot initial shot into the air
         // - make shot dissapear
         // - start spawning rings around player location
+        // - Change rain to one projecitle falling
         StartCoroutine(startAttack());
 
     }
