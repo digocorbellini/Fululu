@@ -14,6 +14,13 @@ public class PlayerFireControl : MonoBehaviour
 
     public float fullChargeTime;
 
+    [Space(10)]
+
+    [Header("Gourd Capture Attack Settings")]
+
+    public LayerMask captureMask;
+    public BoxCollider captureBounds;
+
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
@@ -78,10 +85,32 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
+    public void CaptureAttack()
+    {
+        Debug.Log("Performing capture!");
+        Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
+        Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
+        foreach(Collider collider in colliders)
+        {
+            ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
+            if (controller)
+            {
+                // Found enemy in range
+                Debug.Log("Found enemy");
+                SwitchWeapon(controller.captureWeapon);
+                Destroy(controller.gameObject);
+                return;
+            }
+        }
+    }
+
     public void SwitchWeapon(Weapon wep)
     {
-        timeCharging = 0.0f;
-        weapon = wep;
-        fullChargeTime = wep.chargeTime;
+        if (wep)
+        {
+            timeCharging = 0.0f;
+            weapon = wep;
+            fullChargeTime = wep.chargeTime;
+        }
     }
 }
