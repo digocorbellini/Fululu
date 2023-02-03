@@ -18,6 +18,8 @@ public abstract class BulletBase: MonoBehaviour
     public GameObject[] trails;
     public GameObject hitParticles;
 
+    [Tooltip("If true, bullet will die after given lifetime and will move forward forever and destroy on trigger enter.")]
+    public bool hasDefaultBehaviour = true;
 
     public void SetDamage(float dmg)
     {
@@ -31,12 +33,14 @@ public abstract class BulletBase: MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(runLifetime());
+        if (hasDefaultBehaviour)
+            StartCoroutine(runLifetime());
     }
 
     private void Update()
     {
-        transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
+        if (hasDefaultBehaviour)
+            transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
     }
 
     private IEnumerator runLifetime()
@@ -47,6 +51,9 @@ public abstract class BulletBase: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!hasDefaultBehaviour)
+            return;
+
         if (hitParticles != null)
         {
             var pos = other.ClosestPoint(transform.position);

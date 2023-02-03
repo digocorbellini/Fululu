@@ -42,8 +42,12 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     private const float COLLSION_SPEED = -0.5f;
 
-    // expose for tracking bullets
-    [HideInInspector] public Vector3 velocity;
+    // expose for leading bullets
+    public Vector3 GetVelocity()
+    {
+        return controller.velocity;
+    }    
+    private Vector3 velocity;
 
     void Awake()
     {

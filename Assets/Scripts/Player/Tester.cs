@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tester : MonoBehaviour
 {
-    public BulletSpread spread;
+    public AOERainAttack spread;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Tester : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            spread.Fire();
+            spread.attack();
         }
     }
 }
