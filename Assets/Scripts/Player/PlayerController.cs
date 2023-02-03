@@ -43,9 +43,13 @@ public class PlayerController : MonoBehaviour
     private const float COLLSION_SPEED = -0.5f;
 
     // expose for leading bullets
-    public Vector3 GetVelocity()
+    public float GetMoveSpeed() { return moveSpeed; }
+    public Vector3 GetPlayerMoveDirection()
     {
-        return controller.velocity;
+        Vector3 dir = velocity;
+        dir.Normalize();
+
+        return dir;
     }    
     private Vector3 velocity;
 

@@ -99,7 +99,7 @@ public class AOERainAttack : MonoBehaviour
 
         print("calculating leading shot!");
 
-        Vector3 playerHorizVelocity = playerController.GetVelocity();
+        Vector3 playerHorizVelocity = playerController.GetPlayerMoveDirection();
         playerHorizVelocity.y = 0;
 
         print("Player horiz velocity: " + playerHorizVelocity.magnitude);
@@ -107,12 +107,9 @@ public class AOERainAttack : MonoBehaviour
         Vector3 playerDirection = playerHorizVelocity;
         playerDirection.Normalize();
 
-        float playerHorizSpeed = playerHorizVelocity.magnitude;
+        print("pos delta: " + (playerHorizVelocity * attackChargeTime));
 
-        // get the distance the player would travel to get to the attack position in time for attack
-        float leadingPosDelta = playerHorizSpeed * attackChargeTime;
-
-        Vector3 leadingPos = player.transform.position + (playerHorizVelocity * leadingPosDelta);
+        Vector3 leadingPos = player.transform.position + (playerDirection * playerController.GetMoveSpeed() * attackChargeTime) + (playerDirection * attackRadius * 2);
         leadingPos.y -= getDeltaToFloor(leadingPos);
 
         return leadingPos;

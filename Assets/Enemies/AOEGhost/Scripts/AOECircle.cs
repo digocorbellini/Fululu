@@ -9,6 +9,9 @@ public class AOECircle : MonoBehaviour
 {
     [SerializeField] private GameObject redCircleObject;
     [SerializeField] private GameObject redRingObject;
+
+    [Tooltip("Small difference between ground circle and actual collider size")]
+    public float colliderRadiusDiff = 0.05f;
     
     private float rainDuration;
     private float attackRadius;
@@ -51,7 +54,7 @@ public class AOECircle : MonoBehaviour
         shape.radius = attackRadius;
 
         // set the radius of the collider to the attack radius
-        capsuleCollider.radius = attackRadius;
+        capsuleCollider.radius = attackRadius - colliderRadiusDiff;
 
         // set the size of the red ring on the floor to match the hitbox radius
         redRingObject.transform.localScale = Vector3.one * (attackRadius * 2);
