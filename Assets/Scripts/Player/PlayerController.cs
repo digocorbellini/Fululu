@@ -262,12 +262,18 @@ public class PlayerController : MonoBehaviour
         moveDirection.Normalize();
 
         // rotate mesh to face movement direction
-        // TODO: lerp rotation
-        if (moveDirection != Vector3.zero)
+        Vector3 direction = mesh.forward;
+        if (input.actions["Attack"].IsPressed() || input.actions["AltFire"].IsPressed())
         {
-            Vector3 direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed, 0.0f);
-            mesh.forward = direction;
+            // TODO: probably want to replace this since this is so choppy, maybe only upper body?
+            Vector3 end = new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z);
+            direction = Vector3.RotateTowards(mesh.forward, end, meshRotationSpeed, 0.0f);
+        } else if (moveDirection != Vector3.zero)
+        {
+            direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed, 0.0f);
         }
+
+        mesh.forward = direction;
 
         Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
 
