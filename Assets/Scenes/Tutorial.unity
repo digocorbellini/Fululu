@@ -566,6 +566,7 @@ MonoBehaviour:
   armorPoints: 1
   isPlayer: 0
   iFrameTime: 0.5
+  health: 0
 --- !u!1 &108149948
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +812,7 @@ MonoBehaviour:
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0.5
+  health: 0
 --- !u!114 &184258795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,17 +2974,17 @@ PrefabInstance:
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15125361
+      value: 0.15125358
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0014702424
+      value: -0.0014702436
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13098286
+      value: 0.13098288
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138c03f94d9cd2e4e9e4907f0839a39b, type: 3}
@@ -3849,6 +3851,7 @@ MonoBehaviour:
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0.5
+  health: 0
 --- !u!114 &1763260899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,6 +3980,7 @@ MonoBehaviour:
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0.5
+  health: 0
 --- !u!114 &1829215245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4433,6 +4437,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2120666847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2002906366990509864, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484793908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120666854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120666847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  armorPoints: 0
+  isPlayer: 1
+  iFrameTime: 0.5
+  health: 0
 --- !u!1 &2146324012
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,6 @@ public class PlayerFireControl : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
             lookAtPos = hit.point;
-            print(hit.collider.gameObject);
             Debug.DrawLine(ray.origin, hit.point);
         }
         else
