@@ -97,6 +97,13 @@ public class PlayerFireControl : MonoBehaviour
         return didFire;
     }
 
+    public void CancelCharge()
+    {
+        isCharging = false;
+        recticleRing.enabled = false;
+        timeCharging = 0.0f;
+    }
+
     public void SacrificeWeapon()
     {
         weapon.Sacrifice(shootPoint);

@@ -19,6 +19,10 @@ public class PlayerStateManager : MonoBehaviour
 {
     // show in editor for debugging
     [SerializeField] private PlayerState _currentState;
+    [SerializeField] private Animator animator;
+
+    private bool IsAttackAnim;
+
     public PlayerState currentState { 
         get
         {
@@ -27,7 +31,30 @@ public class PlayerStateManager : MonoBehaviour
         private set
         {
             _currentState = value;
-            // TODO: update animator value
+
+            if (IsAttackAnim)
+            {
+                return;
+            }
+
+            switch (_currentState)
+            {
+                case PlayerState.Idle:
+                    animator.Play("Idle");
+                    break;
+                case PlayerState.Running:
+                    animator.Play("Walk");
+                    break;
+                case PlayerState.Jumping:
+                    animator.Play("Jump");
+                    break;
+                case PlayerState.Dead:
+                    animator.Play("Death");
+                    break;
+                default:
+                    animator.Play("Idle");
+                    break;
+            }
         }
     }
 
@@ -48,13 +75,31 @@ public class PlayerStateManager : MonoBehaviour
     /// and false otherwise</returns>
     public bool SetState(PlayerState newState)
     {
-        if (CanChangeState(newState))
+        if (!CanChangeState(newState))
         {
-            currentState = newState;
-            return true;
+            
+            return false;
         }
 
+        currentState = newState;
         return false;
+    }
+
+    public void StartAttack()
+    {
+        animator.Play("Attack");
+        IsAttackAnim = true;
+    }
+
+    private void Update()
+    {
+        if (IsAttackAnim)
+        {
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                IsAttackAnim = false;
+            }
+        }
     }
 
     public bool CanChangeState(PlayerState newState)

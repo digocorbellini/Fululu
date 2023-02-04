@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private float lastDash;
     private bool isGrounded = true;
+    private bool isCharging = false;
+    private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
 
     // expose for tracking bullets
@@ -84,13 +86,22 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void StartAttackCharge(InputAction.CallbackContext context)
     {
-        fcs.StartCharging();
+        if (stateManager.CanChangeState(PlayerState.Attacking))
+        {
+            fcs.StartCharging();
+            isCharging = true;
+        }
     }
 
     // used for input system callback
     private void ReleaseAttackCharge(InputAction.CallbackContext context)
     {
-        fcs.StopCharging();
+        if (isCharging)
+        {
+            fcs.StopCharging();
+            isCharging = false;
+            stateManager.StartAttack();
+        }
     }
 
     // used for input system callback
@@ -128,6 +139,11 @@ public class PlayerController : MonoBehaviour
         if(stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
             StartCoroutine(PerformDash());
+            if (isCharging)
+            {
+                isCharging = false;
+                fcs.CancelCharge();
+            }
             print("dashed");
         }
     }

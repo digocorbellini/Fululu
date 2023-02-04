@@ -12,7 +12,7 @@ public class AttackHitbox : MonoBehaviour
 
     private List<EntityHitbox> alreadyHit;
 
-    private void Start()
+    private void Awake()
     {
         alreadyHit = new List<EntityHitbox>();
     }
