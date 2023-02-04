@@ -20,11 +20,13 @@ public class PlayerFireControl : MonoBehaviour
 
     public LayerMask captureMask;
     public BoxCollider captureBounds;
+    public LayerMask raycastIgnore;
 
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
     private bool isCharging;
+    private Vector3? lookAtPos;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class PlayerFireControl : MonoBehaviour
         recticleRing.enabled = false;
         isCharging = false;
         weapon = defaultWeapon;
+        fullChargeTime = weapon.chargeTime;
     }
 
     // Update is called once per frame
@@ -45,6 +48,22 @@ public class PlayerFireControl : MonoBehaviour
             //recticleRing.transform.localScale = new Vector3(currRingSize, currRingSize);
             recticleRing.fillAmount = currRingSize;
         }
+
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
+        {
+            lookAtPos = hit.point;
+            print(hit.collider.gameObject);
+            Debug.DrawLine(ray.origin, hit.point);
+        }
+        else
+        {
+            lookAtPos = null;
+            print("no hit");
+        }
+
     }
 
     public void StartCharging()
@@ -66,11 +85,11 @@ public class PlayerFireControl : MonoBehaviour
         if (timeCharging >= fullChargeTime)
         {
             print("Firing charged attack");
-            didFire = weapon.ChargedFire(shootPoint);
+            didFire = weapon.ChargedFire(shootPoint, lookAtPos);
         }
         else
         {
-            didFire = weapon.Fire(shootPoint);
+            didFire = weapon.Fire(shootPoint, lookAtPos);
         }
 
         timeCharging = 0.0f;

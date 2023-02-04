@@ -43,7 +43,7 @@ public class EnemyFireControl : MonoBehaviour
             return false;
         }
 
-        weapon.Fire(firePos);
+        weapon.Fire(firePos, null);
         return true;
     }
 }
