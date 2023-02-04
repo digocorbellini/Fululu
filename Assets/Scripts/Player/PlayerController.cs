@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private Transform mesh;
+    [Tooltip("In radians per frame")]
+    [SerializeField] private float meshRotationSpeed = 0.05f;
 
     [Header("Dash")]
     [SerializeField] private float dashDistance = 8.0f;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // helper variables
     private CharacterController controller;
     private PlayerStateManager stateManager;
+    private EntityHitbox hitbox;
 
     private Transform mainCam;
 
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
+        hitbox = GetComponent<EntityHitbox>();
+        hitbox.OnDeath += HandleOnDeath;
 
         // setup input
         input = GetComponent<PlayerInput>();
@@ -68,6 +73,12 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void HandleOnDeath()
+    {
+        // TODO: handle player death (animations, sounds, etc)
+        stateManager.SetState(PlayerState.Dead);
     }
 
     // used for input system callback
@@ -90,10 +101,11 @@ public class PlayerController : MonoBehaviour
         {
             fcs.SacrificeWeapon();
         }
-        else
+        else if(isGrazeCharged())
         {
             // TODO: Perform gourd swipe to capture enemies
             fcs.CaptureAttack();
+            useGraze();
         }
     }
 
@@ -250,9 +262,18 @@ public class PlayerController : MonoBehaviour
         moveDirection.Normalize();
 
         // rotate mesh to face movement direction
-        // TODO: lerp rotation
-        if (moveDirection != Vector3.zero)
-            mesh.forward = moveDirection;
+        Vector3 direction = mesh.forward;
+        if (input.actions["Attack"].IsPressed() || input.actions["AltFire"].IsPressed())
+        {
+            // TODO: probably want to replace this since this is so choppy, maybe only upper body?
+            Vector3 end = new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z);
+            direction = Vector3.RotateTowards(mesh.forward, end, meshRotationSpeed, 0.0f);
+        } else if (moveDirection != Vector3.zero)
+        {
+            direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed, 0.0f);
+        }
+
+        mesh.forward = direction;
 
         Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
 
