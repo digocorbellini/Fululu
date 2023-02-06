@@ -50,15 +50,17 @@ public class EntityHitbox : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        print(other.gameObject + " on " + other.gameObject.layer);
         if (!isIframe && other.gameObject.layer == targetLayer)
         {
             if (other.gameObject.TryGetComponent(out AttackHitbox attack))
             {
 
-                print(attack.gameObject);
+                print(gameObject + " hit by " + attack.gameObject);
 
                 if (!attack.canHit(this))
                 {
+                    print("Can't hit it");
                     return;
                 }
 

@@ -60,7 +60,6 @@ public class PlayerFireControl : MonoBehaviour
         else
         {
             lookAtPos = null;
-            print("no hit");
         }
 
     }

@@ -34,7 +34,6 @@ public class GrazeZone : MonoBehaviour
         if (!alreadyChecked)
         {
             player.chargeGraze(Time.fixedDeltaTime);
-            print(other.gameObject);
             alreadyChecked = true;
             emission.rateOverTimeMultiplier = 15;
 

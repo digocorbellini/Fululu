@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
         fcs = GetComponent<PlayerFireControl>();
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
+        hitbox.OnHurt += HurtTester;
 
         // setup input
         input = GetComponent<PlayerInput>();
@@ -183,6 +184,11 @@ public class PlayerController : MonoBehaviour
     private bool DashReady()
     {
         return Time.time >= lastDash + dashCooldown;
+    }
+
+    private void HurtTester(float dmg, bool isExplosive)
+    {
+        print("Ouch");
     }
 
     IEnumerator PerformDash()

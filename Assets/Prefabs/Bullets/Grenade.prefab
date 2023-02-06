@@ -116,7 +116,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8733035166938918871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   damage: 0
   isExplosive: 0
   isStun: 0
-  destroyOnHit: 1
+  destroyOnHit: 0
 --- !u!114 &6858177788327232075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 7351507969636709347}
   hitParticles: {fileID: 8387329251214316327, guid: 1f05cde5ca887fe4b9f2599250485fc8,
     type: 3}
+  hasDefaultBehaviour: 1
 --- !u!1 &7351507969636709347
 GameObject:
   m_ObjectHideFlags: 0

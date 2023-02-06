@@ -47,7 +47,6 @@ public class BallisticFire : MonoBehaviour
 
         Vector3 trajectory = BallisticTrajectory(transform.position, targetPos);
         GameObject obj = Instantiate(projectile, shootPos.position, Quaternion.identity);
-        print(trajectory);
         obj.GetComponent<Rigidbody>().AddForce(trajectory, ForceMode.Impulse);
 
         return true;
