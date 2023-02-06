@@ -6,7 +6,6 @@ public class AOERainAttack : MonoBehaviour
 {
     [Header("Attack stats")]
     [SerializeField] private int numberOfAttacks;
-    [SerializeField] private float damage;
     [SerializeField] private float attackRadius;
     [SerializeField] private bool shouldBeLeading;
     [SerializeField] private LayerMask groundLayer;
@@ -15,7 +14,6 @@ public class AOERainAttack : MonoBehaviour
     [SerializeField] private float initialShotDuration;
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private float attackChargeTime;
-    [SerializeField] private float rainDuration;
     [Header("References")]
     [SerializeField] private AOECircle aoeCircleObject;
     [SerializeField] private GameObject initialShotObject; // should have a trail and particles and rigidbody
@@ -23,7 +21,7 @@ public class AOERainAttack : MonoBehaviour
     private GameObject player;
     private PlayerController playerController;
 
-    private bool attackTriggered = false;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -33,14 +31,24 @@ public class AOERainAttack : MonoBehaviour
     }
 
     /// <summary>
-    ///  Call this function in order to perform the rain attack. Can only call this once.
+    /// Get the total time it takes to complete an attack
+    /// </summary>
+    /// <returns>The total time it takes to complete an attackS</returns>
+    public float getTotalAttackTime()
+    {
+        return initialShotDuration + (numberOfAttacks * timeBetweenAttacks);
+    }
+
+    /// <summary>
+    ///  Call this function in order to perform the rain attack. Can only call if
+    ///  currently not attacking.
     /// </summary>
     public void attack()
     {
-        if (attackTriggered)
+        if (isAttacking)
             return;
 
-        attackTriggered = true;
+        isAttacking = true;
         // TODO:
         // - shoot initial shot into the air
         // - make shot dissapear
@@ -64,22 +72,13 @@ public class AOERainAttack : MonoBehaviour
             Vector3 spawnLocation = getAttackSpawnLocation();
 
             AOECircle currentAttack = Instantiate(aoeCircleObject, spawnLocation, Quaternion.identity);
-            currentAttack.SetStats(attackChargeTime, damage, rainDuration, attackRadius);
+            currentAttack.SetStats(attackChargeTime, attackRadius);
             currentAttack.BeginAttack();
 
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
 
-        // destroy this object
-        selfDestruct();
-    }
-
-    /// <summary>
-    /// Destroy this object
-    /// </summary>
-    private void selfDestruct()
-    {
-        Destroy(this.gameObject);
+        isAttacking = false;
     }
 
     /// <summary>
@@ -97,8 +96,6 @@ public class AOERainAttack : MonoBehaviour
 
             return playerPos;
         }
-
-        // TODO: fix leading shot
 
         print("calculating leading shot!");
 

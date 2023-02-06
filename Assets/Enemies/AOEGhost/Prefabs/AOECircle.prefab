@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 412106858355657600}
   - component: {fileID: 412106858355657602}
   - component: {fileID: 412106858355657603}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Smoke In Air
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,7 +4881,7 @@ GameObject:
   - component: {fileID: 412106858641501187}
   - component: {fileID: 412106858641501215}
   - component: {fileID: 412106858641501186}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: AOECircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4948,7 +4948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7950015237015539354}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4978,10 +4978,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 412106858641501187}
     m_Modifications:
+    - target: {fileID: 699902501467986397, guid: 6e7d0b7b137a6a54ebeeeac98930c40f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3238860338244113229, guid: 6e7d0b7b137a6a54ebeeeac98930c40f,
         type: 3}
       propertyPath: m_Name
       value: Red Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238860338244113229, guid: 6e7d0b7b137a6a54ebeeeac98930c40f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8576931209950510587, guid: 6e7d0b7b137a6a54ebeeeac98930c40f,
         type: 3}
@@ -5114,10 +5124,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5145591043656241428, guid: b3ceb2998b79da24f9b15fda069201b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8407375113030029865, guid: b3ceb2998b79da24f9b15fda069201b9,
         type: 3}
       propertyPath: m_Name
       value: Red Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407375113030029865, guid: b3ceb2998b79da24f9b15fda069201b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ceb2998b79da24f9b15fda069201b9, type: 3}

@@ -31,9 +31,7 @@ public class AOECircle : MonoBehaviour
     /// </summary>
     /// <param name="chargeTime">the time this attack should wait before
     /// raining on the player</param>
-    /// <param name="damage">the damage that the rain should do</param>
-    /// <param name="rainDuration">the duration of the rain</param>
-    public void SetStats(float chargeTime, float damage, float rainDuration, float attackRadius)
+    public void SetStats(float chargeTime, float attackRadius)
     {
         this.attackRadius = attackRadius;
 
