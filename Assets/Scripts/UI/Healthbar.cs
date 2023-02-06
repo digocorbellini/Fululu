@@ -25,12 +25,13 @@ public class Healthbar : MonoBehaviour
 
         this.health = player.maxHealth;
         player.OnHurt += UpdateDisplay;
+        player.OnDeath += OnDeath;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDeath()
     {
-        
+        health = 0;
+        UpdateDisplay(0, false);
     }
 
     private void UpdateDisplay(float damage, bool isExplosive)

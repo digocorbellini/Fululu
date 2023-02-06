@@ -27,24 +27,30 @@ public class Weapon : ScriptableObject
     [Tooltip("Fired when sacrificing the weapon")]
     public BulletBase sacrificeBullet;
 
-    private void SpawnBullets(Transform transform, BulletSpread spread, BulletBase bullet)
+    private void SpawnBullets(Transform transform, Vector3? target, BulletSpread spread, BulletBase bullet)
     {
-        BulletSpread instance = Instantiate(spread, transform);
+        BulletSpread instance = Instantiate(spread, transform.position, Quaternion.LookRotation(transform.forward));
+
+        if (target != null)
+        {
+            Vector3 targetNonNull = target.Value;
+            instance.transform.LookAt(targetNonNull);
+        }
 
         instance.Bullet = bullet.gameObject;
         instance.Fire();
     }
 
-    public bool ChargedFire(Transform transform)
+    public bool ChargedFire(Transform shootPos, Vector3? target)
     {
-        SpawnBullets(transform, spreadPrefab, chargedBullet);
+        SpawnBullets(shootPos, target, spreadPrefab, chargedBullet);
 
         return true;
     }
 
-    public bool Fire(Transform transform)
+    public bool Fire(Transform shootPos, Vector3? target)
     {
-        SpawnBullets(transform, spreadPrefab, bullet);
+        SpawnBullets(shootPos, target, spreadPrefab, bullet);
 
         return true;
     }
@@ -53,7 +59,7 @@ public class Weapon : ScriptableObject
     {
         if (sacrificeSpreadPrefab && sacrificeBullet)
         {
-            SpawnBullets(transform, sacrificeSpreadPrefab, sacrificeBullet);
+            SpawnBullets(transform, null, sacrificeSpreadPrefab, sacrificeBullet);
             return true;
         }
 
