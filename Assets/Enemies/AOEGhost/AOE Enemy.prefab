@@ -538,7 +538,8 @@ MonoBehaviour:
   attackChargeTime: 1
   aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
     type: 3}
-  initialShotObject: {fileID: 0}
+  initialShotObject: {fileID: 4991506163534703398, guid: fd26eccea3f914143904c5b9c34e7c76,
+    type: 3}
 --- !u!54 &3754730518732523035
 Rigidbody:
   m_ObjectHideFlags: 0
