@@ -81,10 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 54
+  Speed: 40
   lifetime: 8
   trails: []
   hitParticles: {fileID: 0}
+  hasDefaultBehaviour: 1
 --- !u!82 &-1496640627684781050
 AudioSource:
   m_ObjectHideFlags: 0
