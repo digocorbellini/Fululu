@@ -2,35 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
-[RequireComponent(typeof(AttackHitbox))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class AOECircle : MonoBehaviour
 {
     [SerializeField] private GameObject redCircleObject;
     [SerializeField] private GameObject redRingObject;
+    [SerializeField] private ParticleSystem smokeParticles;
+    [SerializeField] private BulletBase projectile;
+    [SerializeField] private Transform bulletSpawn;
 
     [Tooltip("Small difference between ground circle and actual collider size")]
     public float colliderRadiusDiff = 0.05f;
     
-    private float rainDuration;
     private float attackRadius;
     private float radiusGrowthSpeed;
 
-    private ParticleSystem rainParticles;
     private CapsuleCollider capsuleCollider;
-    private AttackHitbox hitbox;
 
     private void Awake()
     {
-        rainParticles = GetComponent<ParticleSystem>();
-        rainParticles.Stop();
 
         capsuleCollider = GetComponent<CapsuleCollider>();
         capsuleCollider.enabled = false;
-
-        hitbox = GetComponent<AttackHitbox>();
-        hitbox.destroyOnHit = false;
     }
 
     /// <summary>
@@ -42,16 +35,10 @@ public class AOECircle : MonoBehaviour
     /// <param name="rainDuration">the duration of the rain</param>
     public void SetStats(float chargeTime, float damage, float rainDuration, float attackRadius)
     {
-        hitbox.damage = damage;
-        this.rainDuration = rainDuration;
         this.attackRadius = attackRadius;
 
         // determine the growth speed of the red damage circle
         radiusGrowthSpeed = attackRadius / chargeTime;
-
-        // set the radius of the particle rain to the damage circle
-        var shape = rainParticles.shape;
-        shape.radius = attackRadius;
 
         // set the radius of the collider to the attack radius
         capsuleCollider.radius = attackRadius - colliderRadiusDiff;
@@ -73,6 +60,9 @@ public class AOECircle : MonoBehaviour
         redRingObject.SetActive(true);
         redCircleObject.SetActive(true);
         redCircleObject.transform.localScale = Vector3.zero;
+
+        // enable capsule collider for grazing
+        capsuleCollider.enabled = true;
         
         // grow red circle indicator
         while (redCircleObject.transform.localScale.x < (attackRadius * 2))
@@ -84,19 +74,14 @@ public class AOECircle : MonoBehaviour
         }
 
         // start performing attack
-        rainParticles.Play();
-        capsuleCollider.enabled = true;
+        BulletBase spawnedProjectile = Instantiate(projectile, bulletSpawn.position, Quaternion.LookRotation(Vector3.down));
+        smokeParticles.Play();
 
-        yield return new WaitForSeconds(rainDuration);
-
-        // stop attack
-        rainParticles.Stop();
-
-        // wait for particles to fall
-        yield return new WaitForSeconds(1);
+        // dissale capsule collider for grazing
         capsuleCollider.enabled = false;
 
-        // TODO: maybe fade out red circles
+        // wait for projectile to hit the ground
+        yield return new WaitForSeconds(bulletSpawn.position.y / spawnedProjectile.Speed);
 
         selfDestruct();
     }
