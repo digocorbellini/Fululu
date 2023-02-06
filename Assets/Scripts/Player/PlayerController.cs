@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
-        hitbox = GetComponent<EntityHitbox>();
+        hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
 
         // setup input

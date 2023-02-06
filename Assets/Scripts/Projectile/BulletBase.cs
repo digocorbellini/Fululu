@@ -33,27 +33,23 @@ public abstract class BulletBase: MonoBehaviour
 
     private void Awake()
     {
-        if (hasDefaultBehaviour)
-            StartCoroutine(runLifetime());
+        StartCoroutine(runLifetime());
     }
 
     private void Update()
     {
-        if (hasDefaultBehaviour)
-            transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
+        transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
     }
 
     private IEnumerator runLifetime()
     {
         yield return new WaitForSeconds(lifetime);
+        print("lifetime ran out!");
         Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasDefaultBehaviour)
-            return;
-
         if (hitParticles != null)
         {
             var pos = other.ClosestPoint(transform.position);
@@ -65,12 +61,14 @@ public abstract class BulletBase: MonoBehaviour
         if (hitbox != null && hitbox.destroyOnHit)
         {
             // Attack is single hit
+            print("attack is single hit!");
             shouldDestroy = true;
         }
             
-        if(other.gameObject.layer != 7 || other.gameObject.layer != 6)
+        if(other.gameObject.layer != 7 && other.gameObject.layer != 6 && other.gameObject.layer != 11)
         {
             // Piercing bullet hit terrain. Destroy it regardless;
+            print("hit terrain!");
             shouldDestroy = true;
         }
 
@@ -82,6 +80,7 @@ public abstract class BulletBase: MonoBehaviour
                 obj.transform.SetParent(null, true);
                 Destroy(obj, 1f);
             }
+            print("Should destory is true!");
             Destroy(this.gameObject);
         }
             
