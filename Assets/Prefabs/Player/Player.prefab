@@ -5499,7 +5499,7 @@ MonoBehaviour:
   gravity: -9.8
   jumpHeight: 1
   mesh: {fileID: 5886961406355843574}
-  meshRotationSpeed: 0.05
+  meshRotationSpeed: 10
   dashDistance: 8
   dashDuration: 0.35
   dashCooldown: 0.3
@@ -5510,7 +5510,7 @@ MonoBehaviour:
   hurtLayers:
     serializedVersion: 2
     m_Bits: 1664
-  grazeChargeTime: 12
+  grazeChargeTime: 3
   grazeChargeBar: {fileID: 0}
 --- !u!114 &2002906366990509869
 MonoBehaviour:
@@ -5626,7 +5626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367086278394}
   m_LocalRotation: {x: 0.0016935586, y: -0.9768235, z: 0.15144633, w: 0.15125126}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.704779, y: 3.518929, z: 24.21072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
