@@ -60,23 +60,25 @@ public abstract class BulletBase: MonoBehaviour
         }
 
         if (shouldDestroy)
-        {
-            // Make sure trails get to play to end before destroying
-            foreach (GameObject obj in trails)
-            {
-                obj.transform.SetParent(null, true);
-                Destroy(obj, 1f);
-            }
+        {             
             print("Should destory is true!");
-
-            if (hitParticles != null)
-            {
-                var pos = other.ClosestPoint(transform.position);
-                Instantiate(hitParticles, pos, Quaternion.identity);
-            }
-
             Destroy(this.gameObject);
         }
             
+    }
+
+    private void OnDestroy()
+    {
+        foreach (GameObject obj in trails)
+        {
+            // Make sure trails get to play to end before destroying
+            Destroy(obj, 1f);
+            obj.transform.SetParent(null, true);
+        }
+
+        if (hitParticles != null)
+        {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+        }
     }
 }
