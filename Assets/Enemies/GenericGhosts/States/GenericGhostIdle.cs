@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGhostIdle : ProjectileGhostState
+public class GenericGhostIdle : GenericGhostState
 {
     public float idleDuration = 5.0f;
     public float alternateDirTime = 1;
@@ -21,7 +21,7 @@ public class ProjectileGhostIdle : ProjectileGhostState
     public override void enter()
     {
         controller.rb.velocity = Vector3.zero;
-        controller.ani.Play("Idle");
+        controller.ani?.Play("Idle");
 
         timer = 0;
         alternateTimer = 0;

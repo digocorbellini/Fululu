@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGhostStun : ProjectileGhostState
+public class GenericGhostStun : GenericGhostState
 {
     public float StunDuration;
     public GameObject stun;

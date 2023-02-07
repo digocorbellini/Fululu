@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGhostController : ControllerBase
+public class GenericGhostController : ControllerBase
 {
     public GameObject player;
     [HideInInspector] public AudioSource audioSource;
@@ -33,9 +33,7 @@ public class ProjectileGhostController : ControllerBase
 
     private void OnStun()
     {
-        // change to stun state
-        if(!isStunned)
-            switchState("PGStun");
+        // TODO: implement stun
     }
 
     private void OnHurt(float damage, bool isExplosive)

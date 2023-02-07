@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGhostChase : ProjectileGhostState
+public class GenericGhostChase : GenericGhostState
 {
     public float speed = 10;
 

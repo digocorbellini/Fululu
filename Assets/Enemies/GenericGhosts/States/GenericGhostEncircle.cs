@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileGhostEncircle : ProjectileGhostState
+public class GenericGhostEncircle : GenericGhostState
 {
     public float maxDuration = 5;
     public float minDuration = 1;
