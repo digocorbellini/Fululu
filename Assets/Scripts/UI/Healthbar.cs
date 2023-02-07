@@ -20,18 +20,32 @@ public class Healthbar : MonoBehaviour
     {
         if(player == null)
         {
-           player = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityHitbox>();
+            player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<EntityHitbox>();
+            Initialize(player);
         }
-
-        this.health = player.maxHealth;
-        player.OnHurt += UpdateDisplay;
-        player.OnDeath += OnDeath;
     }
 
     private void OnDeath()
     {
         health = 0;
         UpdateDisplay(0, false);
+    }
+
+    public void Initialize(PlayerController player)
+    {
+        Initialize(player.hitbox);
+    }
+    
+    public void Initialize(EntityHitbox player)
+    {
+        if (player)
+        {
+            this.player = player;
+            health = player.health;
+            player.OnHurt += UpdateDisplay;
+            player.OnDeath += OnDeath;
+            UpdateDisplay(0, false);
+        }
     }
 
     private void UpdateDisplay(float damage, bool isExplosive)

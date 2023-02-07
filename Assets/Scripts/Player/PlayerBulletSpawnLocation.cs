@@ -19,7 +19,7 @@ public class PlayerBulletSpawnLocation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 cameraForward = mainCam.forward;
+        Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0;
         transform.position = mesh.transform.position + (cameraForward * distanceFromPlayer);
         transform.forward = (lookAt.position - transform.position).normalized;

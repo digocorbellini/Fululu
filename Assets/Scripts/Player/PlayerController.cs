@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     // helper variables
     private CharacterController controller;
     private PlayerStateManager stateManager;
-    private EntityHitbox hitbox;
+    [HideInInspector]
+    public EntityHitbox hitbox;
 
     private Transform mainCam;
 
@@ -79,11 +80,20 @@ public class PlayerController : MonoBehaviour
         
         moveAction = input.actions["Move"];
     }
-
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void SetReticleRing(Image ring)
+    {
+        fcs.recticleRing = ring;
+    }
+
+    public void SetGrazeChargeBar(Image bar)
+    {
+        grazeChargeBar = bar;
     }
 
     private void HandleOnDeath()
@@ -277,6 +287,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        mainCam = Camera.main.transform;
+
         // handle movement 
         Vector2 moveAxis = moveAction.ReadValue<Vector2>();
         Vector3 forwardDirection = mainCam.forward;
@@ -368,6 +380,9 @@ public class PlayerController : MonoBehaviour
     {
         input.actions["Jump"].started -= jumpStarted;
         input.actions["Dash"].started -= dashStarted;
+        input.actions["Attack"].started -= StartAttackCharge;
+        input.actions["Attack"].canceled -= ReleaseAttackCharge;
+        input.actions["AltFire"].started -= HandleAltFire;
     }
 
     private void OnDrawGizmos()

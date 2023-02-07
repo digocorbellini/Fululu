@@ -31,8 +31,6 @@ public class PlayerFireControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxRingSize = recticleRing.transform.localScale.x;
-        recticleRing.enabled = false;
         isCharging = false;
         weapon = defaultWeapon;
         fullChargeTime = weapon.chargeTime;
@@ -44,10 +42,9 @@ public class PlayerFireControl : MonoBehaviour
         if (isCharging)
         {
             timeCharging += Time.deltaTime;
-            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - .1f) / fullChargeTime);
-            //recticleRing.transform.localScale = new Vector3(currRingSize, currRingSize);
-            recticleRing.fillAmount = currRingSize;
         }
+
+        UpdateReticle();
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -64,19 +61,25 @@ public class PlayerFireControl : MonoBehaviour
 
     }
 
+    private void UpdateReticle()
+    {
+        if (recticleRing)
+        {
+            recticleRing.enabled = isCharging;
+            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - .1f) / fullChargeTime);
+            recticleRing.fillAmount = currRingSize;
+        }
+    }
+
     public void StartCharging()
     {
         isCharging = true;
-        recticleRing.enabled = true;
         timeCharging = 0.0f;
-        recticleRing.fillAmount = 0;
-        //currRingSize = maxRingSize;
     }
 
     public bool StopCharging()
     {
         isCharging = false;
-        recticleRing.enabled = false;
         bool didFire = false;
 
         //shoot the projectile
@@ -99,7 +102,6 @@ public class PlayerFireControl : MonoBehaviour
     public void CancelCharge()
     {
         isCharging = false;
-        recticleRing.enabled = false;
         timeCharging = 0.0f;
     }
 
