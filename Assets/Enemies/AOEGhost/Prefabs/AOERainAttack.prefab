@@ -45,16 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfAttacks: 5
-  damage: 1
   attackRadius: 2.33
-  shouldBeLeading: 1
+  shouldBeLeading: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
   initialShotDuration: 1
   timeBetweenAttacks: 2
   attackChargeTime: 0.5
-  rainDuration: 2
   aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
     type: 3}
-  initialShotObject: {fileID: 0}
+  initialShotObject: {fileID: 4991506163534703398, guid: fd26eccea3f914143904c5b9c34e7c76,
+    type: 3}
