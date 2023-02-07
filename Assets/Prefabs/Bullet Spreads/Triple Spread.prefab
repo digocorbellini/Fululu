@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 0}
   NumOfBullets: 3
-  SpawnRadius: 1
-  DistanceBetweenBullets: 0.55
+  SpawnRadius: 1.63
+  DistanceBetweenBullets: 0.4
   isOffCentered: 0
