@@ -113,7 +113,7 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
-    public void CaptureAttack()
+    public bool CaptureAttack()
     {
         Debug.Log("Performing capture!");
         Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
@@ -127,9 +127,11 @@ public class PlayerFireControl : MonoBehaviour
                 Debug.Log("Found enemy");
                 SwitchWeapon(controller.captureWeapon);
                 Destroy(controller.gameObject);
-                return;
+                return true;
             }
         }
+
+        return false;
     }
 
     public void SwitchWeapon(Weapon wep)

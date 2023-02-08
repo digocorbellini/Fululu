@@ -34,7 +34,6 @@ public class EntityHitbox : MonoBehaviour
     private int targetLayer;
     public float health;
     private bool isIframe = false;
-    [HideInInspector]
     public bool alreadyDead = false;
 
     private void Awake()
@@ -94,13 +93,14 @@ public class EntityHitbox : MonoBehaviour
                 }
 
                 health -= attack.damage;
+                Debug.Log("Hit! new health: " + health + " damage: " + attack.damage);
 
                 if (!alreadyDead)
                 {
                     if (health <= 0)
                     {
-                        CallOnDeath();
                         alreadyDead = true;
+                        CallOnDeath();
                     }
                     else
                     {

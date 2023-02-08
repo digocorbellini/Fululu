@@ -136,8 +136,10 @@ public class PlayerController : MonoBehaviour
         else if(isGrazeCharged())
         {
             // TODO: Perform gourd swipe to capture enemies
-            fcs.CaptureAttack();
-            useGraze();
+            if (fcs.CaptureAttack())
+            {
+                useGraze();
+            }
         }
     }
 
@@ -288,6 +290,7 @@ public class PlayerController : MonoBehaviour
         hitbox.health = hitbox.maxHealth;
         hitbox.alreadyDead = false;
         currGrazeCharge = 0.0f;
+        fcs.SwitchWeapon(fcs.defaultWeapon);
     }
 
     private void performMovement()
