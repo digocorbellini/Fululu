@@ -353,6 +353,7 @@ MonoBehaviour:
   healthbar: {fileID: 6719868676368059647}
   reticleRing: {fileID: 5498638631273580744}
   grazeChargeBar: {fileID: 8315417382790517167}
+  captureImage: {fileID: 8762318006861243283}
 --- !u!1001 &5031580013263127596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +762,18 @@ RectTransform:
 --- !u!114 &8315417382790517167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3942214623157867713, guid: f0e321823036d194f9e6c29ec3351db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5031580014479050094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8762318006861243283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4344217240145733373, guid: f0e321823036d194f9e6c29ec3351db4,
     type: 3}
   m_PrefabInstance: {fileID: 5031580014479050094}
   m_PrefabAsset: {fileID: 0}

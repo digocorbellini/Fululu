@@ -585,6 +585,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!1 &108149948
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +832,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!114 &184258795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1188,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1510071503, guid: 956951a3030e020428f675566075d665, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339898920957984960, guid: 956951a3030e020428f675566075d665,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5031580013200364500, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1300,6 +1311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762318006861243283, guid: 956951a3030e020428f675566075d665,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956951a3030e020428f675566075d665, type: 3}
@@ -3674,6 +3690,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!114 &1763260899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3803,6 +3820,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!114 &1829215245
 MonoBehaviour:
   m_ObjectHideFlags: 0

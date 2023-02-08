@@ -54,7 +54,7 @@ public class PlayerFireControl : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
             lookAtPos = hit.point;
-            print("Targeting: " + hit.collider.gameObject);
+            //print("Targeting: " + hit.collider.gameObject);
             Debug.DrawLine(ray.origin, hit.point, Color.magenta);
         }
         else
@@ -111,7 +111,7 @@ public class PlayerFireControl : MonoBehaviour
     public void SacrificeWeapon()
     {
         weapon.Sacrifice(shootPoint);
-        SwitchWeapon(defaultWeapon, true);
+        SwitchWeapon(defaultWeapon);
     }
 
     public bool CaptureAttack()
@@ -135,16 +135,25 @@ public class PlayerFireControl : MonoBehaviour
         return false;
     }
 
-    public void SwitchWeapon(Weapon wep, bool isDefault = false)
+    public void SwitchWeapon(Weapon wep)
     {
         if (wep)
         {
             timeCharging = 0.0f;
             weapon = wep;
             fullChargeTime = wep.chargeTime;
+            if (captureImage)
+            {
+                if (wep.captureImage)
+                {
+                    captureImage.gameObject.SetActive(true);
+                    captureImage.sprite = wep.captureImage;
+                } else
+                {
+                    captureImage.gameObject.SetActive(false);
+                }
+                
+            }
         }
-
-        // Temporary measure
-        captureImage.gameObject.SetActive(!isDefault);
     }
 }
