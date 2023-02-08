@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private Transform mesh;
-    [Tooltip("In radians per frame")]
-    [SerializeField] private float meshRotationSpeed = 0.05f;
+    [Tooltip("In radians per second")]
+    [SerializeField] private float meshRotationSpeed = 1.5f;
 
     [Header("Dash")]
     [SerializeField] private float dashDistance = 8.0f;
@@ -297,10 +297,10 @@ public class PlayerController : MonoBehaviour
         {
             // TODO: probably want to replace this since this is so choppy, maybe only upper body?
             Vector3 end = new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z);
-            direction = Vector3.RotateTowards(mesh.forward, end, meshRotationSpeed, 0.0f);
+            direction = Vector3.RotateTowards(mesh.forward, end, meshRotationSpeed * Time.deltaTime, 0.0f);
         } else if (moveDirection != Vector3.zero)
         {
-            direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed, 0.0f);
+            direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed * Time.deltaTime, 0.0f);
         }
 
         mesh.forward = direction;
