@@ -9,10 +9,21 @@ public class ChakramRing : MonoBehaviour
     public float launchForce;
     public bool manuralLaunch;
 
+    private bool isPreLaunch;
+    private float preLaunchTimer;
+    private float scale;
+
+    private float PRELAUNCHTIME = .8f;
+    private float PRELAUNCHSCALE = .7f;
+    private Vector3 CHAKRAMSCALE;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isPreLaunch = false;
+        preLaunchTimer = PRELAUNCHTIME;
+        scale = 1.0f;
+        CHAKRAMSCALE = chakrams[0].transform.localScale;
     }
 
     // Update is called once per frame
@@ -25,6 +36,35 @@ public class ChakramRing : MonoBehaviour
             Launch();
             manuralLaunch = false;
         }
+
+        if (isPreLaunch)
+        {
+            preLaunchTimer -= Time.deltaTime;
+            scale = Mathf.Lerp(PRELAUNCHSCALE, 1f, preLaunchTimer / PRELAUNCHTIME);
+            transform.localScale = new Vector3(scale, scale, scale);
+
+            foreach (ChakramBullet chakram in chakrams)
+            {
+                // Resize chakrams so they stay same size relatively
+                if (chakram == null)
+                {
+                    continue;
+                }
+
+                chakram.gameObject.transform.localScale = CHAKRAMSCALE / scale;
+            }
+
+            if (preLaunchTimer <= 0)
+            {
+                isPreLaunch = false;
+                Launch();
+            }
+        }
+    }
+
+    public void PreLaunch()
+    {
+        isPreLaunch = true;
     }
 
     public void Launch()
@@ -43,5 +83,6 @@ public class ChakramRing : MonoBehaviour
         }
 
         manuralLaunch = false;
+        Destroy(gameObject);
     }
 }
