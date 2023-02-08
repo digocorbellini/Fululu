@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 617783699451378528}
+  captureWeapon: {fileID: 0}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}
@@ -303,6 +304,8 @@ MonoBehaviour:
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0.1
+  health: 0
+  alreadyDead: 0
 --- !u!114 &7003585334657674636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0fc0fe41218163d4a96bd3c96a752c2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
