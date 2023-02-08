@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     private float currGrazeCharge = 0.0f;
 
     // helper variables
-    private CharacterController controller;
+    [HideInInspector]
+    public CharacterController controller;
     private PlayerStateManager stateManager;
     [HideInInspector]
     public EntityHitbox hitbox;
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
     public void SetGrazeChargeBar(Image bar)
     {
         grazeChargeBar = bar;
+        updateGrazeUI();
     }
 
     private void HandleOnDeath()
@@ -278,6 +280,14 @@ public class PlayerController : MonoBehaviour
 
         // reset state
         stateManager.SetState(PlayerState.Idle);
+    }
+
+    public void Revive()
+    {
+        stateManager.Revive();
+        hitbox.health = hitbox.maxHealth;
+        hitbox.alreadyDead = false;
+        currGrazeCharge = 0.0f;
     }
 
     private void performMovement()

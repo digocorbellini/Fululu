@@ -13,7 +13,7 @@ public class Healthbar : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    private float health;
+    public float health;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +38,15 @@ public class Healthbar : MonoBehaviour
     
     public void Initialize(EntityHitbox player)
     {
+        if (this.player)
+        {
+            this.player.OnHurt -= UpdateDisplay;
+            this.player.OnDeath -= OnDeath;
+        }
         if (player)
         {
             this.player = player;
+            Debug.Log("Initializing healthbar. Health: " + player.health);
             health = player.health;
             player.OnHurt += UpdateDisplay;
             player.OnDeath += OnDeath;
@@ -50,7 +56,9 @@ public class Healthbar : MonoBehaviour
 
     private void UpdateDisplay(float damage, bool isExplosive)
     {
+        Debug.Log("Update display called");
         health -= damage;
+        Debug.Log("new health: " + health);
 
         int i = 0;
         for(; i < health; i++)

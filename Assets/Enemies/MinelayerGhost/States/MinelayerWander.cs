@@ -21,7 +21,10 @@ public class MinelayerWander : MinelayerState
         Vector3 newPos = Vector3.MoveTowards(controller.transform.position, target, speed);
         controller.transform.position = newPos;
 
-        controller.transform.LookAt(controller.player.transform);
+        if (controller.player)
+        {
+            controller.transform.LookAt(controller.player.transform);
+        }
         Vector3 rot = controller.transform.eulerAngles;
         rot.x = 0;
         rot.z = 0;

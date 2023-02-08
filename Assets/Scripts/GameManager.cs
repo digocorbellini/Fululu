@@ -26,13 +26,21 @@ public class GameManager : MonoBehaviour
     {
         if (playerPrefab && currentPlayerSpawn)
         {
-            if (player)
+            if (!player)
             {
-                Destroy(player.gameObject);
+                player = Instantiate<PlayerController>(playerPrefab, currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
+                player.hitbox.OnDeath += OnPlayerDeath;
+            } else
+            {
+                Debug.Log("Reviving and respawning player");
+                player.Revive();
+                player.controller.enabled = false;
+                player.transform.SetPositionAndRotation(currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
+                player.controller.enabled = true;
             }
 
-            player = Instantiate<PlayerController>(playerPrefab, currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
             UIManager.Initialize(player);
+            
         } else
         {
             if (!playerPrefab)
@@ -48,6 +56,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
+    {
+        SpawnPlayer();
+    }
+
+    private void OnPlayerDeath()
     {
         SpawnPlayer();
     }

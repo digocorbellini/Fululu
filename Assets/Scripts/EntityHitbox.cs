@@ -34,7 +34,8 @@ public class EntityHitbox : MonoBehaviour
     private int targetLayer;
     public float health;
     private bool isIframe = false;
-    private bool alreadyDead = false;
+    [HideInInspector]
+    public bool alreadyDead = false;
 
     private void Awake()
     {
@@ -51,13 +52,13 @@ public class EntityHitbox : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        print(other.gameObject + " on " + other.gameObject.layer);
+        //print(other.gameObject + " on " + other.gameObject.layer);
         if (!isIframe && other.gameObject.layer == targetLayer)
         {
             if (other.gameObject.TryGetComponent(out AttackHitbox attack))
             {
 
-                print(gameObject + " hit by " + attack.gameObject);
+                //print(gameObject + " hit by " + attack.gameObject);
 
                 if (!attack.canHit(this))
                 {

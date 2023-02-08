@@ -12,13 +12,13 @@ public class MeleeGhostChase : MeleeGhostState
 
     public override void enter()
     {
-        player = controller.player.transform;
+        player = controller?.player.transform;
         controller.ani.Play("Run");
     }
 
     public override void run()
     {
-        if (Vector3.Distance(transform.position, player.position) > giveUpDistance)
+        if (!player || Vector3.Distance(transform.position, player.position) > giveUpDistance)
         {
             // Give up the chase if player is too far
             controller.switchState("MGIdle");

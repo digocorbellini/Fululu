@@ -22,7 +22,7 @@ public class MeleeGhostIdle : MeleeGhostState
 
         if(timer < 0)
         {
-            if (Vector3.Distance(transform.position, controller.player.transform.position) < playerDetectionRadius)
+            if (controller.player && Vector3.Distance(transform.position, controller.player.transform.position) < playerDetectionRadius)
             {
                 controller.switchState("MGChase");
             }
