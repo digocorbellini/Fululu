@@ -31,9 +31,11 @@ public class PlayerController : MonoBehaviour
     private float currGrazeCharge = 0.0f;
 
     // helper variables
-    private CharacterController controller;
+    [HideInInspector]
+    public CharacterController controller;
     private PlayerStateManager stateManager;
-    private EntityHitbox hitbox;
+    [HideInInspector]
+    public EntityHitbox hitbox;
 
     private Transform mainCam;
 
@@ -79,11 +81,21 @@ public class PlayerController : MonoBehaviour
         
         moveAction = input.actions["Move"];
     }
-
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void SetReticleRing(Image ring)
+    {
+        fcs.recticleRing = ring;
+    }
+
+    public void SetGrazeChargeBar(Image bar)
+    {
+        grazeChargeBar = bar;
+        updateGrazeUI();
     }
 
     private void HandleOnDeath()
@@ -270,12 +282,22 @@ public class PlayerController : MonoBehaviour
         stateManager.SetState(PlayerState.Idle);
     }
 
+    public void Revive()
+    {
+        stateManager.Revive();
+        hitbox.health = hitbox.maxHealth;
+        hitbox.alreadyDead = false;
+        currGrazeCharge = 0.0f;
+    }
+
     private void performMovement()
     {
         if (!stateManager.CanChangeState(PlayerState.Running) && stateManager.currentState != PlayerState.Jumping)
         {
             return;
         }
+
+        mainCam = Camera.main.transform;
 
         // handle movement 
         Vector2 moveAxis = moveAction.ReadValue<Vector2>();
@@ -368,6 +390,9 @@ public class PlayerController : MonoBehaviour
     {
         input.actions["Jump"].started -= jumpStarted;
         input.actions["Dash"].started -= dashStarted;
+        input.actions["Attack"].started -= StartAttackCharge;
+        input.actions["Attack"].canceled -= ReleaseAttackCharge;
+        input.actions["AltFire"].started -= HandleAltFire;
     }
 
     private void OnDrawGizmos()

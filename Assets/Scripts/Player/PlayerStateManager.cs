@@ -85,6 +85,12 @@ public class PlayerStateManager : MonoBehaviour
         return false;
     }
 
+    // Throwaway method for play test. Will probably remove later
+    public void Revive()
+    {
+        currentState = PlayerState.Idle;
+    }
+
     public void StartAttack()
     {
         animator.Play("Attack");
