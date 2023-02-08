@@ -31,6 +31,7 @@ public class EnemyFireControl : MonoBehaviour
             if(timer <= 0)
             {
                 Fire();
+                timer = autoFireInterval;
             }
         }
     }
