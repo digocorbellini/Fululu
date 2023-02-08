@@ -21,6 +21,7 @@ public class PlayerFireControl : MonoBehaviour
     public LayerMask captureMask;
     public BoxCollider captureBounds;
     public LayerMask raycastIgnore;
+    public Image captureImage;
 
     private float maxRingSize;
     private float currRingSize;
@@ -110,7 +111,7 @@ public class PlayerFireControl : MonoBehaviour
     public void SacrificeWeapon()
     {
         weapon.Sacrifice(shootPoint);
-        SwitchWeapon(defaultWeapon);
+        SwitchWeapon(defaultWeapon, true);
     }
 
     public bool CaptureAttack()
@@ -134,7 +135,7 @@ public class PlayerFireControl : MonoBehaviour
         return false;
     }
 
-    public void SwitchWeapon(Weapon wep)
+    public void SwitchWeapon(Weapon wep, bool isDefault = false)
     {
         if (wep)
         {
@@ -142,5 +143,8 @@ public class PlayerFireControl : MonoBehaviour
             weapon = wep;
             fullChargeTime = wep.chargeTime;
         }
+
+        // Temporary measure
+        captureImage.gameObject.SetActive(!isDefault);
     }
 }

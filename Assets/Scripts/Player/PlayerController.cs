@@ -98,6 +98,11 @@ public class PlayerController : MonoBehaviour
         updateGrazeUI();
     }
 
+    public void SetCaptureImage(Image cap)
+    {
+        fcs.captureImage = cap;
+    }
+
     private void HandleOnDeath()
     {
         // TODO: handle player death (animations, sounds, etc)
