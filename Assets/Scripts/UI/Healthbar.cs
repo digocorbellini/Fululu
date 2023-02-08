@@ -25,12 +25,6 @@ public class Healthbar : MonoBehaviour
         }
     }
 
-    private void OnDeath()
-    {
-        health = 0;
-        UpdateDisplay(0, false);
-    }
-
     public void Initialize(PlayerController player)
     {
         Initialize(player.hitbox);
@@ -41,22 +35,21 @@ public class Healthbar : MonoBehaviour
         if (this.player)
         {
             this.player.OnHurt -= UpdateDisplay;
-            this.player.OnDeath -= OnDeath;
         }
         if (player)
         {
             this.player = player;
             Debug.Log("Initializing healthbar. Health: " + player.health);
             health = player.health;
+            Debug.Log("player: " + player.health + " health: " + health);
             player.OnHurt += UpdateDisplay;
-            player.OnDeath += OnDeath;
             UpdateDisplay(0, false);
         }
     }
 
     private void UpdateDisplay(float damage, bool isExplosive)
     {
-        Debug.Log("Update display called");
+        Debug.Log("Update display called. damage: " + damage);
         health -= damage;
         Debug.Log("new health: " + health);
 
