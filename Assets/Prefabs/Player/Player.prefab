@@ -5600,7 +5600,8 @@ MonoBehaviour:
   captureBounds: {fileID: 645297328879055871}
   raycastIgnore:
     serializedVersion: 2
-    m_Bits: 10562
+    m_Bits: 10566
+  captureImage: {fileID: 0}
 --- !u!1 &2002906367086278394
 GameObject:
   m_ObjectHideFlags: 0
