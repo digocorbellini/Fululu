@@ -5030,6 +5030,7 @@ MonoBehaviour:
   isPlayer: 1
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!136 &2129815447
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5228,7 +5229,7 @@ MonoBehaviour:
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 2.58, z: -7}
   m_XDamping: 0
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -5355,7 +5356,7 @@ MonoBehaviour:
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 2.58, z: -7}
   m_XDamping: 0
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -5512,6 +5513,7 @@ MonoBehaviour:
     m_Bits: 1664
   grazeChargeTime: 3
   grazeChargeBar: {fileID: 0}
+  controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &2002906366990509869
 MonoBehaviour:
@@ -6156,7 +6158,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_Heading:
-    m_Definition: 3
+    m_Definition: 2
     m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
@@ -6270,7 +6272,7 @@ MonoBehaviour:
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 2.58, z: -7}
   m_XDamping: 0
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
