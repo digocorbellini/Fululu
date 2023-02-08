@@ -47,12 +47,14 @@ public class PlayerFireControl : MonoBehaviour
         UpdateReticle();
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        ray.origin += ray.direction * .1f;
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
             lookAtPos = hit.point;
-            Debug.DrawLine(ray.origin, hit.point);
+            print("Targeting: " + hit.collider.gameObject);
+            Debug.DrawLine(ray.origin, hit.point, Color.magenta);
         }
         else
         {
