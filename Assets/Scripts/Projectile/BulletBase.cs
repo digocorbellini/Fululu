@@ -81,7 +81,7 @@ public abstract class BulletBase: MonoBehaviour
         {
             if (hitParticlesSpawn != null)
             {
-                Instantiate(hitParticles, hitParticlesSpawn.position, Quaternion.identity);
+                Instantiate(hitParticles, hitParticlesSpawn.position, Quaternion.LookRotation(hitParticlesSpawn.forward));
 
             }
             else

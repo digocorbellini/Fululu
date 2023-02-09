@@ -57,6 +57,8 @@ public class AOERainAttack : MonoBehaviour
     // Shoot spears upward to telegraph attack
     private IEnumerator shootSpearsUpward()
     {
+        // TODO: have the same time between shots here as we do in the time between actual ring
+        // attacks
         float timeBetweenShots = initialShotDuration / numberOfAttacks;
 
         for (int i = 0; i < numberOfAttacks; i ++)
@@ -71,10 +73,6 @@ public class AOERainAttack : MonoBehaviour
 
     private IEnumerator startAttack()
     {
-        // TODO: shoot initial shot into the air
-
-        yield return new WaitForSeconds(initialShotDuration);
-
         // start spawning attacks
         for (int i = 0; i < numberOfAttacks; i++)
         {

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1176205145544598698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1235463439715981229}
@@ -86,7 +86,7 @@ MonoBehaviour:
   lifetime: 20
   trails:
   - {fileID: 3614852316462072771}
-  hitParticles: {fileID: 8645237660611998494, guid: ace5e05c7e1687e4ebfcfe5eac131e4b,
+  hitParticles: {fileID: 8645237660611998494, guid: d7b01e6009ceba849bf729dfb723680d,
     type: 3}
   hitParticlesSpawn: {fileID: 3899198290376499491}
   hasDefaultBehaviour: 1
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 326667091319569455, guid: 2ac9f9489f7027f4d99b805358edb5da,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.42
+      value: -1.395
       objectReference: {fileID: 0}
     - target: {fileID: 326667091319569455, guid: 2ac9f9489f7027f4d99b805358edb5da,
         type: 3}
@@ -206,6 +206,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec65c19ff64bb5a44a508b38e7b845dd, type: 2}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588201450663339132, guid: 2ac9f9489f7027f4d99b805358edb5da,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac9f9489f7027f4d99b805358edb5da, type: 3}
@@ -292,7 +327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 03ef30fc2c05b2e4f8a4dbbba4d720ef, type: 2}
+      objectReference: {fileID: 2100000, guid: ec65c19ff64bb5a44a508b38e7b845dd, type: 2}
     - target: {fileID: 919132149155446097, guid: b68fd017353e537499807f7e52df1173,
         type: 3}
       propertyPath: m_Name

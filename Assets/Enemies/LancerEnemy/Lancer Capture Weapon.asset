@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Lancer Capture Weapon
   m_EditorClassIdentifier: 
   captureImage: {fileID: 0}
-  chargeTime: 1
-  spreadPrefab: {fileID: 0}
-  bullet: {fileID: 0}
-  chargedBullet: {fileID: 0}
+  chargeTime: 0.3
+  spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
+    type: 3}
+  bullet: {fileID: 4310471697055303120, guid: d2cd65edf5dee5d46aa1a1c8e6097aa8, type: 3}
+  chargedBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
+    type: 3}
   sacrificeSpreadPrefab: {fileID: 0}
   sacrificeBullet: {fileID: 0}

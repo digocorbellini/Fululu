@@ -538,7 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 3754730518936340528}
-  captureWeapon: {fileID: 0}
+  captureWeapon: {fileID: 11400000, guid: c56f01a14d0c4c145876b09a4d13bd54, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}
@@ -667,17 +667,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d03aa88ffcf22a848a5417372226eb2a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d03aa88ffcf22a848a5417372226eb2a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d03aa88ffcf22a848a5417372226eb2a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d03aa88ffcf22a848a5417372226eb2a,
         type: 3}
