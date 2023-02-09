@@ -17,6 +17,7 @@ public abstract class BulletBase: MonoBehaviour
 
     public GameObject[] trails;
     public GameObject hitParticles;
+    public Transform hitParticlesSpawn;
 
     [Tooltip("If true, bullet will die after given lifetime and will move forward forever and destroy on trigger enter.")]
     public bool hasDefaultBehaviour = true;
@@ -78,7 +79,15 @@ public abstract class BulletBase: MonoBehaviour
 
         if (hitParticles != null)
         {
-            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            if (hitParticlesSpawn != null)
+            {
+                Instantiate(hitParticles, hitParticlesSpawn.position, Quaternion.identity);
+
+            }
+            else
+            {
+                Instantiate(hitParticles, transform.position, Quaternion.identity);
+            }
         }
     }
 }
