@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeGhostStaticAttack : AoeGhostState
+public class LancerEnemyStaticAttack : LancerEnemyState
 {
     public float IdleDuration = 5.0f;
     public float alternateDirTime = 1;

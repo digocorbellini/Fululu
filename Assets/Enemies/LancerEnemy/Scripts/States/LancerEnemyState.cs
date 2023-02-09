@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AoeGhostState : State
+public abstract class LancerEnemyState : State
 {
-    protected AoeGhostController controller;
+    protected LancerEnemyController controller;
 
     public override void init()
     {
         base.init();
 
-        controller = (AoeGhostController) manager;
+        controller = (LancerEnemyController) manager;
     }
 }

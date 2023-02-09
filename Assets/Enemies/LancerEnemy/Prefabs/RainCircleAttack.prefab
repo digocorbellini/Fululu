@@ -4882,7 +4882,7 @@ GameObject:
   - component: {fileID: 412106858641501215}
   - component: {fileID: 412106858641501186}
   m_Layer: 13
-  m_Name: AOECircle
+  m_Name: RainCircleAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeGhostMelee : AoeGhostState
+public class LancerEnemyMelee : LancerEnemyState
 {
     public float speed = 4;
     public float beginAttackDistance = 2f;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7911398581740632315}
   m_Layer: 0
-  m_Name: Initial AOE Projectile
+  m_Name: Initial Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

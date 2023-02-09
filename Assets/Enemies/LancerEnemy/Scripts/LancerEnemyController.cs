@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(EntityHitbox))]
 [RequireComponent(typeof(Rigidbody))]
-public class AoeGhostController : ControllerBase
+public class LancerEnemyController : ControllerBase
 {
     public float detectionRadius = 15f;
     public float meleeAttackRange = 5f;

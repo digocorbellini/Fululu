@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeGhostChase : AoeGhostState
+public class LancerEnemyChase : LancerEnemyState
 {
     [Header("Movement")]
     public float speed = 10;

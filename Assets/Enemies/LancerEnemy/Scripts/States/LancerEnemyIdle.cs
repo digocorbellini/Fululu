@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeGhostIdle : AoeGhostState
+public class LancerEnemyIdle : LancerEnemyState
 {
     private Transform player;
 

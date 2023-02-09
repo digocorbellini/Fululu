@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeGhostFlee : AoeGhostState
+public class LancerEnemyFlee : LancerEnemyState
 {
     public float speed = 5;
     public float rotationSpeed = 15;
