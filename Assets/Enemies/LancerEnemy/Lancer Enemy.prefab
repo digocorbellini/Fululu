@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &917047638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917047639}
+  m_Layer: 7
+  m_Name: Rain Lance Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &917047639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917047638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3754730518732523039}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3754730517696384782
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +520,7 @@ Transform:
   - {fileID: 3754730518535356400}
   - {fileID: 3754730517696384783}
   - {fileID: 543450653702970020}
+  - {fileID: 917047639}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -534,13 +566,14 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
-  initialShotDuration: 0
+  initialShotDuration: 1
   timeBetweenAttacks: 1
   attackChargeTime: 1
   aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
     type: 3}
-  initialShotObject: {fileID: 4991506163534703398, guid: fd26eccea3f914143904c5b9c34e7c76,
+  initialShotObject: {fileID: 2784118232142776212, guid: fd26eccea3f914143904c5b9c34e7c76,
     type: 3}
+  rainLanceSpawn: {fileID: 917047639}
 --- !u!54 &3754730518732523035
 Rigidbody:
   m_ObjectHideFlags: 0

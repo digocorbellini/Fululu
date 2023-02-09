@@ -11,12 +11,13 @@ public class AOERainAttack : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [Header("Timing")]
     [Tooltip("The time the initial vertical shot should take")]
-    [SerializeField] private float initialShotDuration;
+    [SerializeField] private float initialShotDuration = 1f;
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private float attackChargeTime;
     [Header("References")]
     [SerializeField] private AOECircle aoeCircleObject;
-    [SerializeField] private GameObject initialShotObject; // should have a trail and particles and rigidbody
+    [SerializeField] private BulletBase initialShotObject; // should have a trail and particles and rigidbody
+    [SerializeField] private Transform rainLanceSpawn;
 
     private GameObject player;
     private PlayerController playerController;
@@ -49,15 +50,23 @@ public class AOERainAttack : MonoBehaviour
             return;
 
         isAttacking = true;
-        // TODO:
-        // - shoot initial shot into the air
-        // - make shot dissapear
-        // - start spawning rings around player location
-        // - Change rain to one projecitle falling
 
-        // - graze while standing in charging circle. Graze just looks for trigger without attack hitbox on EnemyAttack layer
+        StartCoroutine(shootSpearsUpward());
+    }
+
+    // Shoot spears upward to telegraph attack
+    private IEnumerator shootSpearsUpward()
+    {
+        float timeBetweenShots = initialShotDuration / numberOfAttacks;
+
+        for (int i = 0; i < numberOfAttacks; i ++)
+        {
+            Instantiate(initialShotObject, rainLanceSpawn.position, Quaternion.LookRotation(Vector3.up));
+
+            yield return new WaitForSeconds(timeBetweenShots);
+        }
+
         StartCoroutine(startAttack());
-
     }
 
     private IEnumerator startAttack()
