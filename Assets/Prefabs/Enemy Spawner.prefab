@@ -89,6 +89,8 @@ MonoBehaviour:
   - {fileID: 3985417385537055459}
   - {fileID: 3985417387037553219}
   SpawnChance: 1
+  totalEnemyCount: 20
+  minEnemyCount: 2
   enemies:
   - {fileID: 7524010278573821098, guid: e0b24138d02e7434b8ca7efc236fd770, type: 3}
   - {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218, type: 3}
@@ -119,7 +121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: eb64d64f0dccc3c4daf8261956b6a2d8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.593
   m_Pitch: 1
   Loop: 0
   Mute: 0
