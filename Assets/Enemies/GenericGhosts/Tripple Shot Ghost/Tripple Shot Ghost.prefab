@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271492576593734152}
   - component: {fileID: 1271492576593734153}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271492577015688444}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire Pos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271492577053661460}
   - component: {fileID: 1271492577053661461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271492577347771279}
   - component: {fileID: 1271492577347771280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Encircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 1271492577685882576}
   - component: {fileID: 1271492577685882580}
   - component: {fileID: 1271492577685882579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tripple Shot Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 1271492577053661461}
-  captureWeapon: {fileID: 0}
+  captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}
@@ -269,6 +269,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!54 &1271492577685882579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271492578043432925}
   - component: {fileID: 1271492578043432926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1271492578203444806}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,6 +443,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7583600382906805619, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 514471462265150744, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -451,6 +457,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GhostBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 984288346049153740, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142334189668020806, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790183945725220954, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819001077394492298, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905609870639353253, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257cc1b01e66a8d4ab8b2fa0340efc7f, type: 3}
