@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3754730517897559341}
   - component: {fileID: 3754730517897559340}
   - component: {fileID: 3754730517897559331}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Melee Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,6 +574,7 @@ MonoBehaviour:
   isPlayer: 0
   iFrameTime: 0.5
   health: 0
+  alreadyDead: 0
 --- !u!1 &3754730518936340535
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LancerTemp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d03aa88ffcf22a848a5417372226eb2a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03aa88ffcf22a848a5417372226eb2a, type: 3}

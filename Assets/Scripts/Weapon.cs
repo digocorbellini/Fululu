@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerWeapon", menuName = "ScriptableObjects/PlayerWeapon")]
 public class Weapon : ScriptableObject
 {
+    public Sprite captureImage;
+
     [Header("Firing Options")]
     public float chargeTime = 1.0f;
 

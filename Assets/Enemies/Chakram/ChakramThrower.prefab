@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648021411790783860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7063512732952813051}
   - component: {fileID: 7063512732952813052}
   - component: {fileID: 9092363562037710014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChakramThrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3061714689123400585, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061714689123400585, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -225,6 +230,36 @@ PrefabInstance:
         type: 3}
       propertyPath: launchForce
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103576421863842726, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103576421863852490, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208220909847611025, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208220909847670013, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408743448615093614, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513690882052120665, guid: 63acf93b0b6fc664b8f86ada9b0a195f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63acf93b0b6fc664b8f86ada9b0a195f, type: 3}
