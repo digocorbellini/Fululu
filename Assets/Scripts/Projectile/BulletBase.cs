@@ -69,7 +69,7 @@ public abstract class BulletBase: MonoBehaviour
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded)
+        if (!gameObject.scene.isLoaded)
         {
             // Do nothing if being destroyed on scene closing clean up
             return;
