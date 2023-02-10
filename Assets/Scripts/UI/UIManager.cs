@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public Image reticleRing;
     public Image grazeChargeBar;
     public Image captureImage;
+    public PauseUI pauseUI;
 
     public void Initialize(PlayerController player)
     {
@@ -16,5 +17,15 @@ public class UIManager : MonoBehaviour
         player.SetReticleRing(reticleRing);
         player.SetGrazeChargeBar(grazeChargeBar);
         player.SetCaptureImage(captureImage);
+    }
+
+    public void ShowPauseUI()
+    {
+        pauseUI?.Show();
+    }
+
+    public void HidePauseUI()
+    {
+        pauseUI?.Hide();
     }
 }

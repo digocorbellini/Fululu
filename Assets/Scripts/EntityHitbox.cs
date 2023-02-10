@@ -108,9 +108,12 @@ public class EntityHitbox : MonoBehaviour
                     }
                 }
 
-                isIframe = true;
-                StartCoroutine(DisableIFrame());
-
+                if(attack.damage > 0)
+                {
+                    isIframe = true;
+                    StartCoroutine(DisableIFrame());
+                }
+                
                 if (attack.destroyOnHit)
                 {
                     Destroy(attack.gameObject);

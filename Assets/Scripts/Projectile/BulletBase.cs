@@ -70,10 +70,16 @@ public abstract class BulletBase: MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded)
+        {
+            // Do nothing if being destroyed on scene closing clean up
+            return;
+        }
+
         foreach (GameObject obj in trails)
         {
             // Make sure trails get to play to end before destroying
-            Destroy(obj, 1f);
+            Destroy(obj, 3f);
             obj.transform.SetParent(null, true);
         }
 

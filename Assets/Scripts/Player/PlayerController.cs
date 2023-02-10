@@ -42,10 +42,12 @@ public class PlayerController : MonoBehaviour
     private PlayerInput input;
     private InputAction moveAction;
     private PlayerFireControl fcs;
+    private GrazeZone graze;
 
     private float lastDash;
     private bool isGrounded = true;
     private bool isCharging = false;
+    private bool isFireHeld = false;
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
 
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
+        graze = GetComponentInChildren<GrazeZone>();
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HurtTester;
@@ -78,13 +81,15 @@ public class PlayerController : MonoBehaviour
         input.actions["Attack"].started += StartAttackCharge;
         input.actions["Attack"].canceled += ReleaseAttackCharge;
         input.actions["AltFire"].started += HandleAltFire;
+        input.actions["Pause"].started += HandlePauseInput;
         
         moveAction = input.actions["Move"];
+
+        GameManager.instance.OnUnpause += OnUnpause;
     }
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        GameManager.instance.LockCursor();
     }
 
     public void SetReticleRing(Image ring)
@@ -109,10 +114,24 @@ public class PlayerController : MonoBehaviour
         stateManager.SetState(PlayerState.Dead);
     }
 
+    private void HandlePauseInput(InputAction.CallbackContext context)
+    {
+        GameManager.instance.TogglePause();
+    }
+    private void OnUnpause()
+    {
+        if(isCharging && !input.actions["Attack"].IsPressed())
+        {
+            fcs.StopCharging();
+            isCharging = false;
+            stateManager.StartAttack();
+        }
+    }
+
     // used for input system callback
     private void StartAttackCharge(InputAction.CallbackContext context)
     {
-        if (stateManager.CanChangeState(PlayerState.Attacking))
+        if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             fcs.StartCharging();
             isCharging = true;
@@ -122,7 +141,7 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void ReleaseAttackCharge(InputAction.CallbackContext context)
     {
-        if (isCharging)
+        if (!GameManager.isPaused && isCharging)
         {
             fcs.StopCharging();
             isCharging = false;
@@ -133,17 +152,20 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void HandleAltFire(InputAction.CallbackContext context)
     {
-        // Sacrifice weapon if equipped
-        if (fcs.weapon != fcs.defaultWeapon)
+        if (!GameManager.isPaused)
         {
-            fcs.SacrificeWeapon();
-        }
-        else if(isGrazeCharged())
-        {
-            // TODO: Perform gourd swipe to capture enemies
-            if (fcs.CaptureAttack())
+            // Sacrifice weapon if equipped
+            if (fcs.weapon != fcs.defaultWeapon)
             {
-                useGraze();
+                fcs.SacrificeWeapon();
+            }
+            else if (isGrazeCharged())
+            {
+                // TODO: Perform gourd swipe to capture enemies
+                if (fcs.CaptureAttack())
+                {
+                    useGraze();
+                }
             }
         }
     }
@@ -152,7 +174,7 @@ public class PlayerController : MonoBehaviour
     private void jumpStarted(InputAction.CallbackContext context)
     {
         print("JUMPED. Is grounded: " + isGrounded);
-        if (isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
+        if (!GameManager.isPaused && isGrounded && stateManager.CanChangeState(PlayerState.Jumping))
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             stateManager.SetState(PlayerState.Jumping);
@@ -164,7 +186,7 @@ public class PlayerController : MonoBehaviour
     {
         // TODO: implement dash. Make sure to check in with player state manager
         // to see if a dash can be performed rn
-        if(stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
+        if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
             StartCoroutine(PerformDash());
             if (isCharging)
@@ -176,15 +198,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void chargeGraze(float amount)
+    public float chargeGraze(float amount)
     {
         currGrazeCharge += amount;
         updateGrazeUI();
+
+        return currGrazeCharge / grazeChargeTime;
     }
 
     public void useGraze()
     {
         currGrazeCharge = 0.0f;
+        graze.Reset();
         updateGrazeUI();
     }
 
