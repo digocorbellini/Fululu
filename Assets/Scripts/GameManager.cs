@@ -66,12 +66,28 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             isPaused = true;
+            UIManager.ShowPauseUI();
+            UnlockCursor();
         } else
         {
+            LockCursor();
             Time.timeScale = 1;
             isPaused = false;
             CallOnUnpause();
+            UIManager.HidePauseUI();
         }
+    }
+
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Start()
@@ -82,5 +98,10 @@ public class GameManager : MonoBehaviour
     private void OnPlayerDeath()
     {
         SpawnPlayer();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -87,8 +87,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        GameManager.instance.LockCursor();
     }
 
     public void SetReticleRing(Image ring)
@@ -117,7 +116,6 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.instance.TogglePause();
     }
-
     private void OnUnpause()
     {
         if(isCharging && !input.actions["Attack"].IsPressed())
