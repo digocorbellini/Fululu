@@ -23,6 +23,10 @@ public class PlayerFireControl : MonoBehaviour
     public LayerMask raycastIgnore;
     public Image captureImage;
 
+    [Header("Debug/Cheats")]
+    public Weapon cheatWeapon;
+    public bool clickToSetWeapon = false;
+
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
@@ -60,6 +64,15 @@ public class PlayerFireControl : MonoBehaviour
         else
         {
             lookAtPos = null;
+        }
+
+        if (clickToSetWeapon)
+        {
+            if(cheatWeapon != null)
+            {
+                SwitchWeapon(cheatWeapon);
+            }
+            clickToSetWeapon = false;
         }
 
     }

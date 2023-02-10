@@ -78,7 +78,7 @@ public abstract class BulletBase: MonoBehaviour
         foreach (GameObject obj in trails)
         {
             // Make sure trails get to play to end before destroying
-            Destroy(obj, 1f);
+            Destroy(obj, 3f);
             obj.transform.SetParent(null, true);
         }
 

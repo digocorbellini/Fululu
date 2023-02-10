@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput input;
     private InputAction moveAction;
     private PlayerFireControl fcs;
+    private GrazeZone graze;
 
     private float lastDash;
     private bool isGrounded = true;
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
+        graze = GetComponentInChildren<GrazeZone>();
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HurtTester;
@@ -176,15 +178,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void chargeGraze(float amount)
+    public bool chargeGraze(float amount)
     {
         currGrazeCharge += amount;
         updateGrazeUI();
+
+        return isGrazeCharged();
     }
 
     public void useGraze()
     {
         currGrazeCharge = 0.0f;
+        graze.Reset();
         updateGrazeUI();
     }
 
