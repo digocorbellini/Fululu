@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   giveUpDistance: 14
-  attackRange: 1.5
+  attackRange: 2
   moveSpeed: 2.4
 --- !u!1 &566409364769636388
 GameObject:
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 3185347249260139639}
   - component: {fileID: 6974721903376359398}
   - component: {fileID: 2355399586080400737}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
