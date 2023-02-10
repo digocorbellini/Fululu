@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     // Singleton
     public static GameManager instance;
+    public static bool isPaused = false;
     public Transform currentPlayerSpawn;
     public PlayerController playerPrefab;
     public PlayerController player;
     public UIManager UIManager;
+
+    public event Action OnUnpause;
+    public void CallOnUnpause() => OnUnpause?.Invoke();
 
     public void Awake()
     {
@@ -55,6 +60,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TogglePause()
+    {
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+            UIManager.ShowPauseUI();
+            UnlockCursor();
+        } else
+        {
+            LockCursor();
+            Time.timeScale = 1;
+            isPaused = false;
+            CallOnUnpause();
+            UIManager.HidePauseUI();
+        }
+    }
+
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     private void Start()
     {
         SpawnPlayer();
@@ -63,5 +98,10 @@ public class GameManager : MonoBehaviour
     private void OnPlayerDeath()
     {
         SpawnPlayer();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
