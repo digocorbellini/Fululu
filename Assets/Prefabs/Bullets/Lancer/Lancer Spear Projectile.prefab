@@ -100,7 +100,7 @@ MonoBehaviour:
   damage: 1
   isExplosive: 0
   isStun: 0
-  destroyOnHit: 1
+  destroyOnHit: 0
 --- !u!114 &7141639956873966890
 MonoBehaviour:
   m_ObjectHideFlags: 0

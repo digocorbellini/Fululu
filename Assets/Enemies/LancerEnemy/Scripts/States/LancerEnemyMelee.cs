@@ -31,6 +31,15 @@ public class LancerEnemyMelee : LancerEnemyState
         StartCoroutine(chase());
     }
 
+    public override void run()
+    {
+        // if we get out of melee range, go back to idle 
+        if (Vector3.Distance(player.position, controller.transform.position) > controller.meleeAttackRange)
+        {
+            controller.switchState("AOEIdle");
+        }
+    }
+
     private IEnumerator chase()
     {
         // run after the player until they are within range for attack

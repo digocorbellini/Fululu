@@ -8,6 +8,7 @@ public class LancerEnemyController : ControllerBase
 {
     public float detectionRadius = 15f;
     public float meleeAttackRange = 5f;
+    public float midRangeAttackRange = 10f;
 
     [Header("Rain Attack Stats")]
     public AOERainAttack aoeAttack;
@@ -33,21 +34,23 @@ public class LancerEnemyController : ControllerBase
     public override void run()
     {
 
-        if (currentState.getStateName() != "AOEFlee")
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        // check for player being within either mid range or melee range
+        string currentStateName = currentState.getStateName();
+        if (currentStateName != "AOEMelee" && distanceToPlayer < meleeAttackRange)
         {
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            switchState("AOEMelee");
+        }
+        else if(currentStateName != "AOEMidRange" && currentStateName != "AOEMelee" && distanceToPlayer < midRangeAttackRange)
+        {
+            switchState("AOEMidRange");
+        }
 
-            // check for player being within melee range
-            if (currentState.getStateName() != "AOEMelee" && distanceToPlayer < meleeAttackRange)
-            {
-                switchState("AOEMelee");
-            }
-
-            // see if player is out of range so that we go to idle (if not already in idle)
-            if (currentState.getStateName() != "AOEIdle" && distanceToPlayer > detectionRadius)
-            {
-                switchState("AOEIdle");
-            }
+        // see if player is out of range so that we go to idle (if not already in idle)
+        if (currentStateName != "AOEIdle" && distanceToPlayer > detectionRadius)
+        {
+            switchState("AOEIdle");
         }
     }
 
@@ -60,12 +63,6 @@ public class LancerEnemyController : ControllerBase
     private void HandleOnHurt(float daamage, bool isExplosive)
     {
         print("AOE enemy took: " + daamage + " damage");
-
-        // if we get hurt, got to flee state
-        if (currentState.getStateName() != "AOEFlee")
-        {
-            switchState("AOEFlee");
-        }
     }
 
     /// <summary>
@@ -115,5 +112,8 @@ public class LancerEnemyController : ControllerBase
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, meleeAttackRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, midRangeAttackRange);
     }
 }
