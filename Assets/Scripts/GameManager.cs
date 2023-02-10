@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     // Singleton
     public static GameManager instance;
+    public static bool isPaused = false;
     public Transform currentPlayerSpawn;
     public PlayerController playerPrefab;
     public PlayerController player;
     public UIManager UIManager;
+
+    public event Action OnUnpause;
+    public void CallOnUnpause() => OnUnpause?.Invoke();
 
     public void Awake()
     {
@@ -52,6 +57,20 @@ public class GameManager : MonoBehaviour
             {
                 Debug.LogError("Failed to spawn player due to missing player spawn");
             }
+        }
+    }
+
+    public void TogglePause()
+    {
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        } else
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+            CallOnUnpause();
         }
     }
 
