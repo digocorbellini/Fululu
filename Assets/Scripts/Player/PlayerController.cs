@@ -198,12 +198,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool chargeGraze(float amount)
+    public float chargeGraze(float amount)
     {
         currGrazeCharge += amount;
         updateGrazeUI();
 
-        return isGrazeCharged();
+        return currGrazeCharge / grazeChargeTime;
     }
 
     public void useGraze()

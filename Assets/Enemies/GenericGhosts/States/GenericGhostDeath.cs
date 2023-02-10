@@ -18,7 +18,7 @@ public class GenericGhostDeath : GenericGhostState
 
         }
         controller.ani?.Play("Death");
-        controller.audioSource?.PlayOneShot(deathSFX);
+        //controller.audioSource?.PlayOneShot(deathSFX);
     }
 
     public override void run()

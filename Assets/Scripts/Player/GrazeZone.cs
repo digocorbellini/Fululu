@@ -6,27 +6,32 @@ public class GrazeZone : MonoBehaviour
 {
     public PlayerController player;
     public ParticleSystem grazeSparks;
-    public AudioSource grazingCharging;
-    public AudioSource grazeFull;
-    private ParticleSystem.EmissionModule emission;
 
+    public AudioSource audioSource;
+    public AudioClip charge33;
+    public AudioClip charge66;
+    public AudioClip charge100;
+
+    private ParticleSystem.EmissionModule emission;
     private bool alreadyChecked;
-    private bool isFullCharge;
-    private float targetPitch = 0;
-    private float currPitch = 0;
+    private int chargeState;
+    private float chargeAmount;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         emission = grazeSparks.emission;
         emission.rateOverTimeMultiplier = 0;
+
+        chargeState = 0;
+        chargeAmount = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currPitch = Mathf.Lerp(currPitch, targetPitch, .8f);
-        grazingCharging.pitch = currPitch;
+
     }
 
     // Physics.OverlapSphere will not work as attacks are triggers
@@ -38,16 +43,27 @@ public class GrazeZone : MonoBehaviour
         // Only check once a physics frame
         if (!alreadyChecked)
         {
-            if (player.chargeGraze(Time.fixedDeltaTime) && !isFullCharge)
-            {
-                isFullCharge = true;
-                grazeFull.Play();
-            }
+            chargeAmount = player.chargeGraze(Time.fixedDeltaTime);
 
-            if (!isFullCharge)
+            // Figure out what sound clip to play if any
+
+            if(chargeState == 0 && chargeAmount >= .33)
             {
-                targetPitch = 1.0f;
+                audioSource.PlayOneShot(charge33);
+                chargeState = 1;
             }
+            else if(chargeState == 1 && chargeAmount >= .66)
+            {
+                audioSource.PlayOneShot(charge66);
+                chargeState = 2;
+            }
+            else if(chargeState == 2 && chargeAmount >= 1.0)
+            {
+                audioSource.PlayOneShot(charge100);
+                chargeState = 3;
+            }
+            
+
 
             alreadyChecked = true;
             emission.rateOverTimeMultiplier = 15;
@@ -61,11 +77,11 @@ public class GrazeZone : MonoBehaviour
     {
         alreadyChecked = false;
         emission.rateOverTimeMultiplier = 0;
-        targetPitch = 0f;
     }
 
     public void Reset()
     {
-        isFullCharge = false;
+        chargeAmount = 0.0f;
+        chargeState = 0;
     }
 }

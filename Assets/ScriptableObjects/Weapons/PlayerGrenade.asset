@@ -21,5 +21,5 @@ MonoBehaviour:
     type: 3}
   sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
     type: 3}
-  sacrificeBullet: {fileID: 8194152372900796356, guid: 0ccaac661ae4f9c4ca41f262e4d28b1f,
+  sacrificeBullet: {fileID: 7287752859089990694, guid: 0ccaac661ae4f9c4ca41f262e4d28b1f,
     type: 3}
