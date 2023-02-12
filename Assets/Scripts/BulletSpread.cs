@@ -19,7 +19,18 @@ public class BulletSpread : MonoBehaviour
     public float DistanceBetweenBullets;
     public bool isOffCentered = true;
 
+    [Space(10)]
+
+    [Header("Burst Options")]
+    public int numBursts = 1;
+    public float timeBetweenBursts = 0.0f;
+
     public void Fire()
+    {
+        StartCoroutine(FireCoroutine());
+    }
+
+    public void SpawnBullets()
     {
         // angle between consecutive bullets
         float rotationAngle = DistanceBetweenBullets / SpawnRadius;
@@ -69,7 +80,16 @@ public class BulletSpread : MonoBehaviour
 
             currentRotation += rotationAngle;
         }
-        
+    }
+
+    public IEnumerator FireCoroutine()
+    {
+        for(int i = 0; i < numBursts; i++)
+        {
+            SpawnBullets();
+            yield return new WaitForSeconds(timeBetweenBursts);
+        }
+
         Selfdestruct();
     }
 

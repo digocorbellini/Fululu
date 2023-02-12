@@ -32,7 +32,8 @@ public class PlayerFireControl : MonoBehaviour
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
-    private bool isCharging;
+    private float fireCooldown;
+    public bool isCharging;
     private Vector3? lookAtPos;
 
     // Start is called before the first frame update
@@ -91,8 +92,12 @@ public class PlayerFireControl : MonoBehaviour
 
     public void StartCharging()
     {
-        isCharging = true;
-        timeCharging = 0.0f;
+        if (Time.time >= fireCooldown)
+        {
+            isCharging = true;
+            timeCharging = 0.0f;
+        }
+        // TODO: will want some sort of feedback for the cooldown. Maybe an error sound effect and anim?
     }
 
     public bool StopCharging()
@@ -100,16 +105,20 @@ public class PlayerFireControl : MonoBehaviour
         isCharging = false;
         bool didFire = false;
 
+        fireCooldown = Time.time;
+
         //shoot the projectile
         if (timeCharging >= fullChargeTime)
         {
             // Current design has charged attack always be the standard charged shot
             didFire = defaultWeapon.ChargedFire(shootPoint, lookAtPos);
+            fireCooldown += weapon.chargeFireCooldown;
         }
         else
         {
             // "Quick attack" based on captured ghost
             didFire = weapon.Fire(shootPoint, lookAtPos);
+            fireCooldown += weapon.rapidFireCooldown;
         }
 
         timeCharging = 0.0f;

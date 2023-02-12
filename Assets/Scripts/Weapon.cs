@@ -9,6 +9,8 @@ public class Weapon : ScriptableObject
 
     [Header("Firing Options")]
     public float chargeTime = 1.0f;
+    public float rapidFireCooldown = 0.0f;
+    public float chargeFireCooldown = 0.0f;
 
     [Tooltip("Determines number and positioning of bullets each shot")]
     public BulletSpread spreadPrefab;
@@ -31,7 +33,7 @@ public class Weapon : ScriptableObject
 
     private void SpawnBullets(Transform transform, Vector3? target, BulletSpread spread, BulletBase bullet)
     {
-        BulletSpread instance = Instantiate(spread, transform.position, Quaternion.LookRotation(transform.forward));
+        BulletSpread instance = Instantiate(spread, transform);
 
         if (target != null)
         {

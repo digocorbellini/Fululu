@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private float lastDash;
     private bool isGrounded = true;
-    private bool isCharging = false;
-    private bool isFireHeld = false;
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
 
@@ -120,10 +118,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnUnpause()
     {
-        if(isCharging && !input.actions["Attack"].IsPressed())
+        if(fcs.isCharging && !input.actions["Attack"].IsPressed())
         {
             fcs.StopCharging();
-            isCharging = false;
             stateManager.StartAttack();
         }
     }
@@ -134,17 +131,15 @@ public class PlayerController : MonoBehaviour
         if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             fcs.StartCharging();
-            isCharging = true;
         }
     }
 
     // used for input system callback
     private void ReleaseAttackCharge(InputAction.CallbackContext context)
     {
-        if (!GameManager.isPaused && isCharging)
+        if (!GameManager.isPaused && fcs.isCharging)
         {
             fcs.StopCharging();
-            isCharging = false;
             stateManager.StartAttack();
         }
     }
@@ -189,9 +184,8 @@ public class PlayerController : MonoBehaviour
         if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
             StartCoroutine(PerformDash());
-            if (isCharging)
+            if (fcs.isCharging)
             {
-                isCharging = false;
                 fcs.CancelCharge();
             }
             print("dashed");

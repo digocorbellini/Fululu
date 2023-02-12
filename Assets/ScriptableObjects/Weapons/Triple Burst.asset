@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
-  m_Name: Default
+  m_Name: Triple Burst
   m_EditorClassIdentifier: 
   captureImage: {fileID: 0}
   chargeTime: 0.3
-  fireCooldown: 0
-  spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
+  rapidFireCooldown: 0.75
+  chargeFireCooldown: 0
+  spreadPrefab: {fileID: 2202035863254959303, guid: ef9be86db65def94ea589d3b06e12c11,
     type: 3}
   bullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602, type: 3}
   chargedBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
