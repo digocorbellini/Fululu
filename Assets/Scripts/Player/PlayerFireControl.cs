@@ -14,6 +14,8 @@ public class PlayerFireControl : MonoBehaviour
 
     public float fullChargeTime;
 
+    [HideInInspector] public float chargeRate = 1.0f;
+
     [Space(10)]
 
     [Header("Gourd Capture Attack Settings")]
@@ -46,7 +48,7 @@ public class PlayerFireControl : MonoBehaviour
     {
         if (isCharging)
         {
-            timeCharging += Time.deltaTime;
+            timeCharging += Time.deltaTime * chargeRate;
         }
 
         UpdateReticle();

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Stats")]
-    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] public float moveSpeed = 5.0f;
     [Tooltip("threshold value for amount of movement required to change to running state")]
     [SerializeField] private float moveThresh = 0.1f;
     [SerializeField] private float gravity = -9.8f;

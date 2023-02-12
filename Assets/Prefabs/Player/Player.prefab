@@ -5440,6 +5440,7 @@ GameObject:
   - component: {fileID: 2002906366990509869}
   - component: {fileID: 2002906366990509871}
   - component: {fileID: 386429837}
+  - component: {fileID: 850727918943228753}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5609,6 +5610,19 @@ MonoBehaviour:
   captureImage: {fileID: 0}
   cheatWeapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
   clickToSetWeapon: 0
+--- !u!114 &850727918943228753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002906366990509864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b2ac1b81e992240abd81a8e3db0b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 2002906366990509868}
 --- !u!1 &2002906367086278394
 GameObject:
   m_ObjectHideFlags: 0

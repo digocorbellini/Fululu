@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
+  m_Name: BuffSpeed
+  m_EditorClassIdentifier: 
+  captureImage: {fileID: 21300000, guid: a942d4552de6a17459beecac98389a17, type: 3}
+  chargeTime: 0.3
+  spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
+    type: 3}
+  bullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602, type: 3}
+  chargedBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
+    type: 3}
+  sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
+    type: 3}
+  sacrificeBullet: {fileID: 5852978770787349366, guid: 7ec7b6ab27efbd04089a112cead0f8af,
+    type: 3}
