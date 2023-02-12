@@ -19,7 +19,7 @@ public abstract class BulletBase: MonoBehaviour
     public GameObject hitParticles;
     public Transform hitParticlesSpawn;
 
-    [Tooltip("If true, bullet will die after given lifetime and will move forward forever and destroy on trigger enter.")]
+    [Tooltip("If true, bullet will die after given lifetime and will move forward forever.")]
     public bool hasDefaultBehaviour = true;
 
     public void SetDamage(float dmg)
@@ -34,13 +34,15 @@ public abstract class BulletBase: MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(runLifetime());
+        if(hasDefaultBehaviour)
+            StartCoroutine(runLifetime());
         hitbox = GetComponent<AttackHitbox>(); 
     }
 
     private void Update()
     {
-        transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
+        if(hasDefaultBehaviour)
+            transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
     }
 
     private IEnumerator runLifetime()
