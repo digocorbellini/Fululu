@@ -101,7 +101,7 @@ public class LancerSacrificeBullet : BulletBase
         // start spawning attacks
         for (int i = 0; i < numSpearsPerEnemy; i++)
         {
-            Vector3 spawnLocation = target.transform.position;
+            Vector3 spawnLocation = target.gameObject.transform.position;
             spawnLocation.y -= getDeltaToFloor(spawnLocation);
 
             AOECircle currentAttack = Instantiate(aoeCircleObject, spawnLocation, Quaternion.identity);

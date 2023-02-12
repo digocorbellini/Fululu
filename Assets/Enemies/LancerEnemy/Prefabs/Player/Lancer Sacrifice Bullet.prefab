@@ -88,7 +88,7 @@ MonoBehaviour:
   bulletSpawnHeight: 1
   detectionRadius: 10
   numSpearsPerEnemy: 5
-  attackRadius: 0.8
+  attackRadius: 1.2
   maxTargets: 10
   groundLayer:
     serializedVersion: 2
@@ -97,9 +97,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   timeBetweenAttacks: 0.5
-  timeBetweenEnemies: 0.1
-  initialShotDuration: 2
-  attackChargeTime: 0.2
+  timeBetweenEnemies: 0.05
+  initialShotDuration: 1
+  attackChargeTime: 0.01
   initialProjectile: {fileID: 1472778988295235245, guid: 6731ce6aa1b692c49968a30f39797032,
     type: 3}
   aoeCircleObject: {fileID: 8529002107725526024, guid: 6fcaec71e6f4528478416157b3d481fe,
