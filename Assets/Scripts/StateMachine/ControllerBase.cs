@@ -32,7 +32,16 @@ public abstract class ControllerBase : MonoBehaviour {
 
     [HideInInspector]
     public bool isStunned = false;
-    
+
+    protected static AudioClip hurtSFX;
+
+    [RuntimeInitializeOnLoadMethodAttribute]
+    static void LoadHurtSFX()
+    {
+        Debug.Log("Loading hurt SFX");
+        hurtSFX = Resources.Load<AudioClip>("Audio/GhostHit");
+    }
+
     public void Start() {
         states = transform.Find("States").GetComponentsInChildren<State>();
         init();

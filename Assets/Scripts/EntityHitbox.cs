@@ -116,6 +116,11 @@ public class EntityHitbox : MonoBehaviour
                 
                 if (attack.destroyOnHit)
                 {
+                    if(attack.gameObject.TryGetComponent<BulletBase>(out BulletBase bb))
+                    {
+                        bb.DetatchTrails();
+                    }
+
                     Destroy(attack.gameObject);
                 }
             }

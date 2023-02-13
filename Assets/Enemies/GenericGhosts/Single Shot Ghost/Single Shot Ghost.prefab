@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.4
-  deathSFX: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: a4b41c6197a20724c92ca48b8312c1f8, type: 3}
 --- !u!1 &8492117545020815353
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public abstract class BulletBase: MonoBehaviour
 
     [Tooltip("If true, bullet will die after given lifetime and will move forward forever.")]
     public bool hasDefaultBehaviour = true;
+    private bool didTimeOut = false;
 
     public void SetDamage(float dmg)
     {
@@ -48,6 +49,8 @@ public abstract class BulletBase: MonoBehaviour
     private IEnumerator runLifetime()
     {
         yield return new WaitForSeconds(lifetime);
+        didTimeOut = true;
+        DetatchTrails();
         Destroy(this.gameObject);
     }
 
@@ -65,26 +68,26 @@ public abstract class BulletBase: MonoBehaviour
         if (shouldDestroy)
         {             
             print("Should destory is true!");
+            DetatchTrails();
             Destroy(this.gameObject);
         }
             
     }
 
-    private void OnDestroy()
+    public void DetatchTrails()
     {
-        if (!gameObject.scene.isLoaded)
+        foreach(GameObject obj in trails)
         {
-            // Do nothing if being destroyed on scene closing clean up
-            return;
+            if(obj != null)
+            {
+                obj.transform.SetParent(null, true);
+                Destroy(obj, 3f);
+            }
         }
+    }
 
-        foreach (GameObject obj in trails)
-        {
-            // Make sure trails get to play to end before destroying
-            Destroy(obj, 3f);
-            obj.transform.SetParent(null, true);
-        }
-
+    public void spawnHitParticle()
+    {
         if (hitParticles != null)
         {
             if (hitParticlesSpawn != null)
@@ -96,6 +99,20 @@ public abstract class BulletBase: MonoBehaviour
             {
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (!gameObject.scene.isLoaded)
+        {
+            // Do nothing if being destroyed on scene closing clean up
+            return;
+        }
+
+        if (!didTimeOut)
+        {
+            spawnHitParticle();
         }
     }
 }

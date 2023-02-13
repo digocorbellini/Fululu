@@ -10,6 +10,8 @@ public class MeleeGhostController : ControllerBase
     [HideInInspector]
     public GameObject player;
 
+
+
     
     public override void init()
     {
@@ -28,7 +30,7 @@ public class MeleeGhostController : ControllerBase
 
     private void OnHurt(float damage, bool isExplosive)
     {
-     
+        audioSource.PlayOneShot(hurtSFX);
     }
 
     private void OnStun()

@@ -35,7 +35,7 @@ public class MinelayerController : ControllerBase
 
     private void OnHurt(float damage, bool isExplosive)
     {
-        print("Took " + damage + " dmg");
+        audioSource.PlayOneShot(hurtSFX);
     }
 
     private void OnStun()

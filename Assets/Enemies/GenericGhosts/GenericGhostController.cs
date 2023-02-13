@@ -39,7 +39,7 @@ public class GenericGhostController : ControllerBase
     private void OnHurt(float damage, bool isExplosive)
     {
         // TODO: damage 
-        print("hurt projectile ghost. Damage done: " + damage);
+        audioSource.PlayOneShot(hurtSFX);
     }
 
     private void OnDeath()
