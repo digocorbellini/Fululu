@@ -24,6 +24,8 @@ public class LancerSacrificeBullet : BulletBase
 
     private Transform player;
 
+    private const float POS_EPSILON = .001f;
+
     // keep track of targets we have finshed attacking
     private int numTargets;
     private int _numTargetsDone = 0;
@@ -50,6 +52,9 @@ public class LancerSacrificeBullet : BulletBase
 
         attackRingObject.transform.up = Vector3.up;
         attackRingObject.transform.localScale = Vector3.one * (detectionRadius * 2);
+        Vector3 ringPos = attackRingObject.transform.position;
+        ringPos.y -= getDeltaToFloor(ringPos);
+        attackRingObject.transform.position = ringPos;
 
         // find all enemy targets within detection sphere 
         Collider[] targets = Physics.OverlapSphere(player.position, detectionRadius, enemyLayer);
@@ -83,6 +88,9 @@ public class LancerSacrificeBullet : BulletBase
             }
         }
 
+        // turn off attack range indicator
+        attackRingObject.SetActive(false);
+
         StartCoroutine(startAttack(targets));
     }
 
@@ -105,7 +113,7 @@ public class LancerSacrificeBullet : BulletBase
             spawnLocation.y -= getDeltaToFloor(spawnLocation);
 
             AOECircle currentAttack = Instantiate(aoeCircleObject, spawnLocation, Quaternion.identity);
-            currentAttack.SetStats(attackChargeTime, attackRadius);
+            currentAttack.SetStats(attackChargeTime, attackRadius, 10 + i);
             currentAttack.BeginAttack();
 
             yield return new WaitForSeconds(timeBetweenAttacks);
@@ -123,7 +131,7 @@ public class LancerSacrificeBullet : BulletBase
     {
         RaycastHit hitInfo;
         if (Physics.Raycast(pos, Vector3.down, out hitInfo, 100f, groundLayer))
-            return hitInfo.distance;
+            return hitInfo.distance - POS_EPSILON;
 
         print("No ground hit");
         return 1;
