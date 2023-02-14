@@ -179,7 +179,8 @@ MonoBehaviour:
   lifetime: 1
   trails: []
   hitParticles: {fileID: 0}
+  hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
   type: 0
-  multiplier: 1.5
-  buffDuration: 8
+  multiplier: 1.2
+  buffDuration: 12

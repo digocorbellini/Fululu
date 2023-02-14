@@ -110,14 +110,14 @@ public class PlayerFireControl : MonoBehaviour
         //shoot the projectile
         if (timeCharging >= fullChargeTime)
         {
-            // Current design has charged attack always be the standard charged shot
-            didFire = defaultWeapon.ChargedFire(shootPoint, lookAtPos);
+            // Fire charged attack from weapon
+            didFire = weapon.ChargedFire(shootPoint, lookAtPos);
             fireCooldown += weapon.chargeFireCooldown;
         }
         else
         {
-            // "Quick attack" based on captured ghost
-            didFire = weapon.Fire(shootPoint, lookAtPos);
+            // Always fire default uncharged attack
+            didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
             fireCooldown += weapon.rapidFireCooldown;
         }
 
