@@ -47,8 +47,9 @@ public class GenericGhostController : ControllerBase
         switchState("PGDeath");
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         hitbox.OnHurt -= this.OnHurt;
         hitbox.OnStun -= this.OnStun;
         hitbox.OnDeath -= this.OnDeath;

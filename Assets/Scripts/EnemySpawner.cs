@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     public AudioSource spawnSFX;
 
     private int currentEnemyCount;
+    private int totalSpawned = 0;
     private bool proximity;
     private bool initialSpawn = false;
 
@@ -33,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.OnReset += OnReset;
         if(enemies.Length != weights.Length)
         {
             Debug.LogError("Enemy and SpawnWeights list must be same length!");
@@ -52,6 +54,13 @@ public class EnemySpawner : MonoBehaviour
                 DoSpawn();
             }
         }
+    }
+
+    private void OnReset()
+    {
+        initialSpawn = false;
+        totalSpawned = 0;
+        currentEnemyCount = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,9 +102,9 @@ public class EnemySpawner : MonoBehaviour
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
                 spawned.GetComponentInChildren<EntityHitbox>().OnDeath += OnEnemyDefeated;
                 currentEnemyCount++;
-                totalEnemyCount--;
+                totalSpawned++;
 
-                if(totalEnemyCount <= 0)
+                if(totalSpawned == totalEnemyCount)
                 {
                     break;
                 }
@@ -129,9 +138,9 @@ public class EnemySpawner : MonoBehaviour
     {
         currentEnemyCount--;
 
-        print("Enemies left: " + (currentEnemyCount+ totalEnemyCount));
+        print("Enemies left: " + (currentEnemyCount+ (totalEnemyCount - totalSpawned)));
 
-        if(totalEnemyCount <= 0)
+        if(currentEnemyCount == 0 && totalSpawned == totalEnemyCount)
         {
             CallOnClear();
             return;

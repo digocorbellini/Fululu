@@ -35,9 +35,20 @@ public abstract class BulletBase: MonoBehaviour
 
     private void Awake()
     {
+        GameManager.instance.OnReset += OnReset;
         if(hasDefaultBehaviour)
             StartCoroutine(runLifetime());
         hitbox = GetComponent<AttackHitbox>(); 
+    }
+
+    private void OnReset()
+    {
+        GameManager.instance.OnReset -= OnReset;
+        if (gameObject != null)
+        {
+            didTimeOut = true;
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
@@ -104,6 +115,7 @@ public abstract class BulletBase: MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.instance.OnReset -= OnReset;
         if (!gameObject.scene.isLoaded)
         {
             // Do nothing if being destroyed on scene closing clean up

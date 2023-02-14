@@ -22,9 +22,23 @@ public class AOECircle : MonoBehaviour
 
     private void Awake()
     {
-
+        GameManager.instance.OnReset += OnReset;
         capsuleCollider = GetComponent<CapsuleCollider>();
         capsuleCollider.enabled = false;
+    }
+
+    private void OnReset()
+    {
+        GameManager.instance.OnReset -= OnReset;
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnReset -= OnReset;
     }
 
     /// <summary>

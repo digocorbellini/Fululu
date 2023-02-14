@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public event Action OnUnpause;
     public void CallOnUnpause() => OnUnpause?.Invoke();
 
+    public event Action OnReset;
+    public void CallOnReset() => OnReset?.Invoke();
+
     public void Awake()
     {
         if(!instance)
@@ -97,6 +100,14 @@ public class GameManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        StartCoroutine(HandlePlayerDeath());
+    }
+
+    private IEnumerator HandlePlayerDeath()
+    {
+        yield return new WaitUntil(() => player.isAnimationDone("Death"));
+        yield return new WaitForSeconds(1.0f); // Suspenseful pause :o
+        CallOnReset();
         SpawnPlayer();
     }
 
