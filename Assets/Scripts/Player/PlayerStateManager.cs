@@ -32,6 +32,12 @@ public class PlayerStateManager : MonoBehaviour
         {
             _currentState = value;
 
+            if (_currentState == PlayerState.Dead)
+            {
+                animator.Play("Death");
+                return;
+            }
+
             if (IsAttackAnim)
             {
                 return;
