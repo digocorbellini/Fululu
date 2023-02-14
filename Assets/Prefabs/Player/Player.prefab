@@ -5595,11 +5595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fbbbe7c54baa041871391a603eab34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: 11400000, guid: e08fb477d00f8754c9f14cec514d1128, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: f08c0b50220644e49b2e1908d20911bb, type: 2}
   weapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
   shootPoint: {fileID: 1177935232}
   recticleRing: {fileID: 0}
   fullChargeTime: 0.7
+  chargeRate: 1
   captureMask:
     serializedVersion: 2
     m_Bits: 128
@@ -5610,6 +5611,7 @@ MonoBehaviour:
   captureImage: {fileID: 0}
   cheatWeapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
   clickToSetWeapon: 0
+  isCharging: 0
 --- !u!114 &850727918943228753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5623,6 +5625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2002906366990509868}
+  fireControl: {fileID: 0}
 --- !u!1 &2002906367086278394
 GameObject:
   m_ObjectHideFlags: 0

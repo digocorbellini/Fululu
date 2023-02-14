@@ -43,6 +43,7 @@ public abstract class ControllerBase : MonoBehaviour {
     }
 
     public void Start() {
+        GameManager.instance.OnReset += OnReset;
         states = transform.Find("States").GetComponentsInChildren<State>();
         init();
         foreach (State state in states) {
@@ -61,6 +62,20 @@ public abstract class ControllerBase : MonoBehaviour {
             switchState(nextState.getStateName());
         currentState.run();
         run();
+    }
+
+    private void OnReset()
+    {
+        GameManager.instance.OnReset -= OnReset;
+        if (gameObject)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        GameManager.instance.OnReset -= OnReset;
     }
 
     public virtual void run() {}

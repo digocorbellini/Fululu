@@ -21,5 +21,7 @@ MonoBehaviour:
   bullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602, type: 3}
   chargedBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
     type: 3}
-  sacrificeSpreadPrefab: {fileID: 0}
-  sacrificeBullet: {fileID: 0}
+  sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: 7bbadaa385edf7f46a149b42fbf11643,
+    type: 3}
+  sacrificeBullet: {fileID: 1763858908160990358, guid: af613298b55ff7b458b49c580d67243a,
+    type: 3}

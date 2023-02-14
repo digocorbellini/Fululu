@@ -19,7 +19,7 @@ public class PlayerStateManager : MonoBehaviour
 {
     // show in editor for debugging
     [SerializeField] private PlayerState _currentState;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
 
     private bool IsAttackAnim;
 
@@ -31,6 +31,12 @@ public class PlayerStateManager : MonoBehaviour
         private set
         {
             _currentState = value;
+
+            if (_currentState == PlayerState.Dead)
+            {
+                animator.Play("Death");
+                return;
+            }
 
             if (IsAttackAnim)
             {
@@ -93,8 +99,11 @@ public class PlayerStateManager : MonoBehaviour
 
     public void StartAttack()
     {
-        animator.Play("Attack");
-        IsAttackAnim = true;
+        if (currentState != PlayerState.Dead)
+        {
+            animator.Play("Attack");
+            IsAttackAnim = true;
+        }
     }
 
     private void Update()

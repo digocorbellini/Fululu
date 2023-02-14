@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void ReleaseAttackCharge(InputAction.CallbackContext context)
     {
-        if (!GameManager.isPaused && fcs.isCharging)
+        if (!GameManager.isPaused && fcs.isCharging && stateManager.CanChangeState(PlayerState.Attacking))
         {
             fcs.StopCharging();
             stateManager.StartAttack();
@@ -315,6 +315,7 @@ public class PlayerController : MonoBehaviour
         hitbox.alreadyDead = false;
         currGrazeCharge = 0.0f;
         fcs.SwitchWeapon(fcs.defaultWeapon);
+        fcs.CancelCharge();
     }
 
     private void performMovement()
@@ -411,6 +412,11 @@ public class PlayerController : MonoBehaviour
                 stateManager.SetState(PlayerState.Idle);
             }
         }
+    }
+
+    public bool isAnimationDone(string animationName)
+    {
+        return stateManager.animator.GetCurrentAnimatorStateInfo(0).IsName(animationName) && stateManager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
     }
 
     private void OnDestroy()

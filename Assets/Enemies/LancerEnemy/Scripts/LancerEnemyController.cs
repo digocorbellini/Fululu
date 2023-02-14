@@ -101,8 +101,9 @@ public class LancerEnemyController : ControllerBase
         StopAllCoroutines();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         hitbox.OnDeath -= HandleOnDeath;
         hitbox.OnHurt -= HandleOnHurt;
     }

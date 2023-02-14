@@ -29,12 +29,19 @@ public class Healthbar : MonoBehaviour
     {
         Initialize(player.hitbox);
     }
+
+    private void HandleDeath()
+    {
+        health = 0;
+        UpdateDisplay(0, false);
+    }
     
     public void Initialize(EntityHitbox player)
     {
         if (this.player)
         {
             this.player.OnHurt -= UpdateDisplay;
+            this.player.OnDeath -= HandleDeath;
         }
         if (player)
         {
@@ -43,6 +50,7 @@ public class Healthbar : MonoBehaviour
             health = player.health;
             Debug.Log("player: " + player.health + " health: " + health);
             player.OnHurt += UpdateDisplay;
+            player.OnDeath += HandleDeath;
             UpdateDisplay(0, false);
         }
     }
