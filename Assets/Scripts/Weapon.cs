@@ -18,6 +18,9 @@ public class Weapon : ScriptableObject
     [Tooltip("Fired when weapon is not fully charged")]
     public BulletBase bullet;
 
+    [Tooltip("Determines number and positioning of bullets on charged shot")]
+    public BulletSpread chargedSpreadPrefab;
+
     [Tooltip("Fired when the weapon is fully charged")]
     public BulletBase chargedBullet;
 
@@ -47,7 +50,14 @@ public class Weapon : ScriptableObject
 
     public bool ChargedFire(Transform shootPos, Vector3? target)
     {
-        SpawnBullets(shootPos, target, spreadPrefab, chargedBullet);
+        if (chargedSpreadPrefab)
+        {
+            SpawnBullets(shootPos, target, chargedSpreadPrefab, chargedBullet);
+        } else if (spreadPrefab)
+        {
+            SpawnBullets(shootPos, target, spreadPrefab, chargedBullet);
+        }
+        
 
         return true;
     }
