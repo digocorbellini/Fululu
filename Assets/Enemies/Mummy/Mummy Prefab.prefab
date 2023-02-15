@@ -369,7 +369,7 @@ MonoBehaviour:
   isStunned: 0
   player: {fileID: 0}
   source: {fileID: 1438707436317388885}
-  deathSound: {fileID: 8300000, guid: 881b378fb61db8f4283f1f318c43e304, type: 3}
+  deathSound: {fileID: 8300000, guid: b36ca1e3ec58e5045bb5db3fccfe4429, type: 3}
   spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
 --- !u!54 &1438707436317388882
 Rigidbody:
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 70
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0

@@ -28,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
     private int weightSum;
 
+    private bool bossSpawned = false;
+
     public delegate void ClearEvent();
     public event ClearEvent OnClear;
     public void CallOnClear() => OnClear?.Invoke();
@@ -62,6 +64,7 @@ public class EnemySpawner : MonoBehaviour
         initialSpawn = false;
         enemiesLeft = totalEnemyCount;
         activeEnemies = 0;
+        bossSpawned = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -139,11 +142,15 @@ public class EnemySpawner : MonoBehaviour
     {
         activeEnemies--;
 
-        print("Enemies left: " + enemiesLeft);
+        print("Enemies left: " + (enemiesLeft + activeEnemies));
 
-        if(enemiesLeft <= 0)
+        if((enemiesLeft + activeEnemies) <= 0)
         {
-            CallOnClear();
+            if (!bossSpawned)
+            {
+                CallOnClear();
+                bossSpawned = true;
+            }
             return;
         }
 
