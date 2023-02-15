@@ -50,4 +50,4 @@ MonoBehaviour:
   DistanceBetweenBullets: 3.33
   isOffCentered: 0
   numBursts: 3
-  timeBetweenBursts: 0.15
+  timeBetweenBursts: 0.1
