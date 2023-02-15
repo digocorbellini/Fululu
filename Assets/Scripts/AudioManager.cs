@@ -40,6 +40,47 @@ public class AudioManager : MonoBehaviour
         audioSourcePool.Add(source);
     }
 
+    public float GetPitch(float pitch, float pitchFluctuation)
+    {
+        float result = pitch + Random.Range(-pitchFluctuation, pitchFluctuation);
+        if (result == 0)
+        {
+            // Zero pitch means a paused clip :(
+            if (pitch > 0)
+            {
+                result = 0.1f;
+            }
+            else
+            {
+                result = -0.1f;
+            }
+        }
+        return result;
+    }
+
+    public float GetPitch(SoundEffect sound)
+    {
+        return GetPitch(sound.pitch, sound.pitchFluctuation);
+    }
+
+    public DisposableAudio PlayEffectAt(SoundEffect sound, Vector3 pos)
+    {
+        if (sound != null && sound.clip != null)
+        {
+            DisposableAudio source = GetAudioSource();
+            source.transform.position = pos;
+
+            AudioSource tempSource = source.audioSource;
+            tempSource.clip = sound.clip;
+            tempSource.volume = sound.volume;
+            tempSource.pitch = GetPitch(sound);
+            tempSource.Play();
+            source.ReleaseAfter(sound.clip.length / Mathf.Abs(tempSource.pitch));
+            return source;
+        }
+        return null;
+    }
+
     public DisposableAudio GetAudioSource()
     {
         if (audioSourcePool.Count != 0)

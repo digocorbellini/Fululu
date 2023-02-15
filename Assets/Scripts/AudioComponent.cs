@@ -94,31 +94,13 @@ public class AudioComponent : MonoBehaviour
 
     public void PlayDisposable(SoundEffect sound, bool independent = true)
     {
-        DisposableAudio source = PlayClipAt(sound, transform.position);
+        DisposableAudio source = AudioManager.instance.PlayEffectAt(sound, transform.position);
         if (!independent)
         {
             source.transform.parent = transform;
             disposableSources.Add(source);
-        }
-    }
-
-    public DisposableAudio PlayClipAt(SoundEffect sound, Vector3 pos)
-    {
-        if (sound != null && sound.clip != null)
-        {
-            DisposableAudio source = AudioManager.instance.GetAudioSource();
-            source.transform.position = pos;
-
-            AudioSource tempSource = source.audioSource;
-            tempSource.clip = sound.clip;
-            tempSource.volume = sound.volume;
-            tempSource.pitch = GetPitch(sound);
-            tempSource.Play();
-            source.ReleaseAfter(sound.clip.length / Mathf.Abs(tempSource.pitch));
             source.OnRelease += RemoveSource;
-            return source;
         }
-        return null;
     }
 
     private void RemoveSource(DisposableAudio source)
