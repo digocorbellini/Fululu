@@ -5607,7 +5607,7 @@ MonoBehaviour:
   captureBounds: {fileID: 645297328879055871}
   raycastIgnore:
     serializedVersion: 2
-    m_Bits: 10566
+    m_Bits: 14662
   captureImage: {fileID: 0}
   cheatWeapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
   clickToSetWeapon: 0

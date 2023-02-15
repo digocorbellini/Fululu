@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private PlayerFireControl fcs;
     private GrazeZone graze;
 
-    private float lastDash;
+    private bool isDashing = false;
     private bool isGrounded = true;
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
@@ -183,6 +183,7 @@ public class PlayerController : MonoBehaviour
         // to see if a dash can be performed rn
         if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
+            isDashing = true;
             StartCoroutine(PerformDash());
             if (fcs.isCharging)
             {
@@ -221,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
     private bool DashReady()
     {
-        return Time.time >= lastDash + dashCooldown;
+        return !isDashing;
     }
 
     private void HurtTester(float dmg, bool isExplosive)
@@ -275,16 +276,6 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration);
 
-        // stop movement
-        velocity = Vector3.zero;
-
-        // disable trail renderers
-        foreach (TrailRenderer trail in dashTrails)
-        {
-            trail.emitting = false;
-        }
-
-
         // stop ignoring collision with enemies
         // ignore collision with enemies
         controller.detectCollisions = true;
@@ -302,7 +293,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        lastDash = Time.time;
+        // stop movement
+        velocity = Vector3.zero;
+
+        // disable trail renderers
+        foreach (TrailRenderer trail in dashTrails)
+        {
+            trail.emitting = false;
+        }
+
+        isDashing = false;
 
         // reset state
         stateManager.SetState(PlayerState.Idle);
