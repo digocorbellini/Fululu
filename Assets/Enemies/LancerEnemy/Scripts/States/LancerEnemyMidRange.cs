@@ -5,8 +5,10 @@ using UnityEngine;
 public class LancerEnemyMidRange : LancerEnemyState
 {
     public EnemyFireControl fireControl;
+    public float fireRate = 1.5f;
 
     private Transform player;
+    private float timer;
 
     public override string getStateName()
     {
@@ -17,12 +19,25 @@ public class LancerEnemyMidRange : LancerEnemyState
     {
         player = controller.player.transform;
 
-        fireControl.ResetTimer();
-        fireControl.autoFire = true;
+        timer = 0;
     }
 
     public override void run()
     {
+        if (timer >= fireRate)
+        {
+            fireControl.Fire();
+            controller.ani.Play("Shootforward_001");
+            timer = 0;
+        }
+        timer += Time.deltaTime;
+
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        if (distanceToPlayer > controller.midRangeAttackRange)
+            controller.switchState("AOEIdle");
+
+        // TODO: see if we have to switch back to idle state between shots
+
         // look at player
         controller.transform.LookAt(player.position);
         Vector3 rot = controller.transform.eulerAngles;
@@ -31,8 +46,8 @@ public class LancerEnemyMidRange : LancerEnemyState
         controller.transform.eulerAngles = rot;
     }
 
-    public override void exit()
-    {
-        fireControl.autoFire = false;
-    }
+    //public override void exit()
+    //{
+    //    fireControl.autoFire = false;
+    //}
 }

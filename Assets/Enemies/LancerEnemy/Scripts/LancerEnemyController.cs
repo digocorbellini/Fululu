@@ -7,6 +7,7 @@ using UnityEngine;
 public class LancerEnemyController : ControllerBase
 {
     public float detectionRadius = 15f;
+    public float longRangeAttackRange = 25f;
     public float meleeAttackRange = 5f;
     public float midRangeAttackRange = 10f;
 
@@ -17,15 +18,18 @@ public class LancerEnemyController : ControllerBase
     [HideInInspector] public GameObject player;
 
     private bool isAttacking;
+    private bool isDead;
     public override void init()
     {
         base.init();
 
         isAttacking = false;
+        isDead = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         hitbox = GetComponent<EntityHitbox>();
+        ani = GetComponentInChildren<Animator>();
 
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HandleOnHurt;
@@ -33,6 +37,8 @@ public class LancerEnemyController : ControllerBase
 
     public override void run()
     {
+        if (isDead)
+            return;
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
@@ -57,7 +63,9 @@ public class LancerEnemyController : ControllerBase
     private void HandleOnDeath()
     {
         print("AOE enemy killed");
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        isDead = true;
+        switchState("AOEDeath");
     }
 
     private void HandleOnHurt(float daamage, bool isExplosive)
@@ -84,7 +92,7 @@ public class LancerEnemyController : ControllerBase
         while (isAttacking)
         {
             aoeAttack.attack();
-
+            ani.Play("ShootUp");
             yield return new WaitForSeconds(aoeAttack.getTotalAttackTime() + timeBetwenAttacks);
         }  
     }
@@ -118,5 +126,8 @@ public class LancerEnemyController : ControllerBase
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, midRangeAttackRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, longRangeAttackRange);
     }
 }

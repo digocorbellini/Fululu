@@ -6,11 +6,11 @@ public class LancerEnemyChase : LancerEnemyState
 {
     [Header("Movement")]
     public float speed = 10;
-    public float minRadiusFromPlayer = 10f;
     public float accelerationTime = 1f;
 
     private Transform player;
     private float timer;
+    private float minRadiusFromPlayer = 10f;
 
     public override string getStateName()
     {
@@ -21,10 +21,13 @@ public class LancerEnemyChase : LancerEnemyState
     {
         player = controller.player.transform;
         timer = 0;
+        minRadiusFromPlayer = controller.longRangeAttackRange;
 
         controller.rb.velocity = Vector3.zero;
 
         controller.StopAttacking();
+
+        controller.ani.Play("Walk");
     }
 
     public override void run()
@@ -62,11 +65,5 @@ public class LancerEnemyChase : LancerEnemyState
         rot.x = 0;
         rot.z = 0;
         controller.transform.eulerAngles = rot;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minRadiusFromPlayer);
     }
 }
