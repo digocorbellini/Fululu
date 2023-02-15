@@ -7,9 +7,9 @@ public class LancerEnemyMelee : LancerEnemyState
     public float speed = 4;
     public float beginAttackDistance = 2f;
     public AttackHitbox meleeHitbox;
-    public float startLag = .2f;
-    public float activeHitboxTime;
-    public float endLagTime;
+    public float startLag = .08f;
+    public float activeHitboxTime = 0.04f;
+    public float endLagTime = .5f;
 
     private Transform player;
 
@@ -42,6 +42,8 @@ public class LancerEnemyMelee : LancerEnemyState
 
     private IEnumerator chase()
     {
+        controller.ani.Play("Walk");
+
         // run after the player until they are within range for attack
         while (Vector3.Distance(player.position, controller.transform.position) > beginAttackDistance)
         {
@@ -63,6 +65,8 @@ public class LancerEnemyMelee : LancerEnemyState
 
     private IEnumerator performAttack()
     {
+        controller.ani.Play("Stab");
+
         yield return new WaitForSeconds(startLag);
 
         // perform actual melee attack

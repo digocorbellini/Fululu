@@ -17,6 +17,8 @@ public class LancerEnemyIdle : LancerEnemyState
         controller.rb.velocity = Vector3.zero;
 
         player = controller.player.transform;
+
+        controller.ani.Play("Idle");
     }
 
 

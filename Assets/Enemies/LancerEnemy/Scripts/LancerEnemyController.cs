@@ -7,6 +7,7 @@ using UnityEngine;
 public class LancerEnemyController : ControllerBase
 {
     public float detectionRadius = 15f;
+    public float longRangeAttackRange = 25f;
     public float meleeAttackRange = 5f;
     public float midRangeAttackRange = 10f;
 
@@ -26,6 +27,7 @@ public class LancerEnemyController : ControllerBase
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         hitbox = GetComponent<EntityHitbox>();
+        ani = GetComponentInChildren<Animator>();
 
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HandleOnHurt;
@@ -57,7 +59,8 @@ public class LancerEnemyController : ControllerBase
     private void HandleOnDeath()
     {
         print("AOE enemy killed");
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        switchState("AOEDeath");
     }
 
     private void HandleOnHurt(float daamage, bool isExplosive)
@@ -84,7 +87,7 @@ public class LancerEnemyController : ControllerBase
         while (isAttacking)
         {
             aoeAttack.attack();
-
+            ani.Play("ShootUp");
             yield return new WaitForSeconds(aoeAttack.getTotalAttackTime() + timeBetwenAttacks);
         }  
     }
@@ -118,5 +121,8 @@ public class LancerEnemyController : ControllerBase
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, midRangeAttackRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, longRangeAttackRange);
     }
 }
