@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
 
     public AudioSource spawnSFX;
 
-    private int currentEnemyCount;
-    private int totalSpawned = 0;
+    private int enemiesLeft;
+    private int activeEnemies = 0;
     private bool proximity;
     private bool initialSpawn = false;
 
@@ -41,26 +41,27 @@ public class EnemySpawner : MonoBehaviour
         }
 
         weightSum = weights.Sum();
+        enemiesLeft = totalEnemyCount;
         timer = int.MaxValue;
     }
 
     private void Update()
     {
-        if(initialSpawn && currentEnemyCount <= 0)
+        /* if(initialSpawn)
         {
             timer -= Time.deltaTime;
             if(timer < 0)
             {
                 DoSpawn();
-            }
-        }
+            } 
+        } */
     }
 
     private void OnReset()
     {
         initialSpawn = false;
-        totalSpawned = 0;
-        currentEnemyCount = 0;
+        enemiesLeft = totalEnemyCount;
+        activeEnemies = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -101,17 +102,17 @@ public class EnemySpawner : MonoBehaviour
             {
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
                 spawned.GetComponentInChildren<EntityHitbox>().OnDeath += OnEnemyDefeated;
-                currentEnemyCount++;
-                totalSpawned++;
+                enemiesLeft--;
+                activeEnemies++;
 
-                if(totalSpawned == totalEnemyCount)
+                if(enemiesLeft <= 0)
                 {
                     break;
                 }
             }
         }
 
-        if(currentEnemyCount > 0)
+        if(activeEnemies > 0)
         {
             spawnSFX.Play();
         }
@@ -136,17 +137,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnemyDefeated()
     {
-        currentEnemyCount--;
+        activeEnemies--;
 
-        print("Enemies left: " + (currentEnemyCount+ (totalEnemyCount - totalSpawned)));
+        print("Enemies left: " + enemiesLeft);
 
-        if(currentEnemyCount == 0 && totalSpawned == totalEnemyCount)
+        if(enemiesLeft <= 0)
         {
             CallOnClear();
             return;
         }
 
-        if(currentEnemyCount <= minEnemyCount)
+        if(activeEnemies <= minEnemyCount)
         {
             DoSpawn();
         }

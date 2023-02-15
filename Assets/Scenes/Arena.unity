@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21910753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1, y: 0, z: 9.97}
+  m_LocalPosition: {x: -9.55, y: 0, z: 13.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -509,6 +509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sacred_Tree_ArenaForest_1 (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf4eac731fdd4f098a85d1010a506ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf4eac731fdd4f098a85d1010a506ad, type: 3}
@@ -927,7 +932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -49.755, z: 0}
 --- !u!1001 &104802735
 PrefabInstance:
@@ -2093,7 +2098,7 @@ PrefabInstance:
     - target: {fileID: 8246992328477943701, guid: 918af50ab32143f4187082d95047aa4b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8246992328477943701, guid: 918af50ab32143f4187082d95047aa4b,
         type: 3}
@@ -3856,7 +3861,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536633785
 GameObject:
@@ -4071,6 +4076,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11271382, y: 0.07113536, z: 0.108165935}
   m_Center: {x: 0.010372072, y: 0.022578962, z: 0.0024514766}
+--- !u!1 &558696836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558696837}
+  m_Layer: 2
+  m_Name: Spawnpoint (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558696837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558696836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6, y: 0.03, z: 17.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 797214551}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &560437297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4917,7 +4953,7 @@ PrefabInstance:
     - target: {fileID: 9041052219844856179, guid: b7f4aeafe05a201408fb69bc1d96cbfa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9041052219844856179, guid: b7f4aeafe05a201408fb69bc1d96cbfa,
         type: 3}
@@ -5500,7 +5536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &764552994
 PrefabInstance:
@@ -5894,10 +5930,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3985417385537055459, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985417385537055459, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.36
+      objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523488, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_Radius
       value: 18.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: minEnemyCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: totalEnemyCount
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
@@ -5945,7 +6001,7 @@ PrefabInstance:
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: spawnpoints.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
@@ -5957,6 +6013,11 @@ PrefabInstance:
       propertyPath: spawnpoints.Array.data[5]
       value: 
       objectReference: {fileID: 21910754}
+    - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: spawnpoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 558696837}
     - target: {fileID: 3985417385824523490, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_Name
@@ -5975,7 +6036,7 @@ PrefabInstance:
     - target: {fileID: 3985417385824523494, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.83
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523494, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
@@ -6017,6 +6078,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3985417386645506775, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985417386645506775, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3985417387037553219, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6025,7 +6096,7 @@ PrefabInstance:
     - target: {fileID: 3985417387037553219, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.12
+      value: -14.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 985c7ce668a6c4640a9c891ec3c5dc78, type: 3}
@@ -6342,6 +6413,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sacred_Tree_ArenaForest_1 (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf4eac731fdd4f098a85d1010a506ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf4eac731fdd4f098a85d1010a506ad, type: 3}
 --- !u!4 &910610131 stripped
@@ -6485,6 +6561,18 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &920128371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+    type: 3}
+  m_PrefabInstance: {fileID: 797214550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7afcd948a264d4aa4f3b3866e0e319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &927168071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7224,7 +7312,7 @@ Transform:
   - {fileID: 560593910}
   - {fileID: 689510378}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045447647 stripped
 GameObject:
@@ -7273,7 +7361,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 367c8924990a8469c9e41051a77e9b9b, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &1069015941
 Terrain:
   m_ObjectHideFlags: 0
@@ -7438,6 +7526,52 @@ CapsuleCollider:
   m_Height: 2528.3845
   m_Direction: 2
   m_Center: {x: -99.76984, y: -38.870182, z: 1164.1924}
+--- !u!1 &1100736534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1100736536}
+  - component: {fileID: 1100736535}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1100736535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100736534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eeaebf4c54720e429cc7b6fe69a3336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 920128371}
+  boss: {fileID: 1438707436317388884, guid: 89f7d5b3fb6b4cf40aa722f1f3881579, type: 3}
+--- !u!4 &1100736536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100736534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.49, y: 1, z: 0.33613157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1106346524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8744,7 +8878,7 @@ Transform:
   - {fileID: 1978818338}
   - {fileID: 366916078}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237652582
 GameObject:
@@ -10246,7 +10380,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396520349
 GameObject:
@@ -11066,7 +11200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1451204779
 PrefabInstance:
@@ -11685,6 +11819,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sacred_Tree_ArenaForest_1 (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf4eac731fdd4f098a85d1010a506ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf4eac731fdd4f098a85d1010a506ad, type: 3}
 --- !u!4 &1550714523 stripped
@@ -12246,6 +12385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sacred_Tree_ArenaForest_1 (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf4eac731fdd4f098a85d1010a506ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf4eac731fdd4f098a85d1010a506ad, type: 3}
 --- !u!4 &1600319007 stripped
@@ -12317,7 +12461,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1614484833
 PrefabInstance:
@@ -12458,7 +12602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617944377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.92, y: 0, z: -8.99}
+  m_LocalPosition: {x: -14.92, y: 0.08, z: -5.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13031,6 +13175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sacred_Tree_ArenaForest_1 (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf4eac731fdd4f098a85d1010a506ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf4eac731fdd4f098a85d1010a506ad, type: 3}
@@ -14616,7 +14765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2005147939
 Transform:
   m_ObjectHideFlags: 0
@@ -15135,7 +15284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093870655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.22, y: 0, z: -11.34}
+  m_LocalPosition: {x: -8.07, y: 0, z: -11.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

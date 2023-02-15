@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnBoss : MonoBehaviour
 {
-    EnemySpawner spawner;
+    public EnemySpawner spawner;
     public GameObject boss;
 
 
