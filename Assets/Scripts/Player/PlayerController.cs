@@ -22,12 +22,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.35f;
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private List<TrailRenderer> dashTrails;
+    [SerializeField] private AudioClip dashSFX;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
 
     [Header("Graze")]
     [SerializeField] private float grazeChargeTime = 20f;
     [SerializeField] private Image grazeChargeBar;
+    [SerializeField] private ParticleSystem chargeBurst;
+    [SerializeField] private ParticleSystem chargeGlow;
+    private bool alreadyCharged;
     private float currGrazeCharge = 0.0f;
 
     // helper variables
@@ -49,6 +53,8 @@ public class PlayerController : MonoBehaviour
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
 
+    private AudioSource audioSource;
+
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
     public Vector3 GetPlayerMoveDirection()
@@ -63,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         mainCam = Camera.main.transform;
-
+        audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
@@ -98,7 +104,7 @@ public class PlayerController : MonoBehaviour
     public void SetGrazeChargeBar(Image bar)
     {
         grazeChargeBar = bar;
-        updateGrazeUI();
+        UpdateGrazeUI();
     }
 
     public void SetCaptureImage(Image cap)
@@ -154,12 +160,12 @@ public class PlayerController : MonoBehaviour
             {
                 fcs.SacrificeWeapon();
             }
-            else if (isGrazeCharged())
+            else if (IsGrazeCharged())
             {
                 // TODO: Perform gourd swipe to capture enemies
                 if (fcs.CaptureAttack())
                 {
-                    useGraze();
+                    UseCharge();
                 }
             }
         }
@@ -193,30 +199,46 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public float chargeGraze(float amount)
+    public float ChargeGraze(float amount)
     {
         currGrazeCharge += amount;
-        updateGrazeUI();
+        UpdateGrazeUI();
 
         return currGrazeCharge / grazeChargeTime;
     }
 
-    public void useGraze()
+    public void UseCharge()
     {
+        chargeGlow.enableEmission = false;
+        alreadyCharged = false;
         currGrazeCharge = 0.0f;
         graze.Reset();
-        updateGrazeUI();
+        UpdateGrazeUI();
     }
 
-    public bool isGrazeCharged()
+    public bool IsGrazeCharged()
     {
         return currGrazeCharge >= grazeChargeTime;
     }
 
-    private void updateGrazeUI()
+    private void UpdateGrazeUI()
     {
-        float fillAmount = Math.Min(1, currGrazeCharge / grazeChargeTime);
+        float fillAmount = currGrazeCharge / grazeChargeTime;
+
+        if(fillAmount >= 1 && !alreadyCharged)
+        {
+            alreadyCharged = true;
+            chargeGlow.enableEmission = true;
+            chargeBurst.Play();
+        }
         grazeChargeBar.fillAmount = fillAmount;
+    }
+
+    public void SetChargeParticles(ParticleSystem burst, ParticleSystem glow)
+    {
+        chargeBurst = burst;
+        chargeGlow = glow;
+        chargeGlow.enableEmission = false;
     }
 
 
@@ -232,6 +254,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformDash()
     {
+        audioSource.PlayOneShot(dashSFX);
+
         // update player state
         stateManager.SetState(PlayerState.Dashing);
 
@@ -316,6 +340,7 @@ public class PlayerController : MonoBehaviour
         currGrazeCharge = 0.0f;
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
+        isDashing = false;
     }
 
     private void performMovement()

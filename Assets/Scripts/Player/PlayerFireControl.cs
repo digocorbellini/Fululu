@@ -14,6 +14,8 @@ public class PlayerFireControl : MonoBehaviour
 
     public float fullChargeTime;
 
+    public AudioSource audioSource;
+
     [HideInInspector] public float chargeRate = 1.0f;
 
     [Space(10)]
@@ -24,6 +26,8 @@ public class PlayerFireControl : MonoBehaviour
     public BoxCollider captureBounds;
     public LayerMask raycastIgnore;
     public Image captureImage;
+    public AudioClip captureSFX;
+    public ParticleSystem captureAttackParticles;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -151,6 +155,8 @@ public class PlayerFireControl : MonoBehaviour
             {
                 // Found enemy in range
                 Debug.Log("Found enemy");
+                audioSource.PlayOneShot(captureSFX);
+                captureAttackParticles.Play();
                 SwitchWeapon(controller.captureWeapon);
                 Destroy(controller.gameObject);
                 return true;
