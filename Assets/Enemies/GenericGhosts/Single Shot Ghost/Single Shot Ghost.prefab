@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 8492117544314029722}
+  isCapturable: 1
   captureWeapon: {fileID: 11400000, guid: 1bb4bf3365a18694f944bbffc875b7b0, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
@@ -129,6 +130,7 @@ MonoBehaviour:
   leadShots: 0
   autoFire: 1
   autoFireInterval: 2
+  controller: {fileID: 0}
 --- !u!54 &8492117543245052487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,7 +157,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d8da754347811ae499c46ac8d65de3e5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.615
   m_Pitch: 1
