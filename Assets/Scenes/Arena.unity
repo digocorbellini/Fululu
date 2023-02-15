@@ -2609,6 +2609,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 674340280032488212, guid: 1ebb3397494094c5eaf18e9cd0bd2f4e, type: 3}
+--- !u!1 &225145949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225145951}
+  - component: {fileID: 225145950}
+  m_Layer: 0
+  m_Name: stairs invisible wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &225145950
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225145949}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &225145951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225145949}
+  m_LocalRotation: {x: 0, y: 0, z: -0.46066454, w: 0.8875744}
+  m_LocalPosition: {x: -48.87, y: -9.1, z: -0.52}
+  m_LocalScale: {x: 8.7094, y: 9.9457, z: 25.46866}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -54.86}
 --- !u!1001 &271667704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4970,6 +5015,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ebb3397494094c5eaf18e9cd0bd2f4e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ebb3397494094c5eaf18e9cd0bd2f4e, type: 3}
 --- !u!1001 &608260900
@@ -5681,6 +5731,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8026eb596c942a54f83284b60175a545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &722922898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722922900}
+  - component: {fileID: 722922899}
+  m_Layer: 0
+  m_Name: Invisiwall (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &722922899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722922898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.53, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &722922900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722922898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -69.07, y: 2.89, z: 18.21}
+  m_LocalScale: {x: 8.7094, y: 9.9457, z: 25.46866}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734102843
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,6 +11338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arena_Ground_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce17a8564755f404fbe699f500c2c2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce17a8564755f404fbe699f500c2c2cc, type: 3}
 --- !u!4 &1436539036 stripped
@@ -12032,6 +12132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bridge_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ebb3397494094c5eaf18e9cd0bd2f4e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ebb3397494094c5eaf18e9cd0bd2f4e, type: 3}
@@ -15802,6 +15907,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 8.050899, z: 2}
   m_Center: {x: 0, y: 3.0254495, z: 0}
+--- !u!1 &2146908692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2146908694}
+  - component: {fileID: 2146908693}
+  m_Layer: 0
+  m_Name: Invisiwall (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &2146908693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146908692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.53, y: 5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2146908694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146908692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -69.07, y: 2.89, z: -16.55}
+  m_LocalScale: {x: 8.7094, y: 9.9457, z: 25.46866}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5790637124430919797
 PrefabInstance:
   m_ObjectHideFlags: 0
