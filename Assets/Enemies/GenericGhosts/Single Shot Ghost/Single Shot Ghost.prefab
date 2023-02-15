@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 8492117544314029722}
+  isCapturable: 1
   captureWeapon: {fileID: 11400000, guid: 1bb4bf3365a18694f944bbffc875b7b0, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
@@ -106,10 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 1
   armorPoints: 0
   isPlayer: 0
-  iFrameTime: 0.5
+  iFrameTime: 0
   health: 0
   alreadyDead: 0
 --- !u!114 &8492117543245052486
@@ -129,6 +130,7 @@ MonoBehaviour:
   leadShots: 0
   autoFire: 1
   autoFireInterval: 2
+  controller: {fileID: 0}
 --- !u!54 &8492117543245052487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,7 +157,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d8da754347811ae499c46ac8d65de3e5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.615
   m_Pitch: 1
@@ -429,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.4
-  deathSFX: {fileID: 8300000, guid: a4b41c6197a20724c92ca48b8312c1f8, type: 3}
+  deathSFX: {fileID: 8300000, guid: 199a0cac123c87c4ca02f524446d417c, type: 3}
 --- !u!1 &8492117545020815353
 GameObject:
   m_ObjectHideFlags: 0

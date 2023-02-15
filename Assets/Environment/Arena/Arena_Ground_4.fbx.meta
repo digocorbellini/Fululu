@@ -1,9 +1,25 @@
 fileFormatVersion: 2
-guid: 5357797c004c44827b5c59df153eba1f
+guid: 531039fee9f114f3dad40ecdb87a18c3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: 4aaa7d1784d57474690a0a0e6f5e8492, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock.001
+    second: {fileID: 2100000, guid: 32345d50c59d748b3b706c7cd2628fbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stylized rock
+    second: {fileID: -4671331973781007237, guid: 3842f44d82ddd4ea995138baf278daa8,
+      type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

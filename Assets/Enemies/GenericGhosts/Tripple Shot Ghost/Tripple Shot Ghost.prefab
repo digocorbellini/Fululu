@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.4
-  deathSFX: {fileID: 8300000, guid: a4b41c6197a20724c92ca48b8312c1f8, type: 3}
+  deathSFX: {fileID: 8300000, guid: 199a0cac123c87c4ca02f524446d417c, type: 3}
 --- !u!1 &1271492577015688443
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 1271492577053661461}
+  isCapturable: 1
   captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
@@ -254,6 +255,7 @@ MonoBehaviour:
   leadShots: 0
   autoFire: 1
   autoFireInterval: 3.5
+  controller: {fileID: 0}
 --- !u!114 &1271492577685882580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,10 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 4
   armorPoints: 0
   isPlayer: 0
-  iFrameTime: 0.5
+  iFrameTime: 0
   health: 0
   alreadyDead: 0
 --- !u!54 &1271492577685882579

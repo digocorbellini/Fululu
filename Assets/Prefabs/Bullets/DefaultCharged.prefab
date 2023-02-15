@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2276cda2252952b438c7243af8004477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 4
   isExplosive: 0
   isStun: 0
   destroyOnHit: 1
@@ -81,11 +81,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 40
+  Speed: 80
   lifetime: 8
   trails:
   - {fileID: 9154799288347540397}
-  hitParticles: {fileID: 5332262736302672358, guid: 2c924fe23ea1d134d8c1c22063d3b1c9,
+  hitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
     type: 3}
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AimAtPlayer : MonoBehaviour
 {
+    public float heightOffset = .5f;
+
     private Transform player;
 
     private void Start()
@@ -14,6 +16,6 @@ public class AimAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
+        transform.LookAt(player.position + (Vector3.up * heightOffset));
     }
 }
