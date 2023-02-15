@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.35f;
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private List<TrailRenderer> dashTrails;
+    [SerializeField] private AudioClip dashSFX;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
 
@@ -49,6 +50,8 @@ public class PlayerController : MonoBehaviour
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
 
+    private AudioSource audioSource;
+
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
     public Vector3 GetPlayerMoveDirection()
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         mainCam = Camera.main.transform;
-
+        audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
@@ -232,6 +235,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformDash()
     {
+        audioSource.PlayOneShot(dashSFX);
+
         // update player state
         stateManager.SetState(PlayerState.Dashing);
 
