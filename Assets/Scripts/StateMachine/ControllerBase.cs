@@ -17,6 +17,7 @@ public abstract class ControllerBase : MonoBehaviour {
     public bool isStateMachineActive = true;
     public State currentState;
 
+    public bool isCapturable = true;
     public Weapon captureWeapon;
 
     protected State[] states;

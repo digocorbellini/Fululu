@@ -17,6 +17,7 @@ public class LancerEnemyMidRange : LancerEnemyState
     {
         player = controller.player.transform;
 
+        fireControl.ResetTimer();
         fireControl.autoFire = true;
     }
 
