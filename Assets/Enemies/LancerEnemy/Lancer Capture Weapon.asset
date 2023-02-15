@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   captureImage: {fileID: 21300000, guid: 7e26f85258fbeb64b9eda09a24e439fe, type: 3}
   chargeTime: 0.3
-  rapidFireCooldown: 0
+  rapidFireCooldown: 0.5
   chargeFireCooldown: 0
   spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
     type: 3}
