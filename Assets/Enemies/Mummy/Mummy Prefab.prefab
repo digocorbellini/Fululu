@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460827d3bd43add42a3fce4780736be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heightOffset: 0.5
 --- !u!1 &1438707436170853952
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +319,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438707436317388881}
-  - component: {fileID: 1438707436317388880}
   - component: {fileID: 1438707436317388883}
   - component: {fileID: 1438707436317388882}
   - component: {fileID: 1438707436317388885}
@@ -347,24 +347,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1438707436317388880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438707436317388884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289f9e038c639f84c9a5896e3e199a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  firePos: {fileID: 0}
-  leadShots: 0
-  autoFire: 0
-  autoFireInterval: 5
-  controller: {fileID: 0}
 --- !u!114 &1438707436317388883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 100
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0

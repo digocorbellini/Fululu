@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(EnemyFireControl))]
 public class MummyController : ControllerBase
 {
     [HideInInspector] public GameObject player;
