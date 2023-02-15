@@ -16,6 +16,7 @@ public class LancerEnemyController : ControllerBase
     public float timeBetwenAttacks;
 
     [HideInInspector] public GameObject player;
+    [HideInInspector] public AudioSource audioSource;
 
     private bool isAttacking;
     private bool isDead;
@@ -30,6 +31,7 @@ public class LancerEnemyController : ControllerBase
         rb = GetComponent<Rigidbody>();
         hitbox = GetComponent<EntityHitbox>();
         ani = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HandleOnHurt;
@@ -70,6 +72,7 @@ public class LancerEnemyController : ControllerBase
 
     private void HandleOnHurt(float daamage, bool isExplosive)
     {
+        audioSource.PlayOneShot(hurtSFX);
         //uncomment when audiosource added to this enemy
         //audioSource.PlayOneShot(hurtSFX);
         print("AOE enemy took: " + daamage + " damage");
