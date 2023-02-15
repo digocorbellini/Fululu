@@ -11,12 +11,16 @@ public class UIManager : MonoBehaviour
     public Image captureImage;
     public PauseUI pauseUI;
 
+    public ParticleSystem chargeBurst;
+    public ParticleSystem chargeGlow;
+
     public void Initialize(PlayerController player)
     {
         healthbar.Initialize(player);
         player.SetReticleRing(reticleRing);
         player.SetGrazeChargeBar(grazeChargeBar);
         player.SetCaptureImage(captureImage);
+        player.SetChargeParticles(chargeBurst, chargeGlow);
     }
 
     public void ShowPauseUI()

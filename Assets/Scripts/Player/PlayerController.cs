@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     [Header("Graze")]
     [SerializeField] private float grazeChargeTime = 20f;
     [SerializeField] private Image grazeChargeBar;
+    [SerializeField] private ParticleSystem chargeBurst;
+    [SerializeField] private ParticleSystem chargeGlow;
+    private bool alreadyCharged;
     private float currGrazeCharge = 0.0f;
 
     // helper variables
@@ -98,7 +101,7 @@ public class PlayerController : MonoBehaviour
     public void SetGrazeChargeBar(Image bar)
     {
         grazeChargeBar = bar;
-        updateGrazeUI();
+        UpdateGrazeUI();
     }
 
     public void SetCaptureImage(Image cap)
@@ -154,12 +157,12 @@ public class PlayerController : MonoBehaviour
             {
                 fcs.SacrificeWeapon();
             }
-            else if (isGrazeCharged())
+            else if (IsGrazeCharged())
             {
                 // TODO: Perform gourd swipe to capture enemies
                 if (fcs.CaptureAttack())
                 {
-                    useGraze();
+                    UseCharge();
                 }
             }
         }
@@ -192,30 +195,46 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public float chargeGraze(float amount)
+    public float ChargeGraze(float amount)
     {
         currGrazeCharge += amount;
-        updateGrazeUI();
+        UpdateGrazeUI();
 
         return currGrazeCharge / grazeChargeTime;
     }
 
-    public void useGraze()
+    public void UseCharge()
     {
+        chargeGlow.enableEmission = false;
+        alreadyCharged = false;
         currGrazeCharge = 0.0f;
         graze.Reset();
-        updateGrazeUI();
+        UpdateGrazeUI();
     }
 
-    public bool isGrazeCharged()
+    public bool IsGrazeCharged()
     {
         return currGrazeCharge >= grazeChargeTime;
     }
 
-    private void updateGrazeUI()
+    private void UpdateGrazeUI()
     {
-        float fillAmount = Math.Min(1, currGrazeCharge / grazeChargeTime);
+        float fillAmount = currGrazeCharge / grazeChargeTime;
+
+        if(fillAmount >= 1 && !alreadyCharged)
+        {
+            alreadyCharged = true;
+            chargeGlow.enableEmission = true;
+            chargeBurst.Play();
+        }
         grazeChargeBar.fillAmount = fillAmount;
+    }
+
+    public void SetChargeParticles(ParticleSystem burst, ParticleSystem glow)
+    {
+        chargeBurst = burst;
+        chargeGlow = glow;
+        chargeGlow.enableEmission = false;
     }
 
 

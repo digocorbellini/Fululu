@@ -43,7 +43,7 @@ public class GrazeZone : MonoBehaviour
         // Only check once a physics frame
         if (!alreadyChecked)
         {
-            chargeAmount = player.chargeGraze(Time.fixedDeltaTime);
+            chargeAmount = player.ChargeGraze(Time.fixedDeltaTime);
 
             // Figure out what sound clip to play if any
 
