@@ -5514,6 +5514,7 @@ MonoBehaviour:
   - {fileID: 5344958810929353102}
   - {fileID: 5344958811526219143}
   - {fileID: 5344958810123164556}
+  dashSFX: {fileID: 8300000, guid: 753de88198b6dce47a3b0537c09a37a2, type: 3}
   hurtLayers:
     serializedVersion: 2
     m_Bits: 5760
