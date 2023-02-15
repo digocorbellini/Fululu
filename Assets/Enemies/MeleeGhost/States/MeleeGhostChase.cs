@@ -30,6 +30,7 @@ public class MeleeGhostChase : MeleeGhostState
         }
         else
         {
+            float old_y = controller.rb.velocity.y;
             controller.transform.LookAt(player.position);
 
             Vector3 rot = controller.transform.eulerAngles;
@@ -38,7 +39,7 @@ public class MeleeGhostChase : MeleeGhostState
             controller.transform.eulerAngles = rot;
 
             Vector3 vel = (player.transform.position - transform.position).normalized * moveSpeed;
-            vel.y = 0;
+            vel.y = old_y;
             controller.rb.velocity = vel;
         }
     }

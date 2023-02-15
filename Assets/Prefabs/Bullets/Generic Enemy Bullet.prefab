@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 8
+  Speed: 6
   lifetime: 20
   trails: []
   hitParticles: {fileID: 0}
+  hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
