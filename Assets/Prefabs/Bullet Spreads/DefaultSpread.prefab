@@ -49,3 +49,5 @@ MonoBehaviour:
   SpawnRadius: 1
   DistanceBetweenBullets: 3.33
   isOffCentered: 0
+  numBursts: 1
+  timeBetweenBursts: 0
