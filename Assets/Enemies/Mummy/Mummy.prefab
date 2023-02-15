@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
+  shotDelay: 1
   fireControl: {fileID: 1438707435054107478}
   ringSpawn: {fileID: 1438707436170853953}
 --- !u!114 &1438707435054107478
@@ -515,7 +516,7 @@ MonoBehaviour:
   maxHealth: 25
   armorPoints: 0
   isPlayer: 0
-  iFrameTime: 0.5
+  iFrameTime: 0
   health: 0
   alreadyDead: 0
 --- !u!1001 &1438707435804678734
