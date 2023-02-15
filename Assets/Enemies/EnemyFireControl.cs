@@ -13,12 +13,13 @@ public class EnemyFireControl : MonoBehaviour
 
     private float timer;
     private Transform player;
-    private ControllerBase controller;
+    [SerializeField] private ControllerBase controller;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        controller = GetComponent<ControllerBase>();
+        if(controller == null)
+            controller = GetComponent<ControllerBase>();
         timer = autoFireInterval;
     }
 
@@ -44,7 +45,13 @@ public class EnemyFireControl : MonoBehaviour
             return false;
         }
 
-        weapon.Fire(firePos, null);
+        weapon?.Fire(firePos, null);
         return true;
+    }
+
+    // Call to reset the autofire timer 
+    public void ResetTimer()
+    {
+        timer = autoFireInterval;
     }
 }

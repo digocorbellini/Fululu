@@ -147,7 +147,7 @@ public class PlayerFireControl : MonoBehaviour
         foreach(Collider collider in colliders)
         {
             ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
-            if (controller)
+            if (controller && controller.isCapturable)
             {
                 // Found enemy in range
                 Debug.Log("Found enemy");

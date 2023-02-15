@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
+  m_Name: MummyRingAttack
+  m_EditorClassIdentifier: 
+  captureImage: {fileID: 0}
+  chargeTime: 1
+  rapidFireCooldown: 0
+  chargeFireCooldown: 0
+  spreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
+    type: 3}
+  bullet: {fileID: 1513231144776267946, guid: f659acfaecdf0c3428d90bf9c91146f9, type: 3}
+  chargedSpreadPrefab: {fileID: 0}
+  chargedBullet: {fileID: 0}
+  sacrificeSpreadPrefab: {fileID: 0}
+  sacrificeBullet: {fileID: 0}
