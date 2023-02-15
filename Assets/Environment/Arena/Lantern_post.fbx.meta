@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 473ffa7a5e79a4c26925c4de4b168ce5
+guid: 706e4662786454cef95c2a0b7a266108
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Red_Spider_Lily_Color
-    second: {fileID: 2100000, guid: 2e4632f76eee24ee0b81ccd23a00852d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

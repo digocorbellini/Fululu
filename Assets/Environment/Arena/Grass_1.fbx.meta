@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 473ffa7a5e79a4c26925c4de4b168ce5
+guid: d29a98c238810461daef0a43d582222f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Red_Spider_Lily_Color
-    second: {fileID: 2100000, guid: 2e4632f76eee24ee0b81ccd23a00852d, type: 2}
+      name: Grass
+    second: {fileID: 2100000, guid: 203b7d3b999ce41f4b229cab5defeba5, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2800000, guid: 596ec6f2d02e346e7abbefbbd8d57b43, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

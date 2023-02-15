@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 473ffa7a5e79a4c26925c4de4b168ce5
+guid: d2fb39a71823c4626bc6fbea9ce46b22
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Red_Spider_Lily_Color
-    second: {fileID: 2100000, guid: 2e4632f76eee24ee0b81ccd23a00852d, type: 2}
+      name: Orange-Leaves
+    second: {fileID: 2100000, guid: f415ece623e0e3247b426a349ba43e36, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
