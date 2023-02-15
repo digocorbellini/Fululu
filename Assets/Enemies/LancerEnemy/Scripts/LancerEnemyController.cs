@@ -18,11 +18,13 @@ public class LancerEnemyController : ControllerBase
     [HideInInspector] public GameObject player;
 
     private bool isAttacking;
+    private bool isDead;
     public override void init()
     {
         base.init();
 
         isAttacking = false;
+        isDead = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
@@ -35,6 +37,8 @@ public class LancerEnemyController : ControllerBase
 
     public override void run()
     {
+        if (isDead)
+            return;
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
@@ -60,6 +64,7 @@ public class LancerEnemyController : ControllerBase
     {
         print("AOE enemy killed");
         //Destroy(this.gameObject);
+        isDead = true;
         switchState("AOEDeath");
     }
 
