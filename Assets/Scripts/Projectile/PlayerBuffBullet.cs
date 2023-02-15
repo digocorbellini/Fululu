@@ -12,7 +12,7 @@ public class PlayerBuffBullet : BulletBase
     private void Start()
     {
         PlayerBuffManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBuffManager>();
-        player.BuffPlayer(type, multiplier, buffDuration);
+        player.BuffPlayer(type, buffDuration, multiplier);
 
         Destroy(gameObject, 0.1f);
     }

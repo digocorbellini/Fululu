@@ -37,13 +37,13 @@ public class GenericGhostController : ControllerBase
     }
 
     private void OnHurt(float damage, bool isExplosive)
-    {
-        // TODO: damage 
+    { 
         audioSource.PlayOneShot(hurtSFX);
     }
 
     private void OnDeath()
     {
+        audioSource.PlayOneShot(hurtSFX);
         switchState("PGDeath");
     }
 

@@ -65,6 +65,7 @@ public class LancerEnemyController : ControllerBase
     private void HandleOnDeath()
     {
         print("AOE enemy killed");
+        audioSource.PlayOneShot(hurtSFX);
         //Destroy(this.gameObject);
         isDead = true;
         switchState("AOEDeath");

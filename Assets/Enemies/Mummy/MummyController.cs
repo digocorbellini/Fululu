@@ -30,11 +30,12 @@ public class MummyController : ControllerBase
 
     private void OnHurt(float damage, bool isExplosive)
     {
-        print("Boss hurt. " + damage + " damage taken");
+        source.PlayOneShot(hurtSFX);
     }
 
     private void OnDeath()
     {
+        source.PlayOneShot(hurtSFX);
         print("Boss killed!!");
         isStateMachineActive = false;
         source.PlayOneShot(deathSound);
