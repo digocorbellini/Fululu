@@ -15,7 +15,6 @@ public class PlayerFireControl : MonoBehaviour
     public float fullChargeTime;
 
     public AudioSource audioSource;
-    
 
     [HideInInspector] public float chargeRate = 1.0f;
 

@@ -340,6 +340,7 @@ public class PlayerController : MonoBehaviour
         currGrazeCharge = 0.0f;
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
+        isDashing = false;
     }
 
     private void performMovement()
