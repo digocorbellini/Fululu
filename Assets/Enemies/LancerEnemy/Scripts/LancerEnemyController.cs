@@ -16,18 +16,22 @@ public class LancerEnemyController : ControllerBase
     public float timeBetwenAttacks;
 
     [HideInInspector] public GameObject player;
+    [HideInInspector] public AudioSource audioSource;
 
     private bool isAttacking;
+    private bool isDead;
     public override void init()
     {
         base.init();
 
         isAttacking = false;
+        isDead = false;
 
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         hitbox = GetComponent<EntityHitbox>();
         ani = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnHurt += HandleOnHurt;
@@ -35,6 +39,8 @@ public class LancerEnemyController : ControllerBase
 
     public override void run()
     {
+        if (isDead)
+            return;
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
@@ -60,11 +66,13 @@ public class LancerEnemyController : ControllerBase
     {
         print("AOE enemy killed");
         //Destroy(this.gameObject);
+        isDead = true;
         switchState("AOEDeath");
     }
 
     private void HandleOnHurt(float daamage, bool isExplosive)
     {
+        audioSource.PlayOneShot(hurtSFX);
         //uncomment when audiosource added to this enemy
         //audioSource.PlayOneShot(hurtSFX);
         print("AOE enemy took: " + daamage + " damage");

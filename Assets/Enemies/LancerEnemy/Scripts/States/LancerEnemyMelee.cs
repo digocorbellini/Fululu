@@ -8,7 +8,7 @@ public class LancerEnemyMelee : LancerEnemyState
     public float beginAttackDistance = 2f;
     public AttackHitbox meleeHitbox;
     public float startLag = .08f;
-    public float activeHitboxTime = 0.04f;
+    public float activeHitboxTime = 0.1f;
     public float endLagTime = .5f;
 
     private Transform player;

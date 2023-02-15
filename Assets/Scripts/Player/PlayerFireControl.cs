@@ -14,6 +14,9 @@ public class PlayerFireControl : MonoBehaviour
 
     public float fullChargeTime;
 
+    public AudioSource audioSource;
+    public AudioClip captureSFX;
+
     [HideInInspector] public float chargeRate = 1.0f;
 
     [Space(10)]
@@ -151,6 +154,7 @@ public class PlayerFireControl : MonoBehaviour
             {
                 // Found enemy in range
                 Debug.Log("Found enemy");
+                audioSource.PlayOneShot(captureSFX);
                 SwitchWeapon(controller.captureWeapon);
                 Destroy(controller.gameObject);
                 return true;

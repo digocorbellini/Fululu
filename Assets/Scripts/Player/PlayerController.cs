@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.35f;
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private List<TrailRenderer> dashTrails;
+    [SerializeField] private AudioClip dashSFX;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
 
@@ -47,10 +48,12 @@ public class PlayerController : MonoBehaviour
     private PlayerFireControl fcs;
     private GrazeZone graze;
 
-    private float lastDash;
+    private bool isDashing = false;
     private bool isGrounded = true;
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
+
+    private AudioSource audioSource;
 
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         mainCam = Camera.main.transform;
-
+        audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
@@ -186,6 +189,7 @@ public class PlayerController : MonoBehaviour
         // to see if a dash can be performed rn
         if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
+            isDashing = true;
             StartCoroutine(PerformDash());
             if (fcs.isCharging)
             {
@@ -240,7 +244,7 @@ public class PlayerController : MonoBehaviour
 
     private bool DashReady()
     {
-        return Time.time >= lastDash + dashCooldown;
+        return !isDashing;
     }
 
     private void HurtTester(float dmg, bool isExplosive)
@@ -250,6 +254,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformDash()
     {
+        audioSource.PlayOneShot(dashSFX);
+
         // update player state
         stateManager.SetState(PlayerState.Dashing);
 
@@ -294,16 +300,6 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration);
 
-        // stop movement
-        velocity = Vector3.zero;
-
-        // disable trail renderers
-        foreach (TrailRenderer trail in dashTrails)
-        {
-            trail.emitting = false;
-        }
-
-
         // stop ignoring collision with enemies
         // ignore collision with enemies
         controller.detectCollisions = true;
@@ -321,7 +317,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        lastDash = Time.time;
+        // stop movement
+        velocity = Vector3.zero;
+
+        // disable trail renderers
+        foreach (TrailRenderer trail in dashTrails)
+        {
+            trail.emitting = false;
+        }
+
+        isDashing = false;
 
         // reset state
         stateManager.SetState(PlayerState.Idle);
