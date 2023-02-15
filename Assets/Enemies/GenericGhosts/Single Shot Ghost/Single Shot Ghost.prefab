@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStateMachineActive: 1
   currentState: {fileID: 8492117544314029722}
+  isCapturable: 1
   captureWeapon: {fileID: 11400000, guid: 1bb4bf3365a18694f944bbffc875b7b0, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
@@ -109,7 +110,7 @@ MonoBehaviour:
   maxHealth: 3
   armorPoints: 0
   isPlayer: 0
-  iFrameTime: 0.5
+  iFrameTime: 0
   health: 0
   alreadyDead: 0
 --- !u!114 &8492117543245052486
@@ -129,6 +130,7 @@ MonoBehaviour:
   leadShots: 0
   autoFire: 1
   autoFireInterval: 2
+  controller: {fileID: 0}
 --- !u!54 &8492117543245052487
 Rigidbody:
   m_ObjectHideFlags: 0

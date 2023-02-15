@@ -13,7 +13,7 @@ public class EntityHitbox : MonoBehaviour
     [Tooltip("Is this the player or not?")]
     public bool isPlayer = false;
 
-    public float iFrameTime = .5f;
+    public float iFrameTime = 0f;
 
     public delegate void DeathEvent();
     public event DeathEvent OnDeath;
@@ -129,7 +129,8 @@ public class EntityHitbox : MonoBehaviour
 
     IEnumerator DisableIFrame()
     {
-        yield return new WaitForSecondsRealtime(iFrameTime);
+        if(iFrameTime != 0)
+            yield return new WaitForSecondsRealtime(iFrameTime);
 
         isIframe = false;
 
