@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1438707436317388885}
   - component: {fileID: 1438707436317388894}
   m_Layer: 7
-  m_Name: Mummy
+  m_Name: Mummy Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
