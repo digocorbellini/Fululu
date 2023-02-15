@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7267652949005138766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 20.56, y: 2.17, z: -2.7}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1879906073922741340}
@@ -153,6 +153,7 @@ MonoBehaviour:
   - {fileID: 9178841318828558659}
   hitParticles: {fileID: 8387329251214316327, guid: 1f05cde5ca887fe4b9f2599250485fc8,
     type: 3}
+  hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
 --- !u!1 &7351507969636709347
 GameObject:
