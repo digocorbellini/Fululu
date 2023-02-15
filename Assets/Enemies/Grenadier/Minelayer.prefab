@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf0e701e5971f4298c4055cd74a3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   armorPoints: 0
   isPlayer: 0
   iFrameTime: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.2
-  deathSFX: {fileID: 8300000, guid: a4b41c6197a20724c92ca48b8312c1f8, type: 3}
+  deathSFX: {fileID: 8300000, guid: 199a0cac123c87c4ca02f524446d417c, type: 3}
 --- !u!1 &9139630506469145902
 GameObject:
   m_ObjectHideFlags: 0
