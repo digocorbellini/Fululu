@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 102728089}
   - component: {fileID: 102728088}
   - component: {fileID: 102728092}
+  - component: {fileID: 102728093}
   m_Layer: 7
   m_Name: TheRock
   m_TagString: Untagged
@@ -586,6 +587,18 @@ MonoBehaviour:
   iFrameTime: 0.5
   health: 0
   alreadyDead: 0
+--- !u!114 &102728093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102728087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d902c90747b65429b0c11a1a920b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &108149948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1510071503, guid: 956951a3030e020428f675566075d665, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2339898920957984960, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -3981,6 +3994,8 @@ MonoBehaviour:
   - {fileID: 1078189193}
   - {fileID: 785384489}
   SpawnChance: 1
+  totalEnemyCount: 30
+  minEnemyCount: 5
   enemies:
   - {fileID: 7524010278573821098, guid: e0b24138d02e7434b8ca7efc236fd770, type: 3}
   - {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218, type: 3}
