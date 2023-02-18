@@ -93,6 +93,12 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    // Give the player some charge for hitting stuff
+    public void OnHitGrazeCharge(float mult = 1.0f)
+    {
+        player.HitGrazeCharge(mult);
+    }
+
     private void Start()
     {
         SpawnPlayer();

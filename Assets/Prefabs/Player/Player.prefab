@@ -4867,7 +4867,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.3
+  m_Radius: 1.2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -5617,7 +5617,8 @@ MonoBehaviour:
   hurtLayers:
     serializedVersion: 2
     m_Bits: 5760
-  grazeChargeTime: 2
+  grazeChargeTime: 2.5
+  hitChargeAmount: 0.125
   grazeChargeBar: {fileID: 0}
   chargeBurst: {fileID: 0}
   chargeGlow: {fileID: 0}
@@ -6212,7 +6213,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702436, y: -0.97977734, z: 0.13098288, w: 0.15125358}
+  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

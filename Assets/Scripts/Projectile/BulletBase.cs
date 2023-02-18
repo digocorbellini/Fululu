@@ -72,13 +72,12 @@ public abstract class BulletBase: MonoBehaviour
         if(other.gameObject.layer == 0 || other.gameObject.layer == 12)
         {
             // Piercing bullet hit terrain. Destroy it regardless;
-            print("hit terrain: " + other.gameObject);
+            // print("hit terrain: " + other.gameObject);
             shouldDestroy = true;
         }
 
         if (shouldDestroy)
         {             
-            print("Should destory is true!");
             DetatchTrails();
             Destroy(this.gameObject);
         }

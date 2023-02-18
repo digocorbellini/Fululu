@@ -71,12 +71,9 @@ public class LancerEnemyController : ControllerBase
         switchState("AOEDeath");
     }
 
-    private void HandleOnHurt(float daamage, bool isExplosive)
+    private void HandleOnHurt(float damage, bool isExplosive)
     {
         audioSource.PlayOneShot(hurtSFX);
-        //uncomment when audiosource added to this enemy
-        //audioSource.PlayOneShot(hurtSFX);
-        print("AOE enemy took: " + daamage + " damage");
     }
 
     /// <summary>

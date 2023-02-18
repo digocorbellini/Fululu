@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Graze")]
     [SerializeField] private float grazeChargeTime = 20f;
+    [SerializeField] private float hitChargeAmount = .1f;
     [SerializeField] private Image grazeChargeBar;
     [SerializeField] private ParticleSystem chargeBurst;
     [SerializeField] private ParticleSystem chargeGlow;
@@ -205,6 +206,13 @@ public class PlayerController : MonoBehaviour
         UpdateGrazeUI();
 
         return currGrazeCharge / grazeChargeTime;
+    }
+
+    public void HitGrazeCharge(float mult)
+    {
+        Debug.LogWarning("Giving player " + hitChargeAmount * mult + " charge");
+        currGrazeCharge += hitChargeAmount * mult;
+        UpdateGrazeUI();
     }
 
     public void UseCharge()
