@@ -5078,7 +5078,7 @@ Transform:
   m_GameObject: {fileID: 235596325061045478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 2.2, z: 1.6}
+  m_LocalScale: {x: 1.75, y: 2.2, z: 1.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2002906366990509866}
@@ -5801,7 +5801,7 @@ MonoBehaviour:
   captureImage: {fileID: 0}
   captureSFX: {fileID: 8300000, guid: fc9c044efac7392498625bdefee7e769, type: 3}
   captureAttackParticles: {fileID: 3038451079692413011}
-  cheatWeapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
+  cheatWeapon: {fileID: 11400000, guid: 3f234bf5fd63b954aa7647b164f19bf9, type: 2}
   clickToSetWeapon: 0
   isCharging: 0
 --- !u!114 &850727918943228753
@@ -6299,7 +6299,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
+  m_LocalRotation: {x: -0.0014702436, y: -0.97977734, z: 0.13098288, w: 0.15125358}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
