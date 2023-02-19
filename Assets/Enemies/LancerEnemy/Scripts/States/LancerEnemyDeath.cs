@@ -24,7 +24,6 @@ public class LancerEnemyDeath : LancerEnemyState
     {
         if (controller.isAnimationDone("LancerDeath_001"))
         {
-            print("DESTROYING LANCER OBJECT");
             Destroy(controller.gameObject);
         }
         

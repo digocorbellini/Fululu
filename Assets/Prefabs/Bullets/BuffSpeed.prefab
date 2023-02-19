@@ -182,5 +182,5 @@ MonoBehaviour:
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
   type: 0
-  multiplier: 1.2
+  amount: 1.2
   buffDuration: 12

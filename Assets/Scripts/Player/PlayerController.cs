@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     private bool alreadyCharged;
     private float currGrazeCharge = 0.0f;
 
+    [Header("Shield")]
+    [SerializeField] private GameObject shieldMesh;
+    private bool isShielded;
+
     // helper variables
     [HideInInspector]
     public CharacterController controller;
@@ -77,7 +81,9 @@ public class PlayerController : MonoBehaviour
         graze = GetComponentInChildren<GrazeZone>();
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
-        hitbox.OnHurt += HurtTester;
+        hitbox.OnShieldBreak += DisableShield;
+
+
 
         // setup input
         input = GetComponent<PlayerInput>();
@@ -202,15 +208,18 @@ public class PlayerController : MonoBehaviour
 
     public float ChargeGraze(float amount)
     {
-        currGrazeCharge += amount;
-        UpdateGrazeUI();
+        if (!isShielded)
+        {
+            // Disable graze charge when shielded
+            currGrazeCharge += amount;
+            UpdateGrazeUI();
+        }
 
         return currGrazeCharge / grazeChargeTime;
     }
 
     public void HitGrazeCharge(float mult)
     {
-        Debug.LogWarning("Giving player " + hitChargeAmount * mult + " charge");
         currGrazeCharge += hitChargeAmount * mult;
         UpdateGrazeUI();
     }
@@ -253,11 +262,6 @@ public class PlayerController : MonoBehaviour
     private bool DashReady()
     {
         return !isDashing;
-    }
-
-    private void HurtTester(float dmg, bool isExplosive)
-    {
-        print("Ouch");
     }
 
     IEnumerator PerformDash()
@@ -445,6 +449,23 @@ public class PlayerController : MonoBehaviour
                 stateManager.SetState(PlayerState.Idle);
             }
         }
+    }
+
+    public void EnableShield()
+    {
+        shieldMesh.SetActive(true);
+        isShielded = true;
+    }
+
+    private void DisableShield(bool wasTimeout)
+    {
+        if (!wasTimeout)
+        {
+            // Play some sort of shield break effect here
+        }
+
+        shieldMesh.SetActive(false);
+        isShielded = false;
     }
 
     public bool isAnimationDone(string animationName)

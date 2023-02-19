@@ -34,6 +34,12 @@ public class EntityHitbox : MonoBehaviour
     public event ArmorBreakEvent OnStun;
     public void CallOnStun() => OnStun?.Invoke();
 
+    public delegate void ShieldBreakEvent(bool timedOut);
+    public event ShieldBreakEvent OnShieldBreak;
+    public void CallOnShieldBreak(bool timedOut) => OnShieldBreak?.Invoke(timedOut);
+    private Coroutine shieldBuff;
+    private float shieldAmount;
+
     private int targetLayer;
     public float health;
     private bool isIframe = false;
@@ -75,7 +81,7 @@ public class EntityHitbox : MonoBehaviour
                     if (!attack.isExplosive)
                     {
                         // Attack negated by armor
-                        print("Attack Negated!");
+                        TryDestroyAttack(attack);
                         return;
                     }
                     else
@@ -84,7 +90,6 @@ public class EntityHitbox : MonoBehaviour
                         if(armorPoints <= 0)
                         {
                             CallOnArmorBreak();
-                            print("Armor broken!");
                         }
                     }
                 }
@@ -95,8 +100,27 @@ public class EntityHitbox : MonoBehaviour
                     return;
                 }
 
-                float actualDamage = Mathf.Min(health, attack.damage);
-                health -= attack.damage;
+                float actualDamage = attack.damage;
+                if(shieldAmount > 0)
+                {
+                    actualDamage -= shieldAmount;
+                    shieldAmount -= attack.damage;
+
+                    if(shieldAmount <= 0)
+                    {
+                        CallOnShieldBreak(false);
+                    }
+                    if(actualDamage <= 0)
+                    {
+                        TryDestroyAttack(attack);
+                        return;
+                    }
+
+                }
+
+                actualDamage = Mathf.Min(health, attack.damage);
+
+                health -= actualDamage;
                 Debug.Log("Hit! new health: " + health + " damage: " + attack.damage);
 
                 if (!alreadyDead)
@@ -108,7 +132,7 @@ public class EntityHitbox : MonoBehaviour
                     }
                     else
                     {
-                        CallOnHurt(attack.damage, attack.isExplosive);
+                        CallOnHurt(actualDamage, attack.isExplosive);
                     }
 
                     GameManager.instance.OnHitGrazeCharge(chargeOnHit * actualDamage);
@@ -119,20 +143,47 @@ public class EntityHitbox : MonoBehaviour
                     isIframe = true;
                     StartCoroutine(DisableIFrame());
                 }
+                TryDestroyAttack(attack);
                 
-                if (attack.destroyOnHit)
-                {
-                    if(attack.gameObject.TryGetComponent<BulletBase>(out BulletBase bb))
-                    {
-                        bb.DetatchTrails();
-                    }
-
-                    Destroy(attack.gameObject);
-                }
             }
         }
     }
 
+    private void TryDestroyAttack(AttackHitbox attack)
+    {
+        if (attack.destroyOnHit)
+        {
+            if (attack.gameObject.TryGetComponent<BulletBase>(out BulletBase bb))
+            {
+                bb.DetatchTrails();
+            }
+
+            Destroy(attack.gameObject);
+        }
+    }
+
+    public void GrantShieldBuff(float amount, float time)
+    {
+        if(shieldBuff != null)
+        {
+            StopCoroutine(shieldBuff);
+        }
+
+        shieldAmount = amount;
+        shieldBuff = StartCoroutine(ShieldLifetime(time));
+    }
+
+    IEnumerator ShieldLifetime(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+
+        if(shieldAmount > 0)
+        {
+            CallOnShieldBreak(true);
+        }
+
+        shieldAmount = 0;
+    }
     IEnumerator DisableIFrame()
     {
         if(iFrameTime != 0)

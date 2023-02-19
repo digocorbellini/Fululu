@@ -15,7 +15,8 @@ public class PlayerBuffManager : MonoBehaviour
     public enum PlayerBuffs
     {
         moveSpeed,
-        chargeRate
+        chargeRate,
+        shield
     }
 
     public void BuffPlayer(PlayerBuffs type, float duration, float multiplier)
@@ -36,6 +37,11 @@ public class PlayerBuffManager : MonoBehaviour
                     StopCoroutine(chargeBuff);
                 }
                 chargeBuff = StartCoroutine(ChargeRateBuff(duration, multiplier));
+                break;
+
+            case PlayerBuffs.shield:
+                playerController.hitbox.GrantShieldBuff(multiplier, duration);
+                playerController.EnableShield();
                 break;
 
             default:

@@ -6,14 +6,14 @@ public class PlayerBuffBullet : BulletBase
 {
     [Space(10)]
     public PlayerBuffManager.PlayerBuffs type;
-    public float multiplier;
+    public float amount;
     public float buffDuration;
 
     private void Start()
     {
         PlayerBuffManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBuffManager>();
-        player.BuffPlayer(type, buffDuration, multiplier);
+        player.BuffPlayer(type, buffDuration, amount);
 
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, lifetime);
     }
 }
