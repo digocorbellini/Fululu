@@ -120,8 +120,15 @@ public class PlayerFireControl : MonoBehaviour
         }
         else
         {
-            // Always fire default uncharged attack
-            didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
+            if(weapon.chargedBullet != null)
+            {
+                didFire = weapon.Fire(shootPoint, lookAtPos);
+            }
+            else
+            {
+                didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
+            }
+   
             fireCooldown += weapon.rapidFireCooldown;
         }
 

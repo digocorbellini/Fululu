@@ -13,6 +13,9 @@ public class EntityHitbox : MonoBehaviour
     [Tooltip("Is this the player or not?")]
     public bool isPlayer = false;
 
+    [Tooltip("How much charge to give on hit per damage")]
+    public float chargeOnHit = 1;
+
     public float iFrameTime = 0f;
 
     public delegate void DeathEvent();
@@ -34,7 +37,7 @@ public class EntityHitbox : MonoBehaviour
     private int targetLayer;
     public float health;
     private bool isIframe = false;
-    public bool alreadyDead = false;
+    [HideInInspector] public bool alreadyDead = false;
 
     private void Awake()
     {
@@ -92,6 +95,7 @@ public class EntityHitbox : MonoBehaviour
                     return;
                 }
 
+                float actualDamage = Mathf.Min(health, attack.damage);
                 health -= attack.damage;
                 Debug.Log("Hit! new health: " + health + " damage: " + attack.damage);
 
@@ -106,6 +110,8 @@ public class EntityHitbox : MonoBehaviour
                     {
                         CallOnHurt(attack.damage, attack.isExplosive);
                     }
+
+                    GameManager.instance.OnHitGrazeCharge(chargeOnHit * actualDamage);
                 }
 
                 if(attack.damage > 0)

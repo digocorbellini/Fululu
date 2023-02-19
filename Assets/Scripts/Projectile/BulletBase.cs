@@ -41,7 +41,7 @@ public abstract class BulletBase: MonoBehaviour
         hitbox = GetComponent<AttackHitbox>(); 
     }
 
-    private void OnReset()
+    protected void OnReset()
     {
         GameManager.instance.OnReset -= OnReset;
         if (gameObject != null)
@@ -57,7 +57,7 @@ public abstract class BulletBase: MonoBehaviour
             transform.position = transform.position + transform.forward * Speed * Time.deltaTime;
     }
 
-    private IEnumerator runLifetime()
+    protected IEnumerator runLifetime()
     {
         yield return new WaitForSeconds(lifetime);
         didTimeOut = true;
@@ -72,13 +72,12 @@ public abstract class BulletBase: MonoBehaviour
         if(other.gameObject.layer == 0 || other.gameObject.layer == 12)
         {
             // Piercing bullet hit terrain. Destroy it regardless;
-            print("hit terrain: " + other.gameObject);
+            // print("hit terrain: " + other.gameObject);
             shouldDestroy = true;
         }
 
         if (shouldDestroy)
         {             
-            print("Should destory is true!");
             DetatchTrails();
             Destroy(this.gameObject);
         }
