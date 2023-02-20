@@ -69,7 +69,12 @@ public class Healthbar : MonoBehaviour
 
         for(; i<hearts.Length; i++)
         {
-            hearts[i].sprite = emptyHeart;
+            if (hearts[i].sprite != emptyHeart)
+            {
+                hearts[i].sprite = emptyHeart;
+                Animator anim = hearts[i].GetComponent<Animator>();
+                anim?.Play("Damage");
+            }
         }
         
     }
