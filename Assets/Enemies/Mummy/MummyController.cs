@@ -28,7 +28,7 @@ public class MummyController : ControllerBase
         source.PlayOneShot(spawnSound);
     }
 
-    private void OnHurt(float damage, bool isExplosive)
+    private void OnHurt(float damage, bool isExplosive, Collider other)
     {
         source.PlayOneShot(hurtSFX);
     }

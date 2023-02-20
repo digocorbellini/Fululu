@@ -28,7 +28,7 @@ public class MeleeGhostController : ControllerBase
         hitbox.OnStun += this.OnStun;
     }
 
-    private void OnHurt(float damage, bool isExplosive)
+    private void OnHurt(float damage, bool isExplosive, Collider other)
     {
         audioSource.PlayOneShot(hurtSFX);
     }

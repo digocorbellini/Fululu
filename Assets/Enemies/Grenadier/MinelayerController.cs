@@ -33,7 +33,7 @@ public class MinelayerController : ControllerBase
         GameObject m = Instantiate(mine, minePoint.transform.position, Quaternion.identity);
     }
 
-    private void OnHurt(float damage, bool isExplosive)
+    private void OnHurt(float damage, bool isExplosive, Collider other)
     {
         audioSource.PlayOneShot(hurtSFX);
     }

@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnShieldBreak += DisableShield;
+        hitbox.OnHurt += HandleOnHurt;
 
 
 
@@ -114,6 +115,22 @@ public class PlayerController : MonoBehaviour
     {
         grazeChargeBar = bar;
         UpdateGrazeUI();
+    }
+
+    private void HandleOnHurt(float damage, bool isExplosive, Collider other)
+    {
+        // Determine if other is in front/behind of mesh direction
+        // Probably a more efficient way to do this. I'm rusty on linear algebra :(
+        Vector3 offset = other.transform.position - transform.position;
+        Vector3 projection = Vector3.Project(offset, mesh.forward);
+        Vector3 scale = new Vector3(projection.x / mesh.forward.x, projection.y / mesh.forward.y, projection.z / mesh.forward.z);
+        bool inFront = true;
+        if (scale.x < 0 || scale.y < 0 || scale.z < 0)
+        {
+            inFront = false;
+        }
+
+            stateManager.PlayDamageAnim(inFront);
     }
 
     private void HandleOnDeath()

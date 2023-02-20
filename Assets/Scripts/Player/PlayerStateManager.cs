@@ -91,6 +91,17 @@ public class PlayerStateManager : MonoBehaviour
         return false;
     }
 
+    public void PlayDamageAnim(bool inFront)
+    {
+        if (inFront)
+        {
+            animator.Play("Damage Front");
+        } else
+        {
+            animator.Play("Damage Back");
+        }
+    }
+
     // Throwaway method for play test. Will probably remove later
     public void Revive()
     {
