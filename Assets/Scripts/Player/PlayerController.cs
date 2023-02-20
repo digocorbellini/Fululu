@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image grazeChargeBar;
     [SerializeField] private ParticleSystem chargeBurst;
     [SerializeField] private ParticleSystem chargeGlow;
+    [SerializeField] private ParticleSystem chargePlayerParticles;
     private bool alreadyCharged;
     private float currGrazeCharge = 0.0f;
 
@@ -93,6 +94,7 @@ public class PlayerController : MonoBehaviour
         input.actions["Attack"].canceled += ReleaseAttackCharge;
         input.actions["AltFire"].started += HandleAltFire;
         input.actions["Pause"].started += HandlePauseInput;
+        input.actions["Ultimate"].started += HandleUltimate;
         
         moveAction = input.actions["Move"];
 
@@ -162,18 +164,25 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.isPaused)
         {
-            // Sacrifice weapon if equipped
-            if (fcs.weapon != fcs.defaultWeapon)
-            {
-                fcs.SacrificeWeapon();
-            }
-            else if (IsGrazeCharged())
+            if (IsGrazeCharged())
             {
                 // TODO: Perform gourd swipe to capture enemies
                 if (fcs.CaptureAttack())
                 {
                     UseCharge();
                 }
+            }
+        }
+    }
+
+    private void HandleUltimate(InputAction.CallbackContext context)
+    {
+        if (!GameManager.isPaused)
+        {
+            // Sacrifice weapon if equipped
+            if (fcs.weapon != fcs.defaultWeapon)
+            {
+                fcs.SacrificeWeapon();
             }
         }
     }
@@ -247,6 +256,7 @@ public class PlayerController : MonoBehaviour
             alreadyCharged = true;
             chargeGlow.enableEmission = true;
             chargeBurst.Play();
+            chargePlayerParticles.Play();
         }
         grazeChargeBar.fillAmount = fillAmount;
     }
