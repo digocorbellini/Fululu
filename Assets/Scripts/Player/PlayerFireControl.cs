@@ -25,7 +25,6 @@ public class PlayerFireControl : MonoBehaviour
     public LayerMask captureMask;
     public BoxCollider captureBounds;
     public LayerMask raycastIgnore;
-    public Image captureImage;
     public AudioClip captureSFX;
     public ParticleSystem captureAttackParticles;
 
@@ -180,18 +179,7 @@ public class PlayerFireControl : MonoBehaviour
             timeCharging = 0.0f;
             weapon = wep;
             fullChargeTime = wep.chargeTime;
-            if (captureImage)
-            {
-                if (wep.captureImage)
-                {
-                    captureImage.gameObject.SetActive(true);
-                    captureImage.sprite = wep.captureImage;
-                } else
-                {
-                    captureImage.gameObject.SetActive(false);
-                }
-                
-            }
+            GameManager.instance.UIManager.gourdUI.SetCaptureImage(wep.captureImage);
         }
     }
 }

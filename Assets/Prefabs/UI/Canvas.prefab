@@ -356,6 +356,7 @@ MonoBehaviour:
   grazeChargeBar: {fileID: 8315417382790517167}
   captureImage: {fileID: 8762318006861243283}
   pauseUI: {fileID: 3105270454851900891}
+  gourdUI: {fileID: 8191828618101389314}
   chargeBurst: {fileID: 8234711688790125505}
   chargeGlow: {fileID: 7545493104316560079}
 --- !u!1001 &194321731962842011
@@ -905,6 +906,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5031580014479050094}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8191828618101389314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3782174746023918956, guid: f0e321823036d194f9e6c29ec3351db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5031580014479050094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b548a777c671b3438f8f07a7b94dd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &8234711688790125505 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4004916109599649455, guid: f0e321823036d194f9e6c29ec3351db4,

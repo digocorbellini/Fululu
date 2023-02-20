@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Image grazeChargeBar;
     public Image captureImage;
     public PauseUI pauseUI;
+    public GourdUI gourdUI;
 
     public ParticleSystem chargeBurst;
     public ParticleSystem chargeGlow;
@@ -19,7 +20,6 @@ public class UIManager : MonoBehaviour
         healthbar.Initialize(player);
         player.SetReticleRing(reticleRing);
         player.SetGrazeChargeBar(grazeChargeBar);
-        player.SetCaptureImage(captureImage);
         player.SetChargeParticles(chargeBurst, chargeGlow);
     }
 

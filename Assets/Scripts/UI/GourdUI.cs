@@ -5,32 +5,42 @@ using UnityEngine.UI;
 
 public class GourdUI : MonoBehaviour
 {
-    public Sprite ErrorSprite;
-    public Image gourdUI;
-
-    public CaptureAbilities nothing;
+    public Image captureImage;
+    public Animator anim;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-       // GameManager.OnCapture += UpdateUI;
+        if (!anim)
+        {
+            anim = GetComponent<Animator>();
+        }
     }
 
-    private void UpdateUI(CaptureAbilities cap)
+    public void SetCaptureImage(Sprite image)
     {
-        if(cap == null)
+        if (image)
         {
-            cap = nothing;
+            captureImage.sprite = image;
+            captureImage.gameObject.SetActive(true);
+        } else
+        {
+            captureImage.gameObject.SetActive(false);
         }
+    }
 
-        Sprite img = cap.enemySprite;
-        if(img != null)
+    public void SetCharging(bool charging)
+    {
+        if (anim)
         {
-            gourdUI.sprite = img;
-        }
-        else
-        {
-            gourdUI.sprite = ErrorSprite;
+            if (charging)
+            {
+                anim.Play("Charging");
+            } else
+            {
+                anim.Play("Idle");
+            }
+            
         }
     }
 }
