@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class PlayerController : MonoBehaviour
     [Header("Shield")]
     [SerializeField] private GameObject shieldMesh;
     private bool isShielded;
+
+    [Header("Camera")]
+    public CinemachineFreeLook cinemachine;
+    public float hurtCameraShakeAmplitude = 4f;
+    public float hurtCameraShakeFrequency = 2f;
+    public float hurtCameraShakeDuration = 0.2f;
 
     // helper variables
     [HideInInspector]
@@ -130,7 +137,35 @@ public class PlayerController : MonoBehaviour
             inFront = false;
         }
 
-            stateManager.PlayDamageAnim(inFront);
+        stateManager.PlayDamageAnim(inFront);
+        ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
+    }
+
+    public void ShakeCamera(float amplitude, float frequency, float duration)
+    {
+        StartCoroutine(CameraShakeRoutine(amplitude, frequency, duration));
+    }
+
+    private IEnumerator CameraShakeRoutine(float amplitude, float frequency, float duration)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            CinemachineBasicMultiChannelPerlin noise = cinemachine.GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            if (noise)
+            {
+                noise.m_AmplitudeGain = amplitude;
+                noise.m_FrequencyGain = frequency;
+            }
+        }
+        yield return new WaitForSeconds(duration);
+        for (int i = 0; i < 3; i++)
+        {
+            CinemachineBasicMultiChannelPerlin noise = cinemachine.GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            if (noise)
+            {
+                noise.m_AmplitudeGain = 0;
+            }
+        }
     }
 
     private void HandleOnDeath()

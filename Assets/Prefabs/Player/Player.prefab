@@ -5493,6 +5493,7 @@ GameObject:
   - component: {fileID: 2002906366801537123}
   - component: {fileID: 2002906366801537120}
   - component: {fileID: 2002906366801537121}
+  - component: {fileID: 6688901709710724953}
   m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
@@ -5608,6 +5609,23 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!114 &6688901709710724953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002906366801537135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &2002906366990509864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5710,6 +5728,7 @@ MonoBehaviour:
   chargeGlow: {fileID: 0}
   chargePlayerParticles: {fileID: 7360742724198732246}
   shieldMesh: {fileID: 235596325061045478}
+  cinemachine: {fileID: 2002906368399052512}
   controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &2002906366990509869
@@ -5800,7 +5819,6 @@ MonoBehaviour:
   raycastIgnore:
     serializedVersion: 2
     m_Bits: 15174
-  captureImage: {fileID: 0}
   captureSFX: {fileID: 8300000, guid: fc9c044efac7392498625bdefee7e769, type: 3}
   captureAttackParticles: {fileID: 3038451079692413011}
   cheatWeapon: {fileID: 11400000, guid: 3f234bf5fd63b954aa7647b164f19bf9, type: 2}
@@ -6301,7 +6319,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
+  m_LocalRotation: {x: -0.0014702436, y: -0.97977734, z: 0.13098288, w: 0.15125358}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
