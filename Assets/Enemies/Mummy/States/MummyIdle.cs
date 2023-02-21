@@ -34,7 +34,8 @@ public class MummyIdle : MummyState
 
     public override void run()
     {
-        controller.rb.velocity = Vector3.zero;
+        Vector3 vel = controller.rb.velocity;
+        controller.rb.velocity = new Vector3(0, vel.y, 0);
 
         if (timer >= IdleDuration)
         {

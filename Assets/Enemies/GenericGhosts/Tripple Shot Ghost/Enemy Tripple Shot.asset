@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
   m_Name: Enemy Tripple Shot
   m_EditorClassIdentifier: 
+  captureImage: {fileID: 0}
   chargeTime: 1
-  spreadPrefab: {fileID: 2202035863254959303, guid: a6ebf95cb65a143448111b2239a817d0,
+  rapidFireCooldown: 0
+  chargeFireCooldown: 0
+  spreadPrefab: {fileID: 5499702596646183591, guid: 894ac1cf097bfd443b68c4682f933e85,
     type: 3}
   bullet: {fileID: 3228224069715736325, guid: 8e673b2b9d5525548842bae301a5672a, type: 3}
+  chargedSpreadPrefab: {fileID: 0}
   chargedBullet: {fileID: 0}
   sacrificeSpreadPrefab: {fileID: 0}
   sacrificeBullet: {fileID: 0}
