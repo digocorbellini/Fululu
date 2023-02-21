@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 6
-  lifetime: 20
+  lifetime: 30
   trails: []
   hitParticles: {fileID: 0}
   hitParticlesSpawn: {fileID: 0}

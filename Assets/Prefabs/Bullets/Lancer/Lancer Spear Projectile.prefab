@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 50
-  lifetime: 10
+  lifetime: 15
   trails:
   - {fileID: 3686767118423365898}
   - {fileID: 8263212051639199482}

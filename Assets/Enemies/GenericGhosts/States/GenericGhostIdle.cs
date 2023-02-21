@@ -30,7 +30,8 @@ public class GenericGhostIdle : GenericGhostState
     public override void run()
     {
         // TODO: maybe if player gets too close, start encircling instead
-        controller.rb.velocity = Vector3.zero;
+        Vector3 vel = controller.rb.velocity;
+        controller.rb.velocity = new Vector3(0, vel.y, 0);
 
         if (timer >= idleDuration)
         {
