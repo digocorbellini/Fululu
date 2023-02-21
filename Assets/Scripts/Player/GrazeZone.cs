@@ -7,11 +7,6 @@ public class GrazeZone : MonoBehaviour
     public PlayerController player;
     public ParticleSystem grazeSparks;
 
-    public AudioSource audioSource;
-    public AudioClip charge33;
-    public AudioClip charge66;
-    public AudioClip charge100;
-
     private ParticleSystem.EmissionModule emission;
     private bool alreadyChecked;
     private int chargeState;
@@ -55,18 +50,14 @@ public class GrazeZone : MonoBehaviour
 
             if (chargeState == 0 && chargeAmount >= .33)
             {
-                audioSource.PlayOneShot(charge33);
                 chargeState = 1;
-                
             }
             else if(chargeState == 1 && chargeAmount >= .66)
             {
-                audioSource.PlayOneShot(charge66);
                 chargeState = 2;
             }
             else if(chargeState == 2 && chargeAmount >= 1.0)
             {
-                audioSource.PlayOneShot(charge100);
                 chargeState = 3;
                 GameManager.instance.UIManager.gourdUI.SetCharging(false);
             }

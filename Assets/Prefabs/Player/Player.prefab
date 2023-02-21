@@ -4885,10 +4885,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2002906366990509868}
   grazeSparks: {fileID: 711901822}
-  audioSource: {fileID: 2891583280137483854}
-  charge33: {fileID: 8300000, guid: 9e5b9dad646a49c4182ce00a2a5edfc2, type: 3}
-  charge66: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
-  charge100: {fileID: 8300000, guid: 625a9a92928bada44883b4a20ae74a2d, type: 3}
 --- !u!54 &1161498199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5625,7 +5621,7 @@ MonoBehaviour:
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
+  mNoiseOffsets: {x: -406.90982, y: -552.15173, z: -186.9093}
 --- !u!1 &2002906366990509864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,6 +5638,7 @@ GameObject:
   - component: {fileID: 386429837}
   - component: {fileID: 850727918943228753}
   - component: {fileID: 834977293311613102}
+  - component: {fileID: 527316751871636135}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5721,14 +5718,14 @@ MonoBehaviour:
   hurtLayers:
     serializedVersion: 2
     m_Bits: 5760
-  grazeChargeTime: 2.5
+  maxCharge: 4
   hitChargeAmount: 0.125
-  grazeChargeBar: {fileID: 0}
-  chargeBurst: {fileID: 0}
-  chargeGlow: {fileID: 0}
-  chargePlayerParticles: {fileID: 7360742724198732246}
+  chargeEffects: {fileID: 527316751871636135}
   shieldMesh: {fileID: 235596325061045478}
   cinemachine: {fileID: 2002906368399052512}
+  hurtCameraShakeAmplitude: 4
+  hurtCameraShakeFrequency: 2
+  hurtCameraShakeDuration: 0.2
   controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &2002906366990509869
@@ -5934,6 +5931,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &527316751871636135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002906366990509864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5b9f4f49d37cc4987904c60a689720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grazeChargeBar: {fileID: 0}
+  chargeBurst: {fileID: 0}
+  chargeGlow: {fileID: 0}
+  chargePlayerParticles: {fileID: 7360742724198732246}
+  source: {fileID: 834977293311613102}
+  audio33: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
+  audio66: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
+  audio100: {fileID: 8300000, guid: 625a9a92928bada44883b4a20ae74a2d, type: 3}
 --- !u!1 &2002906367086278394
 GameObject:
   m_ObjectHideFlags: 0
