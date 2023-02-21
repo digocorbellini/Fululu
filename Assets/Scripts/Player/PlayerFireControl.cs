@@ -13,6 +13,7 @@ public class PlayerFireControl : MonoBehaviour
     public Image recticleRing;
 
     public float fullChargeTime;
+    public float chargeRingDeadZone = .1f;
 
     public AudioSource audioSource;
 
@@ -35,7 +36,8 @@ public class PlayerFireControl : MonoBehaviour
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
-    private float fireCooldown;
+    private float lastUnchargedFireTime; // the time when uncharged was last fired
+    private float lastChargedFireTime;
     public bool isCharging;
     private Vector3? lookAtPos;
 
@@ -45,6 +47,8 @@ public class PlayerFireControl : MonoBehaviour
         isCharging = false;
         weapon = defaultWeapon;
         fullChargeTime = weapon.chargeTime;
+        lastUnchargedFireTime = Time.time - weapon.rapidFireCooldown;
+        lastChargedFireTime = Time.time - weapon.chargeFireCooldown;
     }
 
     // Update is called once per frame
@@ -88,19 +92,29 @@ public class PlayerFireControl : MonoBehaviour
         if (recticleRing)
         {
             recticleRing.enabled = isCharging;
-            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - .1f) / fullChargeTime);
+            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - chargeRingDeadZone) / (fullChargeTime - chargeRingDeadZone));
             recticleRing.fillAmount = currRingSize;
         }
     }
 
     public void StartCharging()
     {
-        if (Time.time >= fireCooldown)
-        {
+        if (CanShootCharged())
             isCharging = true;
-            timeCharging = 0.0f;
-        }
+        timeCharging = 0.0f;
         // TODO: will want some sort of feedback for the cooldown. Maybe an error sound effect and anim?
+    }
+
+    // Returns true if the cooldown time has elapsed since the last uncharged fire
+    private bool CanShootUncharged()
+    {
+        return Time.time > (lastUnchargedFireTime + weapon.rapidFireCooldown);
+    }
+
+    // Returns true if the cooldown time has elapsed since the last charged fire
+    private bool CanShootCharged()
+    {
+        return Time.time > (lastChargedFireTime + weapon.chargeFireCooldown);
     }
 
     public bool StopCharging()
@@ -108,18 +122,16 @@ public class PlayerFireControl : MonoBehaviour
         isCharging = false;
         bool didFire = false;
 
-        fireCooldown = Time.time;
-
         //shoot the projectile
-        if (timeCharging >= fullChargeTime)
+        if (timeCharging >= fullChargeTime && CanShootCharged())
         {
             // Fire charged attack from weapon
             didFire = weapon.ChargedFire(shootPoint, lookAtPos);
-            fireCooldown += weapon.chargeFireCooldown;
+            lastChargedFireTime = Time.time;
         }
-        else
+        else if (CanShootUncharged())
         {
-            if(weapon.chargedBullet != null)
+            if (weapon.chargedBullet != null)
             {
                 didFire = weapon.Fire(shootPoint, lookAtPos);
             }
@@ -127,8 +139,8 @@ public class PlayerFireControl : MonoBehaviour
             {
                 didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
             }
-   
-            fireCooldown += weapon.rapidFireCooldown;
+
+            lastUnchargedFireTime = Time.time;
         }
 
         timeCharging = 0.0f;
