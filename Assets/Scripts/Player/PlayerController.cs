@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Effects")]
     public ParticleSystem hurtEffects;
+    public float hurtScreenTintAlpha = 0.1f;
+    public float hurtScreenTintDuration = 0.15f;
 
     // helper variables
     [HideInInspector]
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
         hurtEffects.Stop();
         hurtEffects.Play();
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
     }
 
     public void ShakeCamera(float amplitude, float frequency, float duration)
