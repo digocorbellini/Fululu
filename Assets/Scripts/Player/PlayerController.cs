@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public float hurtCameraShakeFrequency = 2f;
     public float hurtCameraShakeDuration = 0.2f;
 
+    [Header("Effects")]
+    public ParticleSystem hurtEffects;
+
     // helper variables
     [HideInInspector]
     public CharacterController controller;
@@ -136,6 +139,8 @@ public class PlayerController : MonoBehaviour
 
         stateManager.PlayDamageAnim(inFront);
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
+        hurtEffects.Stop();
+        hurtEffects.Play();
     }
 
     public void ShakeCamera(float amplitude, float frequency, float duration)
