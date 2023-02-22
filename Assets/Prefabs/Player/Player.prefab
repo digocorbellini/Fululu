@@ -5297,7 +5297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906366636527402}
-  m_LocalRotation: {x: 0.0016935586, y: -0.9768235, z: 0.15144633, w: 0.15125126}
+  m_LocalRotation: {x: 0.0016935607, y: -0.97682357, z: 0.15144637, w: 0.15125129}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5634,12 +5634,13 @@ GameObject:
   - component: {fileID: 2002906366990509866}
   - component: {fileID: 2002906366990509867}
   - component: {fileID: 2002906366990509868}
+  - component: {fileID: 720201392830950562}
   - component: {fileID: 2002906366990509869}
   - component: {fileID: 2002906366990509871}
   - component: {fileID: 386429837}
   - component: {fileID: 850727918943228753}
-  - component: {fileID: 834977293311613102}
   - component: {fileID: 527316751871636135}
+  - component: {fileID: 834977293311613102}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5732,6 +5733,23 @@ MonoBehaviour:
   hurtScreenTintDuration: 0.07
   controller: {fileID: 0}
   hitbox: {fileID: 0}
+--- !u!114 &720201392830950562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002906366990509864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d54b633db0e68d45856a2bdb6ea6e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xLookSpeed: 2
+  xDeadZoneEpsilon: 0.01
+  yLookSpeed: 0.02
+  yDeadZoneEpsilon: 0.01
+  invertY: 1
 --- !u!114 &2002906366990509869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5824,6 +5842,7 @@ MonoBehaviour:
     m_Bits: 15174
   captureSFX: {fileID: 8300000, guid: fc9c044efac7392498625bdefee7e769, type: 3}
   captureAttackParticles: {fileID: 3038451079692413011}
+  captureAttemptCost: 0.1
   cheatWeapon: {fileID: 11400000, guid: 3f234bf5fd63b954aa7647b164f19bf9, type: 2}
   clickToSetWeapon: 0
   isCharging: 0
@@ -5841,6 +5860,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 2002906366990509868}
   fireControl: {fileID: 0}
+--- !u!114 &527316751871636135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002906366990509864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5b9f4f49d37cc4987904c60a689720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grazeChargeBar: {fileID: 0}
+  chargeBurst: {fileID: 0}
+  chargeGlow: {fileID: 0}
+  chargePlayerParticles: {fileID: 7360742724198732246}
+  source: {fileID: 834977293311613102}
+  audio33: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
+  audio66: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
+  audio100: {fileID: 8300000, guid: 625a9a92928bada44883b4a20ae74a2d, type: 3}
 --- !u!82 &834977293311613102
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5937,26 +5976,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &527316751871636135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002906366990509864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5b9f4f49d37cc4987904c60a689720, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grazeChargeBar: {fileID: 0}
-  chargeBurst: {fileID: 0}
-  chargeGlow: {fileID: 0}
-  chargePlayerParticles: {fileID: 7360742724198732246}
-  source: {fileID: 834977293311613102}
-  audio33: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
-  audio66: {fileID: 8300000, guid: 9c5ff8b280b4db14fb2544ebc0f72e7c, type: 3}
-  audio100: {fileID: 8300000, guid: 625a9a92928bada44883b4a20ae74a2d, type: 3}
 --- !u!1 &2002906367086278394
 GameObject:
   m_ObjectHideFlags: 0
@@ -5984,8 +6003,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367086278394}
-  m_LocalRotation: {x: 0.0016935586, y: -0.9768235, z: 0.15144633, w: 0.15125126}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0623772, y: -0.94932574, z: -0.27550122, w: 0.13780026}
+  m_LocalPosition: {x: -1.3576442, y: -3.8228714, z: -3.8277483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6166,7 +6185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367981742868}
-  m_LocalRotation: {x: 0.004867766, y: -0.97342974, z: 0.17191532, w: 0.15118241}
+  m_LocalRotation: {x: 0.004867768, y: -0.9734297, z: 0.17191532, w: 0.1511824}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6342,7 +6361,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
+  m_LocalRotation: {x: -0.0014702417, y: -0.97977734, z: 0.13098289, w: 0.1512536}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6422,7 +6441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368399052526}
   m_LocalRotation: {x: 0.010777148, y: 0.98598176, z: -0.07042901, w: 0.15087633}
-  m_LocalPosition: {x: 0, y: 2.58, z: -7}
+  m_LocalPosition: {x: 0, y: 2.58, z: -6.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6477,7 +6496,7 @@ MonoBehaviour:
     m_MaxSpeed: 2
     m_AccelTime: 0.01
     m_DecelTime: 0.01
-    m_InputAxisName: Mouse Y
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -6501,7 +6520,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.01
     m_DecelTime: 0.01
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -6531,7 +6550,7 @@ MonoBehaviour:
   - m_Height: 2.58
     m_Radius: 7
   - m_Height: -0.66
-    m_Radius: 6.1
+    m_Radius: 2.46
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 2002906367981742870}
