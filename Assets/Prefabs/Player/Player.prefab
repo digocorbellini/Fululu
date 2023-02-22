@@ -5297,7 +5297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906366636527402}
-  m_LocalRotation: {x: 0.0016935607, y: -0.97682357, z: 0.15144637, w: 0.15125129}
+  m_LocalRotation: {x: 0.0016935605, y: -0.9768235, z: 0.15144636, w: 0.15125124}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5704,6 +5704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  chargingMoveModifier: 1
   moveThresh: 0.01
   gravity: -9.8
   jumpHeight: 1
@@ -5721,6 +5722,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 5760
   maxCharge: 4
+  capturingMoveModifier: 0.6
   hitChargeAmount: 0.125
   chargeEffects: {fileID: 527316751871636135}
   shieldMesh: {fileID: 235596325061045478}
@@ -5843,6 +5845,8 @@ MonoBehaviour:
   captureSFX: {fileID: 8300000, guid: fc9c044efac7392498625bdefee7e769, type: 3}
   captureAttackParticles: {fileID: 3038451079692413011}
   captureAttemptCost: 0.1
+  CaptureEffects: {fileID: 9132461040852048202, guid: bbb4e0fb88fa42344964df8a3f565dc2,
+    type: 3}
   cheatWeapon: {fileID: 11400000, guid: 3f234bf5fd63b954aa7647b164f19bf9, type: 2}
   clickToSetWeapon: 0
   isCharging: 0
@@ -6003,8 +6007,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367086278394}
-  m_LocalRotation: {x: -0.0623772, y: -0.94932574, z: -0.27550122, w: 0.13780026}
-  m_LocalPosition: {x: -1.3576442, y: -3.8228714, z: -3.8277483}
+  m_LocalRotation: {x: 0.0016935624, y: -0.9768235, z: 0.15144636, w: 0.15125124}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

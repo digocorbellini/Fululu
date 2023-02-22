@@ -31,6 +31,7 @@ public class PlayerFireControl : MonoBehaviour
     public ParticleSystem captureAttackParticles;
     [Range(0f, 1f)]
     public float captureAttemptCost = .1f;
+    public GameObject CaptureEffects;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -184,10 +185,16 @@ public class PlayerFireControl : MonoBehaviour
                 if(controller.captureCost <= chargePercent)
                 {
                     // Player has enhough charge to capture
+
                     audioSource.PlayOneShot(captureSFX);
                     captureAttackParticles.Play();
                     SwitchWeapon(controller.captureWeapon);
+
+                    // Spawn spirit capture particle
+                    Instantiate(CaptureEffects, controller.transform.position, Quaternion.identity);
+
                     Destroy(controller.gameObject);
+
                     return controller.captureCost;
                 }
             }
