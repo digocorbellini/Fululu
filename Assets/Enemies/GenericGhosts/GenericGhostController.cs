@@ -36,7 +36,7 @@ public class GenericGhostController : ControllerBase
         // TODO: implement stun
     }
 
-    private void OnHurt(float damage, bool isExplosive)
+    private void OnHurt(float damage, bool isExplosive, Collider other)
     { 
         audioSource.PlayOneShot(hurtSFX);
     }

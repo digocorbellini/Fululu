@@ -74,6 +74,10 @@ public class AudioComponent : MonoBehaviour
         if(sound.objectReferenceParameter is AudioClip clip)
         {
             float volume = sound.floatParameter;
+            if (volume == 0f)
+            {
+                volume = 1f;
+            }
             float pitch = sound.intParameter * .1f;
             if (pitch == 0f)
             {

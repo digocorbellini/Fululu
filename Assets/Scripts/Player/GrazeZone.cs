@@ -7,11 +7,6 @@ public class GrazeZone : MonoBehaviour
     public PlayerController player;
     public ParticleSystem grazeSparks;
 
-    public AudioSource audioSource;
-    public AudioClip charge33;
-    public AudioClip charge66;
-    public AudioClip charge100;
-
     private ParticleSystem.EmissionModule emission;
     private bool alreadyChecked;
     private int chargeState;
@@ -43,24 +38,28 @@ public class GrazeZone : MonoBehaviour
         // Only check once a physics frame
         if (!alreadyChecked)
         {
+            float oldCharge = chargeAmount;
             chargeAmount = player.ChargeGraze(Time.fixedDeltaTime);
 
             // Figure out what sound clip to play if any
 
-            if(chargeState == 0 && chargeAmount >= .33)
+            if (chargeAmount < 1.0f && oldCharge != chargeAmount)
             {
-                audioSource.PlayOneShot(charge33);
+                GameManager.instance.UIManager.gourdUI.SetCharging(true);
+            }
+
+            if (chargeState == 0 && chargeAmount >= .33)
+            {
                 chargeState = 1;
             }
             else if(chargeState == 1 && chargeAmount >= .66)
             {
-                audioSource.PlayOneShot(charge66);
                 chargeState = 2;
             }
             else if(chargeState == 2 && chargeAmount >= 1.0)
             {
-                audioSource.PlayOneShot(charge100);
                 chargeState = 3;
+                GameManager.instance.UIManager.gourdUI.SetCharging(false);
             }
             
 
@@ -75,6 +74,10 @@ public class GrazeZone : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!alreadyChecked)
+        {
+            GameManager.instance.UIManager.gourdUI.SetCharging(false);
+        }
         alreadyChecked = false;
         emission.rateOverTimeMultiplier = 0;
     }

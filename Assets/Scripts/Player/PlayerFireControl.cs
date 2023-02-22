@@ -13,6 +13,7 @@ public class PlayerFireControl : MonoBehaviour
     public Image recticleRing;
 
     public float fullChargeTime;
+    public float chargeRingDeadZone = .1f;
 
     public AudioSource audioSource;
 
@@ -24,10 +25,12 @@ public class PlayerFireControl : MonoBehaviour
 
     public LayerMask captureMask;
     public BoxCollider captureBounds;
+    public GameObject captureZoneVisualization;
     public LayerMask raycastIgnore;
-    public Image captureImage;
     public AudioClip captureSFX;
     public ParticleSystem captureAttackParticles;
+    [Range(0f, 1f)]
+    public float captureAttemptCost = .1f;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -36,7 +39,8 @@ public class PlayerFireControl : MonoBehaviour
     private float maxRingSize;
     private float currRingSize;
     private float timeCharging;
-    private float fireCooldown;
+    private float lastUnchargedFireTime; // the time when uncharged was last fired
+    private float lastChargedFireTime;
     public bool isCharging;
     private Vector3? lookAtPos;
 
@@ -46,6 +50,8 @@ public class PlayerFireControl : MonoBehaviour
         isCharging = false;
         weapon = defaultWeapon;
         fullChargeTime = weapon.chargeTime;
+        lastUnchargedFireTime = Time.time - weapon.rapidFireCooldown;
+        lastChargedFireTime = Time.time - weapon.chargeFireCooldown;
     }
 
     // Update is called once per frame
@@ -65,7 +71,6 @@ public class PlayerFireControl : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
             lookAtPos = hit.point;
-            //print("Targeting: " + hit.collider.gameObject);
             Debug.DrawLine(ray.origin, hit.point, Color.magenta);
         }
         else
@@ -89,19 +94,29 @@ public class PlayerFireControl : MonoBehaviour
         if (recticleRing)
         {
             recticleRing.enabled = isCharging;
-            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - .1f) / fullChargeTime);
+            currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - chargeRingDeadZone) / (fullChargeTime - chargeRingDeadZone));
             recticleRing.fillAmount = currRingSize;
         }
     }
 
     public void StartCharging()
     {
-        if (Time.time >= fireCooldown)
-        {
+        if (CanShootCharged())
             isCharging = true;
-            timeCharging = 0.0f;
-        }
+        timeCharging = 0.0f;
         // TODO: will want some sort of feedback for the cooldown. Maybe an error sound effect and anim?
+    }
+
+    // Returns true if the cooldown time has elapsed since the last uncharged fire
+    private bool CanShootUncharged()
+    {
+        return Time.time > (lastUnchargedFireTime + weapon.rapidFireCooldown);
+    }
+
+    // Returns true if the cooldown time has elapsed since the last charged fire
+    private bool CanShootCharged()
+    {
+        return Time.time > (lastChargedFireTime + weapon.chargeFireCooldown);
     }
 
     public bool StopCharging()
@@ -109,18 +124,16 @@ public class PlayerFireControl : MonoBehaviour
         isCharging = false;
         bool didFire = false;
 
-        fireCooldown = Time.time;
-
         //shoot the projectile
-        if (timeCharging >= fullChargeTime)
+        if (timeCharging >= fullChargeTime && CanShootCharged())
         {
             // Fire charged attack from weapon
             didFire = weapon.ChargedFire(shootPoint, lookAtPos);
-            fireCooldown += weapon.chargeFireCooldown;
+            lastChargedFireTime = Time.time;
         }
-        else
+        else if (CanShootUncharged())
         {
-            if(weapon.chargedBullet != null)
+            if (weapon.chargedBullet != null)
             {
                 didFire = weapon.Fire(shootPoint, lookAtPos);
             }
@@ -128,8 +141,8 @@ public class PlayerFireControl : MonoBehaviour
             {
                 didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
             }
-   
-            fireCooldown += weapon.rapidFireCooldown;
+
+            lastUnchargedFireTime = Time.time;
         }
 
         timeCharging = 0.0f;
@@ -150,27 +163,43 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
-    public bool CaptureAttack()
+
+    public float CaptureAttack(float chargePercent)
     {
-        Debug.Log("Performing capture!");
-        Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
+        if(chargePercent < captureAttemptCost)
+        {
+            return 0;
+        }
+        //Debug.Log("Performing capture!");
+        //Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
+
         Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
-        foreach(Collider collider in colliders)
+        captureZoneVisualization.SetActive(false);
+        foreach (Collider collider in colliders)
         {
             ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
             if (controller && controller.isCapturable)
             {
                 // Found enemy in range
-                Debug.Log("Found enemy");
-                audioSource.PlayOneShot(captureSFX);
-                captureAttackParticles.Play();
-                SwitchWeapon(controller.captureWeapon);
-                Destroy(controller.gameObject);
-                return true;
+                if(controller.captureCost <= chargePercent)
+                {
+                    // Player has enhough charge to capture
+                    audioSource.PlayOneShot(captureSFX);
+                    captureAttackParticles.Play();
+                    SwitchWeapon(controller.captureWeapon);
+                    Destroy(controller.gameObject);
+                    return controller.captureCost;
+                }
             }
         }
 
-        return false;
+        // Failed to capture
+        return captureAttemptCost;
+    }
+
+    public void ShowCaptureZone(bool show)
+    {
+        captureZoneVisualization.SetActive(show);
     }
 
     public void SwitchWeapon(Weapon wep)
@@ -180,18 +209,7 @@ public class PlayerFireControl : MonoBehaviour
             timeCharging = 0.0f;
             weapon = wep;
             fullChargeTime = wep.chargeTime;
-            if (captureImage)
-            {
-                if (wep.captureImage)
-                {
-                    captureImage.gameObject.SetActive(true);
-                    captureImage.sprite = wep.captureImage;
-                } else
-                {
-                    captureImage.gameObject.SetActive(false);
-                }
-                
-            }
+            GameManager.instance.UIManager.gourdUI.SetCaptureImage(wep.captureImage);
         }
     }
 }

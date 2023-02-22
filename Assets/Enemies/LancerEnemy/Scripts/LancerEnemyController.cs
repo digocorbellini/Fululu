@@ -71,7 +71,7 @@ public class LancerEnemyController : ControllerBase
         switchState("AOEDeath");
     }
 
-    private void HandleOnHurt(float damage, bool isExplosive)
+    private void HandleOnHurt(float damage, bool isExplosive, Collider other)
     {
         audioSource.PlayOneShot(hurtSFX);
     }

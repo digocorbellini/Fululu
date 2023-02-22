@@ -22,9 +22,9 @@ public class EntityHitbox : MonoBehaviour
     public event DeathEvent OnDeath;
     public void CallOnDeath() => OnDeath?.Invoke();
 
-    public delegate void HurtEvent(float damage, bool isExplosive = false);
+    public delegate void HurtEvent(float damage, bool isExplosive, Collider other);
     public event HurtEvent OnHurt;
-    public void CallOnHurt(float damage, bool isExplosive) => OnHurt?.Invoke(damage, isExplosive);
+    public void CallOnHurt(float damage, bool isExplosive, Collider other) => OnHurt?.Invoke(damage, isExplosive, other);
 
     public delegate void ArmorBreakEvent();
     public event ArmorBreakEvent OnArmorBreak;
@@ -132,7 +132,7 @@ public class EntityHitbox : MonoBehaviour
                     }
                     else
                     {
-                        CallOnHurt(actualDamage, attack.isExplosive);
+                        CallOnHurt(actualDamage, attack.isExplosive, other);
                     }
 
                     GameManager.instance.OnHitGrazeCharge(chargeOnHit * actualDamage);

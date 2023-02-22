@@ -33,7 +33,7 @@ public class Healthbar : MonoBehaviour
     private void HandleDeath()
     {
         health = 0;
-        UpdateDisplay(0, false);
+        UpdateDisplay(0, false, null);
     }
     
     public void Initialize(EntityHitbox player)
@@ -51,11 +51,11 @@ public class Healthbar : MonoBehaviour
             Debug.Log("player: " + player.health + " health: " + health);
             player.OnHurt += UpdateDisplay;
             player.OnDeath += HandleDeath;
-            UpdateDisplay(0, false);
+            UpdateDisplay(0, false, null);
         }
     }
 
-    private void UpdateDisplay(float damage, bool isExplosive)
+    private void UpdateDisplay(float damage, bool isExplosive, Collider other)
     {
         Debug.Log("Update display called. damage: " + damage);
         health -= damage;
@@ -69,7 +69,12 @@ public class Healthbar : MonoBehaviour
 
         for(; i<hearts.Length; i++)
         {
-            hearts[i].sprite = emptyHeart;
+            if (hearts[i].sprite != emptyHeart)
+            {
+                hearts[i].sprite = emptyHeart;
+                Animator anim = hearts[i].GetComponent<Animator>();
+                anim?.Play("Damage");
+            }
         }
         
     }
