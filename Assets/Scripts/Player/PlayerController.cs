@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private GrazeZone graze;
 
     private bool isDashing = false;
+    private bool isDashReset = true;
     private bool isGrounded = true;
     private bool attackAni;
     private const float COLLSION_SPEED = -0.5f;
@@ -261,6 +262,7 @@ public class PlayerController : MonoBehaviour
         if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
         {
             isDashing = true;
+            isDashReset = false;
             StartCoroutine(PerformDash());
             if (fcs.isCharging)
             {
@@ -325,7 +327,7 @@ public class PlayerController : MonoBehaviour
 
     private bool DashReady()
     {
-        return !isDashing;
+        return !isDashing && isDashReset;
     }
 
     IEnumerator PerformDash()
@@ -501,9 +503,12 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = controller.isGrounded;
 
-        // see if we should be idle or run
         if (isGrounded)
         {
+            // reset dash
+            isDashReset = true;
+
+            // see if we should be idle or run
             Vector3 moveVel = velocity;
             moveVel.y = 0;
             if (moveVel.magnitude > moveThresh)
