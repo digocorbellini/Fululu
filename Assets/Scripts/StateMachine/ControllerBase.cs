@@ -18,6 +18,8 @@ public abstract class ControllerBase : MonoBehaviour {
     public State currentState;
 
     public bool isCapturable = true;
+    [Range(0f, 1f)]
+    public float captureCost = 1.0f;
     public Weapon captureWeapon;
 
     protected State[] states;

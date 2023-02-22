@@ -98,7 +98,8 @@ public class PlayerController : MonoBehaviour
         input.actions["Dash"].started += dashStarted;
         input.actions["Attack"].started += StartAttackCharge;
         input.actions["Attack"].canceled += ReleaseAttackCharge;
-        input.actions["AltFire"].started += HandleAltFire;
+        input.actions["AltFire"].started += HandleAltHold;
+        input.actions["AltFire"].canceled += HandleAltFire;
         input.actions["Pause"].started += HandlePauseInput;
         input.actions["Ultimate"].started += HandleUltimate;
         
@@ -203,21 +204,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleAltHold(InputAction.CallbackContext context)
+    {
+        fcs.ShowCaptureZone(true);
+    }
+
     // used for input system callback
     private void HandleAltFire(InputAction.CallbackContext context)
     {
-        float TEMP_PERCENTAGE = .66f;
+        //float TEMP_PERCENTAGE = .66f;
+        fcs.ShowCaptureZone(false);
 
         if (!GameManager.isPaused)
         {
-            if (GetChargePercent() >= TEMP_PERCENTAGE)
-            {
-                // TODO: Perform gourd swipe to capture enemies
-                if (fcs.CaptureAttack())
-                {
-                    UseCharge(TEMP_PERCENTAGE);
-                }
-            }
+            float chargeUsed = fcs.CaptureAttack(GetChargePercent());
+            UseCharge(chargeUsed);
         }
     }
 
@@ -288,9 +289,9 @@ public class PlayerController : MonoBehaviour
         }
 
         alreadyCharged = false;
+        currCharge = Math.Min(maxCharge, currCharge);
         currCharge -= (maxCharge * amt);
 
-        // graze.Reset();
         UpdateGrazeUI();
         chargeEffects.OnChargeConsumed(currCharge / maxCharge);
 

@@ -230,6 +230,7 @@ MonoBehaviour:
   isStateMachineActive: 1
   currentState: {fileID: 1271492577053661461}
   isCapturable: 1
+  captureCost: 0.66
   captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}

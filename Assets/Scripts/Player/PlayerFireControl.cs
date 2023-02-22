@@ -25,9 +25,12 @@ public class PlayerFireControl : MonoBehaviour
 
     public LayerMask captureMask;
     public BoxCollider captureBounds;
+    public GameObject captureZoneVisualization;
     public LayerMask raycastIgnore;
     public AudioClip captureSFX;
     public ParticleSystem captureAttackParticles;
+    [Range(0f, 1f)]
+    public float captureAttemptCost = .1f;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -68,7 +71,6 @@ public class PlayerFireControl : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
             lookAtPos = hit.point;
-            //print("Targeting: " + hit.collider.gameObject);
             Debug.DrawLine(ray.origin, hit.point, Color.magenta);
         }
         else
@@ -161,27 +163,43 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
-    public bool CaptureAttack()
+
+    public float CaptureAttack(float chargePercent)
     {
-        Debug.Log("Performing capture!");
-        Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
+        if(chargePercent < captureAttemptCost)
+        {
+            return 0;
+        }
+        //Debug.Log("Performing capture!");
+        //Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
+
         Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
-        foreach(Collider collider in colliders)
+        captureZoneVisualization.SetActive(false);
+        foreach (Collider collider in colliders)
         {
             ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
             if (controller && controller.isCapturable)
             {
                 // Found enemy in range
-                Debug.Log("Found enemy");
-                audioSource.PlayOneShot(captureSFX);
-                captureAttackParticles.Play();
-                SwitchWeapon(controller.captureWeapon);
-                Destroy(controller.gameObject);
-                return true;
+                if(controller.captureCost <= chargePercent)
+                {
+                    // Player has enhough charge to capture
+                    audioSource.PlayOneShot(captureSFX);
+                    captureAttackParticles.Play();
+                    SwitchWeapon(controller.captureWeapon);
+                    Destroy(controller.gameObject);
+                    return controller.captureCost;
+                }
             }
         }
 
-        return false;
+        // Failed to capture
+        return captureAttemptCost;
+    }
+
+    public void ShowCaptureZone(bool show)
+    {
+        captureZoneVisualization.SetActive(show);
     }
 
     public void SwitchWeapon(Weapon wep)
