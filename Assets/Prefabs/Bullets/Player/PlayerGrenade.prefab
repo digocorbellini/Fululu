@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 7351507969636709347}
   hitParticles: {fileID: 8387329251214316327, guid: 88229087ea377fa40bf277ef9140fe49,
     type: 3}
+  hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
 --- !u!1 &7351507969636709347
 GameObject:
@@ -206,7 +207,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2646b9fa2cb14504d975ff2bd9e4de05, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -271,7 +272,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -1144,7 +1145,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
