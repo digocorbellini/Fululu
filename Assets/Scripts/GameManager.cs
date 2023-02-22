@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     // Give the player some charge for hitting stuff
     public void OnHitGrazeCharge(float mult = 1.0f)
     {
-        player.HitGrazeCharge(mult);
+        player.OnHitCharge(mult);
     }
 
     private void Start()

@@ -27,15 +27,12 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
 
-    [Header("Graze")]
-    [SerializeField] private float grazeChargeTime = 20f;
+    [Header("Charge")]
+    [SerializeField] private float maxCharge = 20f;
     [SerializeField] private float hitChargeAmount = .1f;
-    [SerializeField] private Image grazeChargeBar;
-    [SerializeField] private ParticleSystem chargeBurst;
-    [SerializeField] private ParticleSystem chargeGlow;
-    [SerializeField] private ParticleSystem chargePlayerParticles;
+    [SerializeField] private ChargeEffects chargeEffects;
     private bool alreadyCharged;
-    private float currGrazeCharge = 0.0f;
+    private float currCharge = 0.0f;
 
     [Header("Shield")]
     [SerializeField] private GameObject shieldMesh;
@@ -46,6 +43,11 @@ public class PlayerController : MonoBehaviour
     public float hurtCameraShakeAmplitude = 4f;
     public float hurtCameraShakeFrequency = 2f;
     public float hurtCameraShakeDuration = 0.2f;
+
+    [Header("Effects")]
+    public ParticleSystem hurtEffects;
+    public float hurtScreenTintAlpha = 0.1f;
+    public float hurtScreenTintDuration = 0.15f;
 
     // helper variables
     [HideInInspector]
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
         stateManager = GetComponent<PlayerStateManager>();
         fcs = GetComponent<PlayerFireControl>();
         graze = GetComponentInChildren<GrazeZone>();
+        chargeEffects = GetComponent<ChargeEffects>();
         hitbox = GetComponentInChildren<EntityHitbox>();
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnShieldBreak += DisableShield;
@@ -100,7 +103,8 @@ public class PlayerController : MonoBehaviour
         input.actions["Dash"].started += dashStarted;
         input.actions["Attack"].started += StartAttackCharge;
         input.actions["Attack"].canceled += ReleaseAttackCharge;
-        input.actions["AltFire"].started += HandleAltFire;
+        input.actions["AltFire"].started += HandleAltHold;
+        input.actions["AltFire"].canceled += HandleAltFire;
         input.actions["Pause"].started += HandlePauseInput;
         input.actions["Ultimate"].started += HandleUltimate;
         
@@ -120,8 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetGrazeChargeBar(Image bar)
     {
-        grazeChargeBar = bar;
-        UpdateGrazeUI();
+        chargeEffects.InitBar(bar);
     }
 
     private void HandleOnHurt(float damage, bool isExplosive, Collider other)
@@ -139,6 +142,9 @@ public class PlayerController : MonoBehaviour
 
         stateManager.PlayDamageAnim(inFront);
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
+        hurtEffects.Stop();
+        hurtEffects.Play();
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
     }
 
     public void ShakeCamera(float amplitude, float frequency, float duration)
@@ -206,19 +212,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleAltHold(InputAction.CallbackContext context)
+    {
+        fcs.ShowCaptureZone(true);
+    }
+
     // used for input system callback
     private void HandleAltFire(InputAction.CallbackContext context)
     {
+        //float TEMP_PERCENTAGE = .66f;
+        fcs.ShowCaptureZone(false);
+
         if (!GameManager.isPaused)
         {
-            if (IsGrazeCharged())
-            {
-                // TODO: Perform gourd swipe to capture enemies
-                if (fcs.CaptureAttack())
-                {
-                    UseCharge();
-                }
-            }
+            float chargeUsed = fcs.CaptureAttack(GetChargePercent());
+            UseCharge(chargeUsed);
         }
     }
 
@@ -267,52 +275,51 @@ public class PlayerController : MonoBehaviour
         if (!isShielded)
         {
             // Disable graze charge when shielded
-            currGrazeCharge += amount;
+            currCharge += amount;
             UpdateGrazeUI();
         }
 
-        return currGrazeCharge / grazeChargeTime;
+        return currCharge / maxCharge;
     }
 
-    public void HitGrazeCharge(float mult)
+    public void OnHitCharge(float mult)
     {
-        currGrazeCharge += hitChargeAmount * mult;
+        currCharge += hitChargeAmount * mult;
         UpdateGrazeUI();
     }
 
-    public void UseCharge()
+    public bool UseCharge(float amt = 1.0f)
     {
-        chargeGlow.enableEmission = false;
+        float chargePercent = Math.Min(1, currCharge / maxCharge);
+        if(amt > chargePercent)
+        {
+            return false;
+        }
+
         alreadyCharged = false;
-        currGrazeCharge = 0.0f;
-        graze.Reset();
+        currCharge = Math.Min(maxCharge, currCharge);
+        currCharge -= (maxCharge * amt);
+
         UpdateGrazeUI();
+        chargeEffects.OnChargeConsumed(currCharge / maxCharge);
+
+        return true;
     }
 
-    public bool IsGrazeCharged()
+    public float GetChargePercent()
     {
-        return currGrazeCharge >= grazeChargeTime;
+        return currCharge / maxCharge;
     }
 
     private void UpdateGrazeUI()
     {
-        float fillAmount = currGrazeCharge / grazeChargeTime;
-
-        if(fillAmount >= 1 && !alreadyCharged)
-        {
-            alreadyCharged = true;
-            chargeGlow.enableEmission = true;
-            chargeBurst.Play();
-            chargePlayerParticles.Play();
-        }
-        grazeChargeBar.fillAmount = fillAmount;
+        float fillAmount = currCharge / maxCharge;
+        chargeEffects.UpdateGrazeUI(fillAmount);
     }
 
     public void SetChargeParticles(ParticleSystem burst, ParticleSystem glow)
     {
-        chargeBurst = burst;
-        chargeGlow = glow;
-        chargeGlow.enableEmission = false;
+        chargeEffects.InitUIParticles(burst, glow);
     }
 
 
@@ -408,7 +415,7 @@ public class PlayerController : MonoBehaviour
         graze.Reset();
         hitbox.health = hitbox.maxHealth;
         hitbox.alreadyDead = false;
-        currGrazeCharge = 0.0f;
+        currCharge = 0.0f;
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
         isDashing = false;
