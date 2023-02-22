@@ -22959,8 +22959,8 @@ AnimationClip:
   - time: 0
     functionName: PlaySoundAnim
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: fedd2532d4ececb4092ee930a2f0ed0b,
+    objectReferenceParameter: {fileID: 8300000, guid: 7368b199726e2b342bb0b23e494593c5,
       type: 3}
-    floatParameter: 0
-    intParameter: 0
+    floatParameter: 1
+    intParameter: 15
     messageOptions: 0

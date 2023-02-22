@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Stats")]
     [SerializeField] public float moveSpeed = 5.0f;
+    [SerializeField] public float chargingMoveModifier = 1.0f;
     [Tooltip("threshold value for amount of movement required to change to running state")]
     [SerializeField] private float moveThresh = 0.1f;
     [SerializeField] private float gravity = -9.8f;
@@ -29,9 +30,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Charge")]
     [SerializeField] private float maxCharge = 20f;
+    [SerializeField] private float capturingMoveModifier = .6f;
     [SerializeField] private float hitChargeAmount = .1f;
     [SerializeField] private ChargeEffects chargeEffects;
-    private bool alreadyCharged;
+    private bool isCapturing;
     private float currCharge = 0.0f;
 
     [Header("Shield")]
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private bool isDashReset = true;
     private bool isGrounded = true;
     private bool attackAni;
+    private float moveSpeedMod;
     private const float COLLSION_SPEED = -0.5f;
 
     private AudioSource audioSource;
@@ -200,6 +203,7 @@ public class PlayerController : MonoBehaviour
         if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             fcs.StartCharging();
+            moveSpeedMod = MathF.Min(chargingMoveModifier, moveSpeedMod);
         }
     }
 
@@ -210,25 +214,34 @@ public class PlayerController : MonoBehaviour
         {
             fcs.StopCharging();
             stateManager.StartAttack();
+            moveSpeedMod = 1.0f;
         }
     }
 
     private void HandleAltHold(InputAction.CallbackContext context)
     {
-        fcs.ShowCaptureZone(true);
+        if (!GameManager.isPaused)
+        {
+            fcs.ShowCaptureZone(true);
+            isCapturing = true;
+            moveSpeedMod = MathF.Min(moveSpeedMod, capturingMoveModifier);
+        }
+        
     }
 
     // used for input system callback
     private void HandleAltFire(InputAction.CallbackContext context)
     {
-        //float TEMP_PERCENTAGE = .66f;
         fcs.ShowCaptureZone(false);
+        moveSpeedMod = 1.0f;
 
-        if (!GameManager.isPaused)
+        if (!GameManager.isPaused && isCapturing)
         {
             float chargeUsed = fcs.CaptureAttack(GetChargePercent());
             UseCharge(chargeUsed);
         }
+
+        isCapturing = false;
     }
 
     private void HandleUltimate(InputAction.CallbackContext context)
@@ -268,6 +281,9 @@ public class PlayerController : MonoBehaviour
             {
                 fcs.CancelCharge();
             }
+            isCapturing = false;
+            fcs.ShowCaptureZone(false);
+            moveSpeedMod = 1.0f;
             print("dashed");
         }
     }
@@ -297,8 +313,6 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-
-        alreadyCharged = false;
         currCharge = Math.Min(maxCharge, currCharge);
         currCharge -= (maxCharge * amt);
 
@@ -413,7 +427,6 @@ public class PlayerController : MonoBehaviour
     public void Revive()
     {
         stateManager.Revive();
-        alreadyCharged = false;
         graze.Reset();
         hitbox.health = hitbox.maxHealth;
         hitbox.alreadyDead = false;
@@ -460,7 +473,7 @@ public class PlayerController : MonoBehaviour
 
         mesh.forward = direction;
 
-        Vector3 newVelocity = moveDirection * moveSpeed * Time.deltaTime;
+        Vector3 newVelocity = moveDirection * moveSpeed * moveSpeedMod * Time.deltaTime;
 
         //if (isGrounded && newVelocity.magnitude > moveThresh)
         //{
