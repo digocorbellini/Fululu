@@ -188,6 +188,10 @@ public class PlayerController : MonoBehaviour
         // TODO: handle player death (animations, sounds, etc)
         stateManager.SetState(PlayerState.Dead);
         anim.SetBool("IsDead", true);
+        ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
+        hurtEffects.Stop();
+        hurtEffects.Play();
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
     }
 
     private void HandlePauseInput(InputAction.CallbackContext context)
