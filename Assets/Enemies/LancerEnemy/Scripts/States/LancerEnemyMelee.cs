@@ -42,7 +42,7 @@ public class LancerEnemyMelee : LancerEnemyState
 
     private IEnumerator chase()
     {
-        controller.ani.Play("Walk");
+        controller.ani.CrossFade("Walk", 0.25f);
 
         // run after the player until they are within range for attack
         while (Vector3.Distance(player.position, controller.transform.position) > beginAttackDistance)
@@ -65,7 +65,7 @@ public class LancerEnemyMelee : LancerEnemyState
 
     private IEnumerator performAttack()
     {
-        controller.ani.Play("Stab");
+        controller.ani.CrossFade("Stab", 0.25f);
 
         yield return new WaitForSeconds(startLag);
 
