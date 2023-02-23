@@ -454,13 +454,6 @@ public class PlayerController : MonoBehaviour
 
         // handle movement 
         Vector2 moveAxis = moveAction.ReadValue<Vector2>();
-        Vector3 forwardDirection = mainCam.forward;
-        forwardDirection.y = 0;
-        forwardDirection.Normalize();
-
-        Vector3 rightDirection = mainCam.right;
-        rightDirection.y = 0;
-        rightDirection.Normalize();
 
         Vector3 moveDirection = mainCam.forward * moveAxis.y + mainCam.right * moveAxis.x;
         moveDirection.y = 0;
@@ -481,6 +474,12 @@ public class PlayerController : MonoBehaviour
         mesh.forward = direction;
 
         Vector3 newVelocity = moveDirection * moveSpeed * moveSpeedMod * Time.deltaTime;
+
+        float forwardSpeed = Vector3.Dot(moveDirection, mesh.forward) / (mesh.forward.sqrMagnitude);
+        float rightSpeed = Vector3.Dot(moveDirection, mesh.right) / (mesh.right.sqrMagnitude);
+
+        anim.SetFloat("Forward", forwardSpeed);
+        anim.SetFloat("Right", rightSpeed);
 
         //if (isGrounded && newVelocity.magnitude > moveThresh)
         //{
@@ -543,6 +542,8 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("IsMoving", false);
             }
         }
+
+        anim.SetFloat("YVelocity", velocity.y);
     }
 
     public void EnableShield()
