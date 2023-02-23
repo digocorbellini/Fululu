@@ -74,6 +74,7 @@ public class AudioManager : MonoBehaviour
             tempSource.clip = sound.clip;
             tempSource.volume = sound.volume;
             tempSource.pitch = GetPitch(sound);
+            tempSource.outputAudioMixerGroup = sound.outputAudioMixerGroup;
             tempSource.Play();
             source.ReleaseAfter(sound.clip.length / Mathf.Abs(tempSource.pitch));
             return source;

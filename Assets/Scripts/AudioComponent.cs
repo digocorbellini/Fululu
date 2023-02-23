@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [System.Serializable]
 public class SoundEffect
 {
     public AudioClip clip;
-    [Range(0f, 1f)]
+    [Range(0f, 3f)]
     public float volume = 1.0f;
     [Range(-3f, 3f)]
     public float pitch = 1.0f;
     [Range(0f, 3f)]
     public float pitchFluctuation;
+    public AudioMixerGroup outputAudioMixerGroup;
 }
 
 public class AudioComponent : MonoBehaviour
 {
     public AudioSource audioSource;
+
+    public AudioMixerGroup animEventAudioMixerGroup;
     
     private List<DisposableAudio> disposableSources = new List<DisposableAudio>();
 
@@ -91,6 +95,7 @@ public class AudioComponent : MonoBehaviour
             effect.volume = volume;
             effect.pitch = pitch;
             effect.pitchFluctuation = pitchFluctuation;
+            effect.outputAudioMixerGroup = animEventAudioMixerGroup;
 
             PlaySound(effect);
         }
