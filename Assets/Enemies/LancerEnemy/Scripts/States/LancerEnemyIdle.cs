@@ -18,7 +18,7 @@ public class LancerEnemyIdle : LancerEnemyState
 
         player = controller.player.transform;
 
-        controller.ani.Play("Idle");
+        controller.ani.CrossFade("Idle", 0.25f);
     }
 
 

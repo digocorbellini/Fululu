@@ -18,6 +18,7 @@ public class LancerEnemyMidRange : LancerEnemyState
     public override void enter()
     {
         player = controller.player.transform;
+        //controller.ani.SetBool("IsMoving", false);
 
         timer = 0;
     }
@@ -27,7 +28,7 @@ public class LancerEnemyMidRange : LancerEnemyState
         if (timer >= fireRate)
         {
             fireControl.Fire();
-            controller.ani.Play("Shootforward_001");
+            controller.ani.CrossFade("Shootforward_001", 0.25f);
             timer = 0;
         }
         timer += Time.deltaTime;

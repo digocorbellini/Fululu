@@ -27,7 +27,7 @@ public class LancerEnemyChase : LancerEnemyState
 
         controller.StopAttacking();
 
-        controller.ani.Play("Walk");
+        controller.ani.CrossFade("Walk", 0.25f);
     }
 
     public override void run()
