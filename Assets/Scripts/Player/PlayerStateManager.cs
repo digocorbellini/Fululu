@@ -31,36 +31,6 @@ public class PlayerStateManager : MonoBehaviour
         private set
         {
             _currentState = value;
-
-            if (_currentState == PlayerState.Dead)
-            {
-                animator.Play("Death");
-                return;
-            }
-
-            if (IsAttackAnim)
-            {
-                return;
-            }
-
-            switch (_currentState)
-            {
-                case PlayerState.Idle:
-                    animator.Play("Idle");
-                    break;
-                case PlayerState.Running:
-                    animator.Play("Walk");
-                    break;
-                case PlayerState.Jumping:
-                    animator.Play("Jump");
-                    break;
-                case PlayerState.Dead:
-                    animator.Play("Death");
-                    break;
-                default:
-                    animator.Play("Idle");
-                    break;
-            }
         }
     }
 
