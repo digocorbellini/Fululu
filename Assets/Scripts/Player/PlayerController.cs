@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public CharacterController controller;
     private PlayerStateManager stateManager;
+    private Animator anim;
     [HideInInspector]
     public EntityHitbox hitbox;
 
@@ -91,6 +92,10 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
+        if (stateManager)
+        {
+            anim = stateManager.animator;
+        }
         fcs = GetComponent<PlayerFireControl>();
         graze = GetComponentInChildren<GrazeZone>();
         chargeEffects = GetComponent<ChargeEffects>();
@@ -182,6 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         // TODO: handle player death (animations, sounds, etc)
         stateManager.SetState(PlayerState.Dead);
+        anim.SetBool("IsDead", true);
     }
 
     private void HandlePauseInput(InputAction.CallbackContext context)
@@ -434,6 +440,7 @@ public class PlayerController : MonoBehaviour
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
         isDashing = false;
+        anim.SetBool("IsDead", false);
     }
 
     private void performMovement()
@@ -515,6 +522,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = controller.isGrounded;
+        anim.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded)
         {
@@ -527,10 +535,12 @@ public class PlayerController : MonoBehaviour
             if (moveVel.magnitude > moveThresh)
             {
                 stateManager.SetState(PlayerState.Running);
+                anim.SetBool("IsMoving", true);
             }
             else
             {
                 stateManager.SetState(PlayerState.Idle);
+                anim.SetBool("IsMoving", false);
             }
         }
     }
