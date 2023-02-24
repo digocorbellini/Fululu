@@ -12,7 +12,6 @@ public class MinelayerStun : MinelayerState
     {
         timer = stunTime;
         controller.isStunned = true;
-        stunIndicator.SetActive(true);
         controller.ani.Play("Stun");
     }
 
@@ -22,7 +21,9 @@ public class MinelayerStun : MinelayerState
 
         if(timer < 0)
         {
-            controller.switchState("MLWander");      
+            //controller.switchState("MLWander");      
+
+            timer = stunTime;
         }
     }
 

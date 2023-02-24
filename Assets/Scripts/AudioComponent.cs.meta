@@ -3,7 +3,10 @@ guid: 1821f0309b66920498f72d799a57e4ef
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - animEventAudioMixerGroup: {fileID: -8873601490943232294, guid: 9d172f389264eb745a47524889ac906e,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public CharacterController controller;
     private PlayerStateManager stateManager;
+    private Animator anim;
     [HideInInspector]
     public EntityHitbox hitbox;
 
@@ -91,6 +92,10 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
+        if (stateManager)
+        {
+            anim = stateManager.animator;
+        }
         fcs = GetComponent<PlayerFireControl>();
         graze = GetComponentInChildren<GrazeZone>();
         chargeEffects = GetComponent<ChargeEffects>();
@@ -182,6 +187,11 @@ public class PlayerController : MonoBehaviour
     {
         // TODO: handle player death (animations, sounds, etc)
         stateManager.SetState(PlayerState.Dead);
+        anim.SetBool("IsDead", true);
+        ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
+        hurtEffects.Stop();
+        hurtEffects.Play();
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
     }
 
     private void HandlePauseInput(InputAction.CallbackContext context)
@@ -434,6 +444,7 @@ public class PlayerController : MonoBehaviour
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
         isDashing = false;
+        anim.SetBool("IsDead", false);
     }
 
     private void performMovement()
@@ -447,13 +458,6 @@ public class PlayerController : MonoBehaviour
 
         // handle movement 
         Vector2 moveAxis = moveAction.ReadValue<Vector2>();
-        Vector3 forwardDirection = mainCam.forward;
-        forwardDirection.y = 0;
-        forwardDirection.Normalize();
-
-        Vector3 rightDirection = mainCam.right;
-        rightDirection.y = 0;
-        rightDirection.Normalize();
 
         Vector3 moveDirection = mainCam.forward * moveAxis.y + mainCam.right * moveAxis.x;
         moveDirection.y = 0;
@@ -474,6 +478,12 @@ public class PlayerController : MonoBehaviour
         mesh.forward = direction;
 
         Vector3 newVelocity = moveDirection * moveSpeed * moveSpeedMod * Time.deltaTime;
+
+        float forwardSpeed = Vector3.Dot(moveDirection, mesh.forward) / (mesh.forward.sqrMagnitude);
+        float rightSpeed = Vector3.Dot(moveDirection, mesh.right) / (mesh.right.sqrMagnitude);
+
+        anim.SetFloat("Forward", forwardSpeed);
+        anim.SetFloat("Right", rightSpeed);
 
         //if (isGrounded && newVelocity.magnitude > moveThresh)
         //{
@@ -515,6 +525,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = controller.isGrounded;
+        anim.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded)
         {
@@ -527,12 +538,16 @@ public class PlayerController : MonoBehaviour
             if (moveVel.magnitude > moveThresh)
             {
                 stateManager.SetState(PlayerState.Running);
+                anim.SetBool("IsMoving", true);
             }
             else
             {
                 stateManager.SetState(PlayerState.Idle);
+                anim.SetBool("IsMoving", false);
             }
         }
+
+        anim.SetFloat("YVelocity", velocity.y);
     }
 
     public void EnableShield()

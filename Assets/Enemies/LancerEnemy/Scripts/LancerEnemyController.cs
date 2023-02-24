@@ -68,6 +68,7 @@ public class LancerEnemyController : ControllerBase
         audioSource.PlayOneShot(hurtSFX);
         //Destroy(this.gameObject);
         isDead = true;
+        ani.CrossFade("Dead", 0.25f);
         switchState("AOEDeath");
     }
 
@@ -93,7 +94,7 @@ public class LancerEnemyController : ControllerBase
         while (isAttacking)
         {
             aoeAttack.attack();
-            ani.Play("ShootUp");
+            ani.CrossFade("ShootUp", 0.25f);
             yield return new WaitForSeconds(aoeAttack.getTotalAttackTime() + timeBetwenAttacks);
         }  
     }

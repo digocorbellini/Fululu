@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
-  m_Name: PlayerGrenade
+  m_Name: TutorialGrenade
   m_EditorClassIdentifier: 
   captureImage: {fileID: 21300000, guid: a942d4552de6a17459beecac98389a17, type: 3}
   chargeTime: 0.8
@@ -25,5 +25,5 @@ MonoBehaviour:
     type: 3}
   sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
     type: 3}
-  sacrificeBullet: {fileID: 2215562887078095317, guid: e90bfb4fe7cd93440be81950e3fc4905,
+  sacrificeBullet: {fileID: 2215562887078095317, guid: 431599c9b56e0ec49892d58c4c339ff4,
     type: 3}
