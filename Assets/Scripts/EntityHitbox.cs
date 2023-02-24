@@ -141,7 +141,7 @@ public class EntityHitbox : MonoBehaviour
                 if(attack.damage > 0)
                 {
                     isIframe = true;
-                    StartCoroutine(DisableIFrame());
+                    StartCoroutine(DisableIFrame(iFrameTime));
                 }
                 TryDestroyAttack(attack);
                 
@@ -184,14 +184,21 @@ public class EntityHitbox : MonoBehaviour
 
         shieldAmount = 0;
     }
-    IEnumerator DisableIFrame()
+    IEnumerator DisableIFrame(float time)
     {
         if(iFrameTime != 0)
-            yield return new WaitForSecondsRealtime(iFrameTime);
+            yield return new WaitForSecondsRealtime(time);
 
         isIframe = false;
 
         yield return null;
+    }
+
+    public void GiveIFrames(float time)
+    {
+        ForceDisableIFrame();
+        isIframe = true;
+        StartCoroutine(DisableIFrame(time));
     }
 
     public void ForceDisableIFrame()

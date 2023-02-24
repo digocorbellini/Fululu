@@ -170,7 +170,7 @@ MonoBehaviour:
   currentState: {fileID: 617783699451378528}
   isCapturable: 1
   captureCost: 0.66
-  captureWeapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
+  captureWeapon: {fileID: 11400000, guid: 2cbe9958b3cab6f46874f556d96179f9, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}

@@ -84,6 +84,12 @@ PrefabInstance:
       propertyPath: currentState
       value: 
       objectReference: {fileID: 7859356195918565152}
+    - target: {fileID: 617783699531048754, guid: 64ffe46fe3699174d87620542717826b,
+        type: 3}
+      propertyPath: captureWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3,
+        type: 2}
     - target: {fileID: 617783699531048755, guid: 64ffe46fe3699174d87620542717826b,
         type: 3}
       propertyPath: m_RootOrder

@@ -30,7 +30,7 @@ public class PlayerFireControl : MonoBehaviour
     public AudioClip captureSFX;
     public ParticleSystem captureAttackParticles;
     [Range(0f, 1f)]
-    public float captureAttemptCost = .1f;
+    public float captureAttemptCost = 0f;
     public GameObject CaptureEffects;
 
     [Header("Debug/Cheats")]
