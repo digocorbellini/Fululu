@@ -16,17 +16,15 @@ public class LancerEnemyDeath : LancerEnemyState
         controller.rb.velocity = Vector3.zero;
         controller.rb.angularVelocity = Vector3.zero;
 
-        controller.ani.Play("LancerDeath_001");
         controller?.audioSource.PlayOneShot(deathSFX);
     }
 
     public override void run()
     {
-        if (controller.isAnimationDone("LancerDeath_001"))
+        // only destroy lancer after death animation is done playing
+        if (controller.isAnimationDone("Dead"))
         {
             Destroy(controller.gameObject);
         }
-        
-        // TODO: see if we need to have a timer
     }
 }
