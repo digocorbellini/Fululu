@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerCameraController : MonoBehaviour
 {
     [Header("Look Sensitivity")]
-    [SerializeField] private float xLookSpeed;
+    public float xLookSpeed;
     [SerializeField] private float xDeadZoneEpsilon = 0.01f;
-    [SerializeField] private float yLookSpeed;
+    public float yLookSpeed;
     [SerializeField] private float yDeadZoneEpsilon = 0.01f;
     [SerializeField] private bool invertY = true;
 
@@ -32,8 +32,6 @@ public class PlayerCameraController : MonoBehaviour
     void Update()
     {
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
-
-        Debug.Log("Look input value: " + lookInput);
 
         if (Mathf.Abs(lookInput.x) > xDeadZoneEpsilon)
         {
