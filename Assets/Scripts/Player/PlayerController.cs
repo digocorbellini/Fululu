@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
         hurtEffects.Stop();
         hurtEffects.Play();
-        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hitbox.iFrameTime);
     }
 
     public void ShakeCamera(float amplitude, float frequency, float duration)
