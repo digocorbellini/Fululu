@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class PauseUI : MonoBehaviour
 {
-    public GameObject SettingsPanel;
     public GameObject PausePanel;
+    public GameObject OptionsPanel;
 
     // Start is called before the first frame update
     public void Show()
     {
         gameObject.SetActive(true);
 
-        // ensure pause panel is the only active panel
+        // ensure only pause panel is active
         PausePanel.SetActive(true);
-        SettingsPanel.SetActive(false);
+        OptionsPanel.SetActive(false);
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
-
-        // ensure pause panel is the only active panel
-        PausePanel.SetActive(true);
-        SettingsPanel.SetActive(false);
     }
 
     public void ResumeGame()
@@ -36,15 +32,15 @@ public class PauseUI : MonoBehaviour
         GameManager.instance.QuitGame();
     }
 
-    public void OpenSettings()
+    public void OpenOptions()
     {
         PausePanel.SetActive(false);
-        SettingsPanel.SetActive(true);
+        OptionsPanel.SetActive(true);
     }
 
-    public void OpenPause()
+    public void BackToPause()
     {
         PausePanel.SetActive(true);
-        SettingsPanel.SetActive(false);
+        OptionsPanel.SetActive(false);
     }
 }
