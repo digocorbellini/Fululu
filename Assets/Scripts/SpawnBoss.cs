@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class SpawnBoss : MonoBehaviour
 {
-    public EnemySpawner spawner;
     public GameObject boss;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public GameObject SpawnTheBoss()
     {
-        spawner.OnClear += SpawnTheBoss;
-    }
-
-    private void SpawnTheBoss()
-    {
-        Instantiate(boss, transform.position, Quaternion.identity);
+        return Instantiate(boss, transform.position, Quaternion.identity);
     }
 }

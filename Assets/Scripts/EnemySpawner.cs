@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
 
     public int totalEnemyCount = 30;
     public int minEnemyCount = 5;
+    public GameObject[] barriers;
+    public SpawnBoss bossSpawner;
 
     [Header("Spawn Lists")]
     public GameObject[] enemies;
@@ -30,10 +32,6 @@ public class EnemySpawner : MonoBehaviour
 
     private bool bossSpawned = false;
 
-    public delegate void ClearEvent();
-    public event ClearEvent OnClear;
-    public void CallOnClear() => OnClear?.Invoke();
-
     private void Start()
     {
         GameManager.instance.OnReset += OnReset;
@@ -45,6 +43,13 @@ public class EnemySpawner : MonoBehaviour
         weightSum = weights.Sum();
         enemiesLeft = totalEnemyCount;
         timer = int.MaxValue;
+
+        ToggleBarriers(false);
+    }
+
+    private void ToggleBarriers(bool active)
+    {
+        barriers.ToList().ForEach(barrier => barrier.SetActive(active));
     }
 
     private void Update()
@@ -65,6 +70,7 @@ public class EnemySpawner : MonoBehaviour
         enemiesLeft = totalEnemyCount;
         activeEnemies = 0;
         bossSpawned = false;
+        ToggleBarriers(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,6 +83,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 DoSpawn();
                 initialSpawn = true;
+                ToggleBarriers(true);
             }
         }
     }
@@ -99,23 +106,25 @@ public class EnemySpawner : MonoBehaviour
             timer = Random.Range(spawnInterval.x, spawnInterval.y);
             return;
         } */
+        bool didSpawn = false;
 
         foreach (Transform point in spawnpoints){
             if(Random.Range(0,1) < SpawnChance)
             {
+                if (enemiesLeft < 0)
+                {
+                    break;
+                }
+
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
                 spawned.GetComponentInChildren<EntityHitbox>().OnDeath += OnEnemyDefeated;
                 enemiesLeft--;
                 activeEnemies++;
-
-                if(enemiesLeft <= 0)
-                {
-                    break;
-                }
+                didSpawn = true;
             }
         }
 
-        if(activeEnemies > 0)
+        if(didSpawn)
         {
             spawnSFX.Play();
         }
@@ -148,16 +157,33 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!bossSpawned)
             {
-                CallOnClear();
+                if (bossSpawner)
+                {
+                    // Spawn boss, wait for boss to be defeated
+                    GameObject boss = bossSpawner.SpawnTheBoss();
+                    boss.GetComponentInChildren<EntityHitbox>().OnDeath += OnCleared;
+                }
+                else
+                {
+                    // No boss to spawn
+                    OnCleared();
+                }
+
                 bossSpawned = true;
             }
             return;
         }
 
-        if(activeEnemies <= minEnemyCount)
+        if(activeEnemies <= minEnemyCount && !bossSpawned)
         {
             DoSpawn();
         }
+    }
+
+    private void OnCleared()
+    {
+        isActive = false;
+        ToggleBarriers(false);
     }
 
 }

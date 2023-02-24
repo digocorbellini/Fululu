@@ -248,7 +248,11 @@ public class PlayerController : MonoBehaviour
         if (!GameManager.isPaused && isCapturing)
         {
             float chargeUsed = fcs.CaptureAttack(GetChargePercent());
-            UseCharge(chargeUsed);
+            if(chargeUsed > 0)
+            {
+                UseCharge(chargeUsed);
+                hitbox.GiveIFrames(1.5f);
+            }
         }
 
         isCapturing = false;
