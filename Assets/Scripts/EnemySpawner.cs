@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     public int totalEnemyCount = 30;
     public int minEnemyCount = 5;
     public GameObject[] barriers;
-    public SpawnBoss bosSpawner;
+    public SpawnBoss bossSpawner;
 
     [Header("Spawn Lists")]
     public GameObject[] enemies;
@@ -106,23 +106,25 @@ public class EnemySpawner : MonoBehaviour
             timer = Random.Range(spawnInterval.x, spawnInterval.y);
             return;
         } */
+        bool didSpawn = false;
 
         foreach (Transform point in spawnpoints){
             if(Random.Range(0,1) < SpawnChance)
             {
+                if (enemiesLeft < 0)
+                {
+                    break;
+                }
+
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
                 spawned.GetComponentInChildren<EntityHitbox>().OnDeath += OnEnemyDefeated;
                 enemiesLeft--;
                 activeEnemies++;
-
-                if(enemiesLeft <= 0)
-                {
-                    break;
-                }
+                didSpawn = true;
             }
         }
 
-        if(activeEnemies > 0)
+        if(didSpawn)
         {
             spawnSFX.Play();
         }
@@ -155,10 +157,10 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!bossSpawned)
             {
-                if (bosSpawner)
+                if (bossSpawner)
                 {
                     // Spawn boss, wait for boss to be defeated
-                    GameObject boss = bosSpawner.SpawnTheBoss();
+                    GameObject boss = bossSpawner.SpawnTheBoss();
                     boss.GetComponentInChildren<EntityHitbox>().OnDeath += OnCleared;
                 }
                 else
