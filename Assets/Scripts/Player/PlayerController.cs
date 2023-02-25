@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isDashing = false;
     private bool isDashReset = true;
+    private float dashTimer = 0.0f;
     private bool isGrounded = true;
     private bool attackAni;
     private float moveSpeedMod;
@@ -355,7 +356,7 @@ public class PlayerController : MonoBehaviour
 
     private bool DashReady()
     {
-        return !isDashing && isDashReset;
+        return !isDashing && isDashReset && Time.time >= dashTimer + dashCooldown;
     }
 
     IEnumerator PerformDash()
@@ -436,6 +437,8 @@ public class PlayerController : MonoBehaviour
 
         // reset state
         stateManager.SetState(PlayerState.Idle);
+
+        dashTimer = Time.time;
     }
 
     public void Revive()
