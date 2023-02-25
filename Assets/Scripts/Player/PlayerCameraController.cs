@@ -17,6 +17,9 @@ public class PlayerCameraController : MonoBehaviour
     private PlayerInput input;
     private InputAction lookAction;
 
+    private string mouseXPrefName = "MouseXSensitivity";
+    private string mouseYPrefName = "MouseYSensitivity";
+
     private const float Y_MAX = 1.0f;
     private const float Y_MIN = 0.0f;
 
@@ -26,6 +29,16 @@ public class PlayerCameraController : MonoBehaviour
         cam = GetComponentInChildren<CinemachineFreeLook>();
 
         lookAction = input.actions["Look"];
+
+        if (PlayerPrefs.HasKey(mouseXPrefName))
+        {
+            xLookSpeed = PlayerPrefs.GetFloat(mouseXPrefName);
+        }
+
+        if (PlayerPrefs.HasKey(mouseYPrefName))
+        {
+            yLookSpeed = PlayerPrefs.GetFloat(mouseYPrefName);
+        }
     }
 
     // Update is called once per frame
