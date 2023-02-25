@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    public AudioMixer mixer;
+    public List<string> exposedMixerParams;
+    [Header("AudioSource Pool")]
     public DisposableAudio audioSourcePrefab;
     private List<DisposableAudio> audioSourcePool = new List<DisposableAudio>();
     public int initialAudioSourcePoolSize = 5;
@@ -25,6 +29,14 @@ public class AudioManager : MonoBehaviour
         for (int i = 0; i < initialAudioSourcePoolSize; i++)
         {
             audioSourcePool.Add(CreateAudioSource());
+        }
+
+        foreach(string param in exposedMixerParams)
+        {
+            if (PlayerPrefs.HasKey(param))
+            {
+                mixer.SetFloat(param, PlayerPrefs.GetFloat(param));
+            }
         }
     }
 
