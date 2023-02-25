@@ -523,7 +523,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // set to idle after landing from jumping
-        if (!isGrounded && controller.isGrounded)
+        if (stateManager.currentState != PlayerState.Dashing && !isGrounded && controller.isGrounded)
         {
             stateManager.SetState(PlayerState.Idle);
         }
