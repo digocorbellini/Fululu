@@ -29,6 +29,7 @@ public class EntityHitbox : MonoBehaviour
     public delegate void DestroyEvent();
     public event DestroyEvent OnDestroyed;
     public void CallOnDestroyed() => OnDestroyed?.Invoke();
+    public bool wasReset = false;
 
 
     public delegate void ArmorBreakEvent();
@@ -214,7 +215,7 @@ public class EntityHitbox : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!gameObject.scene.isLoaded)
+        if (!gameObject.scene.isLoaded || wasReset)
         {
             // Do nothing if being destroyed on scene closing clean up
             return;
