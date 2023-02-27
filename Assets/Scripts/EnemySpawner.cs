@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
-                spawned.GetComponentInChildren<EntityHitbox>().OnDeath += OnEnemyDefeated;
+                spawned.GetComponentInChildren<EntityHitbox>().OnDestroyed += OnEnemyDefeated;
                 enemiesLeft--;
                 activeEnemies++;
                 didSpawn = true;
