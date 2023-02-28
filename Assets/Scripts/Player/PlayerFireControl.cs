@@ -29,6 +29,8 @@ public class PlayerFireControl : MonoBehaviour
     public LayerMask raycastIgnore;
     public AudioClip captureSFX;
     public ParticleSystem captureAttackParticles;
+    public ParticleSystem holdTornado;
+    public ParticleSystem captureTornado;
     [Range(0f, 1f)]
     public float captureAttemptCost = 0f;
     public GameObject CaptureEffects;
@@ -175,7 +177,8 @@ public class PlayerFireControl : MonoBehaviour
         //Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
 
         Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
-        captureZoneVisualization.SetActive(false);
+        //captureZoneVisualization.SetActive(false);
+        holdTornado.Stop();
         foreach (Collider collider in colliders)
         {
             ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
@@ -186,27 +189,35 @@ public class PlayerFireControl : MonoBehaviour
                 {
                     // Player has enhough charge to capture
 
+                    holdTornado.gameObject.SetActive(false);
+
                     audioSource.PlayOneShot(captureSFX);
                     captureAttackParticles.Play();
                     SwitchWeapon(controller.captureWeapon);
 
                     // Spawn spirit capture particle
                     Instantiate(CaptureEffects, controller.transform.position, Quaternion.identity);
+                    captureTornado.Play();
 
                     Destroy(controller.gameObject);
+
+                    holdTornado.gameObject.SetActive(true);
 
                     return controller.captureCost;
                 }
             }
         }
-
         // Failed to capture
         return captureAttemptCost;
     }
 
     public void ShowCaptureZone(bool show)
     {
-        captureZoneVisualization.SetActive(show);
+        //captureZoneVisualization.SetActive(show);
+        if (show)
+            holdTornado.Play();
+        else
+            holdTornado.Stop();
     }
 
     public void SwitchWeapon(Weapon wep)
