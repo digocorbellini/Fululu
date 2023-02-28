@@ -5821,7 +5821,7 @@ MonoBehaviour:
   hurtCameraShakeDuration: 0.2
   hurtEffects: {fileID: 6212642302047372019}
   hurtScreenTintAlpha: 0.2
-  hurtScreenTintDuration: 0.07
+  deathScreenTintDuration: 2
   controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &720201392830950562
@@ -6281,7 +6281,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367981742868}
-  m_LocalRotation: {x: -0.049664237, y: -0.97034454, z: -0.18855143, w: 0.14287502}
+  m_LocalRotation: {x: -0.04966425, y: -0.9703446, z: -0.18855146, w: 0.14287505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
