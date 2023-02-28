@@ -5032,6 +5032,7 @@ MonoBehaviour:
   isPlayer: 1
   chargeOnHit: 1
   iFrameTime: 1.5
+  wasReset: 0
   health: 0
   alreadyDead: 0
 --- !u!136 &2129815447

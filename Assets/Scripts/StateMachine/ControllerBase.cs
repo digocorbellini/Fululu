@@ -72,6 +72,7 @@ public abstract class ControllerBase : MonoBehaviour {
         GameManager.instance.OnReset -= OnReset;
         if (gameObject)
         {
+            gameObject.GetComponentInChildren<EntityHitbox>().wasReset = true;
             Destroy(gameObject);
         }
     }

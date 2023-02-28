@@ -26,6 +26,12 @@ public class EntityHitbox : MonoBehaviour
     public event HurtEvent OnHurt;
     public void CallOnHurt(float damage, bool isExplosive, Collider other) => OnHurt?.Invoke(damage, isExplosive, other);
 
+    public delegate void DestroyEvent();
+    public event DestroyEvent OnDestroyed;
+    public void CallOnDestroyed() => OnDestroyed?.Invoke();
+    public bool wasReset = false;
+
+
     public delegate void ArmorBreakEvent();
     public event ArmorBreakEvent OnArmorBreak;
     public void CallOnArmorBreak() => OnArmorBreak?.Invoke();
@@ -207,5 +213,15 @@ public class EntityHitbox : MonoBehaviour
         isIframe = false;
     }
 
+    private void OnDestroy()
+    {
+        if (!gameObject.scene.isLoaded || wasReset)
+        {
+            // Do nothing if being destroyed on scene closing clean up
+            return;
+        }
+
+        CallOnDestroyed();
+    }
 
 }

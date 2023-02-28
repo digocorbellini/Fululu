@@ -6261,6 +6261,11 @@ PrefabInstance:
       objectReference: {fileID: 1100736535}
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
+      propertyPath: bossSpawner
+      value: 
+      objectReference: {fileID: 1100736535}
+    - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
+        type: 3}
       propertyPath: minEnemyCount
       value: 5
       objectReference: {fileID: 0}
