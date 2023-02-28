@@ -34,6 +34,7 @@ public class PlayerFireControl : MonoBehaviour
     [Range(0f, 1f)]
     public float captureAttemptCost = 0f;
     public GameObject CaptureEffects;
+    public AudioClip holdCaptureSound;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -178,6 +179,11 @@ public class PlayerFireControl : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
         //captureZoneVisualization.SetActive(false);
         holdTornado.Stop();
+        if (audioSource.clip.name == holdCaptureSound.name)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+        }
         foreach (Collider collider in colliders)
         {
             ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
@@ -215,9 +221,21 @@ public class PlayerFireControl : MonoBehaviour
     {
         //captureZoneVisualization.SetActive(show);
         if (show)
+        {
             holdTornado.Play();
+            audioSource.clip = holdCaptureSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
         else
+        {
             holdTornado.Stop();
+            if (audioSource.clip.name == holdCaptureSound.name)
+            {
+                audioSource.Stop();
+                audioSource.loop = false;
+            }
+        }
     }
 
     public void SwitchWeapon(Weapon wep)

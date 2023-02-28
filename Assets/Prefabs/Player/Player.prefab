@@ -5938,6 +5938,7 @@ MonoBehaviour:
   captureAttemptCost: 0
   CaptureEffects: {fileID: 9132461040852048202, guid: bbb4e0fb88fa42344964df8a3f565dc2,
     type: 3}
+  holdCaptureSound: {fileID: 8300000, guid: 20780ef46484dc44bba4298a5b8b09b2, type: 3}
   cheatWeapon: {fileID: 11400000, guid: 2cbe9958b3cab6f46874f556d96179f9, type: 2}
   clickToSetWeapon: 0
   isCharging: 0
@@ -6099,7 +6100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367086278394}
-  m_LocalRotation: {x: -0.05560633, y: -0.9615934, z: -0.22903818, w: 0.1406689}
+  m_LocalRotation: {x: -0.055606354, y: -0.9615934, z: -0.22903815, w: 0.14066899}
   m_LocalPosition: {x: -0.30456516, y: 0.784619, z: -1.0945039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6281,7 +6282,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367981742868}
-  m_LocalRotation: {x: -0.04966425, y: -0.9703446, z: -0.18855146, w: 0.14287505}
+  m_LocalRotation: {x: -0.049664237, y: -0.97034454, z: -0.18855143, w: 0.14287502}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6457,7 +6458,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.055606335, y: -0.96159333, z: -0.22903815, w: 0.14066891}
+  m_LocalRotation: {x: -0.05560635, y: -0.96159333, z: -0.22903815, w: 0.14066894}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
