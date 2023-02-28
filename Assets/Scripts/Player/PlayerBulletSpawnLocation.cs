@@ -23,8 +23,6 @@ public class PlayerBulletSpawnLocation : MonoBehaviour
         cameraForward.y = 0;
         transform.position = mesh.transform.position + (cameraForward * distanceFromPlayer);
         transform.forward = (lookAt.position - transform.position).normalized;
-
-
     }
 
     private void OnDrawGizmos()

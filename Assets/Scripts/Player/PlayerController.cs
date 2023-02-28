@@ -247,20 +247,31 @@ public class PlayerController : MonoBehaviour
     // used for input system callback
     private void HandleAltFire(InputAction.CallbackContext context)
     {
-        fcs.ShowCaptureZone(false);
-        moveSpeedMod = 1.0f;
+        StopCapturing();
+    }
 
-        if (!GameManager.isPaused && isCapturing)
+    private void StopCapturing()
+    {
+        if (isCapturing)
         {
-            float chargeUsed = fcs.CaptureAttack(GetChargePercent());
-            if(chargeUsed > 0)
-            {
-                UseCharge(chargeUsed);
-                hitbox.GiveIFrames(1.5f);
-            }
+            fcs.ShowCaptureZone(false);
+            isCapturing = false;
+            moveSpeedMod = 1.0f;
+        }
+    }
+
+    public bool DoCapture(ControllerBase capturedEntity)
+    {
+        if (isCapturing)
+        {
+            fcs.OnCapture(capturedEntity);
+            UseCharge(capturedEntity.captureCost);
+            hitbox.GiveIFrames(1.5f);
+            StopCapturing();
+            return true;
         }
 
-        isCapturing = false;
+        return false;
     }
 
     private void HandleUltimate(InputAction.CallbackContext context)
