@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.86274517, g: 0.3019608, b: 0.47450984, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1044,6 +1044,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chargebar
       objectReference: {fileID: 0}
+    - target: {fileID: 3942214623157867713, guid: f0e321823036d194f9e6c29ec3351db4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e328e2de975f8d54a893e8fc166e7031,
+        type: 3}
     - target: {fileID: 6063046948611548411, guid: f0e321823036d194f9e6c29ec3351db4,
         type: 3}
       propertyPath: m_LocalScale.x

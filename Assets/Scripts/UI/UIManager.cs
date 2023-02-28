@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
 
     public void TintScreen(Color color, float alpha, float duration)
     {
-        screenTint.color = new Color(color.r, color.g, color.b, 0f);
+        //screenTint.color = new Color(color.r, color.g, color.b, 0f);
         StartCoroutine(ScreenTintRoutine(alpha, duration));
     }
 
@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
     {
         var tween = screenTint.DOFade(alpha, 0.1f);
         yield return tween.WaitForCompletion();
+        tween = screenTint.DOFade(0f, duration);
         yield return new WaitForSeconds(duration);
-        tween = screenTint.DOFade(0f, 0.1f);
     }
 }
