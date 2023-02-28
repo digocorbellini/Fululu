@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     [Header("Effects")]
     public ParticleSystem hurtEffects;
     public float hurtScreenTintAlpha = 0.1f;
-    public float hurtScreenTintDuration = 0.15f;
+    public float deathScreenTintDuration = 0.15f;
 
     // helper variables
     [HideInInspector]
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
     public void SetGrazeChargeBar(Image bar)
     {
         chargeEffects.InitBar(bar);
+        UpdateGrazeUI();
     }
 
     private void HandleOnHurt(float damage, bool isExplosive, Collider other)
@@ -196,7 +197,7 @@ public class PlayerController : MonoBehaviour
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
         hurtEffects.Stop();
         hurtEffects.Play();
-        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hurtScreenTintDuration);
+        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, deathScreenTintDuration);
     }
 
     private void HandlePauseInput(InputAction.CallbackContext context)
@@ -459,10 +460,9 @@ public class PlayerController : MonoBehaviour
     public void Revive()
     {
         stateManager.Revive();
-        graze.Reset();
+        //graze.Reset();
         hitbox.health = hitbox.maxHealth;
         hitbox.alreadyDead = false;
-        currCharge = 0.0f;
         fcs.SwitchWeapon(fcs.defaultWeapon);
         fcs.CancelCharge();
         isDashing = false;

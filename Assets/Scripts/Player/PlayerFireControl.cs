@@ -33,6 +33,7 @@ public class PlayerFireControl : MonoBehaviour
     public ParticleSystem captureTornado;
     public CaptureZone captureZone;
     public GameObject CaptureEffects;
+    public AudioClip holdCaptureSound;
 
     [Header("Debug/Cheats")]
     public Weapon cheatWeapon;
@@ -172,6 +173,12 @@ public class PlayerFireControl : MonoBehaviour
         captureZone.gameObject.SetActive(false);
         audioSource.PlayOneShot(captureSFX);
         SwitchWeapon(capturedEntity.captureWeapon);
+        if (audioSource.clip.name == holdCaptureSound.name)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+        }
+
 
         // Spawn spirit capture particle
         Instantiate(CaptureEffects, capturedEntity.transform.position, Quaternion.identity);
@@ -190,14 +197,20 @@ public class PlayerFireControl : MonoBehaviour
             holdTornado.Play();
             captureZone.gameObject.SetActive(true);
             captureZone.SetAlreadyCaptured(false);
+            audioSource.clip = holdCaptureSound;
+            audioSource.loop = true;
+            audioSource.Play();
         }
-
         else
         {
             holdTornado.Stop();
             captureZone.gameObject.SetActive(false);
+            if (audioSource.clip.name == holdCaptureSound.name)
+            {
+                audioSource.Stop();
+                audioSource.loop = false;
+            }
         }
-            
     }
 
     public void SwitchWeapon(Weapon wep)
