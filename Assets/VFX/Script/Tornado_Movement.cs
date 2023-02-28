@@ -9,6 +9,6 @@ public class Tornado_Movement : MonoBehaviour
 
     void Update() {
         float rotationAmount = Input.GetAxis("Horizontal") * rotationSpeed;
-        transform.rotation = Quaternion.Euler(0, fixedAngle + rotationAmount);
+        transform.rotation = Quaternion.Euler(0, fixedAngle + rotationAmount, 0f);
     }
 }
