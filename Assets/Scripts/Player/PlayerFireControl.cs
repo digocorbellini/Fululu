@@ -166,7 +166,6 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
-
     public float CaptureAttack(float chargePercent)
     {
         if(chargePercent < captureAttemptCost)
@@ -197,6 +196,7 @@ public class PlayerFireControl : MonoBehaviour
 
                     // Spawn spirit capture particle
                     Instantiate(CaptureEffects, controller.transform.position, Quaternion.identity);
+                    //int numMetersConsumed = Mathf.FloorToInt(controller.captureCost / .33f);
                     captureTornado.Play();
 
                     Destroy(controller.gameObject);

@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float hitChargeAmount = .1f;
     [SerializeField] private ChargeEffects chargeEffects;
     private bool isCapturing;
-    private float currCharge = 0.0f;
+    [SerializeField] private float currCharge = 0.0f;
+    [SerializeField] private float startingCharge = 4.0f;
 
     [Header("Shield")]
     [SerializeField] private GameObject shieldMesh;
@@ -124,6 +125,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        currCharge = startingCharge;
+        UpdateGrazeUI();
+
         GameManager.instance.LockCursor();
     }
 
@@ -452,6 +456,8 @@ public class PlayerController : MonoBehaviour
         fcs.CancelCharge();
         isDashing = false;
         anim.SetBool("IsDead", false);
+        currCharge = startingCharge;
+        UpdateGrazeUI();
     }
 
     private void performMovement()

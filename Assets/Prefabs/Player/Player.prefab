@@ -5799,7 +5799,7 @@ MonoBehaviour:
   meshRotationSpeed: 10
   dashDistance: 8
   dashDuration: 0.35
-  dashCooldown: 0.5
+  dashCooldown: 0.2
   dashTrails:
   - {fileID: 5344958810929353102}
   - {fileID: 5344958811526219143}
@@ -5812,6 +5812,8 @@ MonoBehaviour:
   capturingMoveModifier: 0.6
   hitChargeAmount: 0.125
   chargeEffects: {fileID: 527316751871636135}
+  currCharge: 0
+  startingCharge: 1
   shieldMesh: {fileID: 235596325061045478}
   cinemachine: {fileID: 2002906368399052512}
   hurtCameraShakeAmplitude: 4
@@ -5937,7 +5939,7 @@ MonoBehaviour:
   CaptureEffects: {fileID: 9132461040852048202, guid: bbb4e0fb88fa42344964df8a3f565dc2,
     type: 3}
   cheatWeapon: {fileID: 11400000, guid: 2cbe9958b3cab6f46874f556d96179f9, type: 2}
-  clickToSetWeapon: 1
+  clickToSetWeapon: 0
   isCharging: 0
 --- !u!114 &850727918943228753
 MonoBehaviour:
