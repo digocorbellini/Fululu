@@ -31,8 +31,7 @@ public class PlayerFireControl : MonoBehaviour
     public ParticleSystem captureAttackParticles;
     public ParticleSystem holdTornado;
     public ParticleSystem captureTornado;
-    [Range(0f, 1f)]
-    public float captureAttemptCost = 0f;
+    public CaptureZone captureZone;
     public GameObject CaptureEffects;
     public AudioClip holdCaptureSound;
 
@@ -167,54 +166,27 @@ public class PlayerFireControl : MonoBehaviour
         SwitchWeapon(defaultWeapon);
     }
 
-    public float CaptureAttack(float chargePercent)
+    public void OnCapture(ControllerBase capturedEntity)
     {
-        if(chargePercent < captureAttemptCost)
-        {
-            return 0;
-        }
-        //Debug.Log("Performing capture!");
-        //Debug.Log("Bounds: " + (captureBounds.center + shootPoint.position) + " Size: " + captureBounds.size / 2.0f);
-
-        Collider[] colliders = Physics.OverlapBox(captureBounds.center + shootPoint.position, captureBounds.size / 2.0f, shootPoint.rotation, captureMask);
-        //captureZoneVisualization.SetActive(false);
         holdTornado.Stop();
+        holdTornado.gameObject.SetActive(false);
+        captureZone.gameObject.SetActive(false);
+        audioSource.PlayOneShot(captureSFX);
+        SwitchWeapon(capturedEntity.captureWeapon);
         if (audioSource.clip.name == holdCaptureSound.name)
         {
             audioSource.Stop();
             audioSource.loop = false;
         }
-        foreach (Collider collider in colliders)
-        {
-            ControllerBase controller = collider.GetComponentInParent<ControllerBase>();
-            if (controller && controller.isCapturable)
-            {
-                // Found enemy in range
-                if(controller.captureCost <= chargePercent)
-                {
-                    // Player has enhough charge to capture
 
-                    holdTornado.gameObject.SetActive(false);
 
-                    audioSource.PlayOneShot(captureSFX);
-                    captureAttackParticles.Play();
-                    SwitchWeapon(controller.captureWeapon);
+        // Spawn spirit capture particle
+        Instantiate(CaptureEffects, capturedEntity.transform.position, Quaternion.identity);
+        //int numMetersConsumed = Mathf.FloorToInt(controller.captureCost / .33f);
+        Destroy(capturedEntity.gameObject);
 
-                    // Spawn spirit capture particle
-                    Instantiate(CaptureEffects, controller.transform.position, Quaternion.identity);
-                    //int numMetersConsumed = Mathf.FloorToInt(controller.captureCost / .33f);
-                    captureTornado.Play();
-
-                    Destroy(controller.gameObject);
-
-                    holdTornado.gameObject.SetActive(true);
-
-                    return controller.captureCost;
-                }
-            }
-        }
-        // Failed to capture
-        return captureAttemptCost;
+        holdTornado.gameObject.SetActive(true);
+        captureTornado.Play();
     }
 
     public void ShowCaptureZone(bool show)
@@ -223,6 +195,8 @@ public class PlayerFireControl : MonoBehaviour
         if (show)
         {
             holdTornado.Play();
+            captureZone.gameObject.SetActive(true);
+            captureZone.SetAlreadyCaptured(false);
             audioSource.clip = holdCaptureSound;
             audioSource.loop = true;
             audioSource.Play();
@@ -231,6 +205,7 @@ public class PlayerFireControl : MonoBehaviour
         else
         {
             holdTornado.Stop();
+            captureZone.gameObject.SetActive(false);
             if (audioSource.clip && audioSource.clip.name == holdCaptureSound.name)
             {
                 audioSource.Stop();
