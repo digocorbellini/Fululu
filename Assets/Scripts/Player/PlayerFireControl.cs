@@ -122,10 +122,19 @@ public class PlayerFireControl : MonoBehaviour
         return Time.time > (lastChargedFireTime + weapon.chargeFireCooldown);
     }
 
-    public bool StopCharging()
+    // Stops the attack from charging. Should shoot defines if we should 
+    // shoot a bullet based on the current charge amount. Returns true if 
+    // a bullet was fired and false otherwise.
+    public bool StopCharging(bool shouldShoot = true)
     {
         isCharging = false;
         bool didFire = false;
+
+        if (!shouldShoot)
+        {
+            timeCharging = 0.0f;
+            return false;
+        }
 
         //shoot the projectile
         if (timeCharging >= fullChargeTime && CanShootCharged())
