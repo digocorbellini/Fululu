@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
   m_Name: TutorialGrenade
   m_EditorClassIdentifier: 
-  captureImage: {fileID: 21300000, guid: a942d4552de6a17459beecac98389a17, type: 3}
+  captureImage: {fileID: 21300000, guid: 6e3027786a484bf4eb580262aeb102d7, type: 3}
   chargeTime: 0.8
   rapidFireCooldown: 0.7
   chargeFireCooldown: 0
