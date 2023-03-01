@@ -230,6 +230,7 @@ MonoBehaviour:
   isStateMachineActive: 1
   currentState: {fileID: 1271492577053661461}
   isCapturable: 1
+  outlineMaterial: {fileID: 2100000, guid: f70da51c48d6d404ba6cdf8115d171c1, type: 2}
   captureCost: 0.66
   captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
   hitbox: {fileID: 0}
@@ -275,6 +276,7 @@ MonoBehaviour:
   isPlayer: 0
   chargeOnHit: 1
   iFrameTime: 0
+  wasReset: 0
   health: 0
   alreadyDead: 0
 --- !u!54 &1271492577685882579

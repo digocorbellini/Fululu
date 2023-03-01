@@ -226,15 +226,17 @@ public class PlayerFireControl : MonoBehaviour
             audioSource.clip = holdCaptureSound;
             audioSource.loop = true;
             audioSource.Play();
+            GameManager.instance.CallOnStartCaptureSucking();
         }
         else
         {
             holdTornado.Stop();
-            if (audioSource.clip.name == holdCaptureSound.name)
+            if (audioSource.clip && audioSource.clip.name == holdCaptureSound.name)
             {
                 audioSource.Stop();
                 audioSource.loop = false;
             }
+            GameManager.instance.CallOnStopCaptureSucking();
         }
     }
 

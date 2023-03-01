@@ -1039,16 +1039,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Single Shot Ghost (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8608421211725098311, guid: 891f7e5a5d2edcf4dbf1ebefecfd0c26,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8608421211725098311, guid: 891f7e5a5d2edcf4dbf1ebefecfd0c26,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: f70da51c48d6d404ba6cdf8115d171c1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891f7e5a5d2edcf4dbf1ebefecfd0c26, type: 3}
 --- !u!1 &1379675910
@@ -1269,11 +1259,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lancer Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3754730518732523038, guid: 13b79c7e15311fc4891b5f0f2c5099c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3754730518732523039, guid: 13b79c7e15311fc4891b5f0f2c5099c6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1329,21 +1314,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6586467478915203411, guid: 13b79c7e15311fc4891b5f0f2c5099c6,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6586467478915203411, guid: 13b79c7e15311fc4891b5f0f2c5099c6,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: f70da51c48d6d404ba6cdf8115d171c1, type: 2}
-    - target: {fileID: 6586467478915203411, guid: 13b79c7e15311fc4891b5f0f2c5099c6,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: a775bf1c1ce3a1a4e8f116564b33bb0b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b79c7e15311fc4891b5f0f2c5099c6, type: 3}
 --- !u!1 &1914219798
@@ -1753,6 +1723,7 @@ MonoBehaviour:
   isStateMachineActive: 1
   currentState: {fileID: 0}
   isCapturable: 0
+  outlineMaterial: {fileID: 0}
   captureCost: 1
   captureWeapon: {fileID: 0}
   hitbox: {fileID: 0}
