@@ -18,6 +18,7 @@ public abstract class ControllerBase : MonoBehaviour {
     public State currentState;
 
     public bool isCapturable = true;
+    public Material outlineMaterial;
     [Range(0f, 1f)]
     public float captureCost = 1.0f;
     public Weapon captureWeapon;
@@ -37,6 +38,10 @@ public abstract class ControllerBase : MonoBehaviour {
     public bool isStunned = false;
 
     protected static AudioClip hurtSFX;
+    private SkinnedMeshRenderer meshRenderer;
+    private List<Material> materials = new List<Material>();
+    private Material outlineReference;
+    private bool isSucking;
 
     [RuntimeInitializeOnLoadMethodAttribute]
     static void LoadHurtSFX()
@@ -55,8 +60,44 @@ public abstract class ControllerBase : MonoBehaviour {
         }
         currentState?.enter();
     }
-    public virtual void init() {}
+    public virtual void init()
+    {
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
+        if (!outlineMaterial)
+            Debug.LogError("missing outline material in enemy");
+        
+        // get material references
+        meshRenderer.GetMaterials(materials);
+        outlineReference = new Material(outlineMaterial);
+
+        GameManager.instance.OnStartCaptureSucking += HandleStartCaptureSucking;
+        GameManager.instance.OnStopCaptureSucking += HandleStopCaptureSucking;
+
+        isSucking = false;
+    }
+
+    private void HandleStartCaptureSucking()
+    {
+        if (!isCapturable)
+            return;
+
+        if(!materials.Contains(outlineReference))
+            materials.Add(outlineReference);
+        meshRenderer.materials = materials.ToArray();
+        isSucking = true;
+    }
+
+    private void HandleStopCaptureSucking()
+    {
+        if (!isCapturable)
+            return;
+
+        isSucking = false;
+        if (materials.Contains(outlineReference))
+            materials.Remove(outlineReference);
+        meshRenderer.materials = materials.ToArray();
+    }
 
     public void FixedUpdate() {
         if (!isStateMachineActive) return;
@@ -65,6 +106,22 @@ public abstract class ControllerBase : MonoBehaviour {
             switchState(nextState.getStateName());
         currentState.run();
         run();
+
+        // handle sucking outline
+        if (isSucking)
+        {
+            print("handling sucking");
+            if (GameManager.instance.player.GetChargePercent() >= captureCost)
+            {
+                outlineReference.SetInt("_IsCapturable", 1);
+                meshRenderer.materials = materials.ToArray();
+            }
+            else
+            {
+                outlineReference.SetInt("_IsCapturable", 0);
+                meshRenderer.materials = materials.ToArray();
+            }
+        }
     }
 
     private void OnReset()
@@ -80,6 +137,8 @@ public abstract class ControllerBase : MonoBehaviour {
     protected virtual void OnDestroy()
     {
         GameManager.instance.OnReset -= OnReset;
+        GameManager.instance.OnStartCaptureSucking -= HandleStartCaptureSucking;
+        GameManager.instance.OnStopCaptureSucking -= HandleStopCaptureSucking;
     }
 
     public virtual void run() {}

@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float hitChargeAmount = .1f;
     [SerializeField] private ChargeEffects chargeEffects;
     private bool isCapturing;
-    [SerializeField] private float currCharge = 0.0f;
+    public float currCharge = 0.0f;
     [SerializeField] private float startingCharge = 4.0f;
 
     [Header("Shield")]
@@ -220,6 +220,8 @@ public class PlayerController : MonoBehaviour
         {
             fcs.StartCharging();
             moveSpeedMod = MathF.Min(chargingMoveModifier, moveSpeedMod);
+
+            StopCapturing();
         }
     }
 
@@ -231,11 +233,19 @@ public class PlayerController : MonoBehaviour
             fcs.StopCharging();
             stateManager.StartAttack();
             moveSpeedMod = 1.0f;
+
+            StopCapturing();
         }
     }
 
     private void HandleAltHold(InputAction.CallbackContext context)
     {
+        // cancel attack charge if it is charging
+        if (fcs.isCharging)
+        {
+            fcs.StopCharging(false);
+        }
+
         if (!GameManager.isPaused)
         {
             fcs.ShowCaptureZone(true);

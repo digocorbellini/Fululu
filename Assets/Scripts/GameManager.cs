@@ -20,6 +20,13 @@ public class GameManager : MonoBehaviour
     public event Action OnReset;
     public void CallOnReset() => OnReset?.Invoke();
 
+    // for enemy outlines
+    public event Action OnStartCaptureSucking;
+    public void CallOnStartCaptureSucking() => OnStartCaptureSucking?.Invoke();
+    public event Action OnStopCaptureSucking;
+    public void CallOnStopCaptureSucking() => OnStopCaptureSucking?.Invoke();
+
+
     public void Awake()
     {
         if(!instance)

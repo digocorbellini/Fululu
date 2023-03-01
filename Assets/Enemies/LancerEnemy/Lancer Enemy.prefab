@@ -342,6 +342,8 @@ MonoBehaviour:
   isStateMachineActive: 1
   currentState: {fileID: 3754730518936340528}
   isCapturable: 1
+  outlineMaterial: {fileID: 2100000, guid: f70da51c48d6d404ba6cdf8115d171c1, type: 2}
+  captureCost: 1
   captureWeapon: {fileID: 11400000, guid: c56f01a14d0c4c145876b09a4d13bd54, type: 2}
   hitbox: {fileID: 0}
   rb: {fileID: 0}
@@ -412,7 +414,9 @@ MonoBehaviour:
   maxHealth: 8
   armorPoints: 0
   isPlayer: 0
+  chargeOnHit: 1
   iFrameTime: 0
+  wasReset: 0
   health: 0
   alreadyDead: 0
 --- !u!114 &666531667
