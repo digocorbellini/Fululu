@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5fb72858e27a045a78cbf2ba13b9b7, type: 3}
   m_Name: Lancer Capture Weapon
   m_EditorClassIdentifier: 
-  captureImage: {fileID: 21300000, guid: 7e26f85258fbeb64b9eda09a24e439fe, type: 3}
+  captureImage: {fileID: 21300000, guid: 1865c1b445d69ed4c9730020f94371cb, type: 3}
   chargeTime: 0.3
   rapidFireCooldown: 0.15
   chargeFireCooldown: 0
