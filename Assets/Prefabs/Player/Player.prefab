@@ -5850,6 +5850,7 @@ MonoBehaviour:
   hurtEffects: {fileID: 6212642302047372019}
   hurtScreenTintAlpha: 0.2
   deathScreenTintDuration: 2
+  upperbodyBone: {fileID: 842231476600067933}
   controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &720201392830950562
@@ -5883,6 +5884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentState: 0
   animator: {fileID: 9109157147480560793}
+  IsAttackAnim: 0
   startingState: 0
 --- !u!114 &2002906366990509871
 MonoBehaviour:
@@ -6128,7 +6130,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367086278394}
-  m_LocalRotation: {x: -0.055606354, y: -0.9615934, z: -0.22903815, w: 0.14066899}
+  m_LocalRotation: {x: -0.05560633, y: -0.9615934, z: -0.22903818, w: 0.1406689}
   m_LocalPosition: {x: -0.30456516, y: 0.784619, z: -1.0945039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6388,7 +6390,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.05560635, y: -0.96159333, z: -0.22903815, w: 0.14066894}
+  m_LocalRotation: {x: -0.055606335, y: -0.96159333, z: -0.22903815, w: 0.14066891}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8196,6 +8198,12 @@ PrefabInstance:
 --- !u!4 &738590525163122679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2684338528763741951, guid: 76ff9c2f34dfc1a458e5b02bdae0ee97,
+    type: 3}
+  m_PrefabInstance: {fileID: 3386899884896069896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &842231476600067933 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6579589108087325099, guid: 76ff9c2f34dfc1a458e5b02bdae0ee97,
     type: 3}
   m_PrefabInstance: {fileID: 3386899884896069896}
   m_PrefabAsset: {fileID: 0}

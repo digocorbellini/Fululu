@@ -21,7 +21,8 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private PlayerState _currentState;
     [SerializeField] public Animator animator;
 
-    private bool IsAttackAnim;
+    [HideInInspector]
+    public bool IsAttackAnim;
 
     public PlayerState currentState { 
         get
@@ -82,7 +83,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         if (currentState != PlayerState.Dead)
         {
-            animator.Play("Attack");
+            animator.CrossFade("Attack", 0.25f);
             IsAttackAnim = true;
         }
     }
@@ -91,7 +92,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         if (IsAttackAnim)
         {
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            if(animator.GetCurrentAnimatorStateInfo(2).IsName("Attack") && animator.GetCurrentAnimatorStateInfo(2).normalizedTime >= 1f)
             {
                 IsAttackAnim = false;
             }
