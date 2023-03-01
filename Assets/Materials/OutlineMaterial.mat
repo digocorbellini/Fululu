@@ -114,10 +114,10 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CapturableColor: {r: 1, g: 1, b: 1, a: 0}
+    - _CapturableColor: {r: 0.38823533, g: 0.8235295, b: 0.76470596, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NotCapturableColor: {r: 1, g: 0, b: 0, a: 0}
+    - _NotCapturableColor: {r: 0.86274517, g: 0.3019608, b: 0.47450984, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
