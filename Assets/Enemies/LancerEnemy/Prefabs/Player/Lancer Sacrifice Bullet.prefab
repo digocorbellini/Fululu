@@ -86,8 +86,8 @@ MonoBehaviour:
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 0
   bulletSpawnHeight: 1
-  detectionRadius: 10
-  numSpearsPerEnemy: 5
+  detectionRadius: 20
+  numSpearsPerEnemy: 3
   attackRadius: 0.5
   maxTargets: 10
   groundLayer:
