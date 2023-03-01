@@ -220,6 +220,8 @@ public class PlayerController : MonoBehaviour
         {
             fcs.StartCharging();
             moveSpeedMod = MathF.Min(chargingMoveModifier, moveSpeedMod);
+
+            StopCapturing();
         }
     }
 
@@ -231,11 +233,19 @@ public class PlayerController : MonoBehaviour
             fcs.StopCharging();
             stateManager.StartAttack();
             moveSpeedMod = 1.0f;
+
+            StopCapturing();
         }
     }
 
     private void HandleAltHold(InputAction.CallbackContext context)
     {
+        // cancel attack charge if it is charging
+        if (fcs.isCharging)
+        {
+            fcs.StopCharging(false);
+        }
+
         if (!GameManager.isPaused)
         {
             fcs.ShowCaptureZone(true);
