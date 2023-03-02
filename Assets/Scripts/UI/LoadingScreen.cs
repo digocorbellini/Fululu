@@ -30,7 +30,7 @@ public class LoadingScreen : MonoBehaviour
 
     public IEnumerator Disappear()
     {
-        anim.CrossFade("Disappear", 0.1f);
+        anim.Play("Disappear");
         yield return new WaitUntil(() => IsAnimationDone("Disappear"));
         gameObject.SetActive(false);
     }
