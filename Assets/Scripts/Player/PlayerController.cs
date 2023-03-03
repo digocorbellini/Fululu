@@ -470,6 +470,7 @@ public class PlayerController : MonoBehaviour
     public void Revive()
     {
         stateManager.Revive();
+        DisableShield(false);
         //graze.Reset();
         hitbox.health = hitbox.maxHealth;
         hitbox.alreadyDead = false;
