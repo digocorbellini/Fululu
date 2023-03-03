@@ -6,6 +6,8 @@ public abstract class MummyState : State
 {
     protected MummyController controller;
 
+    public EnemyFireControl enemyFireControl;
+
     public override void init()
     {
         base.init();

@@ -8,9 +8,6 @@ public class MummyChase : MummyState
     public float speed = 3;
     public float chaseDuration = 8;
 
-    [Header("Attack")]
-    public EnemyFireControl trippleAttack;
-
     private Transform player;
     private float timer;
 
@@ -24,8 +21,8 @@ public class MummyChase : MummyState
         player = controller.player.transform;
         controller.rb.velocity = Vector3.zero;
 
-        trippleAttack.ResetTimer();
-        trippleAttack.autoFire = true;
+        enemyFireControl.ResetTimer();
+        enemyFireControl.autoFire = true;
 
         timer = 0;
     }
@@ -56,6 +53,6 @@ public class MummyChase : MummyState
 
     public override void exit()
     {
-        trippleAttack.autoFire = false;
+        enemyFireControl.autoFire = false;
     }
 }

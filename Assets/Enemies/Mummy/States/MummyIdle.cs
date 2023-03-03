@@ -9,9 +9,6 @@ public class MummyIdle : MummyState
     public float alternateDirTime = 1;
     public float rotateSpeed = 3;
 
-    [Header("Attack")]
-    public EnemyFireControl shotController;
-
     private float timer = 0;
     private bool isGoingRight = true;
     private float alternateTimer = 0;
@@ -23,8 +20,8 @@ public class MummyIdle : MummyState
 
     public override void enter()
     {
-        shotController.ResetTimer();
-        shotController.autoFire = true;
+        enemyFireControl.ResetTimer();
+        enemyFireControl.autoFire = true;
 
         controller.rb.velocity = Vector3.zero;
 
@@ -65,7 +62,7 @@ public class MummyIdle : MummyState
 
     public override void exit()
     {
-        shotController.autoFire = false;
+        enemyFireControl.autoFire = false;
     }
 
 }

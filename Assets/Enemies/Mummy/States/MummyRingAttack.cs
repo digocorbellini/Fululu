@@ -7,7 +7,6 @@ public class MummyRingAttack : MummyState
     public float duration = 5;
     public float shotDelay = 1f;
 
-    public EnemyFireControl fireControl;
     public Transform ringSpawn;
 
     private float timer;
@@ -30,7 +29,7 @@ public class MummyRingAttack : MummyState
     private IEnumerator wait()
     {
         yield return new WaitForSeconds(shotDelay);
-        fireControl.Fire();
+        enemyFireControl.Fire();
     }
 
     public override void run()

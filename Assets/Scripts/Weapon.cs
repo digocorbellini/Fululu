@@ -34,6 +34,8 @@ public class Weapon : ScriptableObject
     [Tooltip("Fired when sacrificing the weapon")]
     public BulletBase sacrificeBullet;
 
+    private List<BulletBase> spawnedBullets = new List<BulletBase>();
+
     private void SpawnBullets(Transform transform, Vector3? target, BulletSpread spread, BulletBase bullet)
     {
         BulletSpread instance = Instantiate(spread, transform);
@@ -44,8 +46,8 @@ public class Weapon : ScriptableObject
             instance.transform.LookAt(targetNonNull);
         }
 
-        instance.Bullet = bullet.gameObject;
-        instance.Fire();
+        instance.Bullet = bullet;
+        instance.Fire(ref spawnedBullets);
     }
 
     public bool ChargedFire(Transform shootPos, Vector3? target)
@@ -78,5 +80,16 @@ public class Weapon : ScriptableObject
         }
 
         return false;
+    }
+
+    public void ClearBullets()
+    {
+        foreach (var bullet in spawnedBullets)
+        {
+            if(bullet)
+            {
+                Destroy(bullet.gameObject);
+            }
+        }
     }
 }

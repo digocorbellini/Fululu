@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2afdb4594fd13d41811be05c5f5a42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyFireControl: {fileID: 1438707435054107478}
   duration: 5
   shotDelay: 1
-  fireControl: {fileID: 1438707435054107478}
   ringSpawn: {fileID: 1438707436170853953}
 --- !u!114 &1438707435054107478
 MonoBehaviour:
@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a639d8e493396b4429a7046905f90ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyFireControl: {fileID: 1438707435127595732}
   speed: 4
   chaseDuration: 10
-  trippleAttack: {fileID: 1438707435127595732}
 --- !u!114 &1438707435127595732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d7d8a48aa51754784af6ef11c96fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyFireControl: {fileID: 1438707435562296466}
   IdleDuration: 10
   alternateDirTime: 1.5
   rotateSpeed: 8
-  shotController: {fileID: 1438707435562296466}
 --- !u!114 &1438707435562296466
 MonoBehaviour:
   m_ObjectHideFlags: 0

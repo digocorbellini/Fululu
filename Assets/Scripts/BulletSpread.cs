@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Ref<T>
+{
+    private T backing;
+    public T Value { get { return backing; } set { backing = value; } }
+    public Ref(T reference)
+    {
+        backing = reference;
+    }
+}
+
 /// <summary>
 /// This component allows a projectile spread to be determined. However,
 /// this is indepenedent of the bullet/projectile itself.
@@ -11,7 +21,7 @@ using UnityEngine;
 public class BulletSpread : MonoBehaviour
 {
     [Tooltip("This is the projectile that is meant to be fired in the given spread.")]
-    public GameObject Bullet;
+    public BulletBase Bullet;
 
     [Header("Shot Stats")]
     public int NumOfBullets = 2;
@@ -25,13 +35,14 @@ public class BulletSpread : MonoBehaviour
     public int numBursts = 1;
     public float timeBetweenBursts = 0.0f;
 
-    public void Fire()
+    public void Fire(ref List<BulletBase> bulletList)
     {
-        StartCoroutine(FireCoroutine());
+        StartCoroutine(FireCoroutine(new Ref<List<BulletBase>>(bulletList)));
     }
 
-    public void SpawnBullets()
+    public List<BulletBase> SpawnBullets()
     {
+        List<BulletBase> spawned = new List<BulletBase>();
         // angle between consecutive bullets
         float rotationAngle = DistanceBetweenBullets / SpawnRadius;
         // find the center of the circle relative to the starting 
@@ -74,19 +85,23 @@ public class BulletSpread : MonoBehaviour
             Vector3 spawnDirection = (spawnPos - centerOfCircle).normalized;
             spawnPos = centerOfCircle + (spawnDirection * SpawnRadius);
             spawnDirection = (spawnPos - centerOfCircle).normalized;
-            Transform bullet = Instantiate(Bullet, spawnPos, Quaternion.LookRotation(spawnDirection)).transform;
+            BulletBase spawnedBullet = Instantiate(Bullet, spawnPos, Quaternion.LookRotation(spawnDirection));
+            spawned.Add(spawnedBullet);
+            Transform bullet = spawnedBullet.transform;
             // rotate bullet vertically to match parent vertical rotation
             bullet.RotateAround(centerOfCircle, transform.right, transform.rotation.eulerAngles.x);
 
             currentRotation += rotationAngle;
         }
+
+        return spawned;
     }
 
-    public IEnumerator FireCoroutine()
+    public IEnumerator FireCoroutine(Ref<List<BulletBase>> bulletList)
     {
         for(int i = 0; i < numBursts; i++)
         {
-            SpawnBullets();
+            bulletList?.Value?.AddRange(SpawnBullets());
             yield return new WaitForSeconds(timeBetweenBursts);
         }
 

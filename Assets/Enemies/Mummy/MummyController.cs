@@ -7,7 +7,6 @@ public class MummyController : ControllerBase
 {
     [HideInInspector] public GameObject player;
 
-
     public AudioSource source;
     public AudioClip deathSound;
     public AudioClip spawnSound;
@@ -35,6 +34,11 @@ public class MummyController : ControllerBase
 
     private void OnDeath()
     {
+        currentState.exit();
+        if (currentState is MummyState mumState)
+        {
+            mumState.enemyFireControl.ClearProjectiles();
+        }
         source.PlayOneShot(hurtSFX);
         print("Boss killed!!");
         isStateMachineActive = false;

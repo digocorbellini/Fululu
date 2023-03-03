@@ -54,4 +54,9 @@ public class EnemyFireControl : MonoBehaviour
     {
         timer = autoFireInterval;
     }
+
+    public void ClearProjectiles()
+    {
+        weapon?.ClearBullets();
+    }
 }
