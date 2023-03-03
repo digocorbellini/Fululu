@@ -109,13 +109,8 @@ public class EntityHitbox : MonoBehaviour
                 float actualDamage = attack.damage;
                 if(shieldAmount > 0)
                 {
-                    actualDamage -= shieldAmount;
-                    shieldAmount -= attack.damage;
+                    actualDamage = 0;
 
-                    if(shieldAmount <= 0)
-                    {
-                        CallOnShieldBreak(false);
-                    }
                     if(actualDamage <= 0)
                     {
                         TryDestroyAttack(attack);
@@ -182,6 +177,7 @@ public class EntityHitbox : MonoBehaviour
     IEnumerator ShieldLifetime(float time)
     {
         yield return new WaitForSecondsRealtime(time);
+        Debug.LogWarning("Shield expired");
 
         if(shieldAmount > 0)
         {

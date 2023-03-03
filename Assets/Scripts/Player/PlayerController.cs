@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private PlayerFireControl fcs;
     private GrazeZone graze;
+    private PlayerBuffManager buffManager;
 
     private bool isDashing = false;
     private bool isDashReset = true;
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
+        buffManager = GetComponent<PlayerBuffManager>();
         if (stateManager)
         {
             anim = stateManager.animator;
@@ -278,7 +280,7 @@ public class PlayerController : MonoBehaviour
         {
             fcs.OnCapture(capturedEntity);
             UseCharge(capturedEntity.captureCost);
-            hitbox.GiveIFrames(1.5f);
+            buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1f);
             StopCapturing();
             return true;
         }
@@ -594,11 +596,6 @@ public class PlayerController : MonoBehaviour
 
     private void DisableShield(bool wasTimeout)
     {
-        if (!wasTimeout)
-        {
-            // Play some sort of shield break effect here
-        }
-
         shieldMesh.SetActive(false);
         isShielded = false;
     }

@@ -13,21 +13,25 @@ public class SingleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj = Instantiate(entity, transform.position, Quaternion.identity);
-        obj.GetComponentInChildren<EntityHitbox>().OnDestroyed += DoRespawn;
+        DoRespawn(); 
+    }
+
+    private void DoDeath()
+    {
+        StopAllCoroutines();
+        StartCoroutine(RespawnTimer());
     }
 
     private void DoRespawn()
     {
-        StopAllCoroutines();
-        StartCoroutine(Respawn());
+        GameObject obj = Instantiate(entity, transform.position, Quaternion.identity);
+        obj.GetComponentInChildren<EntityHitbox>().OnDestroyed += DoDeath;
     }
 
-    IEnumerator Respawn()
+    IEnumerator RespawnTimer()
     {
         Debug.Log("Respawning...");
         yield return new WaitForSecondsRealtime(spawnInterval);
-        GameObject obj = Instantiate(entity.gameObject, transform.position, Quaternion.identity);
-        obj.GetComponentInChildren<EntityHitbox>().OnDeath += DoRespawn;
+        DoRespawn();
     }
 }
