@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
     private void HandleOnDeath()
     {
         // TODO: handle player death (animations, sounds, etc)
+        StopCapturing();
         stateManager.SetState(PlayerState.Dead);
         anim.SetBool("IsDead", true);
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
