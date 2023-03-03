@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
             fcs.StopCharging(false);
         }
 
-        if (!GameManager.isPaused)
+        if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             fcs.ShowCaptureZone(true);
             isCapturing = true;
@@ -287,7 +287,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleUltimate(InputAction.CallbackContext context)
     {
-        if (!GameManager.isPaused)
+        if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             // Sacrifice weapon if equipped
             if (fcs.weapon != fcs.defaultWeapon)
