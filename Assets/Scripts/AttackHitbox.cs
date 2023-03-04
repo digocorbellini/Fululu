@@ -8,6 +8,7 @@ public class AttackHitbox : MonoBehaviour
     public float damage = 1;
     public bool isExplosive = false;
     public bool isStun = false;
+    public bool isShieldPiercing = false;
     public bool destroyOnHit = true;
 
     private List<EntityHitbox> alreadyHit;

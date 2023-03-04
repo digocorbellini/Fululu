@@ -4938,6 +4938,7 @@ MonoBehaviour:
   damage: 0
   isExplosive: 0
   isStun: 0
+  isShieldPiercing: 0
   destroyOnHit: 0
 --- !u!82 &-89239226256865173
 AudioSource:
@@ -5055,7 +5056,7 @@ MonoBehaviour:
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 0
   type: 2
-  amount: 2
+  amount: 1000
   buffDuration: 5
 --- !u!1 &5485326558016140675
 GameObject:

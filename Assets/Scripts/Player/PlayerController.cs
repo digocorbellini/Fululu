@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour
         {
             fcs.OnCapture(capturedEntity);
             UseCharge(capturedEntity.captureCost);
-            buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1f);
+            buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1000f);
             StopCapturing();
             return true;
         }

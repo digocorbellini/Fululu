@@ -109,14 +109,28 @@ public class EntityHitbox : MonoBehaviour
                 float actualDamage = attack.damage;
                 if(shieldAmount > 0)
                 {
-                    actualDamage = 0;
-
-                    if(actualDamage <= 0)
+                  
+                    if (!attack.isShieldPiercing)
                     {
+                        // Non piercing attacks affected by shield
+                        actualDamage -= shieldAmount;
+                    }
+
+                    shieldAmount -= attack.damage;
+
+                    if(shieldAmount <= 0)
+                    {
+                        // Was shield broken?
+                        CallOnShieldBreak(false);
+                    }
+                    if (actualDamage <= 0)
+                    {
+                        // Was attack negated by shield?
                         TryDestroyAttack(attack);
                         return;
                     }
 
+                    Debug.LogWarning("Shield left: " + shieldAmount);
                 }
 
                 actualDamage = Mathf.Min(health, attack.damage);
@@ -165,6 +179,7 @@ public class EntityHitbox : MonoBehaviour
 
     public void GrantShieldBuff(float amount, float time)
     {
+        Debug.LogWarning("Giving " + amount + " shield for " + time + " seconds");
         if(shieldBuff != null)
         {
             StopCoroutine(shieldBuff);
@@ -177,7 +192,6 @@ public class EntityHitbox : MonoBehaviour
     IEnumerator ShieldLifetime(float time)
     {
         yield return new WaitForSecondsRealtime(time);
-        Debug.LogWarning("Shield expired");
 
         if(shieldAmount > 0)
         {
