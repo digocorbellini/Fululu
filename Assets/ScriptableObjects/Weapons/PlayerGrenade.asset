@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerGrenade
   m_EditorClassIdentifier: 
   captureImage: {fileID: 21300000, guid: 6e3027786a484bf4eb580262aeb102d7, type: 3}
-  chargeTime: 0.8
-  rapidFireCooldown: 0.7
+  chargeTime: 0.7
+  rapidFireCooldown: 0.6
   chargeFireCooldown: 0
   spreadPrefab: {fileID: 2202035863254959303, guid: 5f26ee406682da447ac070820bb3ab73,
     type: 3}
