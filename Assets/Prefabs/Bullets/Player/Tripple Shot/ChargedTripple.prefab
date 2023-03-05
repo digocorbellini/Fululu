@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1763858908160990358}
   - component: {fileID: 2367773449566058010}
   m_Layer: 8
-  m_Name: DefaultCharged
+  m_Name: ChargedTripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,6 @@ MonoBehaviour:
   damage: 4
   isExplosive: 0
   isStun: 0
-  isShieldPiercing: 0
   destroyOnHit: 1
 --- !u!114 &1763858908160990358
 MonoBehaviour:
@@ -233,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 60
-  lifetime: 10
+  Speed: 100
+  lifetime: 8
   trails:
   - {fileID: 9154799288347540397}
   - {fileID: 213634177406166856}

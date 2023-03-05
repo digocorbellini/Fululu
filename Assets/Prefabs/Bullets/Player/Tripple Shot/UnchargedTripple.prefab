@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1763858908160990358}
   - component: {fileID: 8351954180003137433}
   m_Layer: 8
-  m_Name: DefaultBullet
+  m_Name: UnchargedTripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,6 @@ MonoBehaviour:
   damage: 1
   isExplosive: 0
   isStun: 0
-  isShieldPiercing: 0
   destroyOnHit: 1
 --- !u!114 &1763858908160990358
 MonoBehaviour:
@@ -211,8 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
-  lifetime: 10
+  Speed: 30
+  lifetime: 8
   trails:
   - {fileID: 104675940821812350}
   hitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
