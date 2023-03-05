@@ -71,9 +71,11 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false;
     private bool isDashReset = true;
     private float dashTimer = 0.0f;
+    private bool dashBlocked;
     private bool isGrounded = true;
     private bool attackAni;
     private float moveSpeedMod;
+    private float externalMoveSpeedMod = 1.0f;
     private const float COLLSION_SPEED = -0.5f;
 
     private AudioSource audioSource;
@@ -131,6 +133,12 @@ public class PlayerController : MonoBehaviour
         UpdateGrazeUI();
 
         GameManager.instance.LockCursor();
+    }
+
+    public void ModifySpeed(float mod, bool blockDash = false)
+    {
+        externalMoveSpeedMod = mod;
+        dashBlocked = blockDash;
     }
 
     public void SetReticleRing(Image ring)
@@ -316,7 +324,7 @@ public class PlayerController : MonoBehaviour
     {
         // TODO: implement dash. Make sure to check in with player state manager
         // to see if a dash can be performed rn
-        if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady())
+        if(!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Dashing) && DashReady() && !dashBlocked)
         {
             isDashing = true;
             isDashReset = false;
@@ -515,7 +523,7 @@ public class PlayerController : MonoBehaviour
 
         mesh.forward = direction;
 
-        Vector3 newVelocity = moveDirection * moveSpeed * moveSpeedMod * Time.deltaTime;
+        Vector3 newVelocity = moveDirection * moveSpeed * moveSpeedMod * externalMoveSpeedMod * Time.deltaTime;
 
         float forwardSpeed = Vector3.Dot(moveDirection, mesh.forward) / (mesh.forward.sqrMagnitude);
         float rightSpeed = Vector3.Dot(moveDirection, mesh.right) / (mesh.right.sqrMagnitude);
@@ -620,4 +628,6 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawRay(mesh.position, mesh.forward * 5);
     }
+
+    
 }
