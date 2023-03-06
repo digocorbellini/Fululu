@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0c3c6d749141143b6baae7ec1d5cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDetectionRadius: 20
+  playerDetectionRadius: 30
   checkInterval: 0.1
 --- !u!1 &566409364522778074
 GameObject:
@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a4fe2433ea14643aab41d580664610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  giveUpDistance: 23
+  giveUpDistance: 33
   attackRange: 2
-  moveSpeed: 2.4
+  moveSpeed: 3
 --- !u!1 &566409364769636388
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +551,7 @@ MonoBehaviour:
   damage: 1
   isExplosive: 0
   isStun: 0
+  isShieldPiercing: 0
   destroyOnHit: 0
 --- !u!1 &7630114819371738139
 GameObject:
