@@ -181,6 +181,10 @@ public class PlayerFireControl : MonoBehaviour
         holdTornado.gameObject.SetActive(false);
         captureZone.gameObject.SetActive(false);
         audioSource.PlayOneShot(captureSFX);
+        if (weapon != defaultWeapon)
+        {
+            SacrificeWeapon();
+        }
         SwitchWeapon(capturedEntity.captureWeapon);
         if (audioSource.clip.name == holdCaptureSound.name)
         {
