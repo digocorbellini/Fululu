@@ -768,10 +768,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 5697292597997545030}
-  OptionsPanel: {fileID: 5649053954693822388}
   initialSelection: {fileID: 3002350172570004309}
   pauseGroup: {fileID: 4920034713996746612}
-  optionsGroup: {fileID: 7034462463448016594}
+  optionsMenu: {fileID: 347599526258317619}
+  OptionsButton: {fileID: 8463349100526868936}
 --- !u!1 &3002350173463918365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,21 +1377,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6f7ca4c92bf4a84db4a93526350d7f7, type: 3}
---- !u!1 &5649053954693822388 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6180578008140554720, guid: c6f7ca4c92bf4a84db4a93526350d7f7,
+--- !u!114 &347599526258317619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2265945833566228327, guid: c6f7ca4c92bf4a84db4a93526350d7f7,
     type: 3}
   m_PrefabInstance: {fileID: 1990778328206104148}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daf8d3f68be06f46b161f751c09dab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5649053954693822395 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6180578008140554735, guid: c6f7ca4c92bf4a84db4a93526350d7f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1990778328206104148}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &7034462463448016594 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 8808974903004246150, guid: c6f7ca4c92bf4a84db4a93526350d7f7,
     type: 3}
   m_PrefabInstance: {fileID: 1990778328206104148}
   m_PrefabAsset: {fileID: 0}

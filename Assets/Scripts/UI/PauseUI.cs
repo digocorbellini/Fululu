@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class PauseUI : MonoBehaviour
 {
     public GameObject PausePanel;
-    public GameObject OptionsPanel;
     public Selectable initialSelection;
     public CanvasGroup pauseGroup;
-    public CanvasGroup optionsGroup;
+    public OptionsMenu optionsMenu;
+    public Selectable OptionsButton;
 
     // Start is called before the first frame update
     public void Show()
@@ -18,7 +18,7 @@ public class PauseUI : MonoBehaviour
 
         // ensure only pause panel is active
         PausePanel.SetActive(true);
-        OptionsPanel.SetActive(false);
+        optionsMenu.Hide();
         pauseGroup.interactable = true;
 
         initialSelection.Select();
@@ -27,7 +27,7 @@ public class PauseUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        pauseGroup.interactable = true;
+        pauseGroup.interactable = false;
     }
 
     public void ResumeGame()
@@ -43,16 +43,15 @@ public class PauseUI : MonoBehaviour
     public void OpenOptions()
     {
         PausePanel.SetActive(false);
-        OptionsPanel.SetActive(true);
-        optionsGroup.interactable = true;
+        optionsMenu.Show();
         pauseGroup.interactable = false;
     }
 
     public void BackToPause()
     {
         PausePanel.SetActive(true);
-        OptionsPanel.SetActive(false);
-        optionsGroup.interactable = false;
+        optionsMenu.Hide();
         pauseGroup.interactable = true;
+        OptionsButton.Select();
     }
 }
