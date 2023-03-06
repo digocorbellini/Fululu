@@ -36,11 +36,12 @@ public class DialogueController : MonoBehaviour
         {
             if (d.name == dialogueName)
             {
+                d.Reset();
                 currentDialogue = d;
 
                 if(autoPlay)
                 {
-                    //StopAllCoroutines();
+                    StopAllCoroutines();
                     StartCoroutine(startAutoPlay(d));
                 }
 
@@ -53,16 +54,20 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator startAutoPlay(Dialogue d)
     {
+        print("start auto play called");
+
         string nextText;
         AudioClip nextAudio;
         while (currentDialogue.GetNextPair(out nextText, out nextAudio))
         {
+            print("playing dialogue");
+
             if (subtitlesOn)
                 subtitleText.text = nextText;
             audioSource.clip = nextAudio;
 
             audioSource.Play();
-            yield return new WaitForSeconds(audioSource.clip.length + timeBetweenAutoPlay);
+            yield return new WaitForSeconds(nextAudio.length + timeBetweenAutoPlay);
             audioSource.Stop();
             subtitleText.text = "";
         }
@@ -81,7 +86,8 @@ public class DialogueController : MonoBehaviour
 
         string nextText;
         AudioClip nextAudio;
-        currentDialogue.GetNextPair(out nextText, out nextAudio);
+        if (!currentDialogue.GetNextPair(out nextText, out nextAudio))
+            return;
 
         if (subtitlesOn)
             subtitleText.text = nextText;

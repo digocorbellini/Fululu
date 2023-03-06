@@ -10,7 +10,16 @@ public class Tester : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            if (!controller.SetCurrentDialogue("ExampleDialogue", true))
+        {
+            Debug.Log("T pressed");
+            if (!controller.SetCurrentDialogue("ExampleDialogue"))
                 Debug.LogError("AAAAH WRONG DIALOGUE NAME");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            controller.PlayNextDialogue();
+        }
+            
     }
 }

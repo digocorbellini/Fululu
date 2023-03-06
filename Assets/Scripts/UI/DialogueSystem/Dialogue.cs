@@ -12,7 +12,7 @@ public class Dialogue : ScriptableObject
     [Header("This name will be used to access what dialogue to play")]
     public string DialogueName;
 
-    private int index;
+    private int index = 0;
 
     /// <summary>
     /// Get the next audio and text needed for this dialogue.
@@ -22,8 +22,9 @@ public class Dialogue : ScriptableObject
     /// <returns>True if we have any pairs left, otherwise false</returns>
     public bool GetNextPair(out string text, out AudioClip audio)
     {
-        if (index >= DialogueAudio.Count)
+        if (index >= DialogueAudio.Count || index >= DialogueText.Count)
         {
+            Debug.Log("GET NEXT PAIR IS FALSE. index = " + index);
             text = "";
             audio = null;
             return false;
