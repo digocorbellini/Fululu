@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1763858908160990358}
   - component: {fileID: 8351954180003137433}
   m_Layer: 8
-  m_Name: DefaultBullet
+  m_Name: GremlinUncharged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
+  Speed: 26
   lifetime: 10
   trails:
   - {fileID: 104675940821812350}
@@ -243,7 +243,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2fe915d0e8ea1b24cab11a9594c1e2cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 5118e00539cc16d45b4fe8ca03b48163, type: 2}
     - target: {fileID: 1095948502683694160, guid: f33d4a7c4b4c1094bb452381b213b1c5,
         type: 3}
       propertyPath: m_RootOrder

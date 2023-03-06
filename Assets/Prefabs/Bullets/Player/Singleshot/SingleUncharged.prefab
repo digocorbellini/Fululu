@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1763858908160990358}
   - component: {fileID: 8351954180003137433}
   m_Layer: 8
-  m_Name: DefaultBullet
+  m_Name: SingleUncharged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2fe915d0e8ea1b24cab11a9594c1e2cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 4528443a7ede349458c736fba0b0b562, type: 2}
     - target: {fileID: 1095948502683694160, guid: f33d4a7c4b4c1094bb452381b213b1c5,
         type: 3}
       propertyPath: m_RootOrder

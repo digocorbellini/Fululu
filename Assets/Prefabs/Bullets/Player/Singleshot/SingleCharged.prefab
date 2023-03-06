@@ -113,8 +113,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9245283, g: 0.63295984, b: 0.24770373, a: 1}
-      key1: {r: 0.9245283, g: 0.63295984, b: 0.24770373, a: 1}
+      key0: {r: 0.7137255, g: 0.9960785, b: 0.9333334, a: 1}
+      key1: {r: 0.7137255, g: 0.9960785, b: 0.9333334, a: 1}
       key2: {r: 0.3529412, g: 0.8352942, b: 0.6509804, a: 0.101960786}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1763858908160990358}
   - component: {fileID: 2367773449566058010}
   m_Layer: 8
-  m_Name: DefaultCharged
+  m_Name: SingleCharged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 55
+  Speed: 70
   lifetime: 10
   trails:
   - {fileID: 9154799288347540397}
@@ -485,7 +485,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2fe915d0e8ea1b24cab11a9594c1e2cc, type: 2}
+      objectReference: {fileID: 2100000, guid: 4528443a7ede349458c736fba0b0b562, type: 2}
     - target: {fileID: 1095948502683694160, guid: f33d4a7c4b4c1094bb452381b213b1c5,
         type: 3}
       propertyPath: m_RootOrder
