@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public PlayerController playerPrefab;
     public PlayerController player;
     public UIManager UIManager;
+    public UIPinger uiPinger;
 
     public event Action OnUnpause;
     public void CallOnUnpause() => OnUnpause?.Invoke();
@@ -36,6 +37,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(uiPinger == null)
+        {
+            uiPinger = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIPinger>();
+        }
+    }
+
+    public void PingUI(UIPinger.PingLocation location, float time = 0)
+    {
+        uiPinger.PlayPing(location, time);
+    }
+
+    public void StopPingUI(UIPinger.PingLocation location, float time = 0)
+    {
+        uiPinger.StopPing(location);
     }
 
     public void SpawnPlayer()
