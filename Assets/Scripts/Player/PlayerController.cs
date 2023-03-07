@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+
         currCharge = startingCharge;
         UpdateGrazeUI();
 
@@ -154,6 +155,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandleOnHurt(float damage, bool isExplosive, Collider other)
     {
+        if(damage <= 0)
+        {
+            return;
+        }
+
         // Determine if other is in front/behind of mesh direction
         // Probably a more efficient way to do this. I'm rusty on linear algebra :(
         Vector3 offset = other.transform.position - transform.position;
@@ -289,6 +295,12 @@ public class PlayerController : MonoBehaviour
             fcs.OnCapture(capturedEntity);
             UseCharge(capturedEntity.captureCost);
             buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1000f);
+
+            if(capturedEntity.captureCost > .5)
+            {
+                hitbox.DealDamageDirect(-1);
+            }
+            
             StopCapturing();
             return true;
         }
@@ -358,15 +370,16 @@ public class PlayerController : MonoBehaviour
         UpdateGrazeUI();
     }
 
-    public bool UseCharge(float amt = 1.0f)
+    public bool UseCharge(float amt = 1.0f, bool force = false)
     {
         float chargePercent = Math.Min(1, currCharge / maxCharge);
-        if(amt > chargePercent)
+        if(amt > chargePercent && !force)
         {
             return false;
         }
         currCharge = Math.Min(maxCharge, currCharge);
         currCharge -= (maxCharge * amt);
+        currCharge = Mathf.Clamp(currCharge, 0, maxCharge);
 
         UpdateGrazeUI();
         chargeEffects.OnChargeConsumed(currCharge / maxCharge);

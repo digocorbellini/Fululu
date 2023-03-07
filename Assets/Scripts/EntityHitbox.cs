@@ -164,6 +164,22 @@ public class EntityHitbox : MonoBehaviour
         }
     }
 
+    // Pass in a negative value to heal instead
+    public void DealDamageDirect(float damage)
+    {
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        if(health <= 0)
+        {
+            alreadyDead = true;
+            CallOnDeath();
+        }
+        else
+        {
+            CallOnHurt(damage, false, gameObject.transform.root.GetComponentInChildren<Collider>());
+        }
+    }
+
     private void TryDestroyAttack(AttackHitbox attack)
     {
         if (attack.destroyOnHit)

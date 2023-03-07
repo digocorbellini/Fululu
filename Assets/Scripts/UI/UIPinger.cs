@@ -15,11 +15,13 @@ public class UIPinger : MonoBehaviour
      */
 
     public Animator gourdPing;
+    public Animator heartThree;
 
     public enum PingLocation
     {
         None,
-        Gourd
+        Gourd,
+        HeartThree
     }
     
     public void PlayPing(PingLocation location, float time = 0)
@@ -55,6 +57,8 @@ public class UIPinger : MonoBehaviour
         {
             case PingLocation.Gourd:
                 return gourdPing;
+            case PingLocation.HeartThree:
+                return heartThree;
             default:
                 Debug.LogError("Invalid ping location: " + location);
                 return null;

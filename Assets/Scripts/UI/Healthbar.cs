@@ -59,6 +59,7 @@ public class Healthbar : MonoBehaviour
     {
         Debug.Log("Update display called. damage: " + damage);
         health -= damage;
+        health = Mathf.Clamp(health, 0, hearts.Length);
         Debug.Log("new health: " + health);
 
         int i = 0;
