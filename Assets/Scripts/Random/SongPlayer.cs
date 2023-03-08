@@ -8,20 +8,20 @@ public class SongPlayer : MonoBehaviour
 {
     private AudioSource musicSource;
     private bool isPlaying = false;
-    private Transform player;
+    //private Transform player;
     private Collider col;
 
     // Start is called before the first frame update
     void Start()
     {
         musicSource = GetComponent<AudioSource>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
         col = GetComponent<Collider>();
     }
 
     private void Update()
     {
-        if(col.bounds.Intersects(new Bounds(player.position, Vector3.one)))
+        if(col.bounds.Intersects(new Bounds(GameManager.instance.player.transform.position, Vector3.one)))
         {
             if (!isPlaying)
             {
