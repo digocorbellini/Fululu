@@ -10,6 +10,7 @@ public class MummyController : ControllerBase
     public AudioSource source;
     public AudioClip deathSound;
     public AudioClip spawnSound;
+    public EnemyFireControl ringController;
     public override void init()
     {
         base.init();
@@ -45,6 +46,8 @@ public class MummyController : ControllerBase
         source.PlayOneShot(deathSound);
 
         rb.velocity = Vector3.zero;
+
+        ringController.autoFire = false;
 
         Destroy(this.gameObject, deathSound.length);
 

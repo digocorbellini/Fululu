@@ -5946,7 +5946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultWeapon: {fileID: 11400000, guid: f08c0b50220644e49b2e1908d20911bb, type: 2}
   weapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
-  shootPoint: {fileID: 1177935232}
+  bulletSpawn: {fileID: 1177935232}
+  bulletLookAt: {fileID: 1916892435}
+  cameraRaycastDistance: 20
   recticleRing: {fileID: 0}
   fullChargeTime: 0.7
   chargeRingDeadZone: 0.1
@@ -6311,7 +6313,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906367981742868}
-  m_LocalRotation: {x: -0.049664237, y: -0.97034454, z: -0.18855143, w: 0.14287502}
+  m_LocalRotation: {x: -0.04966425, y: -0.9703446, z: -0.18855146, w: 0.14287505}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
