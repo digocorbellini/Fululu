@@ -408,7 +408,7 @@ MonoBehaviour:
   source: {fileID: 1438707436317388885}
   deathSound: {fileID: 8300000, guid: b36ca1e3ec58e5045bb5db3fccfe4429, type: 3}
   spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
-  ringController: {fileID: 0}
+  ringController: {fileID: 1278277696}
 --- !u!54 &1438707436317388882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   firePos: {fileID: 71853692}
   leadShots: 0
   autoFire: 1
-  autoFireInterval: 5
+  autoFireInterval: 8
   controller: {fileID: 1438707436317388883}
 --- !u!1 &7025486992767213975
 GameObject:
