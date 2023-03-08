@@ -145,4 +145,9 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 }
