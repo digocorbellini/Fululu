@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     private bool dashBlocked;
     private bool isGrounded = true;
     private bool attackAni;
-    private float moveSpeedMod;
+    private float moveSpeedMod = 1.0f;
     private float externalMoveSpeedMod = 1.0f;
     private const float COLLSION_SPEED = -0.5f;
 
@@ -219,6 +219,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePauseInput(InputAction.CallbackContext context)
     {
+        Debug.Log("Pause Input!");
         GameManager.instance.TogglePause();
     }
     private void OnUnpause()
@@ -633,6 +634,9 @@ public class PlayerController : MonoBehaviour
         input.actions["Attack"].started -= StartAttackCharge;
         input.actions["Attack"].canceled -= ReleaseAttackCharge;
         input.actions["AltFire"].started -= HandleAltFire;
+        input.actions["AltFire"].started -= HandleAltHold;
+        input.actions["Pause"].started -= HandlePauseInput;
+        input.actions["Ultimate"].started -= HandleUltimate;
     }
 
     private void OnDrawGizmos()
