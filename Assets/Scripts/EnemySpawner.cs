@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int totalEnemyCount = 30;
     public int minEnemyCount = 5;
+    public int maxEnemyCount = 8;
     public GameObject[] barriers;
     public SpawnBoss bossSpawner;
 
@@ -31,6 +32,8 @@ public class EnemySpawner : MonoBehaviour
     private int weightSum;
 
     private bool bossSpawned = false;
+
+    private EntityHitbox associatedBoss;
 
     private void Start()
     {
@@ -98,20 +101,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void DoSpawn(bool inital = false)
     {
-
-        /* if (!isActive || !proximity || totalEnemyCount > 0)
-        {
-            // This spawn cycle failed. Try again later
-            print("Spawn cycle failed!");
-            timer = Random.Range(spawnInterval.x, spawnInterval.y);
-            return;
-        } */
         bool didSpawn = false;
 
         foreach (Transform point in spawnpoints){
             if(Random.Range(0,1) < SpawnChance)
             {
-                if (enemiesLeft < 0)
+                if (enemiesLeft < 0 || activeEnemies >= maxEnemyCount)
                 {
                     break;
                 }
@@ -179,11 +174,19 @@ public class EnemySpawner : MonoBehaviour
             DoSpawn();
         }
     }
+    
+    public void RegisterToBoss(EntityHitbox boss)
+    {
+        associatedBoss = boss;
+        associatedBoss.OnDeath += OnCleared;
+        initialSpawn = true;
+        DoSpawn();
+    }
 
     private void OnCleared()
     {
+        enemiesLeft = 0;
         isActive = false;
         ToggleBarriers(false);
     }
-
 }
