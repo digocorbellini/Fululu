@@ -136,9 +136,12 @@ public abstract class ControllerBase : MonoBehaviour {
 
     protected virtual void OnDestroy()
     {
-        GameManager.instance.OnReset -= OnReset;
-        GameManager.instance.OnStartCaptureSucking -= HandleStartCaptureSucking;
-        GameManager.instance.OnStopCaptureSucking -= HandleStopCaptureSucking;
+        if (GameManager.instance)
+        {
+            GameManager.instance.OnReset -= OnReset;
+            GameManager.instance.OnStartCaptureSucking -= HandleStartCaptureSucking;
+            GameManager.instance.OnStopCaptureSucking -= HandleStopCaptureSucking;
+        }
     }
 
     public virtual void run() {}
