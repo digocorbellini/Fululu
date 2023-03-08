@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &71853691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71853692}
+  m_Layer: 7
+  m_Name: FloorRingSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71853692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71853691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1438707436317388881}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438707435054107464
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1438707435054107465
 Transform:
   m_ObjectHideFlags: 0
@@ -165,7 +196,7 @@ Transform:
   - {fileID: 1438707435127595735}
   - {fileID: 1438707435054107465}
   m_Father: {fileID: 1438707436317388881}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438707435562296468
 GameObject:
@@ -279,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightOffset: 0.5
+  shouldLook: 1
 --- !u!1 &1438707436170853952
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +355,7 @@ GameObject:
   - component: {fileID: 1438707436317388882}
   - component: {fileID: 1438707436317388885}
   - component: {fileID: 1438707436317388894}
+  - component: {fileID: 1278277696}
   m_Layer: 7
   m_Name: Mummy Prefab
   m_TagString: Untagged
@@ -342,6 +375,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 71853692}
   - {fileID: 1476593225847586213}
   - {fileID: 1438707435214530372}
   - {fileID: 8841021474728688118}
@@ -374,6 +408,7 @@ MonoBehaviour:
   source: {fileID: 1438707436317388885}
   deathSound: {fileID: 8300000, guid: b36ca1e3ec58e5045bb5db3fccfe4429, type: 3}
   spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
+  ringController: {fileID: 0}
 --- !u!54 &1438707436317388882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -506,6 +541,24 @@ MonoBehaviour:
   wasReset: 0
   health: 0
   alreadyDead: 0
+--- !u!114 &1278277696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438707436317388884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289f9e038c639f84c9a5896e3e199a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: c47788d3907dbab4a80a1a5c90c23eb5, type: 2}
+  firePos: {fileID: 71853692}
+  leadShots: 0
+  autoFire: 1
+  autoFireInterval: 5
+  controller: {fileID: 1438707436317388883}
 --- !u!1 &7025486992767213975
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +589,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1438707436317388881}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4454883582866399629
 BoxCollider:
@@ -561,7 +614,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 68008d950d9cdff43a576b28634801d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68008d950d9cdff43a576b28634801d1,
         type: 3}
