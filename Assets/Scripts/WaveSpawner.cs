@@ -21,7 +21,14 @@ static class RandomExtensions
 [System.Serializable]
 public class Wave
 {
-    public GameObject[] enemies;
+    public EnemySpawn[] enemies;
+}
+
+[System.Serializable]
+public class EnemySpawn
+{
+    public GameObject enemy;
+    public int count = 1;
 }
 
 public class WaveSpawner : MonoBehaviour
@@ -85,19 +92,22 @@ public class WaveSpawner : MonoBehaviour
             int spawnIndex = 0;
             spawnpoints.Shuffle();
 
-            foreach (GameObject enemy in wave.enemies)
+            foreach (EnemySpawn enemy in wave.enemies)
             {
-                Transform spawn = spawnpoints[spawnIndex];
-                GameObject spawned = Instantiate(enemy, spawn.position, spawn.rotation);
-                spawned.GetComponentInChildren<EntityHitbox>().OnDestroyed += OnEnemyDefeated;
-                activeEnemies++;
-                didSpawn = true;
-
-                spawnIndex++;
-                if (spawnIndex >= spawnpoints.Length)
+                for (int i = 0; i < enemy.count; i++)
                 {
-                    spawnIndex = 0;
-                    spawnpoints.Shuffle();
+                    Transform spawn = spawnpoints[spawnIndex];
+                    GameObject spawned = Instantiate(enemy.enemy, spawn.position, spawn.rotation);
+                    spawned.GetComponentInChildren<EntityHitbox>().OnDestroyed += OnEnemyDefeated;
+                    activeEnemies++;
+                    didSpawn = true;
+
+                    spawnIndex++;
+                    if (spawnIndex >= spawnpoints.Length)
+                    {
+                        spawnIndex = 0;
+                        spawnpoints.Shuffle();
+                    }
                 }
             }
         }
