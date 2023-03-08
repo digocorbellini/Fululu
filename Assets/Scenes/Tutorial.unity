@@ -1199,6 +1199,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 0}
   UIManager: {fileID: 1102836}
+  uiPinger: {fileID: 0}
 --- !u!4 &257152966
 Transform:
   m_ObjectHideFlags: 0
@@ -1371,6 +1372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: Another one? It looks like those runes are powering it. Trying shooting
     them down with [LMB]!
 --- !u!1 &316064942
@@ -1933,6 +1935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: Com'on Lucy get moving with [WASD]!
 --- !u!1 &978979749
 GameObject:
@@ -2250,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: A barrier? It looks pretty weak. I think you can dash through it
     with [SHIFT]
 --- !u!1 &1129655163
@@ -2716,6 +2720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: I sense malovolent spirits nearby... Get ready for a fight!
 --- !u!1 &1342120703
 GameObject:
@@ -3387,6 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: Looks like there's some rubble here. Try jumping over it with [SPACE]
 --- !u!1 &1577975923
 GameObject:
@@ -3448,6 +3454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: If we capture a ghost with explosive abilities using [RMB], we could
     use its power to smash this rock.
 --- !u!1 &1629223832
@@ -4465,6 +4472,7 @@ MonoBehaviour:
   SpawnChance: 1
   totalEnemyCount: 15
   minEnemyCount: 5
+  maxEnemyCount: 8
   barriers: []
   bossSpawner: {fileID: 0}
   enemies:
@@ -4672,7 +4680,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a140bc6b6f2408e4eaacc9b77fa4266c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4846,6 +4854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1432462619}
   popupPanelAnim: {fileID: 1510071506}
+  ping: 0
   tutorialText: Yes that's basic stuff, but we've not been in the field for ages!
 --- !u!1001 &3029517101324261812
 PrefabInstance:
@@ -5194,6 +5203,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458698189128657030, guid: 9a23ecbfc642e264bb2552841177ccf3,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458698189128657030, guid: 9a23ecbfc642e264bb2552841177ccf3,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458698189128657030, guid: 9a23ecbfc642e264bb2552841177ccf3,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8070135326885177297, guid: 9a23ecbfc642e264bb2552841177ccf3,
         type: 3}

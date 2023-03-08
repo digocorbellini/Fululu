@@ -429,7 +429,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // ignore collision with enemies
-        controller.detectCollisions = false;
+        // controller.detectCollisions = false;
         Int32 tempLayerMash = hurtLayers.value;
         int playerLayer = gameObject.layer;
         for (int layerNum = 0; layerNum < 32; layerNum++)

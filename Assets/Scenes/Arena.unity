@@ -6270,7 +6270,7 @@ PrefabInstance:
     - target: {fileID: 3985417385824523488, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: m_Radius
-      value: 18.6
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
@@ -10996,8 +10996,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 5, z: 2.0383594}
+  m_Center: {x: 0, y: 0, z: -0.51917917}
 --- !u!4 &1395618228
 Transform:
   m_ObjectHideFlags: 0
