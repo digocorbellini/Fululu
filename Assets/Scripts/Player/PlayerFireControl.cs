@@ -8,7 +8,11 @@ public class PlayerFireControl : MonoBehaviour
     public Weapon defaultWeapon;
     public Weapon weapon;
 
-    public Transform shootPoint;
+    public Transform bulletSpawn;
+    [Tooltip("Bullet aim location for close up shots")]
+    public Transform bulletLookAt;
+    [Tooltip("Bullets will aim at the raycast collision from the main camera if the collision is greater than this distance away")]
+    public float cameraRaycastDistance = 20f;
 
     public Image recticleRing;
 
@@ -73,7 +77,13 @@ public class PlayerFireControl : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, 100f, ~raycastIgnore))
         {
-            lookAtPos = hit.point;
+            if (hit.distance >= cameraRaycastDistance)
+            {
+                lookAtPos = hit.point;
+            } else
+            {
+                lookAtPos = bulletLookAt.position;
+            }
             Debug.DrawLine(ray.origin, hit.point, Color.magenta);
         }
         else
@@ -140,18 +150,18 @@ public class PlayerFireControl : MonoBehaviour
         if (timeCharging >= fullChargeTime && CanShootCharged())
         {
             // Fire charged attack from weapon
-            didFire = weapon.ChargedFire(shootPoint, lookAtPos);
+            didFire = weapon.ChargedFire(bulletSpawn, lookAtPos);
             lastChargedFireTime = Time.time;
         }
         else if (CanShootUncharged())
         {
             if (weapon.chargedBullet != null)
             {
-                didFire = weapon.Fire(shootPoint, lookAtPos);
+                didFire = weapon.Fire(bulletSpawn, lookAtPos);
             }
             else
             {
-                didFire = defaultWeapon.Fire(shootPoint, lookAtPos);
+                didFire = defaultWeapon.Fire(bulletSpawn, lookAtPos);
             }
 
             lastUnchargedFireTime = Time.time;
@@ -171,7 +181,7 @@ public class PlayerFireControl : MonoBehaviour
 
     public void SacrificeWeapon()
     {
-        weapon.Sacrifice(shootPoint);
+        weapon.Sacrifice(bulletSpawn);
         SwitchWeapon(defaultWeapon);
     }
 
