@@ -1,0 +1,56 @@
+{
+    "name": "Tutorial",
+    "maps": [
+        {
+            "name": "Tutorial",
+            "id": "f8af1077-7f2a-4d00-8949-32d54ed05758",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "a1b5fb5e-be49-45a6-b502-ccf82097fe4c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "516f5fca-4080-45e4-b2a5-0eb88ff63db7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ef6e9a6-a8a6-4244-99fb-2095154f030e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d596edc2-3f93-407d-80a4-4e6bcda27c12",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

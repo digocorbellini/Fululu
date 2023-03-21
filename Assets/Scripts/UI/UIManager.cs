@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class UIManager : MonoBehaviour
     public PauseUI pauseUI;
     public GourdUI gourdUI;
     public Image screenTint;
+    public Animator tutorialPanel;
+    public TextMeshProUGUI tutorialText;
+    public TextMeshProUGUI tutorialNametag;
+    public Image tutorialPortait;
 
     public ParticleSystem chargeBurst;
     public ParticleSystem chargeGlow;
@@ -47,6 +52,39 @@ public class UIManager : MonoBehaviour
     public void HidePauseUI()
     {
         pauseUI?.Hide();
+    }
+
+    public void ToggleTutorial(bool active)
+    {
+        if (active)
+        {
+            tutorialPanel.Play("Open");
+        }
+        else
+        {
+            tutorialPanel.Play("Close");
+        }
+    }
+
+    public void SetTutorialText(string text)
+    {
+        tutorialText.text = text;
+    }
+
+    public void SetPotraitImage(Sprite img)
+    {
+        if(img != null)
+        {
+            tutorialPortait.sprite = img;
+        }
+    }
+
+    public void SetTutorialNametag(string text)
+    {
+        if(!string.IsNullOrWhiteSpace(text))
+        {
+            tutorialNametag.text = text;
+        }
     }
 
     public void TintScreen(Color color, float alpha, float duration)

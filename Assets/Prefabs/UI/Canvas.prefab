@@ -529,6 +529,10 @@ MonoBehaviour:
   pauseUI: {fileID: 3105270454851900891}
   gourdUI: {fileID: 8191828618101389314}
   screenTint: {fileID: 8149968662557767752}
+  tutorialPanel: {fileID: 1510071506}
+  tutorialText: {fileID: 1432462619}
+  tutorialNametag: {fileID: 2795455553672811587}
+  tutorialPortait: {fileID: 3297941008310332380}
   chargeBurst: {fileID: 8234711688790125505}
   chargeGlow: {fileID: 7545493104316560079}
 --- !u!114 &5833765214261505358

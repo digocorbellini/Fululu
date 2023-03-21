@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public UIManager UIManager;
     public UIPinger uiPinger;
+    private PlayerInput input;
 
     public event Action OnUnpause;
     public void CallOnUnpause() => OnUnpause?.Invoke();
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
             {
                 player = Instantiate<PlayerController>(playerPrefab, currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
                 player.hitbox.OnDeath += OnPlayerDeath;
+                input = player.GetComponent<PlayerInput>();
+
             } else
             {
                 Debug.Log("Reviving and respawning player");
@@ -115,6 +119,11 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void ToggleInput(bool active)
+    {
+        input.enabled = active;
     }
 
     // Give the player some charge for hitting stuff
