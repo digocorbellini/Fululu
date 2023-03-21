@@ -5,6 +5,9 @@
     "m_Properties": [
         {
             "m_Id": "87d2b450e02d406c99fa9c272338753b"
+        },
+        {
+            "m_Id": "6de9919e30724fb98324904839f3da75"
         }
     ],
     "m_Keywords": [],
@@ -344,10 +347,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 487.1999816894531,
-            "y": 447.1999816894531,
-            "width": 128.80001831054688,
-            "height": 33.5999755859375
+            "x": 695.2000122070313,
+            "y": 547.199951171875,
+            "width": 128.79998779296876,
+            "height": 33.60003662109375
         }
     },
     "m_Slots": [
@@ -1050,6 +1053,9 @@
     "m_ChildObjectList": [
         {
             "m_Id": "87d2b450e02d406c99fa9c272338753b"
+        },
+        {
+            "m_Id": "6de9919e30724fb98324904839f3da75"
         }
     ]
 }
@@ -1164,6 +1170,33 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "6de9919e30724fb98324904839f3da75",
+    "m_Guid": {
+        "m_GuidSerialized": "6be2e7f3-0f18-4666-ada3-0eac321c0227"
+    },
+    "m_Name": "Scaling",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Scaling",
+    "m_DefaultReferenceName": "_Scaling",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 
@@ -1988,10 +2021,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 695.2000122070313,
-            "y": 432.8000183105469,
-            "width": 208.0,
-            "height": 431.9999694824219
+            "x": 844.7999267578125,
+            "y": 516.7999877929688,
+            "width": 208.0001220703125,
+            "height": 431.99993896484377
         }
     },
     "m_Slots": [

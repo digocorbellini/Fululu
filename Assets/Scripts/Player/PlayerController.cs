@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Camera")]
     public CinemachineFreeLook cinemachine;
+    public Camera mainCamera;
+    public LayerMask spiritVisionMask;
     public float hurtCameraShakeAmplitude = 4f;
     public float hurtCameraShakeFrequency = 2f;
     public float hurtCameraShakeDuration = 0.2f;
@@ -268,6 +270,7 @@ public class PlayerController : MonoBehaviour
         {
             fcs.ShowCaptureZone(true);
             isCapturing = true;
+            mainCamera.cullingMask |= spiritVisionMask; 
             moveSpeedMod = MathF.Min(moveSpeedMod, capturingMoveModifier);
         }
         
@@ -285,6 +288,7 @@ public class PlayerController : MonoBehaviour
         {
             fcs.ShowCaptureZone(false);
             isCapturing = false;
+            mainCamera.cullingMask &= ~spiritVisionMask;
             moveSpeedMod = 1.0f;
         }
     }

@@ -5844,6 +5844,10 @@ MonoBehaviour:
   startingCharge: 4
   shieldMesh: {fileID: 235596325061045478}
   cinemachine: {fileID: 2002906368399052512}
+  mainCamera: {fileID: 2002906367086278385}
+  spiritVisionMask:
+    serializedVersion: 2
+    m_Bits: 32768
   hurtCameraShakeAmplitude: 4
   hurtCameraShakeFrequency: 2
   hurtCameraShakeDuration: 0.2
@@ -6171,7 +6175,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32759
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
