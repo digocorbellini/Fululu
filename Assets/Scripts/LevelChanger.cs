@@ -5,15 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-    public LoadingScreen loadingScreen;
+    public LoadingScreen loadingScreenPrefab;
+    public static LevelChanger instance;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator ChangeSceneRoutine(string sceneName)
     {
+        LoadingScreen loadingScreen = Instantiate(loadingScreenPrefab);
         if (loadingScreen)
         {
             yield return StartCoroutine(loadingScreen.Appear());
@@ -26,6 +35,8 @@ public class LevelChanger : MonoBehaviour
         {
             yield return StartCoroutine(loadingScreen.Disappear());
         }
+
+        Destroy(loadingScreen.gameObject);
     }
 
     public void ChangeSceneAsync(string sceneName)
