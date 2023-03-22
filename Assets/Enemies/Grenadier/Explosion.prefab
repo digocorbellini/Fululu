@@ -62,6 +62,7 @@ MonoBehaviour:
   damage: 1
   isExplosive: 1
   isStun: 0
+  isShieldPiercing: 0
   destroyOnHit: 0
 --- !u!54 &198725656201886939
 Rigidbody:
@@ -4995,7 +4996,8 @@ AudioSource:
   m_GameObject: {fileID: 8387329251214316327}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8873601490943232294, guid: 9d172f389264eb745a47524889ac906e,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c665b6be0df5677489b0e17dc02af9c5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.82
