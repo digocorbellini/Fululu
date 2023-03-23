@@ -1472,37 +1472,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -78.663, z: 0}
---- !u!1 &334921039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 334921040}
-  m_Layer: 0
-  m_Name: Fire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &334921040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334921039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0001, y: -0.0329, z: 0.0149}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 543450652724046573}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &469789084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4887,18 +4856,6 @@ MonoBehaviour:
   popupPanelAnim: {fileID: 1510071506}
   ping: 0
   tutorialText: Yes that's basic stuff, but we've not been in the field for ages!
---- !u!4 &543450652724046573 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6311112516650675746, guid: a7bd0b66a576df5458aab3653cfd8ea7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5773379530566534351}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &919132149056172119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6691860631027217560, guid: a7bd0b66a576df5458aab3653cfd8ea7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5773379530566534351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3029517101324261812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5047,24 +5004,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63acf93b0b6fc664b8f86ada9b0a195f, type: 3}
---- !u!114 &3469287836574623049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149056172119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289f9e038c639f84c9a5896e3e199a33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 6727362a4c0774c45bfff0f3531b2545, type: 2}
-  firePos: {fileID: 334921040}
-  leadShots: 0
-  autoFire: 1
-  autoFireInterval: 3
-  controller: {fileID: 0}
 --- !u!1001 &4431975070860696330
 PrefabInstance:
   m_ObjectHideFlags: 0

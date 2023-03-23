@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f28c716fd1137f4fa9d348045aff660, type: 3}
-  m_Name: Move
+  m_Name: Shoot
   m_EditorClassIdentifier: 
   dialogue:
-  - Com'on let's get moving with [WASD]
-  - And remember you can jump with [space]
-  - Those ghosts aren't gonna exorcise themselves!
+  - A barrier?
+  - 'Those talismans must be powering it. Shoot them down with [LMB]! '
+  - You can also hold down [LMB] to charge a more powerful shot.
   names:
   - Spirit Familiar
   - 

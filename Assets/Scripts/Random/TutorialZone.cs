@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ public class TutorialZone : MonoBehaviour
     public bool enable;
     public bool disable;
     public UIPinger.PingLocation pingLocation;
+    public GameObject[] activateDuring;
+    public GameObject[] activateAfter;
 
     private int index;
     private float timer;
@@ -71,6 +74,9 @@ public class TutorialZone : MonoBehaviour
             {
                 GameManager.instance.StopPingUI(pingLocation);
             }
+
+            activateDuring.ToList().ForEach(barrier => barrier.SetActive(false));
+            activateAfter.ToList().ForEach(barrier => barrier.SetActive(true));
         }
         else
         {
@@ -97,7 +103,9 @@ public class TutorialZone : MonoBehaviour
                 index = 0;
                 timer = -1;
 
-                if(pingLocation != UIPinger.PingLocation.None)
+                activateDuring.ToList().ForEach(barrier => barrier.SetActive(true));
+
+                if (pingLocation != UIPinger.PingLocation.None)
                 {
                     GameManager.instance.PingUI(pingLocation);
                 }
