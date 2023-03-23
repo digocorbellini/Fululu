@@ -40,7 +40,7 @@ public class EnemyFireControl : MonoBehaviour
     // Call automatically if autoFire, or call using your state machine
     public bool Fire()
     {
-        if (controller.isStunned)
+        if (controller && controller.isStunned)
         {
             return false;
         }
