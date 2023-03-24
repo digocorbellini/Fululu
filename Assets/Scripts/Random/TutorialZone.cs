@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ public class TutorialZone : MonoBehaviour
     public Tutorial tut;
     public bool enable;
     public bool disable;
+    public UIPinger.PingLocation pingLocation;
+    public GameObject[] activateDuring;
+    public GameObject[] activateAfter;
 
     private int index;
     private float timer;
@@ -24,18 +28,6 @@ public class TutorialZone : MonoBehaviour
 
     public void Update()
     {
-        if (enable)
-        {
-            cam.enabled = true;
-            input.enabled = true;
-            GameManager.instance.ToggleInput(false);
-            UIManager.instance.ToggleTutorial(true);
-            SetTutorial(index);
-            enable = false;
-            index = 0;
-            timer = -1;
-        }
-
         if (disable)
         {
             cam.enabled = false;
@@ -77,6 +69,14 @@ public class TutorialZone : MonoBehaviour
             input.enabled = false;
             GameManager.instance.ToggleInput(true);
             UIManager.instance.ToggleTutorial(false);
+
+            if (pingLocation != UIPinger.PingLocation.None)
+            {
+                GameManager.instance.StopPingUI(pingLocation);
+            }
+
+            activateDuring.ToList().ForEach(barrier => barrier.SetActive(false));
+            activateAfter.ToList().ForEach(barrier => barrier.SetActive(true));
         }
         else
         {
@@ -92,8 +92,23 @@ public class TutorialZone : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                enable = true;
                 alreadyTriggered = true;
+
+                cam.enabled = true;
+                input.enabled = true;
+                GameManager.instance.ToggleInput(false);
+                UIManager.instance.ToggleTutorial(true);
+                SetTutorial(index);
+                enable = false;
+                index = 0;
+                timer = -1;
+
+                activateDuring.ToList().ForEach(barrier => barrier.SetActive(true));
+
+                if (pingLocation != UIPinger.PingLocation.None)
+                {
+                    GameManager.instance.PingUI(pingLocation);
+                }
             }
         }
     }

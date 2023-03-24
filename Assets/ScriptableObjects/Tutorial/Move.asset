@@ -16,14 +16,11 @@ MonoBehaviour:
   - Com'on let's get moving with [WASD]
   - And remember you can jump with [space]
   - Those ghosts aren't gonna exorcise themselves!
-  - NYYYAAAAAAA!
   names:
+  - Spirit Familiar
   - 
   - 
-  - 
-  - Demon
   potraits:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 21300000, guid: a942d4552de6a17459beecac98389a17, type: 3}

@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 public class ChangeSceneTrigger : MonoBehaviour
 {
     public string SceneName;
+    public LoadingScreen loadingScreen;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-            SceneManager.LoadScene(SceneName);
+        {
+            if (loadingScreen)
+            {
+                LevelChanger.instance.loadingScreenPrefab = loadingScreen;
+            }
+            LevelChanger.instance.ChangeSceneAsync(SceneName);
+        }
+            
     }
 }

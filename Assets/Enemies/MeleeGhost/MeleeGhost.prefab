@@ -684,6 +684,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.3
   deathSFX: {fileID: 8300000, guid: e8c189ea554587c4594514f6a628a453, type: 3}
+  deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
+    type: 3}
+  deathParticleSpawnPoint: {fileID: 4086172700975539295}
+  deathParticleScale: 1.5
 --- !u!1 &9013565189955409833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1027,12 @@ Animator:
 --- !u!4 &1985845000039710177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b7fe25fe3f2fd6144be49c4217804324,
+    type: 3}
+  m_PrefabInstance: {fileID: 2019190419109665290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4086172700975539295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6579589108087325099, guid: b7fe25fe3f2fd6144be49c4217804324,
     type: 3}
   m_PrefabInstance: {fileID: 2019190419109665290}
   m_PrefabAsset: {fileID: 0}
