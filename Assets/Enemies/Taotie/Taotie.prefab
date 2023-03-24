@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334921039}
   m_LocalRotation: {x: 0.70090926, y: 0, z: 0, w: 0.71325046}
-  m_LocalPosition: {x: -0.0001, y: -0.0329, z: 0.0186}
+  m_LocalPosition: {x: -0.0001, y: -0.012, z: 0.0182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9776,5 +9776,5 @@ MonoBehaviour:
   firePos: {fileID: 334921040}
   leadShots: 0
   autoFire: 1
-  autoFireInterval: 3
+  autoFireInterval: 1
   controller: {fileID: 0}
