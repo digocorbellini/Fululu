@@ -65,6 +65,8 @@ public class TutorialZone : MonoBehaviour
         index++;
         if(index >= tut.dialogue.Length)
         {
+            // Tutorial completed
+
             cam.enabled = false;
             input.enabled = false;
             GameManager.instance.ToggleInput(true);

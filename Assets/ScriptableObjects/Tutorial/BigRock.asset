@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: BigRock
   m_EditorClassIdentifier: 
   dialogue:
-  - Capturing ghosts also gives new abilities.
-  - Try shooting that cracked rock with [RMB] with your new explosive powers.
+  - Wow... that's certain a big pile of rocks.
+  - If you sacrifice your captured ghost with [Q], you'll unleash it's power.
+  - For this ghost, it'll cause a huge explosion to blast through those rocks.
   names:
   - Spirit Familiar
   - 
+  - 
   potraits:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

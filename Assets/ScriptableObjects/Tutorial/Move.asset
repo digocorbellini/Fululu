@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Move
   m_EditorClassIdentifier: 
   dialogue:
-  - Com'on let's get moving with [WASD]
-  - And remember you can jump with [space]
+  - Let's get a move on Lucy!
   - Those ghosts aren't gonna exorcise themselves!
   names:
   - Spirit Familiar
