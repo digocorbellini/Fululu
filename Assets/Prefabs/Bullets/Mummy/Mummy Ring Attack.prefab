@@ -6104,8 +6104,7 @@ GameObject:
   - component: {fileID: 1132785567136512260}
   - component: {fileID: 905492326947131870}
   - component: {fileID: 5879827043527958327}
-  - component: {fileID: 1513231144776267946}
-  - component: {fileID: 5170574282560738967}
+  - component: {fileID: 5081261484947886559}
   m_Layer: 9
   m_Name: Mummy Ring Attack
   m_TagString: Untagged
@@ -6188,7 +6187,7 @@ MonoBehaviour:
   isStun: 0
   isShieldPiercing: 0
   destroyOnHit: 0
---- !u!114 &1513231144776267946
+--- !u!114 &5081261484947886559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6197,7 +6196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6060926507621632742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c90e36a2e087c4e9dad8d373964e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
@@ -6232,20 +6231,6 @@ MonoBehaviour:
   hitParticles: {fileID: 0}
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
---- !u!114 &5170574282560738967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6060926507621632742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460827d3bd43add42a3fce4780736be9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heightOffset: 0.5
-  shouldLook: 0
 --- !u!1 &6158078924346593998
 GameObject:
   m_ObjectHideFlags: 0

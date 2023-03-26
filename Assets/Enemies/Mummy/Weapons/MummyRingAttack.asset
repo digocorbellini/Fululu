@@ -18,7 +18,7 @@ MonoBehaviour:
   chargeFireCooldown: 0
   spreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
     type: 3}
-  bullet: {fileID: 1513231144776267946, guid: f659acfaecdf0c3428d90bf9c91146f9, type: 3}
+  bullet: {fileID: 5081261484947886559, guid: f659acfaecdf0c3428d90bf9c91146f9, type: 3}
   chargedSpreadPrefab: {fileID: 0}
   chargedBullet: {fileID: 0}
   sacrificeSpreadPrefab: {fileID: 0}
