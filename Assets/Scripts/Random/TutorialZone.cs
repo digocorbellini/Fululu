@@ -77,8 +77,8 @@ public class TutorialZone : MonoBehaviour
                 GameManager.instance.StopPingUI(pingLocation);
             }
 
-            activateDuring.ToList().ForEach(barrier => barrier.SetActive(false));
-            activateAfter.ToList().ForEach(barrier => barrier.SetActive(true));
+            activateDuring.ToList().ForEach(obj => obj.SetActive(false));
+            activateAfter.ToList().ForEach(obj => obj.SetActive(true));
         }
         else
         {
@@ -95,17 +95,16 @@ public class TutorialZone : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 alreadyTriggered = true;
-
+                index = 0;
                 cam.enabled = true;
                 input.enabled = true;
                 GameManager.instance.ToggleInput(false);
                 UIManager.instance.ToggleTutorial(true);
                 SetTutorial(index);
                 enable = false;
-                index = 0;
                 timer = -1;
 
-                activateDuring.ToList().ForEach(barrier => barrier.SetActive(true));
+                activateDuring.ToList().ForEach(obj => obj.SetActive(true));
 
                 if (pingLocation != UIPinger.PingLocation.None)
                 {
