@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour
     public float hurtScreenTintAlpha = 0.1f;
     public float deathScreenTintDuration = 0.15f;
 
+    // tutorial variables
+    [HideInInspector]
+    public bool canUseSacrifice = true;
+    //public bool canMove = true;
+
     // helper variables
     [HideInInspector]
     public CharacterController controller;
@@ -321,7 +326,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleUltimate(InputAction.CallbackContext context)
     {
-        if (!GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
+        if (canUseSacrifice && !GameManager.isPaused && stateManager.CanChangeState(PlayerState.Attacking))
         {
             // Sacrifice weapon if equipped
             if (fcs.weapon != fcs.defaultWeapon)
