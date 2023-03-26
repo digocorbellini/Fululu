@@ -23,6 +23,9 @@ public abstract class ControllerBase : MonoBehaviour {
     public float captureCost = 1.0f;
     public Weapon captureWeapon;
 
+    public Material hurtMaterial;
+    public float hurtFlashDuration = .08f;
+
     protected State[] states;
 
     [HideInInspector]
@@ -42,6 +45,10 @@ public abstract class ControllerBase : MonoBehaviour {
     private List<Material> materials = new List<Material>();
     private Material outlineReference;
     private bool isSucking;
+
+    private Coroutine hurtFlashCoroutine = null;
+    private bool isHurtFlashing = false;
+    private Material hurtMaterialReference;
 
     [RuntimeInitializeOnLoadMethodAttribute]
     static void LoadHurtSFX()
@@ -64,22 +71,32 @@ public abstract class ControllerBase : MonoBehaviour {
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
+        // get material references
         if (!outlineMaterial)
             Debug.LogError("missing outline material in enemy");
-        
-        // get material references
-        meshRenderer.GetMaterials(materials);
+        else
         outlineReference = new Material(outlineMaterial);
+
+        if (!hurtMaterial)
+            Debug.LogError("Missing hurt material in enemy");
+        else
+            hurtMaterialReference = new Material(hurtMaterial);
+
+        meshRenderer.GetMaterials(materials);
 
         GameManager.instance.OnStartCaptureSucking += HandleStartCaptureSucking;
         GameManager.instance.OnStopCaptureSucking += HandleStopCaptureSucking;
+
+        hitbox = GetComponent<EntityHitbox>();
+        hitbox.OnHurt += this.PlayHurtFlash;
+        hitbox.OnDeath += this.PlayFlash;
 
         isSucking = false;
     }
 
     private void HandleStartCaptureSucking()
     {
-        if (!isCapturable)
+        if (!isCapturable || !outlineReference)
             return;
 
         if(!materials.Contains(outlineReference))
@@ -90,13 +107,54 @@ public abstract class ControllerBase : MonoBehaviour {
 
     private void HandleStopCaptureSucking()
     {
-        if (!isCapturable)
+        if (!isCapturable || !outlineReference)
             return;
 
         isSucking = false;
         if (materials.Contains(outlineReference))
             materials.Remove(outlineReference);
         meshRenderer.materials = materials.ToArray();
+    }
+
+    // to be called whenever the enemy is hurt so that it will flash 
+    // on hurt
+    protected void PlayHurtFlash(float damage, bool isExplosive, Collider other)
+    {
+        PlayFlash();
+    }
+
+    private void PlayFlash()
+    {
+        if (!hurtMaterialReference)
+            return;
+
+        if (isHurtFlashing)
+        {
+            StopCoroutine(hurtFlashCoroutine);
+            if (materials.Contains(hurtMaterialReference))
+                materials.Remove(hurtMaterialReference);
+        }
+
+        hurtFlashCoroutine = StartCoroutine(StartTempHurtMaterial());
+    }
+
+    private IEnumerator StartTempHurtMaterial()
+    {
+        isHurtFlashing = true;
+
+        // add the hurt material
+        if (!materials.Contains(hurtMaterialReference))
+            materials.Add(hurtMaterialReference);
+        meshRenderer.materials = materials.ToArray();
+
+        yield return new WaitForSeconds(hurtFlashDuration);
+
+        // remove the hurt material
+        if (materials.Contains(hurtMaterialReference))
+            materials.Remove(hurtMaterialReference);
+        meshRenderer.materials = materials.ToArray();
+
+        isHurtFlashing = false;
     }
 
     public void FixedUpdate() {
@@ -142,6 +200,9 @@ public abstract class ControllerBase : MonoBehaviour {
             GameManager.instance.OnStartCaptureSucking -= HandleStartCaptureSucking;
             GameManager.instance.OnStopCaptureSucking -= HandleStopCaptureSucking;
         }
+
+        hitbox.OnHurt -= this.PlayHurtFlash;
+        hitbox.OnDeath -= this.PlayFlash;
     }
 
     public virtual void run() {}
