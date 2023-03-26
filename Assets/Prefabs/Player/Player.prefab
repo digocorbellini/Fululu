@@ -5838,6 +5838,7 @@ MonoBehaviour:
     m_Bits: 1664
   maxCharge: 4
   capturingMoveModifier: 0.6
+  captureSFX: {fileID: 8300000, guid: 9cdf63a895e1a6448a027f8586207c22, type: 3}
   hitChargeAmount: 0.125
   chargeEffects: {fileID: 527316751871636135}
   currCharge: 0
