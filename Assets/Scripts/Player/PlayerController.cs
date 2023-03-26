@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [Header("Charge")]
     [SerializeField] private float maxCharge = 20f;
     [SerializeField] private float capturingMoveModifier = .6f;
+    [SerializeField] private AudioClip captureSFX;
     [SerializeField] private float hitChargeAmount = .1f;
     [SerializeField] private ChargeEffects chargeEffects;
     private bool isCapturing;
@@ -301,11 +302,16 @@ public class PlayerController : MonoBehaviour
             UseCharge(capturedEntity.captureCost);
             buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1000f);
 
-            if(capturedEntity.captureCost > .5)
+            if(capturedEntity.captureCost > .1)
             {
                 hitbox.DealDamageDirect(-1);
             }
-            
+
+            if (captureSFX)
+            {
+                audioSource.PlayOneShot(captureSFX);
+            }
+
             StopCapturing();
             return true;
         }
