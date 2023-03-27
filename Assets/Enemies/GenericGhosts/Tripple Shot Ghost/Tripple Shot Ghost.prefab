@@ -233,6 +233,8 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: f70da51c48d6d404ba6cdf8115d171c1, type: 2}
   captureCost: 0.66
   captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
+  hurtMaterial: {fileID: 2100000, guid: a17f40c075c13894e87c850f3434f70f, type: 2}
+  hurtFlashDuration: 0.08
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}

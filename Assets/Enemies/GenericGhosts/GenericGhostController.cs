@@ -27,8 +27,6 @@ public class GenericGhostController : ControllerBase
         hitbox.OnHurt += this.OnHurt;
         hitbox.OnDeath += this.OnDeath;
         hitbox.OnStun += this.OnStun;
-
-        // TODO: maybe find player instead of having a public reference
     }
 
     private void OnStun()
