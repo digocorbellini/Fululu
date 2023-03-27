@@ -5953,7 +5953,7 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3, type: 2}
   bulletSpawn: {fileID: 1177935232}
   bulletLookAt: {fileID: 1916892435}
-  cameraRaycastDistance: 20
+  cameraRaycastDistance: 5
   recticleRing: {fileID: 0}
   fullChargeTime: 0.7
   chargeRingDeadZone: 0.1
