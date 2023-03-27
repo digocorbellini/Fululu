@@ -50,7 +50,11 @@ public class ObjectToTerrainBend : MonoBehaviour
                 Vector3 worldVertex = transform.TransformPoint(vertex);
 
                 // Calculate the corresponding UV coordinate on the terrain
-                Vector3 normalizedPos = (worldVertex - terrainPos) / terrainSize;
+                Vector3 normalizedPos = (worldVertex - terrainPos);
+                normalizedPos.x *= terrainSize.x;
+                normalizedPos.x *= terrainSize.y;
+                normalizedPos.x *= terrainSize.z;
+
                 int x = Mathf.RoundToInt(normalizedPos.x * (terrainData.heightmapResolution - 1));
                 int y = Mathf.RoundToInt(normalizedPos.z * (terrainData.heightmapResolution - 1));
 
