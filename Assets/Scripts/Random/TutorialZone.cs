@@ -57,6 +57,7 @@ public class TutorialZone : MonoBehaviour
         if(timer > .66)
         {
             NextTutorial();
+            timer = 0;
         }
     }
 
