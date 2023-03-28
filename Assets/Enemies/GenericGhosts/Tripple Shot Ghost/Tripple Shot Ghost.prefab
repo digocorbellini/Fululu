@@ -46,6 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.4
   deathSFX: {fileID: 8300000, guid: 199a0cac123c87c4ca02f524446d417c, type: 3}
+  deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
+    type: 3}
+  deathParticleSpawnPoint: {fileID: 5721336897932812837}
+  deathParticleScale: 1.5
 --- !u!1 &1271492577015688443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1047,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb71e678e3a90d44b5ea962cd087bd9, type: 3}
+--- !u!4 &5721336897932812837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5234448375175369897, guid: 7eb71e678e3a90d44b5ea962cd087bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8664298373610981746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8429802434835969059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7eb71e678e3a90d44b5ea962cd087bd9,

@@ -6,6 +6,9 @@ public class MinelayerDeath : MinelayerState
 {
     public float duration = .4f;
     public AudioClip deathSFX;
+    public GameObject deathParticlePrefab;
+    public Transform deathParticleSpawnPoint;
+    public float deathParticleScale = 1.5f;
     private float timer;
 
     private bool aniDone;
@@ -33,6 +36,8 @@ public class MinelayerDeath : MinelayerState
 
         if(timer < 0)
         {
+            GameObject instance = Instantiate(deathParticlePrefab, deathParticleSpawnPoint.position, deathParticleSpawnPoint.rotation);
+            instance.transform.localScale = Vector3.one * deathParticleScale;
             Destroy(controller.gameObject);
         }
         

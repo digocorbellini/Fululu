@@ -757,6 +757,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSFX: {fileID: 8300000, guid: ddfa37aa39d681c4dbe249e77699e8ea, type: 3}
+  deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
+    type: 3}
+  deathParticleSpawnPoint: {fileID: 5709525510044981268}
+  deathParticleScale: 2
 --- !u!1001 &504258515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -975,6 +979,12 @@ CapsuleCollider:
 --- !u!4 &4973848629636730608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4249523406715629277, guid: 81afd00e129bcf0458d6049f99c14077,
+    type: 3}
+  m_PrefabInstance: {fileID: 504258515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5709525510044981268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3513846527044007993, guid: 81afd00e129bcf0458d6049f99c14077,
     type: 3}
   m_PrefabInstance: {fileID: 504258515}
   m_PrefabAsset: {fileID: 0}

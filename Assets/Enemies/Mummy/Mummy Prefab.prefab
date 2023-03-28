@@ -411,6 +411,10 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: b36ca1e3ec58e5045bb5db3fccfe4429, type: 3}
   spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
   ringController: {fileID: 1278277696}
+  deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
+    type: 3}
+  deathParticleSpawnPoint: {fileID: 6686473226716224905}
+  deathParticleScale: 3
 --- !u!54 &1438707436317388882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -888,3 +892,9 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   movementFactor: 0.5
+--- !u!4 &6686473226716224905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3513846527044007993, guid: 68008d950d9cdff43a576b28634801d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1438707435804678734}
+  m_PrefabAsset: {fileID: 0}

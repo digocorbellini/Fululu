@@ -11,6 +11,10 @@ public class MummyController : ControllerBase
     public AudioClip deathSound;
     public AudioClip spawnSound;
     public EnemyFireControl ringController;
+    public GameObject deathParticlePrefab;
+    public Transform deathParticleSpawnPoint;
+    public float deathParticleScale = 3f;
+
     public override void init()
     {
         base.init();
@@ -57,6 +61,8 @@ public class MummyController : ControllerBase
     {
         hitbox.OnHurt -= this.OnHurt;
         hitbox.OnDeath -= this.OnDeath;
+        GameObject instance = Instantiate(deathParticlePrefab, deathParticleSpawnPoint.position, deathParticleSpawnPoint.rotation);
+        instance.transform.localScale = Vector3.one * deathParticleScale;
     }
 
     /// <summary>
