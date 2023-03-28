@@ -10,6 +10,7 @@ public class AttackHitbox : MonoBehaviour
     public bool isStun = false;
     public bool isShieldPiercing = false;
     public bool destroyOnHit = true;
+    public bool canMultihit = false;
 
     private List<EntityHitbox> alreadyHit;
 
@@ -24,7 +25,7 @@ public class AttackHitbox : MonoBehaviour
 
     public bool canHit(EntityHitbox c)
     {
-        return !alreadyHit.Contains(c);
+        return canMultihit || !alreadyHit.Contains(c);
     }
 
     public void ResetAlreadyHit()
