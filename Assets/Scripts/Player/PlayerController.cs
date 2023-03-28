@@ -54,11 +54,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem hurtEffects;
     public float hurtScreenTintAlpha = 0.1f;
     public float deathScreenTintDuration = 0.15f;
+    public Material hurtMaterial;
+    public float captureIframeDuration = 2.5f;
 
     // tutorial variables
     [HideInInspector]
     public bool canUseSacrifice = true;
-    //public bool canMove = true;
 
     // helper variables
     [HideInInspector]
@@ -88,6 +89,10 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private Material originalMatReference;
+    private SkinnedMeshRenderer meshRenderer;
+    private Coroutine transparentCoroutine;
+
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
     public Vector3 GetPlayerMoveDirection()
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stateManager = GetComponent<PlayerStateManager>();
         buffManager = GetComponent<PlayerBuffManager>();
+        meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         if (stateManager)
         {
             anim = stateManager.animator;
@@ -117,7 +123,6 @@ public class PlayerController : MonoBehaviour
         hitbox.OnDeath += HandleOnDeath;
         hitbox.OnShieldBreak += DisableShield;
         hitbox.OnHurt += HandleOnHurt;
-
 
 
         // setup input
@@ -134,6 +139,9 @@ public class PlayerController : MonoBehaviour
         moveAction = input.actions["Move"];
 
         GameManager.instance.OnUnpause += OnUnpause;
+
+        // setup material references
+        originalMatReference = new Material(meshRenderer.material);
     }
     private void Start()
     {
@@ -299,15 +307,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void makePlayerTransparent(float duration)
+    {
+        if (transparentCoroutine != null)
+        {
+            StopCoroutine(transparentCoroutine);
+            //meshRenderer.material = originalMatReference;
+        }
+
+        StartCoroutine(startTransparent(duration));
+    }
+
+    private IEnumerator startTransparent(float duration)
+    {
+        meshRenderer.material = hurtMaterial;
+
+        yield return new WaitForSeconds(duration);
+
+        meshRenderer.material = originalMatReference;
+    }
+
     public bool DoCapture(ControllerBase capturedEntity)
     {
         if (isCapturing)
         {
             fcs.OnCapture(capturedEntity);
             UseCharge(capturedEntity.captureCost);
-            buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1000f);
+            // TODO: replace this with invisible invincibility
+            //buffManager.BuffPlayer(PlayerBuffManager.PlayerBuffs.shield, 2.5f, 1000f);
+            makePlayerTransparent(captureIframeDuration);
+            hitbox.GiveIFrames(captureIframeDuration);
 
-            if(capturedEntity.captureCost > .1)
+            if (capturedEntity.captureCost > .1)
             {
                 hitbox.DealDamageDirect(-1);
             }
@@ -470,6 +501,9 @@ public class PlayerController : MonoBehaviour
         // perform dash in dash direction
         velocity = direction * (dashDistance / dashDuration);
         mesh.forward = direction;
+
+
+        makePlayerTransparent(dashDuration);
 
         yield return new WaitForSeconds(dashDuration);
 
