@@ -64,7 +64,11 @@ public class MummyController : ControllerBase
         instance.transform.localScale = Vector3.one * deathParticleScale;
 
         // TODO: remove me
-        LevelChanger.instance.ChangeSceneAsync("WinScreen");
+        if(GetComponentInChildren<EntityHitbox>().health <= 0)
+        {
+            LevelChanger.instance.ChangeSceneAsync("WinScreen");
+        }
+        
     }
 
     /// <summary>

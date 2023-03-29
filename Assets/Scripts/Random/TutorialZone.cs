@@ -69,7 +69,10 @@ public class TutorialZone : MonoBehaviour
             // Tutorial completed
 
             cam.enabled = false;
-            input.enabled = false;
+            if (input)
+            {
+                input.enabled = false;
+            }
             GameManager.instance.ToggleInput(true);
             UIManager.instance.ToggleTutorial(false);
 
@@ -97,7 +100,11 @@ public class TutorialZone : MonoBehaviour
                 alreadyTriggered = true;
                 index = 0;
                 cam.enabled = true;
-                input.enabled = true;
+                if (input)
+                {
+                    input.enabled = true;
+                }
+                
                 GameManager.instance.ToggleInput(false);
                 UIManager.instance.ToggleTutorial(true);
                 SetTutorial(index);

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Capturing ghosts also gives new abilities.
-  - Try shooting that cracked rock with [RMB] with your new explosive powers.
+  - Try shooting that cracked rock with [LMB] with your new explosive powers.
   names:
   - Spirit Familiar
   - 
