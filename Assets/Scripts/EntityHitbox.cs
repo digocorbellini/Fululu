@@ -51,6 +51,8 @@ public class EntityHitbox : MonoBehaviour
     private bool isIframe = false;
     [HideInInspector] public bool alreadyDead = false;
 
+    private Coroutine iFrameCoroutine;
+
     private void Awake()
     {
         health = maxHealth;
@@ -230,12 +232,17 @@ public class EntityHitbox : MonoBehaviour
     {
         ForceDisableIFrame();
         isIframe = true;
-        StartCoroutine(DisableIFrame(time));
+        iFrameCoroutine = StartCoroutine(DisableIFrame(time));
     }
 
     public void ForceDisableIFrame()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
+        if (iFrameCoroutine != null)
+        {
+            StopCoroutine(iFrameCoroutine);
+        }
+
         isIframe = false;
     }
 
