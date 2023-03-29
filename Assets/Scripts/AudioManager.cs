@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public AudioMixer mixer;
     public List<string> exposedMixerParams;
+    public AudioSource musicSource;
+    public AudioSource fadeInMusicSource;
     [Header("AudioSource Pool")]
     public DisposableAudio audioSourcePrefab;
     private List<DisposableAudio> audioSourcePool = new List<DisposableAudio>();
@@ -92,6 +94,46 @@ public class AudioManager : MonoBehaviour
             return source;
         }
         return null;
+    }
+
+    public void PlayMusic(AudioClip music, float volume = 1.0f, float fadeTime = 0.0f)
+    {
+        if(fadeTime <= 0f)
+        {
+            musicSource.Stop();
+            musicSource.clip = music;
+            musicSource.volume = volume;
+            musicSource.Play();
+        } else
+        {
+            fadeInMusicSource.clip = music;
+            fadeInMusicSource.volume = 0f;
+            fadeInMusicSource.Play();
+            StartCoroutine(CrossFadeMusic(fadeTime, volume));
+        }
+    }
+
+    private IEnumerator CrossFadeMusic(float fadeTime, float finalVolume)
+    {
+        float fadeInRate = finalVolume / fadeTime;
+        float fadeOutRate = musicSource.volume / fadeTime;
+
+        while(musicSource.volume > 0)
+        {
+            musicSource.volume -= fadeOutRate * Time.unscaledDeltaTime;
+            fadeInMusicSource.volume += fadeInRate * Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        musicSource.volume = 0;
+        musicSource.Stop();
+
+        fadeInMusicSource.volume = finalVolume;
+
+        AudioSource temp = musicSource;
+
+        musicSource = fadeInMusicSource;
+        fadeInMusicSource = temp;
     }
 
     public DisposableAudio GetAudioSource()
