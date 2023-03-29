@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
         hurtEffects.Stop();
         hurtEffects.Play();
         UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hitbox.iFrameTime);
+        makePlayerTransparent(hitbox.iFrameTime);
     }
 
     public void ShakeCamera(float amplitude, float frequency, float duration)

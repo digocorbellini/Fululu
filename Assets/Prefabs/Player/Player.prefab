@@ -5855,6 +5855,9 @@ MonoBehaviour:
   hurtEffects: {fileID: 6212642302047372019}
   hurtScreenTintAlpha: 0.2
   deathScreenTintDuration: 2
+  hurtMaterial: {fileID: 2100000, guid: e856605057d3c5f49ad8f6ff18769181, type: 2}
+  captureIframeDuration: 2.5
+  canUseSacrifice: 1
   controller: {fileID: 0}
   hitbox: {fileID: 0}
 --- !u!114 &720201392830950562
