@@ -90,6 +90,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8d121ab221aafd14ba9861c71b57ded3,
         type: 2}
+    - target: {fileID: 617783699531048754, guid: 64ffe46fe3699174d87620542717826b,
+        type: 3}
+      propertyPath: destoryOnReset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 617783699531048755, guid: 64ffe46fe3699174d87620542717826b,
         type: 3}
       propertyPath: m_RootOrder

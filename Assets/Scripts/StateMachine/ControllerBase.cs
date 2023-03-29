@@ -28,6 +28,8 @@ public abstract class ControllerBase : MonoBehaviour {
 
     protected State[] states;
 
+    public bool destoryOnReset = true;
+
     [HideInInspector]
     public EntityHitbox hitbox;
 
@@ -184,6 +186,9 @@ public abstract class ControllerBase : MonoBehaviour {
 
     private void OnReset()
     {
+        if (!destoryOnReset)
+            return;
+
         GameManager.instance.OnReset -= OnReset;
         if (gameObject)
         {

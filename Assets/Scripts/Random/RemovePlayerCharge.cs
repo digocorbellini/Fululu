@@ -9,7 +9,7 @@ public class RemovePlayerCharge : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             PlayerController player = GameManager.instance.player;
-            bool success = player.UseCharge(1.0f, true);
+            bool success = player.UseCharge(1f, true);
             Destroy(this);
         }
     }

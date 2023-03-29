@@ -54,7 +54,6 @@ public class MummyController : ControllerBase
         ringController.autoFire = false;
 
         Destroy(this.gameObject, deathSound.length);
-
     }
 
     private void OnDestroy()
@@ -63,6 +62,9 @@ public class MummyController : ControllerBase
         hitbox.OnDeath -= this.OnDeath;
         GameObject instance = Instantiate(deathParticlePrefab, deathParticleSpawnPoint.position, deathParticleSpawnPoint.rotation);
         instance.transform.localScale = Vector3.one * deathParticleScale;
+
+        // TODO: remove me
+        LevelChanger.instance.ChangeSceneAsync("WinScreen");
     }
 
     /// <summary>
