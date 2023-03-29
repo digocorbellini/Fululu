@@ -18,8 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stylized rock
-    second: {fileID: -4671331973781007237, guid: 3842f44d82ddd4ea995138baf278daa8,
-      type: 3}
+    second: {fileID: 2100000, guid: baf5faa9e7edc8444afc7e8e79d5929f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
