@@ -90,7 +90,6 @@ public class TutorialZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hello!!! TriggerEnter");
         if (!alreadyTriggered)
         {
             if (other.gameObject.CompareTag("Player"))

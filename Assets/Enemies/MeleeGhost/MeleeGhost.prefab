@@ -556,6 +556,7 @@ MonoBehaviour:
   isStun: 0
   isShieldPiercing: 0
   destroyOnHit: 0
+  canMultihit: 0
 --- !u!1 &6787539338774691361
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +630,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 64901040720e8e9408625b6c0edfc096, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcff38b3e0d98b648bbdd45b8edf0ae6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
