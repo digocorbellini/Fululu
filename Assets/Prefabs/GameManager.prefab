@@ -136,7 +136,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9086826279473398175}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &8254259655852277228
+--- !u!82 &1223045301564709464
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +233,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1223045301564709464
+--- !u!82 &8254259655852277228
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
