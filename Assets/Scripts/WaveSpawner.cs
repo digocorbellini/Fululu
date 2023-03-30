@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UltEvents;
 
 static class RandomExtensions
 {
@@ -43,6 +44,10 @@ public class WaveSpawner : MonoBehaviour
 
     public AudioSource spawnSFX;
 
+    [Header("Events")]
+    public UltEvent OnActivate;
+    public UltEvent OnClear;
+
     private int activeEnemies = 0;
     private int waveNum = 0;
     private bool initialSpawn = false;
@@ -75,6 +80,7 @@ public class WaveSpawner : MonoBehaviour
         {
             if (!initialSpawn)
             {
+                OnActivate.Invoke();
                 DoSpawn();
                 initialSpawn = true;
                 ToggleBarriers(true);
@@ -139,6 +145,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void OnCleared()
     {
+        OnClear.Invoke();
         isActive = false;
         ToggleBarriers(false);
     }

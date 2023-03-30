@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
-    public void PlayMusic(AudioClip music, float volume = 1.0f, float fadeTime = 0.0f)
+    public void PlayMusicClip(AudioClip music, float volume = 1.0f, float fadeTime = 0.0f)
     {
         if(fadeTime <= 0f)
         {
@@ -111,6 +111,24 @@ public class AudioManager : MonoBehaviour
             fadeInMusicSource.Play();
             StartCoroutine(CrossFadeMusic(fadeTime, volume));
         }
+    }
+
+    public static void PlayMusic(AudioClip music, float volume = 1.0f, float fadeTime = 0.0f)
+    {
+        if (instance)
+        {
+            instance.PlayMusicClip(music, volume, fadeTime);
+        }
+    }
+
+    public static AudioClip GetCurrentMusicClip()
+    {
+        if (!instance)
+        {
+            return null;
+        }
+
+        return instance.musicSource.clip;
     }
 
     private IEnumerator CrossFadeMusic(float fadeTime, float finalVolume)
