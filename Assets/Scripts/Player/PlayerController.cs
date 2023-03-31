@@ -87,11 +87,21 @@ public class PlayerController : MonoBehaviour
     private float externalMoveSpeedMod = 1.0f;
     private const float COLLSION_SPEED = -0.5f;
 
+
+    public delegate void ChargeBroadcast(float charge);
+    public event ChargeBroadcast OnBroadcastCharge;
+    public void BroadcastCharge(float charge) => OnBroadcastCharge?.Invoke(charge);
+    private int frameCount;
+    private int BROADCAST_INTERVAL = 20;
+
+
     private AudioSource audioSource;
 
     private Material originalMatReference;
     private SkinnedMeshRenderer meshRenderer;
     private Coroutine transparentCoroutine;
+
+
 
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
@@ -658,6 +668,13 @@ public class PlayerController : MonoBehaviour
         }
 
         anim.SetFloat("YVelocity", velocity.y);
+
+        frameCount++;
+        if(frameCount > BROADCAST_INTERVAL)
+        {
+            BroadcastCharge(GetChargePercent());
+            frameCount = 0;
+        }
     }
 
     public void EnableShield()

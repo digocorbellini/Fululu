@@ -239,6 +239,7 @@ MonoBehaviour:
   captureWeapon: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be, type: 2}
   hurtMaterial: {fileID: 2100000, guid: a17f40c075c13894e87c850f3434f70f, type: 2}
   hurtFlashDuration: 0.08
+  destoryOnReset: 1
   hitbox: {fileID: 0}
   rb: {fileID: 0}
   ani: {fileID: 0}
@@ -533,6 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7427903582035367875}
   - component: {fileID: 5579060963591304068}
+  - component: {fileID: 3948454617525673828}
   m_Layer: 15
   m_Name: Sigil
   m_TagString: Untagged
@@ -607,6 +609,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3948454617525673828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067205508038153511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db5d1974994c294ba63714564b9b176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.66
+  inactive: {r: 0.8862746, g: 0.34901962, b: 0.3921569, a: 1}
+  active: {r: 0.2509804, g: 0.654902, b: 0.6901961, a: 1}
 --- !u!1001 &1271492576634371848
 PrefabInstance:
   m_ObjectHideFlags: 0
