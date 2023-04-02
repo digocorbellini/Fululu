@@ -246,6 +246,11 @@ public class EntityHitbox : MonoBehaviour
         isIframe = false;
     }
 
+    public float HealthPercent()
+    {
+        return health / maxHealth;
+    }
+
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded || wasReset)

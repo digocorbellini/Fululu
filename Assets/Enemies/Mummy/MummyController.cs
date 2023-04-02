@@ -15,6 +15,8 @@ public class MummyController : ControllerBase
     public Transform deathParticleSpawnPoint;
     public float deathParticleScale = 3f;
 
+    private bool HasDoneFlamethrower = false;
+    private float flamethrowerThreshold = -1;
     public override void init()
     {
         base.init();
@@ -29,12 +31,27 @@ public class MummyController : ControllerBase
         hitbox.OnHurt += this.OnHurt;
         hitbox.OnDeath += this.OnDeath;
 
+        foreach(State state in states)
+        {
+            if(state is MummyFlamethrower)
+            {
+                flamethrowerThreshold = ((MummyFlamethrower)state).startHP;
+                break;
+            }
+        }
+
         source.PlayOneShot(spawnSound);
     }
 
     private void OnHurt(float damage, bool isExplosive, Collider other)
     {
         source.PlayOneShot(hurtSFX);
+
+        if(hitbox.HealthPercent() <= flamethrowerThreshold && !HasDoneFlamethrower)
+        {
+            HasDoneFlamethrower = true;
+            switchState("BFlamethrower");
+        }
     }
 
     private void OnDeath()
@@ -73,6 +90,7 @@ public class MummyController : ControllerBase
 
     /// <summary>
     /// Get a random state. Will try to avoid getting the same state.
+    /// Does not return "Flamethrower" state
     /// </summary>
     /// <returns>A random state</returns>
     public State GetRandomState()
@@ -86,6 +104,10 @@ public class MummyController : ControllerBase
 
             randomState = states[randomIndex];
 
+            if(randomState is MummyFlamethrower)
+            {
+                randomState = states[0]; 
+            }
             depth++;
         }
 
