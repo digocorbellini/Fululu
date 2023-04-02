@@ -12,6 +12,8 @@ public class LancerEnemyMelee : LancerEnemyState
     public float endLagTime = .5f;
 
     private Transform player;
+    private Coroutine chaseRotine;
+    private Coroutine attackRoutine;
 
     public override string getStateName()
     {
@@ -28,7 +30,7 @@ public class LancerEnemyMelee : LancerEnemyState
         meleeHitbox.ResetAlreadyHit();
         meleeHitbox.gameObject.SetActive(false);
 
-        StartCoroutine(chase());
+        chaseRotine = StartCoroutine(chase());
     }
 
     public override void run()
@@ -60,7 +62,7 @@ public class LancerEnemyMelee : LancerEnemyState
 
         controller.rb.velocity = Vector3.zero;
 
-        StartCoroutine(performAttack());
+        attackRoutine = StartCoroutine(performAttack());
     }
 
     private IEnumerator performAttack()
@@ -85,7 +87,11 @@ public class LancerEnemyMelee : LancerEnemyState
 
     public override void exit()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
+        if (chaseRotine != null)
+            StopCoroutine(chaseRotine);
+        if (attackRoutine != null)
+            StopCoroutine(attackRoutine);
         meleeHitbox.gameObject.SetActive(false);
     }
 }

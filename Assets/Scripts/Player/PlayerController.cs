@@ -148,8 +148,6 @@ public class PlayerController : MonoBehaviour
         
         moveAction = input.actions["Move"];
 
-        GameManager.instance.OnUnpause += OnUnpause;
-
         // setup material references
         originalMatReference = new Material(meshRenderer.material);
     }
@@ -160,6 +158,7 @@ public class PlayerController : MonoBehaviour
         UpdateGrazeUI();
 
         GameManager.instance.LockCursor();
+        GameManager.instance.OnUnpause += OnUnpause;
     }
 
     public void ModifySpeed(float mod, bool blockDash = false)

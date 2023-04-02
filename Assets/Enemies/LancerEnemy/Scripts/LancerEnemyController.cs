@@ -20,6 +20,7 @@ public class LancerEnemyController : ControllerBase
 
     private bool isAttacking;
     private bool isDead;
+    private Coroutine rainAttackRoutine;
     public override void init()
     {
         base.init();
@@ -86,7 +87,7 @@ public class LancerEnemyController : ControllerBase
             return;
 
         isAttacking = true;
-        StartCoroutine(performAttack());
+        rainAttackRoutine = StartCoroutine(performAttack());
     }
 
     private IEnumerator performAttack()
@@ -108,7 +109,9 @@ public class LancerEnemyController : ControllerBase
             return;
 
         isAttacking = false;
-        StopAllCoroutines();
+        //StopAllCoroutines();
+        if(rainAttackRoutine != null)
+            StopCoroutine(rainAttackRoutine);
     }
 
     protected override void OnDestroy()
