@@ -27,6 +27,7 @@ public class LancerEnemyMidRange : LancerEnemyState
     {
         if (timer >= fireRate)
         {
+            fireControl.telegraphParticles.Play();
             fireControl.Fire();
             controller.ani.CrossFade("Shootforward_001", 0.25f);
             timer = 0;

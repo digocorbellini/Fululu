@@ -571,6 +571,8 @@ MonoBehaviour:
     type: 3}
   autoFire: 1
   autoFireInterval: 5
+  telegraphParticles: {fileID: 0}
+  telegraphTime: 1
 --- !u!65 &88445744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3966,7 +3968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1740265700
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,7 +9,15 @@ public class BallisticFire : MonoBehaviour
     public GameObject projectile;
     public bool autoFire = false;
     public float autoFireInterval = 5;
+
+    [Space(10)]
+    public ParticleSystem telegraphParticles;
+    public float telegraphTime = .5f;
+
+
+
     private ControllerBase controller;
+    private bool hasTelegraphed;
 
     private float timer;
     // Start is called before the first frame update
@@ -21,6 +29,7 @@ public class BallisticFire : MonoBehaviour
         }
 
         timer = autoFireInterval;
+        hasTelegraphed = false;
         controller = GetComponent<ControllerBase>();
     }
 
@@ -30,10 +39,20 @@ public class BallisticFire : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
+            if(!hasTelegraphed && timer <= telegraphTime)
+            {
+                hasTelegraphed = true;
+                if (telegraphParticles)
+                {
+                    telegraphParticles.Play();
+                }
+            }
+
             if(timer <= 0)
             {
                 Fire(target.position);
                 timer = autoFireInterval;
+                hasTelegraphed = false;
             }
         }
     }

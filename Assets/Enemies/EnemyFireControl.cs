@@ -13,6 +13,12 @@ public class EnemyFireControl : MonoBehaviour
 
     private float timer;
     private Transform player;
+    [Space(10)]
+    public ParticleSystem telegraphParticles;
+    public float telegraphTime = .5f;
+
+
+    private bool hasTelegraphed;
     [SerializeField] private ControllerBase controller;
 
     private void Start()
@@ -29,10 +35,21 @@ public class EnemyFireControl : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            if(timer <= 0)
+
+            if (!hasTelegraphed && timer <= telegraphTime)
+            {
+                hasTelegraphed = true;
+                if (telegraphParticles)
+                {
+                    telegraphParticles.Play();
+                }
+            }
+
+            if (timer <= 0)
             {
                 Fire();
                 timer = autoFireInterval;
+                hasTelegraphed = false;
             }
         }
     }
