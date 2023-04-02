@@ -199,6 +199,7 @@ MonoBehaviour:
   isStun: 0
   isShieldPiercing: 0
   destroyOnHit: 1
+  canMultihit: 0
 --- !u!114 &1763858908160990358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7beb67cdcca89d8419c2b6ed3a1358e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 26
+  Speed: 35
   lifetime: 10
   trails:
   - {fileID: 104675940821812350}
