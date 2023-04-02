@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,8 +66,8 @@ public class GameManager : MonoBehaviour
                 player = Instantiate<PlayerController>(playerPrefab, currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
                 player.hitbox.OnDeath += OnPlayerDeath;
                 input = player.GetComponent<PlayerInput>();
-
-            } else
+            }
+            else
             {
                 Debug.Log("Reviving and respawning player");
                 player.Revive();
@@ -74,6 +75,10 @@ public class GameManager : MonoBehaviour
                 player.transform.SetPositionAndRotation(currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
                 player.controller.enabled = true;
             }
+
+            CinemachineFreeLook cam = player.GetComponentInChildren<CinemachineFreeLook>();
+            cam.m_XAxis.Value = 0f;
+            cam.m_YAxis.Value = .5f;
 
             UIManager.Initialize(player);
             

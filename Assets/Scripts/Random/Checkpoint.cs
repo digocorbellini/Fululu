@@ -21,7 +21,14 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.transform.root.CompareTag("Player"))
         {
             playerSpawn.transform.position = respawnPoint.position;
+            playerSpawn.transform.forward = respawnPoint.forward;
             alreadyTriggered = true;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(respawnPoint.position, respawnPoint.forward * 3f);
     }
 }
