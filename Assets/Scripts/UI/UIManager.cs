@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public static UIManager instance;
 
+    private Coroutine screenTintRoutine;
+
     private void Awake()
     {
         if (!instance)
@@ -91,6 +93,25 @@ public class UIManager : MonoBehaviour
     {
         //screenTint.color = new Color(color.r, color.g, color.b, 0f);
         StartCoroutine(ScreenTintRoutine(alpha, duration));
+    }
+
+    public void SetScreenTint(float alpha)
+    {
+        if (screenTint.color.a == alpha)
+            return;
+
+        if (screenTintRoutine != null)
+        {
+            StopCoroutine(screenTintRoutine);
+        }
+
+        screenTintRoutine = StartCoroutine(ScreenTintRoutine(alpha));
+    }
+
+    private IEnumerator ScreenTintRoutine(float alpha)
+    {
+        var tween = screenTint.DOFade(alpha, 0.1f);
+        yield return tween.WaitForCompletion();
     }
 
     private IEnumerator ScreenTintRoutine(float alpha, float duration)

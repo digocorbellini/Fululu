@@ -183,6 +183,9 @@ public class PlayerController : MonoBehaviour
     {
         if(damage <= 0)
         {
+            // untoggle hurt screen tint
+            UIManager.instance.SetScreenTint(0f);
+
             return;
         }
 
@@ -201,7 +204,19 @@ public class PlayerController : MonoBehaviour
         ShakeCamera(hurtCameraShakeAmplitude, hurtCameraShakeFrequency, hurtCameraShakeDuration);
         hurtEffects.Stop();
         hurtEffects.Play();
-        UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hitbox.iFrameTime);
+
+        if (hitbox.health > 1)
+        {
+            // flash screen tint 
+            UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hitbox.iFrameTime);
+        }
+        else
+        {
+            // set screen tint to permanently active if player is at 1 heart
+            UIManager.instance.SetScreenTint(hurtScreenTintAlpha);
+        }
+
+        
         makePlayerTransparent(hitbox.iFrameTime);
     }
 
