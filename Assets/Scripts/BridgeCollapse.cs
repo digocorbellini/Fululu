@@ -7,6 +7,7 @@ public class BridgeCollapse : MonoBehaviour
     public Rigidbody rb;
     public Collider c;
     public List<GameObject> invisibleWalls = new List<GameObject>();
+    public GameObject particles;
     public float gravity = 20f;
 
     private bool done;
@@ -19,6 +20,8 @@ public class BridgeCollapse : MonoBehaviour
             c.enabled = false;
             Destroy(rb.gameObject, 30);
             done = true;
+
+            Instantiate(particles, transform.position, Quaternion.identity);
 
             // enable invisible walls
             foreach(GameObject x in invisibleWalls)

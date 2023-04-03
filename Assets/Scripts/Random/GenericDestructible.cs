@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GenericDestructible : MonoBehaviour
 {
+    public GameObject destroyParticles;
+
     private void Start()
     {
         GetComponent<EntityHitbox>().OnDeath += Selfdestruct;
@@ -11,6 +13,13 @@ public class GenericDestructible : MonoBehaviour
 
     private void Selfdestruct()
     {
+        if (destroyParticles)
+        {
+            Instantiate(destroyParticles, transform.position, Quaternion.identity);
+        }
+        
         Destroy(gameObject);
     }
+
+
 }
