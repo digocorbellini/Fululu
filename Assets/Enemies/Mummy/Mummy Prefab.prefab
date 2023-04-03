@@ -5538,7 +5538,7 @@ MonoBehaviour:
   - {fileID: 5958726339642944658}
   startHP: 0.5
   stopHP: 0.25
-  angularVelocity: 7
+  angularVelocity: 12
   afterimages: {fileID: 3078244958758203703}
   swordRing: {fileID: 1278277696}
 --- !u!1001 &1438707435804678734

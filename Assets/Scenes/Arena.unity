@@ -971,7 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 99620800}
   - component: {fileID: 99620799}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2692,7 +2692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225145951}
   - component: {fileID: 225145950}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: stairs invisible wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5310,7 +5310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641551258}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5701,7 +5701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 722922900}
   - component: {fileID: 722922899}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5861,7 +5861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759028971}
   - component: {fileID: 759028970}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6321,7 +6321,7 @@ PrefabInstance:
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
       propertyPath: totalEnemyCount
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3985417385824523489, guid: 985c7ce668a6c4640a9c891ec3c5dc78,
         type: 3}
@@ -7792,7 +7792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1002618635}
   - component: {fileID: 1002618636}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8762,7 +8762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149626231}
   - component: {fileID: 1149626232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9179,7 +9179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187349692}
   - component: {fileID: 1187349693}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11148,7 +11148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1395618228}
   - component: {fileID: 1395618227}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11973,7 +11973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449640233}
   - component: {fileID: 1449640232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13239,7 +13239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611839439}
   - component: {fileID: 1611839438}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16853,7 +16853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146908694}
   - component: {fileID: 2146908693}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisiwall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
