@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     public float deathScreenTintDuration = 0.15f;
     public Material hurtMaterial;
     public float captureIframeDuration = 2.5f;
+    public GameObject healParticles;
+    public Transform healParticleSpawn;
 
     // tutorial variables
     [HideInInspector]
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
     private SkinnedMeshRenderer meshRenderer;
     private Coroutine transparentCoroutine;
 
-
+    private float prevHealth; // this is dumb. ignore this weird workaround 
 
     // expose for leading bullets
     public float GetMoveSpeed() { return moveSpeed; }
@@ -159,6 +161,8 @@ public class PlayerController : MonoBehaviour
 
         GameManager.instance.LockCursor();
         GameManager.instance.OnUnpause += OnUnpause;
+
+        prevHealth = hitbox.health;
     }
 
     public void ModifySpeed(float mod, bool blockDash = false)
@@ -185,8 +189,11 @@ public class PlayerController : MonoBehaviour
             // untoggle hurt screen tint
             UIManager.instance.SetScreenTint(0f);
 
-            // TODO: play heal particles
+            // play heal particles if player actually healed
+            if (prevHealth < hitbox.maxHealth)
+                Instantiate(healParticles, healParticleSpawn);
 
+            prevHealth = hitbox.health;
 
             return;
         }
@@ -218,7 +225,8 @@ public class PlayerController : MonoBehaviour
             UIManager.instance.SetScreenTint(hurtScreenTintAlpha);
         }
 
-        
+        prevHealth = hitbox.health;
+
         makePlayerTransparent(hitbox.iFrameTime);
     }
 
@@ -582,6 +590,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("IsDead", false);
         currCharge = startingCharge;
         UpdateGrazeUI();
+        prevHealth = hitbox.health;
     }
 
     private void performMovement()
