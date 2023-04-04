@@ -185,6 +185,9 @@ public class PlayerController : MonoBehaviour
             // untoggle hurt screen tint
             UIManager.instance.SetScreenTint(0f);
 
+            // TODO: play heal particles
+
+
             return;
         }
 
