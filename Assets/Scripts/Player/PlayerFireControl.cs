@@ -106,6 +106,7 @@ public class PlayerFireControl : MonoBehaviour
     {
         if (recticleRing)
         {
+            print("Time charging: " + timeCharging);
             recticleRing.enabled = isCharging;
             currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - chargeRingDeadZone) / (fullChargeTime - chargeRingDeadZone));
             recticleRing.fillAmount = currRingSize;
@@ -114,9 +115,12 @@ public class PlayerFireControl : MonoBehaviour
 
     public void StartCharging()
     {
-        if (CanShootCharged())
-            isCharging = true;
-        timeCharging = 0.0f;
+        if (!isCharging)
+        {
+            if (CanShootCharged())
+                isCharging = true;
+            timeCharging = 0.0f;
+        }
         // TODO: will want some sort of feedback for the cooldown. Maybe an error sound effect and anim?
     }
 
@@ -147,6 +151,8 @@ public class PlayerFireControl : MonoBehaviour
         }
 
         //shoot the projectile
+        Debug.Log("Charge: " + timeCharging + " Need: " + fullChargeTime);
+        Debug.Log("Can Shoot Charged: " + CanShootCharged());
         if (timeCharging >= fullChargeTime && CanShootCharged())
         {
             // Fire charged attack from weapon
