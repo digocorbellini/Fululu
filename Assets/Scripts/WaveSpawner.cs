@@ -44,6 +44,8 @@ public class WaveSpawner : MonoBehaviour
 
     public AudioSource spawnSFX;
 
+    public GameObject[] activateOnClear;
+
     [Header("Events")]
     public UltEvent OnActivate;
     public UltEvent OnClear;
@@ -72,6 +74,8 @@ public class WaveSpawner : MonoBehaviour
         activeEnemies = 0;
         waveNum = 0;
         ToggleBarriers(false);
+
+        activateOnClear.ToList().ForEach(obj => obj.SetActive(false));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -148,5 +152,7 @@ public class WaveSpawner : MonoBehaviour
         OnClear.Invoke();
         isActive = false;
         ToggleBarriers(false);
+
+        activateOnClear.ToList().ForEach(obj => obj.SetActive(true));
     }
 }
