@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogue:
   - Oh no! Look at your health. You've been pretty roughed up!
   - Luckily your gourd is charged and there's a stray ghost over there.
-  - Go up to it and capture it with [RMB] to heal up a little.
+  - Go up to it and capture it with <sprite=71> to heal up a little.
   names:
   - Spirit Familiar
   - 

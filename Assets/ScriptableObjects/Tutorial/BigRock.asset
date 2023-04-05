@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Wow... that's certainly a big pile of rocks.
-  - If you sacrifice your captured ghost with [Q], you'll unleash it's power.
+  - If you sacrifice your captured ghost with <sprite=83>, you'll unleash it's power.
   - For this ghost, it'll cause a huge explosion to blast through those rocks.
   names:
   - Spirit Familiar

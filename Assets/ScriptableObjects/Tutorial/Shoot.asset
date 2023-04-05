@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - A barrier?
-  - 'Those talismans must be powering it. Shoot them down with [LMB]! '
-  - You can also hold down [LMB] to charge a more powerful shot.
+  - 'Those talismans must be powering it. Shoot them down with <sprite=68>! '
+  - You can also hold down <sprite=68> to charge a more powerful shot.
   names:
   - Spirit Familiar
   - 
