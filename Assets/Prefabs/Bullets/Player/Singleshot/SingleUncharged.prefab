@@ -216,7 +216,9 @@ MonoBehaviour:
   lifetime: 10
   trails:
   - {fileID: 104675940821812350}
-  hitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
+  hitParticles: {fileID: 5130795115556258760, guid: ec735965b4174454b8a0f78aa5c4ec4b,
+    type: 3}
+  enemyHitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
     type: 3}
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
