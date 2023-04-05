@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 594f0d6294159d14aa8cf531e5392274, type: 2}
+  - {fileID: 2100000, guid: 3437065788c040440b2ec8ce160988ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +132,9 @@ MonoBehaviour:
   damage: 0
   isExplosive: 0
   isStun: 0
+  isShieldPiercing: 0
   destroyOnHit: 1
+  canMultihit: 0
 --- !u!114 &6858177788327232075
 MonoBehaviour:
   m_ObjectHideFlags: 0
