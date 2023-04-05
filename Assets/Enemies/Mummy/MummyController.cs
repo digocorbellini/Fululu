@@ -14,6 +14,7 @@ public class MummyController : ControllerBase
     public GameObject deathParticlePrefab;
     public Transform deathParticleSpawnPoint;
     public float deathParticleScale = 3f;
+    public GameObject mummyDeathHandler;
 
     private bool HasDoneFlamethrower = false;
     private float flamethrowerThreshold = -1;
@@ -69,6 +70,7 @@ public class MummyController : ControllerBase
         rb.velocity = Vector3.zero;
 
         ringController.autoFire = false;
+        Instantiate(mummyDeathHandler, deathParticleSpawnPoint.position, Quaternion.identity);
 
         Destroy(this.gameObject, deathSound.length);
     }
@@ -79,13 +81,6 @@ public class MummyController : ControllerBase
         hitbox.OnDeath -= this.OnDeath;
         GameObject instance = Instantiate(deathParticlePrefab, deathParticleSpawnPoint.position, deathParticleSpawnPoint.rotation);
         instance.transform.localScale = Vector3.one * deathParticleScale;
-
-        // TODO: remove me
-        if(GetComponentInChildren<EntityHitbox>().health <= 0)
-        {
-            LevelChanger.instance.ChangeSceneAsync("WinScreen");
-        }
-        
     }
 
     /// <summary>

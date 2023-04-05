@@ -419,13 +419,15 @@ MonoBehaviour:
   isStunned: 0
   player: {fileID: 0}
   source: {fileID: 1438707436317388885}
-  deathSound: {fileID: 8300000, guid: b36ca1e3ec58e5045bb5db3fccfe4429, type: 3}
+  deathSound: {fileID: 8300000, guid: 84f49e1eae13a7941b36b418f93b2296, type: 3}
   spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
   ringController: {fileID: 1278277696}
   deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
     type: 3}
   deathParticleSpawnPoint: {fileID: 6686473226716224905}
   deathParticleScale: 3
+  mummyDeathHandler: {fileID: 3531016873782798130, guid: 8c956701313b11e4988154eb8e4c3517,
+    type: 3}
 --- !u!54 &1438707436317388882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5672,7 +5674,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 03ef30fc2c05b2e4f8a4dbbba4d720ef, type: 2}
+      objectReference: {fileID: 2100000, guid: 5310433c2d1ed014c8ad4365a3542b04, type: 2}
     - target: {fileID: 4798374521341906516, guid: 68008d950d9cdff43a576b28634801d1,
         type: 3}
       propertyPath: m_Layer
