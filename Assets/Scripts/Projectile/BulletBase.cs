@@ -16,12 +16,16 @@ public abstract class BulletBase: MonoBehaviour
     public float lifetime;
 
     public GameObject[] trails;
+    [Tooltip("Particles that spawn if anything is hit. Overriden by enemy hit particles if hit enemy.")]
     public GameObject hitParticles;
+    [Tooltip("OPTIONAL. Particles that spawn on collision with enemy")]
+    public GameObject enemyHitParticles;
     public Transform hitParticlesSpawn;
 
     [Tooltip("If true, bullet will die after given lifetime and will move forward forever.")]
     public bool hasDefaultBehaviour = true;
     private bool didTimeOut = false;
+    private bool hitTerrain = false;
 
     public void SetDamage(float dmg)
     {
@@ -74,6 +78,7 @@ public abstract class BulletBase: MonoBehaviour
             // Piercing bullet hit terrain. Destroy it regardless;
             // print("hit terrain: " + other.gameObject);
             shouldDestroy = true;
+            hitTerrain = true;
         }
 
         if (shouldDestroy)
@@ -98,16 +103,26 @@ public abstract class BulletBase: MonoBehaviour
 
     public void spawnHitParticle()
     {
-        if (hitParticles != null)
+        GameObject particlesToSpawn;
+
+        if (hitTerrain)
+        {
+            particlesToSpawn = hitParticles;
+        }
+        else
+        {
+            particlesToSpawn = (enemyHitParticles != null) ? enemyHitParticles : hitParticles;
+        }
+
+        if (particlesToSpawn != null)
         {
             if (hitParticlesSpawn != null)
             {
-                Instantiate(hitParticles, hitParticlesSpawn.position, Quaternion.LookRotation(hitParticlesSpawn.forward));
-
+                Instantiate(particlesToSpawn, hitParticlesSpawn.position, Quaternion.LookRotation(hitParticlesSpawn.forward));
             }
             else
             {
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
+                Instantiate(particlesToSpawn, transform.position, Quaternion.identity);
             }
         }
     }

@@ -221,6 +221,7 @@ MonoBehaviour:
   isStun: 0
   isShieldPiercing: 0
   destroyOnHit: 1
+  canMultihit: 0
 --- !u!114 &1763858908160990358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +239,9 @@ MonoBehaviour:
   trails:
   - {fileID: 9154799288347540397}
   - {fileID: 213634177406166856}
-  hitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
+  hitParticles: {fileID: 5130795115556258760, guid: ec735965b4174454b8a0f78aa5c4ec4b,
+    type: 3}
+  enemyHitParticles: {fileID: 6244623144662541055, guid: c209fbe218a51784581f5c96c46fb501,
     type: 3}
   hitParticlesSpawn: {fileID: 0}
   hasDefaultBehaviour: 1
