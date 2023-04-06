@@ -9,12 +9,12 @@ public class SpawnBoss : MonoBehaviour
     public GameObject fakeBossPrefab;
     public EnemySpawner bossMinionSpawner;
     public GameObject[] barriers;
+    public BossHpBar hpBar;
 
     private bool isSpawned = false;
     private bool isCleared = false;
     private GameObject boss;
     private GameObject fakeBoss;
-    
 
     public GameObject SpawnTheBoss()
     {
@@ -25,6 +25,9 @@ public class SpawnBoss : MonoBehaviour
         {
             bossMinionSpawner.RegisterToBoss(bossHitbox);
         }
+
+        hpBar.gameObject.SetActive(true);
+        hpBar.RegisterBoss(bossHitbox);
 
         bossHitbox.OnDeath += OnCleared;
         isSpawned = true;
@@ -52,6 +55,7 @@ public class SpawnBoss : MonoBehaviour
         isSpawned = false;
         barriers.ToList().ForEach(barrier => barrier.SetActive(false));
         fakeBoss = Instantiate(fakeBossPrefab, transform.position, Quaternion.identity);
+        hpBar.gameObject.SetActive(false);
     }
 
     private void OnEnable()

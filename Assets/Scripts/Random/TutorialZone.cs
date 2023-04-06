@@ -98,13 +98,15 @@ public class TutorialZone : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 alreadyTriggered = true;
+                if (!input)
+                {
+                    return;
+                }
                 index = 0;
                 cam.enabled = true;
-                if (input)
-                {
-                    input.enabled = true;
-                }
-                
+
+                input.enabled = true;
+              
                 GameManager.instance.ToggleInput(false);
                 UIManager.instance.ToggleTutorial(true);
                 SetTutorial(index);

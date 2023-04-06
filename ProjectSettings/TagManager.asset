@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Center
+  - BossHP
   layers:
   - Default
   - TransparentFX
