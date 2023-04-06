@@ -106,7 +106,6 @@ public class PlayerFireControl : MonoBehaviour
     {
         if (recticleRing)
         {
-            print("Time charging: " + timeCharging);
             recticleRing.enabled = isCharging;
             currRingSize = Mathf.Lerp(0.0f, 1.0f, (timeCharging - chargeRingDeadZone) / (fullChargeTime - chargeRingDeadZone));
             recticleRing.fillAmount = currRingSize;

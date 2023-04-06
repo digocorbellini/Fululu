@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class MummyFlamethrower : MummyState
 {
-    public GameObject flameRoot;
-    public ParticleSystem[] particles;
-    public Collider[] colliders;
+    public GameObject flamePrefab;
+    public Transform spawnPosition;
 
     [Space(8)]
     public float startHP = .6f;
@@ -21,6 +20,7 @@ public class MummyFlamethrower : MummyState
     private Transform arenaCenter;
     private RigidbodyConstraints rbc;
 
+    private FlamethrowerSpin spawned;
     private enum FlamethrowerPhase
     {
         Waiting,
@@ -58,9 +58,8 @@ public class MummyFlamethrower : MummyState
         controller.gameObject.transform.position = arenaCenter.position;
         timer = 2f;
         phase = FlamethrowerPhase.Readying;
-        flameRoot.SetActive(true);
-        colliders.ToList().ForEach(collider => collider.enabled = false);
-        particles.ToList().ForEach(particleSystem => particleSystem.Play());
+        spawned = Instantiate(flamePrefab, spawnPosition.position, Quaternion.identity).GetComponent<FlamethrowerSpin>();
+        spawned.angularVelocity = angularVelocity;
         rbc = controller.rb.constraints;
         controller.rb.constraints = RigidbodyConstraints.FreezeAll;
     }
@@ -77,16 +76,15 @@ public class MummyFlamethrower : MummyState
             }
             else if(phase == FlamethrowerPhase.Readying)
             {
-                colliders.ToList().ForEach(collider => collider.enabled = true);
+                
                 phase = FlamethrowerPhase.Spinning;
+                spawned.StartSpinning();
                 afterimages.gameObject.SetActive(false);
             }
         }
 
         if(phase == FlamethrowerPhase.Spinning)
         {
-            flameRoot.transform.eulerAngles += new Vector3(0, angularVelocity * Time.deltaTime, 0);
-
             if(controller.hitbox.HealthPercent() <= stopHP)
             {
                 controller.switchState("BChase");
@@ -96,8 +94,7 @@ public class MummyFlamethrower : MummyState
 
     public override void exit()
     {
-        colliders.ToList().ForEach(collider => collider.enabled = false);
-        particles.ToList().ForEach(particleSystem => particleSystem.Stop());
+        spawned.StopSpinning();
         controller.rb.freezeRotation = false;
         if (swordRing != null)
         {
