@@ -35,6 +35,8 @@ public class EnemySpawner : MonoBehaviour
 
     private EntityHitbox associatedBoss;
 
+    private bool completed = false;
+
     private void Start()
     {
         GameManager.instance.OnReset += OnReset;
@@ -69,6 +71,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnReset()
     {
+        if (completed)
+        {
+            return;
+        }
         initialSpawn = false;
         enemiesLeft = totalEnemyCount;
         activeEnemies = 0;
@@ -187,6 +193,7 @@ public class EnemySpawner : MonoBehaviour
     {
         enemiesLeft = 0;
         isActive = false;
+        completed = true;
         ToggleBarriers(false);
     }
 }

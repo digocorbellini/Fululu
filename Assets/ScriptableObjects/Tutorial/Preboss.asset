@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f28c716fd1137f4fa9d348045aff660, type: 3}
-  m_Name: Meter
+  m_Name: Preboss
   m_EditorClassIdentifier: 
   dialogue:
-  - Looks like shooting those talismans charged your gourd.
-  - It filled up all three of the segments too!
+  - Han!
+  - Lucy! Watch out!
+  - It's not over yet. Behind you!
   names:
+  - Lucy
   - Han
   - 
   potraits:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 18faefa75b987e543895c6cb7d212393, type: 3}
+  - {fileID: 21300000, guid: 3197835372d60284e99cdb2371d9d94e, type: 3}
   - {fileID: 0}

@@ -16,7 +16,7 @@ MonoBehaviour:
   - Capturing ghosts also gives new abilities.
   - Try shooting that cracked rock with <sprite=68> with your new explosive powers.
   names:
-  - Spirit Familiar
+  - Han
   - 
   potraits:
   - {fileID: 0}

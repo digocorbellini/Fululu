@@ -16,7 +16,7 @@ MonoBehaviour:
   - Those statues are haunted by evil spirits!
   - If you use <sprite=19> to dash, you can become  invincible and dodge those bullets.
   names:
-  - Spirit Familiar
+  - Han
   - 
   potraits:
   - {fileID: 0}

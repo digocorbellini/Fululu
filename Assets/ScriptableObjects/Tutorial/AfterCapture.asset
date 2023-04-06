@@ -15,6 +15,6 @@ MonoBehaviour:
   dialogue:
   - Nice! You got a heart back from capturing that ghost.
   names:
-  - Spirit Familiar
+  - Han
   potraits:
   - {fileID: 0}
