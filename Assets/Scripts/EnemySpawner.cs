@@ -37,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
 
     private bool completed = false;
 
+    private List<EntityHitbox> enemyList;
+
     private void Start()
     {
         GameManager.instance.OnReset += OnReset;
@@ -48,6 +50,7 @@ public class EnemySpawner : MonoBehaviour
         weightSum = weights.Sum();
         enemiesLeft = totalEnemyCount;
         timer = int.MaxValue;
+        enemyList = new List<EntityHitbox>();
 
         ToggleBarriers(false);
     }
@@ -118,7 +121,10 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
-                spawned.GetComponentInChildren<EntityHitbox>().OnDestroyed += OnEnemyDefeated;
+                EntityHitbox hb = spawned.GetComponentInChildren<EntityHitbox>();
+                hb.OnRemoveFromLists += (hb) => enemyList.Remove(hb);
+                hb.OnDestroyed += OnEnemyDefeated;
+                enemyList.Add(hb);
                 enemiesLeft--;
                 activeEnemies++;
                 didSpawn = true;
@@ -195,5 +201,7 @@ public class EnemySpawner : MonoBehaviour
         isActive = false;
         completed = true;
         ToggleBarriers(false);
+
+        enemyList.ForEach(e => e.DealDamageDirect(1000));
     }
 }
