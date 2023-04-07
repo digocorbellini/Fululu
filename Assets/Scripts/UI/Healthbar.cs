@@ -57,10 +57,10 @@ public class Healthbar : MonoBehaviour
 
     private void UpdateDisplay(float damage, bool isExplosive, Collider other)
     {
-        Debug.Log("Update display called. damage: " + damage);
+        // Debug.Log("Update display called. damage: " + damage);
         health -= damage;
         health = Mathf.Clamp(health, 0, hearts.Length);
-        Debug.Log("new health: " + health);
+        // Debug.Log("new health: " + health);
 
         int i = 0;
         for(; i < health; i++)

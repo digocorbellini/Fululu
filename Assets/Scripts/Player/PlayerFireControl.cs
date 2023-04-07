@@ -150,8 +150,8 @@ public class PlayerFireControl : MonoBehaviour
         }
 
         //shoot the projectile
-        Debug.Log("Charge: " + timeCharging + " Need: " + fullChargeTime);
-        Debug.Log("Can Shoot Charged: " + CanShootCharged());
+        // Debug.Log("Charge: " + timeCharging + " Need: " + fullChargeTime);
+        // Debug.Log("Can Shoot Charged: " + CanShootCharged());
         if (timeCharging >= fullChargeTime && CanShootCharged())
         {
             // Fire charged attack from weapon

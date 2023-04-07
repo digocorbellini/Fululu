@@ -31,6 +31,9 @@ public class EntityHitbox : MonoBehaviour
     public void CallOnDestroyed() => OnDestroyed?.Invoke();
     public bool wasReset = false;
 
+    public delegate void RemoveFromListsEvent(EntityHitbox hb);
+    public event RemoveFromListsEvent OnRemoveFromLists;
+    public void CallOnRemoveFromLists(EntityHitbox hb) => OnRemoveFromLists?.Invoke(hb);
 
     public delegate void ArmorBreakEvent();
     public event ArmorBreakEvent OnArmorBreak;
@@ -259,6 +262,7 @@ public class EntityHitbox : MonoBehaviour
             return;
         }
 
+        CallOnRemoveFromLists(this);
         CallOnDestroyed();
     }
 

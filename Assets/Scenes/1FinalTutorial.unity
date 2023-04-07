@@ -2300,8 +2300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eeaebf4c54720e429cc7b6fe69a3336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 1438707436317388884, guid: 89f7d5b3fb6b4cf40aa722f1f3881579, type: 3}
+  bossPrefab: {fileID: 0}
+  fakeBossPrefab: {fileID: 0}
   bossMinionSpawner: {fileID: 0}
+  barriers: []
+  hpBar: {fileID: 0}
 --- !u!1 &121492698
 GameObject:
   m_ObjectHideFlags: 0
@@ -19115,11 +19118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2853326507940185527, guid: 5e340edf8b0a69f499d56202c2c608c1,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e340edf8b0a69f499d56202c2c608c1, type: 3}
@@ -54427,11 +54425,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2853326507940185527, guid: 5e340edf8b0a69f499d56202c2c608c1,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e340edf8b0a69f499d56202c2c608c1, type: 3}
 --- !u!43 &1729156808
@@ -56683,11 +56676,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2853326507940185527, guid: 5e340edf8b0a69f499d56202c2c608c1,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e340edf8b0a69f499d56202c2c608c1, type: 3}
