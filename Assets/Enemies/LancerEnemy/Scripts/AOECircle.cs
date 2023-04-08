@@ -46,7 +46,7 @@ public class AOECircle : MonoBehaviour
     /// </summary>
     /// <param name="chargeTime">the time this attack should wait before
     /// raining on the player</param>
-    public void SetStats(float chargeTime, float attackRadius, int orderInLayer = 10)
+    public void SetStats(float chargeTime, float attackRadius, int orderInLayer = 10, float bulletSpawnHeight = -1f)
     {
         this.attackRadius = attackRadius;
         this.chargeTime = chargeTime;
@@ -63,6 +63,13 @@ public class AOECircle : MonoBehaviour
         // set ring rendering layer order
         redCircleObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
         redRingObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
+
+        if (bulletSpawnHeight > 0)
+        {
+            Vector3 bulletPos = bulletSpawn.position;
+            bulletPos.y = bulletSpawnHeight;
+            bulletSpawn.position = bulletPos;
+        }
     }
 
     /// <summary>
@@ -102,10 +109,29 @@ public class AOECircle : MonoBehaviour
         // dissale capsule collider for grazing
         capsuleCollider.enabled = false;
 
-        // wait for projectile to hit the ground
-        yield return new WaitForSeconds(bulletSpawn.position.y / spawnedProjectile.Speed);
+        // yield return new WaitForSeconds(bulletSpawn.position.y / spawnedProjectile.Speed);
+
+        // wait for projectile to get destoryed
+        while (spawnedProjectile != null && !isDestroyed(spawnedProjectile.gameObject))
+        {
+            yield return null;
+        }
 
         selfDestruct();
+    }
+
+    /// <summary>
+    /// Checks if a GameObject has been destroyed.
+    /// </summary>
+    /// <param name="gameObject">GameObject reference to check for destructedness</param>
+    /// <returns>If the game object has been marked as destroyed by UnityEngine</returns>
+    private bool isDestroyed(GameObject gameObject)
+    {
+        // UnityEngine overloads the == opeator for the GameObject type
+        // and returns null when the object has been destroyed, but 
+        // actually the object is still there but has not been cleaned up yet
+        // if we test both we can determine if the object has been destroyed.
+        return gameObject == null && !ReferenceEquals(gameObject, null);
     }
 
     /// <summary>
