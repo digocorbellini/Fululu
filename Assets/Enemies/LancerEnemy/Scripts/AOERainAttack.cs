@@ -116,7 +116,7 @@ public class AOERainAttack : MonoBehaviour
 
         print("pos delta: " + (playerHorizVelocity * attackChargeTime));
 
-        Vector3 leadingPos = player.transform.position + (playerDirection * playerController.GetMoveSpeed() * attackChargeTime) + (playerDirection * attackRadius * 2);
+        Vector3 leadingPos = player.transform.position + (playerDirection * playerController.GetMoveSpeed() * attackChargeTime) + (playerDirection * attackRadius * 10);
         leadingPos.y -= getDeltaToFloor(leadingPos);
 
         return leadingPos;

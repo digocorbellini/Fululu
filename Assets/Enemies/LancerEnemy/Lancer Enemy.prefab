@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfAttacks: 3
   attackRadius: 0.8
-  shouldBeLeading: 0
+  shouldBeLeading: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
