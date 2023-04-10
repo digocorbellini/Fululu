@@ -43,7 +43,11 @@ public class MeleeGhostController : ControllerBase
 
     private void OnDeath()
     {
-        audioSource.PlayOneShot(hurtSFX);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(hurtSFX);
+        }
+        
         switchState("MGDeath");
     }
 }

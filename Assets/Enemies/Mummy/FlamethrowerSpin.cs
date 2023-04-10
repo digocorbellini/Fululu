@@ -12,6 +12,7 @@ public class FlamethrowerSpin : MonoBehaviour
     private Collider[] colliders;
     private ParticleSystem[] ps;
 
+    private bool isDestroyed = false;
     public void Awake()
     {
         colliders = GetComponentsInChildren<Collider>();
@@ -19,6 +20,8 @@ public class FlamethrowerSpin : MonoBehaviour
 
         Debug.Log("C: " + colliders);
         Debug.Log("PS: " + ps);
+
+        GameManager.instance.OnReset += OnReset;
     }
     private void Update()
     {
@@ -33,6 +36,8 @@ public class FlamethrowerSpin : MonoBehaviour
         ps.ToList().ForEach(p => p.Stop());
         colliders.ToList().ForEach(c => c.enabled = false);
         isSpinning = false;
+        GameManager.instance.OnReset -= OnReset;
+        isDestroyed = true;
         Destroy(gameObject, 5f);
     }
 
@@ -40,5 +45,13 @@ public class FlamethrowerSpin : MonoBehaviour
     {
         colliders.ToList().ForEach(collider => collider.enabled = true);
         isSpinning = true;
+    }
+
+    public void OnReset()
+    {
+        if (!isDestroyed)
+        {
+            Destroy(gameObject);
+        }
     }
 }

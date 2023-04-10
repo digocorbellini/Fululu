@@ -16,12 +16,17 @@ public class UIPinger : MonoBehaviour
 
     public Animator gourdPing;
     public Animator heartThree;
+    public Animator heartTwo;
+    public Animator heartOne;
 
     public enum PingLocation
     {
         None,
         Gourd,
-        HeartThree
+        HeartThree,
+        HeartTwo,
+        HeartOne,
+        HeartDynamic
     }
     
     public void PlayPing(PingLocation location, float time = 0)
@@ -59,9 +64,31 @@ public class UIPinger : MonoBehaviour
                 return gourdPing;
             case PingLocation.HeartThree:
                 return heartThree;
+            case PingLocation.HeartTwo:
+                return heartTwo;
+            case PingLocation.HeartOne:
+                return heartOne;
+            case PingLocation.HeartDynamic:
+                return GetCurrentHeart();
             default:
                 Debug.LogError("Invalid ping location: " + location);
                 return null;
+        }
+    }
+
+   private Animator GetCurrentHeart()
+    {
+        float playerHP = GameManager.instance.player.GetComponentInChildren<EntityHitbox>().health;
+
+        switch (playerHP)
+        {
+            case 4:
+                return heartThree;
+            case 3:
+                return heartTwo;
+            default:
+            case 1:
+                return heartOne;
         }
     }
     

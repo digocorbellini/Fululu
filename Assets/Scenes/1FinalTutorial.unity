@@ -6982,7 +6982,7 @@ PrefabInstance:
     - target: {fileID: 1295064768531728272, guid: 464351f4f8446f949b73ab8488938a1e,
         type: 3}
       propertyPath: pingLocation
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1295064768531728272, guid: 464351f4f8446f949b73ab8488938a1e,
         type: 3}
@@ -18008,8 +18008,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 39.8404, y: 1, z: 34.54463}
-  m_Center: {x: -3.2097254, y: 0, z: 4.9401684}
+  m_Size: {x: 47.617226, y: 1, z: 34.54463}
+  m_Center: {x: -2.4819374, y: 0, z: 4.9401684}
 --- !u!4 &563421880
 Transform:
   m_ObjectHideFlags: 0
@@ -19430,8 +19430,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 39.8404, y: 1, z: 34.54463}
-  m_Center: {x: -3.2097254, y: 0, z: 4.9401684}
+  m_Size: {x: 56.128357, y: 1, z: 34.54463}
+  m_Center: {x: -3.6182098, y: 0, z: 4.9401684}
 --- !u!4 &607359031
 Transform:
   m_ObjectHideFlags: 0
