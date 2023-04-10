@@ -23,3 +23,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  voiceLines:
+  - {fileID: 0}
+  - {fileID: 0}
+  afterVoiceLine: {fileID: 11400000, guid: fcd0e02ddabfd1f48bbcb682de452557, type: 2}

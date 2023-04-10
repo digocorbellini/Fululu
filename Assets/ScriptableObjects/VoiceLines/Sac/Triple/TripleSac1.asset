@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: d79fd97523ae8b847a7bc44866c67f3d, type: 3}
   DialogueText:
-  - Ooh baby a triple!
+  - Ooooh baby a triple!
   DialogueName: TripleSac1

@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: 4f678be07ebeb6945bddec07e0c3f09a, type: 3}
   DialogueText:
-  - Hiya!
+  - Ya!
   DialogueName: GenericSac1

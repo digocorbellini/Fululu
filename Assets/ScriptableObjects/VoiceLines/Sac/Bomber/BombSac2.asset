@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: ea93dfd0cec424a44b93db561ac8f5da, type: 3}
   DialogueText:
-  - Booom!
+  - Kaboom!
   DialogueName: BombSac2

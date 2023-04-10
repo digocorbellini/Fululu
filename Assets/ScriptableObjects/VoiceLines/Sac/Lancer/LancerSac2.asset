@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LancerSac2
   m_EditorClassIdentifier: 
   DialogueAudio:
-  - {fileID: 8300000, guid: 42f983e1100f5224695a41e2e79f9a8a, type: 3}
+  - {fileID: 8300000, guid: f6ea2ec6e10bf954a94281b453cf5fe1, type: 3}
   DialogueText:
   - Make it rain!
   DialogueName: LancerSac2

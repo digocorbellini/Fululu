@@ -6437,7 +6437,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702436, y: -0.97977734, z: 0.13098288, w: 0.15125358}
+  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7110,12 +7110,12 @@ MonoBehaviour:
   source: {fileID: 253624392283918106}
   subtitle: {fileID: 0}
   globalCooldown: 5
-  jumpChance: 0.33
+  jumpChance: 0.5
   jump:
   - {fileID: 11400000, guid: c41089ba27c974f41ac8bdc9d084f34b, type: 2}
   - {fileID: 11400000, guid: 561251414066dbe48a32eb8ea81a914a, type: 2}
   - {fileID: 11400000, guid: f079874e7a3d52645aea0fdb0e19c74d, type: 2}
-  dashChance: 0.33
+  dashChance: 0.5
   dash:
   - {fileID: 11400000, guid: 210a9a81df149ca42bbdc9465763b0ca, type: 2}
   - {fileID: 11400000, guid: 051fa6fdc717b1b4d9d8abaf25f612bb, type: 2}
@@ -7128,19 +7128,24 @@ MonoBehaviour:
   critHurt:
   - {fileID: 11400000, guid: bc272373f242d7c49b250ebe15197ff9, type: 2}
   - {fileID: 11400000, guid: 538ca8a7e7d7efa4a9b39e6e6c7e1172, type: 2}
-  capChance: 0.7
+  capChance: 1
   capture:
   - {fileID: 11400000, guid: a36eca2cf40a1b148a82c19c77c1debc, type: 2}
   - {fileID: 11400000, guid: 4d19bd2018c80c14d9aed0573b1bd40d, type: 2}
   - {fileID: 11400000, guid: 083ab78a37fdd6448b43d80e2e2d9e79, type: 2}
   - {fileID: 11400000, guid: 01ba5810ed49f7846b1ea8cc81590133, type: 2}
   - {fileID: 11400000, guid: b6cc04da511c8524bb1c2bcdffd35cb9, type: 2}
-  - {fileID: 11400000, guid: c54e2722f0e30514bad19ff9e54c8787, type: 2}
   critCapChance: 1
   critCapture:
   - {fileID: 11400000, guid: 7c2bcf667de92324282d908938f4efeb, type: 2}
   - {fileID: 11400000, guid: 2aacedb50ced91f4d999aefb9ad9e4a2, type: 2}
   - {fileID: 11400000, guid: 0c3c51b8bb7ac7f44af5f90302f81234, type: 2}
+  weakCapChance: 1
+  weakCap:
+  - {fileID: 11400000, guid: c54e2722f0e30514bad19ff9e54c8787, type: 2}
+  - {fileID: 11400000, guid: 8ef876e30b1c4934ca1c95a045d586a1, type: 2}
+  - {fileID: 11400000, guid: a36eca2cf40a1b148a82c19c77c1debc, type: 2}
+  - {fileID: 11400000, guid: 083ab78a37fdd6448b43d80e2e2d9e79, type: 2}
 --- !u!82 &253624392283918106
 AudioSource:
   m_ObjectHideFlags: 0

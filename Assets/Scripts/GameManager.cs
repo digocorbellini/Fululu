@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public UIManager UIManager;
     public UIPinger uiPinger;
     private PlayerInput input;
+    private PlayerVoiceLines voiceLinePlayer;
 
     public event Action OnUnpause;
     public void CallOnUnpause() => OnUnpause?.Invoke();
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
                 player = Instantiate<PlayerController>(playerPrefab, currentPlayerSpawn.transform.position, currentPlayerSpawn.transform.rotation);
                 player.hitbox.OnDeath += OnPlayerDeath;
                 input = player.GetComponent<PlayerInput>();
+                voiceLinePlayer = player.GetComponentInChildren<PlayerVoiceLines>();
             }
             else
             {
@@ -135,6 +137,11 @@ public class GameManager : MonoBehaviour
     public void OnHitGrazeCharge(float mult = 1.0f)
     {
         player.OnHitCharge(mult);
+    }
+
+    public void PlayVoiceLine(Dialogue line, float chance = 1.0f, float delay = 0.0f)
+    {
+        voiceLinePlayer.PlayLine(chance, new Dialogue[] {line}, delay);
     }
 
     private void Start()

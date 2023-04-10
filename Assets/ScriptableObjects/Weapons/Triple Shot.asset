@@ -27,3 +27,6 @@ MonoBehaviour:
     type: 3}
   sacrificeBullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602,
     type: 3}
+  sacVoiceLines:
+  - {fileID: 11400000, guid: 84395f2e57dfcbd429173f93cbde1741, type: 2}
+  - {fileID: 11400000, guid: 6da4e774283fab1419b6a5aa27628bcc, type: 2}

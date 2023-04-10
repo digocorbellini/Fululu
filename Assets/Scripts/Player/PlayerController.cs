@@ -383,6 +383,10 @@ public class PlayerController : MonoBehaviour
             {
                 voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapCrit);
             }
+            else if(capturedEntity.captureCost <= .5)
+            {
+                voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapWeak);
+            }
             else
             {
                 voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Capture);
@@ -412,6 +416,11 @@ public class PlayerController : MonoBehaviour
             // Sacrifice weapon if equipped
             if (fcs.weapon != fcs.defaultWeapon)
             {
+                if(fcs.weapon.sacVoiceLines != null && fcs.weapon.sacVoiceLines.Length != 0)
+                {
+                    voiceLines.PlayLine(1.0f, fcs.weapon.sacVoiceLines, .3f);
+                }
+
                 fcs.SacrificeWeapon();
             }
         }

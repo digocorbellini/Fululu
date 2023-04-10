@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6236a7fcacc53d54283c9f756025bfa1, type: 3}
-  m_Name: GenericCap6
+  m_Name: WeakCap1
   m_EditorClassIdentifier: 
   DialogueAudio:
-  - {fileID: 8300000, guid: ded20e7c5d476b04b8c2ee13bbb28fe7, type: 3}
+  - {fileID: 8300000, guid: 491c6bae166991043ac3b6241a90a81c, type: 3}
   DialogueText:
-  - Aww yeah!
-  DialogueName: GenericCap6
+  - Small fry
+  DialogueName: WeakCap1

@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: 8767dcc00e1a4d74b9b31aae3506eb65, type: 3}
   DialogueText:
-  - Han!
+  - 
   DialogueName: Han

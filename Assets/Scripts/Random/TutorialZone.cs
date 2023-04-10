@@ -45,6 +45,11 @@ public class TutorialZone : MonoBehaviour
         UIManager.instance.SetTutorialText(tut.dialogue[i]);
         UIManager.instance.SetTutorialNametag(tut.names[i]);
         UIManager.instance.SetPotraitImage(tut.potraits[i]);
+
+        if(tut.voiceLines[i])
+        {
+            GameManager.instance.PlayVoiceLine(tut.voiceLines[i]);
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -80,9 +85,13 @@ public class TutorialZone : MonoBehaviour
             {
                 GameManager.instance.StopPingUI(pingLocation);
             }
-
             activateDuring.ToList().ForEach(obj => obj.SetActive(false));
             activateAfter.ToList().ForEach(obj => obj.SetActive(true));
+
+            if (tut.afterVoiceLine)
+            {
+                GameManager.instance.PlayVoiceLine(tut.afterVoiceLine, 1.0f, 1.0f);
+            }
         }
         else
         {

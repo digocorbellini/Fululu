@@ -34,6 +34,9 @@ public class Weapon : ScriptableObject
     [Tooltip("Fired when sacrificing the weapon")]
     public BulletBase sacrificeBullet;
 
+    [Tooltip("Voice line(s) to play when using sacrifice")]
+    public Dialogue[] sacVoiceLines;
+
     private List<BulletBase> spawnedBullets = new List<BulletBase>();
 
     private void SpawnBullets(Transform transform, Vector3? target, BulletSpread spread, BulletBase bullet)

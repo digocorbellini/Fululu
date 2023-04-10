@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: c6459d4c7cdef204092678ed0b494792, type: 3}
   DialogueText:
-  - Han? Where are you?
+  - 
   DialogueName: HanWhere

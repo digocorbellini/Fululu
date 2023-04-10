@@ -12,9 +12,11 @@ public class PlayerVoiceLines : MonoBehaviour
         Hurt,
         HurtCrit,   // Hurt when reduced to 1 HP
         Capture,
-        CapCrit    // Capture when at 1 HP
+        CapCrit,    // Capture when at 1 HP
+        CapWeak     // Capture weak enemies (gremlins and single shot ghosts)
 
-        // Capture voice lines stored per capture weapon
+        // Sacrifice voice lines stored per capture weapon
+        // Tutorials may have voice lines too
     }
 
     public AudioSource source;
@@ -53,6 +55,10 @@ public class PlayerVoiceLines : MonoBehaviour
     [Range(0, 1f)]
     public float critCapChance;
     public Dialogue[] critCapture;
+
+    [Range(0, 1f)]
+    public float weakCapChance;
+    public Dialogue[] weakCap;
 
     private void Update()
     {
@@ -95,6 +101,9 @@ public class PlayerVoiceLines : MonoBehaviour
                 break;
             case VoiceLineType.CapCrit:
                 PlayLine(critCapChance, critCapture, 1.5f);
+                break;
+            case VoiceLineType.CapWeak:
+                PlayLine(weakCapChance, weakCap, 1.5f);
                 break;
             default:
                 break;

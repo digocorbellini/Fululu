@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: c5776b97ede43244899808e61bb22fa5, type: 3}
   DialogueText:
-  - Bring it on!
+  - 
   DialogueName: BringIt
