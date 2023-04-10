@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration = 0.35f;
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private List<TrailRenderer> dashTrails;
+    [SerializeField] private ParticleSystem dashParticles;
     [SerializeField] private AudioClip dashSFX;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
@@ -534,6 +535,8 @@ public class PlayerController : MonoBehaviour
             trail.emitting = true;
         }
 
+        dashParticles.Play(true);
+
         // perform dash in dash direction
         velocity = direction * (dashDistance / dashDuration);
         mesh.forward = direction;
@@ -568,6 +571,8 @@ public class PlayerController : MonoBehaviour
         {
             trail.emitting = false;
         }
+
+        dashParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         isDashing = false;
 
