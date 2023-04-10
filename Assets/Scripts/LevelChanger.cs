@@ -7,6 +7,7 @@ public class LevelChanger : MonoBehaviour
 {
     public LoadingScreen loadingScreenPrefab;
     public static LevelChanger instance;
+    public Camera loadingScreenCamera;
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class LevelChanger : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+            loadingScreenCamera.gameObject.SetActive(false);
         } else
         {
             Destroy(gameObject);
@@ -23,6 +25,7 @@ public class LevelChanger : MonoBehaviour
     public IEnumerator ChangeSceneRoutine(string sceneName)
     {
         LoadingScreen loadingScreen = Instantiate(loadingScreenPrefab);
+        loadingScreenCamera.gameObject.SetActive(true);
         if (loadingScreen)
         {
             yield return StartCoroutine(loadingScreen.Appear());
@@ -35,6 +38,8 @@ public class LevelChanger : MonoBehaviour
         {
             yield return StartCoroutine(loadingScreen.Disappear());
         }
+
+        loadingScreenCamera.gameObject.SetActive(false);
 
         Destroy(loadingScreen.gameObject);
     }

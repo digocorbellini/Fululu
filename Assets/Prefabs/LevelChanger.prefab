@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreenPrefab: {fileID: 4048895689503489164, guid: cc089740a7a668f4aa3ed43c36126f55,
     type: 3}
+  loadingScreenCamera: {fileID: 7437498843783401891}
 --- !u!1 &7437498843783401892
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +66,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7437498843783401888
 Transform:
   m_ObjectHideFlags: 0

@@ -62,7 +62,9 @@ MonoBehaviour:
   damage: 5
   isExplosive: 1
   isStun: 0
+  isShieldPiercing: 0
   destroyOnHit: 0
+  canMultihit: 0
 --- !u!54 &198725656201886939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5117,6 +5119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121042999135673142, guid: 4d0100974a3434942941a5bb466842ae,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1121042999433083453, guid: 4d0100974a3434942941a5bb466842ae,
         type: 3}
