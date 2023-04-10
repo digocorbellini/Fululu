@@ -15,6 +15,9 @@ public class MummyFlamethrower : MummyState
     public ParticleSystem afterimages;
     public EnemyFireControl swordRing;
 
+    public Dialogue[] startVoicelines;
+    public Dialogue[] stopVoicelines;
+
     private float timer;
     private FlamethrowerPhase phase;
     private Transform arenaCenter;
@@ -48,6 +51,8 @@ public class MummyFlamethrower : MummyState
         {
             swordRing.autoFire = false;
         }
+
+        GameManager.instance.PlayVoiceLine(startVoicelines[0], 1.0f, 0.0f);
     }
 
     private void BeginFlamethrowers()
@@ -100,6 +105,7 @@ public class MummyFlamethrower : MummyState
         {
             swordRing.autoFire = true;
         }
+        GameManager.instance.PlayVoiceLine(stopVoicelines[0], 1.0f, 0.0f);
         controller.rb.constraints = rbc;
     }
 }

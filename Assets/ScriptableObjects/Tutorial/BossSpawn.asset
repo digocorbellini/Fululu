@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: BossSpawn
   m_EditorClassIdentifier: 
   dialogue:
+  - Foolish exorcist
+  - I am not some petty spirit
   - I am Gertrude, the Asura of this temple.
   - For trying to unravel my plans...
   - ...I will unravel YOU!
   - Bring it on!
   names:
   - ???
+  - 
   - Gertrude
+  - 
   - 
   - Lucy
   potraits:
@@ -27,9 +31,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   voiceLines:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2386a8d6a5372c748b3bb99db11715a4, type: 2}
+  - {fileID: 11400000, guid: c96d17387a58dfb41ac5ddfbd949794a, type: 2}
+  - {fileID: 11400000, guid: 73c07c26a3226764090b7553897a4528, type: 2}
+  - {fileID: 11400000, guid: 27b1fd9b02b40a3429f159bd08f28711, type: 2}
+  - {fileID: 11400000, guid: eb518ce636f801540a8bafcfd764946e, type: 2}
   - {fileID: 11400000, guid: 0d8748ba85cb43546901bc050424d8dd, type: 2}
   afterVoiceLine: {fileID: 0}

@@ -48,7 +48,10 @@ public class MinelayerController : ControllerBase
 
     private void OnDeath()
     {
-        audioSource?.PlayOneShot(hurtSFX);
+        if (audioSource)
+        {
+            audioSource?.PlayOneShot(hurtSFX);
+        }
         switchState("MLDeath");
     }
 }

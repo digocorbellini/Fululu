@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6236a7fcacc53d54283c9f756025bfa1, type: 3}
-  m_Name: AlleyOop
+  m_Name: Mummy5
   m_EditorClassIdentifier: 
   DialogueAudio:
-  - {fileID: 8300000, guid: 74f112dd21f2cff4cbd62f64bf303c39, type: 3}
+  - {fileID: 8300000, guid: e61b01c645da3154681aa9c81b0ab0e9, type: 3}
   DialogueText:
   - 
-  DialogueName: AlleyOop
+  DialogueName: Mummy5

@@ -383,7 +383,7 @@ public class PlayerController : MonoBehaviour
             {
                 voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapCrit);
             }
-            else if(capturedEntity.captureCost <= .5)
+            else if(capturedEntity.captureCost <= .5f)
             {
                 voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapWeak);
             }

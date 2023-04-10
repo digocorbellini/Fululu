@@ -577,8 +577,8 @@ MonoBehaviour:
   isStunned: 0
   player: {fileID: 0}
   source: {fileID: 1438707436317388885}
-  deathSound: {fileID: 8300000, guid: 84f49e1eae13a7941b36b418f93b2296, type: 3}
-  spawnSound: {fileID: 8300000, guid: d1b2e0cf0a865df489b837d7b88519cb, type: 3}
+  deathSound: {fileID: 11400000, guid: 1516502e9953f5146b484e36cc348f48, type: 2}
+  spawnSound: {fileID: 8300000, guid: 9b3ccc7e4d32a6c4990812e2a62b67f6, type: 3}
   ringController: {fileID: 1278277696}
   deathParticlePrefab: {fileID: 5790637124851986322, guid: 02d5d7643d258144e8f0137e080bd9ca,
     type: 3}
@@ -5649,6 +5649,11 @@ MonoBehaviour:
   angularVelocity: 12
   afterimages: {fileID: 3078244958758203703}
   swordRing: {fileID: 1278277696}
+  startVoicelines:
+  - {fileID: 11400000, guid: c4630464a716b6f4488ce6ede79b37c5, type: 2}
+  - {fileID: 11400000, guid: 7a15917e4e40ceb46a3d1ec702cfcdb2, type: 2}
+  stopVoicelines:
+  - {fileID: 11400000, guid: 717775ca35b27c7438fb6e5db6749ddf, type: 2}
 --- !u!1001 &1438707435804678734
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -129,7 +129,11 @@ public class PlayerVoiceLines : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
 
         if (source) source.PlayOneShot(line.DialogueAudio[0]);
-        if (subtitle) subtitle.text = line.DialogueText[0];
+        if (subtitle && line.DialogueText[0].Length >= 0)
+        {
+            subtitle.text = line.DialogueText[0];
+        }
+            
         subtitleVisible = true;
         timer = globalCooldown;
         coroutineActive = false;

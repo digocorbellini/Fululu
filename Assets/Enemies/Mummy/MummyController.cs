@@ -8,7 +8,7 @@ public class MummyController : ControllerBase
     [HideInInspector] public GameObject player;
 
     public AudioSource source;
-    public AudioClip deathSound;
+    public Dialogue deathSound;
     public AudioClip spawnSound;
     public EnemyFireControl ringController;
     public GameObject deathParticlePrefab;
@@ -58,21 +58,21 @@ public class MummyController : ControllerBase
     private void OnDeath()
     {
         currentState.exit();
-        if (currentState is MummyState mumState)
+        if (currentState is MummyState mumState && mumState.enemyFireControl)
         {
             mumState.enemyFireControl.ClearProjectiles();
         }
         source.PlayOneShot(hurtSFX);
         print("Boss killed!!");
         isStateMachineActive = false;
-        source.PlayOneShot(deathSound);
+        GameManager.instance.PlayVoiceLine(deathSound, 1, 0.0f);
 
         rb.velocity = Vector3.zero;
 
         ringController.autoFire = false;
         Instantiate(mummyDeathHandler, deathParticleSpawnPoint.position, Quaternion.identity);
 
-        Destroy(this.gameObject, deathSound.length);
+        Destroy(this.gameObject, deathSound.DialogueAudio[0].length);
     }
 
     private void OnDestroy()
