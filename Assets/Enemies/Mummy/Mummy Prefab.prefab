@@ -5000,6 +5000,8 @@ MonoBehaviour:
   mummyMesh: {fileID: 1476593225847586213}
   swordRing: {fileID: 1278277696}
   shakeAmount: 0.1
+  initialCameraShakeAmplitude: 2
+  initialCameraShakeFrequency: 2
   moveSpeed: 60
   attackRange: 5
   rotationSpeed: 3

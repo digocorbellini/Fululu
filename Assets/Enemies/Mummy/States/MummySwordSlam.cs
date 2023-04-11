@@ -9,6 +9,8 @@ public class MummySwordSlam : MummyState
     public EnemyFireControl swordRing;
     [Header("Pre-Attack stats")]
     public float shakeAmount = .01f;
+    public float initialCameraShakeAmplitude = 1f;
+    public float initialCameraShakeFrequency = 2f;
     [Header("Chase stats")]
     public float moveSpeed = 5f;
     public float attackRange = 10f;
@@ -66,10 +68,13 @@ public class MummySwordSlam : MummyState
         swordObject.SetActive(true);
 
         //swordAfterimage.Play();
-
+        
         // raise sword from ground
         swordAnim.Play("raise_sword_anim");
         yield return null;
+
+        float animationLenght = swordAnim.GetCurrentAnimatorClipInfo(0).Length;
+        playerCtrl.ShakeCamera(initialCameraShakeAmplitude, initialCameraShakeFrequency, animationLenght);
 
         // wait for sword raising anim to finish playing
         while (swordAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
@@ -154,6 +159,13 @@ public class MummySwordSlam : MummyState
     private IEnumerator performAttack()
     {
         print("perform attack");
+
+        // look at player
+        controller.transform.LookAt(controller.player.transform.position);
+        Vector3 rot = controller.transform.eulerAngles;
+        rot.x = 0;
+        rot.z = 0;
+        controller.transform.eulerAngles = rot;
 
         // set hurt area on
         attackAreanObject.SetActive(true);
