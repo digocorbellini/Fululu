@@ -5284,7 +5284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3092461027306918072}
   m_Layer: 0
-  m_Name: Healing Particles Spawn
+  m_Name: Floor Particles Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5894,8 +5894,10 @@ MonoBehaviour:
   captureIframeDuration: 2.5
   healParticles: {fileID: 3712380731011204797, guid: 67c2649d230db984886f4d18985c072c,
     type: 3}
-  healParticleSpawn: {fileID: 3092461027306918072}
+  floorParticleSpawn: {fileID: 3092461027306918072}
   voiceLines: {fileID: 1672616766436144982}
+  jumpParticles: {fileID: 8737667990168456770, guid: 42ab284bfe181eb42b4afada80bb6181,
+    type: 3}
   canUseSacrifice: 1
   controller: {fileID: 0}
   hitbox: {fileID: 0}
@@ -6438,7 +6440,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002906368117636267}
-  m_LocalRotation: {x: -0.0014702424, y: -0.97977734, z: 0.13098286, w: 0.15125361}
+  m_LocalRotation: {x: -0.0014702436, y: -0.97977734, z: 0.13098288, w: 0.15125358}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

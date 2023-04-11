@@ -59,8 +59,9 @@ public class PlayerController : MonoBehaviour
     public Material hurtMaterial;
     public float captureIframeDuration = 2.5f;
     public GameObject healParticles;
-    public Transform healParticleSpawn;
+    public Transform floorParticleSpawn;
     public PlayerVoiceLines voiceLines;
+    public ParticleSystem jumpParticles;
 
     // tutorial variables
     [HideInInspector]
@@ -194,7 +195,7 @@ public class PlayerController : MonoBehaviour
 
             // play heal particles if player actually healed
             if (prevHealth < hitbox.maxHealth)
-                Instantiate(healParticles, healParticleSpawn);
+                Instantiate(healParticles, floorParticleSpawn);
 
             prevHealth = hitbox.health;
 
@@ -436,6 +437,7 @@ public class PlayerController : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             stateManager.SetState(PlayerState.Jumping);
             voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Jump);
+            Instantiate(jumpParticles, floorParticleSpawn.position + (.1f * Vector3.up), jumpParticles.gameObject.transform.rotation);
         }
     }
 
