@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public float captureIframeDuration = 2.5f;
     public GameObject healParticles;
     public Transform healParticleSpawn;
+    public PlayerVoiceLines voiceLines;
 
     // tutorial variables
     [HideInInspector]
@@ -219,11 +220,14 @@ public class PlayerController : MonoBehaviour
         {
             // flash screen tint 
             UIManager.instance.TintScreen(Color.red, hurtScreenTintAlpha, hitbox.iFrameTime);
+
+            voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Hurt);
         }
         else
         {
             // set screen tint to permanently active if player is at 1 heart
             UIManager.instance.SetScreenTint(hurtScreenTintAlpha);
+            voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.HurtCrit);
         }
 
         prevHealth = hitbox.health;
@@ -375,6 +379,19 @@ public class PlayerController : MonoBehaviour
             makePlayerTransparent(captureIframeDuration);
             hitbox.GiveIFrames(captureIframeDuration);
 
+            if(hitbox.health <= 1)
+            {
+                voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapCrit);
+            }
+            else if(capturedEntity.captureCost <= .5f)
+            {
+                voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.CapWeak);
+            }
+            else
+            {
+                voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Capture);
+            }
+
             if (capturedEntity.captureCost > .1)
             {
                 hitbox.DealDamageDirect(-1);
@@ -399,6 +416,11 @@ public class PlayerController : MonoBehaviour
             // Sacrifice weapon if equipped
             if (fcs.weapon != fcs.defaultWeapon)
             {
+                if(fcs.weapon.sacVoiceLines != null && fcs.weapon.sacVoiceLines.Length != 0)
+                {
+                    voiceLines.PlayLine(1.0f, fcs.weapon.sacVoiceLines, .3f);
+                }
+
                 fcs.SacrificeWeapon();
             }
         }
@@ -412,6 +434,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             stateManager.SetState(PlayerState.Jumping);
+            voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Jump);
         }
     }
 
@@ -432,6 +455,7 @@ public class PlayerController : MonoBehaviour
             isCapturing = false;
             fcs.ShowCaptureZone(false);
             moveSpeedMod = 1.0f;
+            voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Dash);
             print("dashed");
         }
     }

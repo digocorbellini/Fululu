@@ -11,6 +11,9 @@ public class Tutorial : ScriptableObject
     [Header("Leave blank if no changes")]
     public string[] names;
     public Sprite[] potraits;
+    public Dialogue[] voiceLines;
+
+    public Dialogue afterVoiceLine;
 
 
     private void OnValidate()
@@ -29,6 +32,13 @@ public class Tutorial : ScriptableObject
             Sprite[] temp = new Sprite[length];
             Array.Copy(potraits, temp, potraits.Length);
             potraits = temp;
+        }
+
+        if (voiceLines.Length < length)
+        {
+            Dialogue[] temp = new Dialogue[length];
+            Array.Copy(voiceLines, temp, voiceLines.Length);
+            voiceLines = temp;
         }
     }
 }

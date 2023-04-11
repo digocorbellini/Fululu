@@ -15,9 +15,17 @@ MonoBehaviour:
   dialogue:
   - Those statues are haunted by evil spirits!
   - If you use <sprite=19> to dash, you can become  invincible and dodge those bullets.
+  - And phase through that fire as well
   names:
   - Han
+  - 
   - 
   potraits:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  voiceLines:
+  - {fileID: 11400000, guid: 3f0a936d36ddb9749b476ce61a27bfb7, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  afterVoiceLine: {fileID: 0}

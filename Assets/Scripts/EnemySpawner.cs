@@ -83,6 +83,7 @@ public class EnemySpawner : MonoBehaviour
         activeEnemies = 0;
         bossSpawned = false;
         ToggleBarriers(false);
+        enemyList = new List<EntityHitbox>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -202,6 +203,12 @@ public class EnemySpawner : MonoBehaviour
         completed = true;
         ToggleBarriers(false);
 
-        enemyList.ForEach(e => e.DealDamageDirect(1000));
+        enemyList.ForEach(e =>
+        {
+            if (e)
+            {
+                e.DealDamageDirect(1000);
+            }
+        });
     }
 }
