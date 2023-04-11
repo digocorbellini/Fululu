@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnterFinalArena
   m_EditorClassIdentifier: 
   dialogue:
-  - Hey Han, where'd you go?
+  - Han? Where'd you go?
   - ...
-  - Probably off looking for spirit bananas again.
+  - Hm, probably off looking for spirit bananas again.
   names:
   - Lucy
   - 
