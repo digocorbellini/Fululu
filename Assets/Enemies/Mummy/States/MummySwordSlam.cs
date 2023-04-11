@@ -15,6 +15,7 @@ public class MummySwordSlam : MummyState
     public float attackRange = 10f;
     public float rotationSpeed = 5f;
     public float maxTurnTime = 5f;
+    public ParticleSystem afterimage;
     [Header("Attack stats")]
     public GameObject attackAreanObject;
     public float endLagTime = 1f;
@@ -42,6 +43,8 @@ public class MummySwordSlam : MummyState
         }
 
         swordObject.SetActive(false);
+        afterimage.Stop();
+        afterimage.gameObject.SetActive(false);
 
         controller.rb.velocity = Vector3.zero;
         swordAnim = swordObject.GetComponent<Animator>();
@@ -137,6 +140,8 @@ public class MummySwordSlam : MummyState
     private IEnumerator moveTowardsPlayer()
     {
         print("move towards face player");
+        afterimage.gameObject.SetActive(true);
+        afterimage.Play();
 
         // chase player until they are within attack range
         while (Vector3.Distance(player.position, transform.position) > attackRange)
@@ -157,6 +162,8 @@ public class MummySwordSlam : MummyState
 
             yield return null;
         }
+
+        controller.rb.velocity = Vector3.zero;
 
         currentCoroutine = StartCoroutine(performAttack());
     }
@@ -207,6 +214,11 @@ public class MummySwordSlam : MummyState
         mummyMesh.localPosition = originalPos;
         attackAreanObject.SetActive(false);
         swordObject.SetActive(false);
+
+        afterimage.Stop();
+        afterimage.gameObject.SetActive(false);
+
+        controller.rb.velocity = Vector3.zero;
 
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
