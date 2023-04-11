@@ -46,6 +46,8 @@ public class WaveSpawner : MonoBehaviour
 
     public GameObject[] activateOnClear;
 
+    public GameObject spawnParticles;
+
     [Header("Events")]
     public UltEvent OnActivate;
     public UltEvent OnClear;
@@ -111,6 +113,8 @@ public class WaveSpawner : MonoBehaviour
                     spawned.GetComponentInChildren<EntityHitbox>().OnDestroyed += OnEnemyDefeated;
                     activeEnemies++;
                     didSpawn = true;
+
+                    Instantiate(spawnParticles, spawn.position, spawn.rotation);
 
                     spawnIndex++;
                     if (spawnIndex >= spawnpoints.Length)

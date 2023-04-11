@@ -22,8 +22,10 @@ public class EnemySpawner : MonoBehaviour
     public int[] weights;
 
     public AudioSource spawnSFX;
+    public GameObject spawnParticles;
 
     public GameObject[] activateOnClear;
+
 
     private int enemiesLeft;
     private int activeEnemies = 0;
@@ -124,6 +126,7 @@ public class EnemySpawner : MonoBehaviour
                 }
 
                 GameObject spawned = Instantiate(WeightedRandomSpawn(), point.position, Quaternion.identity);
+                Instantiate(spawnParticles, point.position, Quaternion.identity);
                 EntityHitbox hb = spawned.GetComponentInChildren<EntityHitbox>();
                 hb.OnRemoveFromLists += (hb) => enemyList.Remove(hb);
                 hb.OnDestroyed += OnEnemyDefeated;

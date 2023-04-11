@@ -91,11 +91,17 @@ MonoBehaviour:
   SpawnChance: 1
   totalEnemyCount: 20
   minEnemyCount: 2
+  maxEnemyCount: 8
+  barriers: []
+  bossSpawner: {fileID: 0}
   enemies:
   - {fileID: 7524010278573821098, guid: e0b24138d02e7434b8ca7efc236fd770, type: 3}
   - {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218, type: 3}
   weights: 0a00000008000000
   spawnSFX: {fileID: 3985417385824523491}
+  spawnParticles: {fileID: 7293548890296902405, guid: 53017725a1fe2ec4098a0d4dfcc15038,
+    type: 3}
+  activateOnClear: []
 --- !u!135 &3985417385824523488
 SphereCollider:
   m_ObjectHideFlags: 0

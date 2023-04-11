@@ -91,6 +91,13 @@ MonoBehaviour:
   barriers: []
   waves: []
   spawnSFX: {fileID: 3985417385824523491}
+  activateOnClear: []
+  spawnParticles: {fileID: 7293548890296902405, guid: 53017725a1fe2ec4098a0d4dfcc15038,
+    type: 3}
+  OnActivate:
+    _PersistentCalls: []
+  OnClear:
+    _PersistentCalls: []
 --- !u!135 &3985417385824523488
 SphereCollider:
   m_ObjectHideFlags: 0
