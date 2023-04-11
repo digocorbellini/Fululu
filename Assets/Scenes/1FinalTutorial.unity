@@ -26467,7 +26467,7 @@ PrefabInstance:
     - target: {fileID: 2064575258932405939, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5
+      value: -4.9999847
       objectReference: {fileID: 0}
     - target: {fileID: 3309119560039367621, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -26512,7 +26512,7 @@ PrefabInstance:
     - target: {fileID: 4184647528973778968, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5
+      value: -4.9999847
       objectReference: {fileID: 0}
     - target: {fileID: 5031580013200364500, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -27538,7 +27538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd744a18e79b6264e8dc7715262f85bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Arena
+  SceneName: Cave Arena
   loadingScreen: {fileID: 0}
 --- !u!1001 &816491618
 PrefabInstance:

@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
 
     public AudioSource spawnSFX;
 
+    public GameObject[] activateOnClear;
+
     private int enemiesLeft;
     private int activeEnemies = 0;
     private bool proximity;
@@ -202,6 +204,7 @@ public class EnemySpawner : MonoBehaviour
         isActive = false;
         completed = true;
         ToggleBarriers(false);
+        activateOnClear.ToList().ForEach(obj => obj.SetActive(true));
 
         enemyList.ForEach(e =>
         {

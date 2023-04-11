@@ -10,26 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f28c716fd1137f4fa9d348045aff660, type: 3}
-  m_Name: Cave Arena
+  m_Name: CaveIntro
   m_EditorClassIdentifier: 
   dialogue:
-  - Just a little further
-  - Wait...
-  - I'm sensing many different spirit auras ahead!
-  - Try capturing some and testing out their abilities.
+  - Almost there Lucy
+  - The temple is right through this cave
   names:
   - Han
-  - 
-  - 
   - 
   potraits:
   - {fileID: 21300000, guid: 3197835372d60284e99cdb2371d9d94e, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   voiceLines:
-  - {fileID: 11400000, guid: 92dd342630060c948b8ece8a61c972fa, type: 2}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   afterVoiceLine: {fileID: 0}
