@@ -58,10 +58,11 @@ public class PlayerController : MonoBehaviour
     public float deathScreenTintDuration = 0.15f;
     public Material hurtMaterial;
     public float captureIframeDuration = 2.5f;
-    public GameObject healParticles;
+    public GameObject healParticles;  // to be initialized
     public Transform floorParticleSpawn;
     public PlayerVoiceLines voiceLines;
-    public ParticleSystem jumpParticles;
+    public GameObject jumpParticles; // to be initialized
+    public ParticleSystem footstepParticles; // to be played
 
     // tutorial variables
     [HideInInspector]
@@ -437,7 +438,7 @@ public class PlayerController : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             stateManager.SetState(PlayerState.Jumping);
             voiceLines.PlayVoicelineRandom(PlayerVoiceLines.VoiceLineType.Jump);
-            Instantiate(jumpParticles, floorParticleSpawn.position + (.1f * Vector3.up), jumpParticles.gameObject.transform.rotation);
+            Instantiate(jumpParticles, floorParticleSpawn.position, jumpParticles.gameObject.transform.rotation);
         }
     }
 
@@ -736,6 +737,18 @@ public class PlayerController : MonoBehaviour
         {
             BroadcastCharge(GetChargePercent());
             frameCount = 0;
+        }
+
+        // play footstep particles
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk") && !anim.IsInTransition(0))
+        {
+            if (!footstepParticles.isPlaying)
+                footstepParticles.Play();
+        }
+        else
+        {
+            if (footstepParticles.isPlaying)
+                footstepParticles.Stop();
         }
     }
 
