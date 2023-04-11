@@ -5877,7 +5877,7 @@ PrefabInstance:
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: circleGrowthTime
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
@@ -5897,7 +5897,7 @@ PrefabInstance:
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: rocksPerSpawnPhase
-      value: 5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
@@ -5972,17 +5972,17 @@ PrefabInstance:
     - target: {fileID: 5794022518067877267, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: m_Size.x
-      value: 64.92349
+      value: 126.8
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877267, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: m_Size.y
-      value: 33.606434
+      value: 37.3
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877267, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: m_Size.z
-      value: 79.8536
+      value: 128.8
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877267, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
@@ -13859,7 +13859,7 @@ PrefabInstance:
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: circleGrowthTime
-      value: 3.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
@@ -13879,7 +13879,7 @@ PrefabInstance:
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: rocksPerSpawnPhase
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
