@@ -130,6 +130,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1438707435127595734, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438707435562296468, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1438707436317388881, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
         type: 3}
       propertyPath: m_RootOrder
@@ -185,10 +195,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438707436317388883, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
+        type: 3}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 343347390}
     - target: {fileID: 1438707436317388884, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
         type: 3}
       propertyPath: m_Name
       value: Mummy Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358407212262728312, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89f7d5b3fb6b4cf40aa722f1f3881579, type: 3}
@@ -202,6 +222,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca9b27687ed5bcc41a48a61cb39a4622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &343347390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1721149419, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
+    type: 3}
+  m_PrefabInstance: {fileID: 112633413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaf1e43ae94796419533a2cbdd0ecb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &487426076
