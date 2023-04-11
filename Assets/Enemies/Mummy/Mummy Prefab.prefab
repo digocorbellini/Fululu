@@ -58,8 +58,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392036222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 7.16}
-  m_LocalScale: {x: 1, y: 1, z: 10.974}
+  m_LocalPosition: {x: 0, y: -0.4, z: 15.72}
+  m_LocalScale: {x: 1, y: 1, z: 28.79844}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1721149418}
@@ -180,10 +180,11 @@ MonoBehaviour:
   swordDisapearParticles: {fileID: 0}
   swordRing: {fileID: 1278277696}
   shakeAmount: 0.05
-  moveSpeed: 15
-  attackRange: 10
+  moveSpeed: 60
+  attackRange: 5
   rotationSpeed: 1
   maxTurnTime: 3
+  afterimage: {fileID: 3078244958758203703}
   attackAreanObject: {fileID: 392036222}
   endLagTime: 2
   cameraShakeAmplitude: 10
@@ -6012,6 +6013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956943227372378190, guid: 9ccac894903ea524a92ef9c5961b3245,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ccac894903ea524a92ef9c5961b3245, type: 3}
