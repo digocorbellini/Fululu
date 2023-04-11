@@ -2770,22 +2770,22 @@ PrefabInstance:
     - target: {fileID: 2002906366793617733, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2436083
+      value: 2.656533
       objectReference: {fileID: 0}
     - target: {fileID: 2002906366793617733, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.945601
+      value: -7.00801
       objectReference: {fileID: 0}
     - target: {fileID: 2002906366801537120, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2436083
+      value: 2.656533
       objectReference: {fileID: 0}
     - target: {fileID: 2002906366801537120, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.945601
+      value: -7.00801
       objectReference: {fileID: 0}
     - target: {fileID: 2002906366990509864, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
@@ -2990,12 +2990,12 @@ PrefabInstance:
     - target: {fileID: 2002906368618153911, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.2436083
+      value: 2.656533
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368618153911, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.945601
+      value: -7.00801
       objectReference: {fileID: 0}
     - target: {fileID: 2433868966190662747, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
@@ -3235,7 +3235,7 @@ PrefabInstance:
     - target: {fileID: 6688901709710724953, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_FrequencyGain
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6726180557756982987, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
