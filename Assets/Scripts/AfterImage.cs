@@ -5,39 +5,51 @@ using Particle = UnityEngine.ParticleSystem.Particle;
 
 public class AfterImage : MonoBehaviour
 {
-    [SerializeField] private SkinnedMeshRenderer m_Renderer;
-    [SerializeField] public SkinnedMeshRenderer meshToCopy;
-    [SerializeField] public Particle particle;
+    [SerializeField] private Material afterImageMaterial;
+    [SerializeField] public Transform modelToCopy;
     [SerializeField] private float lifetime = 0.5f;
     [SerializeField] private AnimationCurve zVelocityOverLifetime;
     [SerializeField] private Gradient colorOverLifetime;
-    [SerializeField] private Transform modelTrans;
-    private Transform rootBone;
-    private Transform _copyRootBoneTran;
+    private Transform modelTrans;
+    private SkinnedMeshRenderer m_Renderer;
     private float currentLifetime = 0.0f;
 
     private void Start()
     {
-        if (m_Renderer)
+        if (!modelToCopy)
         {
-            rootBone = m_Renderer.rootBone;
+            Destroy(gameObject);
+            return;
         }
 
-        if(meshToCopy)
+        modelTrans = Instantiate(modelToCopy, transform, true);
+
+        m_Renderer = modelTrans.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        AfterImageSpawner spawner = modelTrans.GetComponentInChildren<AfterImageSpawner>();
+        if (spawner)
         {
-            _copyRootBoneTran = meshToCopy.rootBone;
+            Debug.Log("Recursive spawner disabled");
+            spawner.enabled = false;
+            spawner.gameObject.SetActive(false);
         }
 
-        CopyPoseGeneral();
+        Animator anim = modelTrans.GetComponent<Animator>();
+        if (anim)
+        {
+            anim.enabled = false;
+        }
 
-        transform.position = particle.position;
+        AudioSource[] sources = modelTrans.GetComponentsInChildren<AudioSource>();
+        foreach (AudioSource source in sources)
+        {
+            source.enabled = false;
+        }
 
-        transform.rotation = Quaternion.Euler(particle.rotation3D);
-
-        m_Renderer.material = new Material(m_Renderer.material);
+        m_Renderer.material = new Material(afterImageMaterial);
     }
 
-    private void CopyPoseGeneral()
+    /*private void CopyPoseGeneral()
     {
         foreach (Transform boneTran in _copyRootBoneTran)
         {
@@ -58,7 +70,7 @@ public class AfterImage : MonoBehaviour
         {
             CopyTransform($"{parentPath}{curTran.name}/", childBoneTran);
         }
-    }
+    }*/
 
     private void Update()
     {
