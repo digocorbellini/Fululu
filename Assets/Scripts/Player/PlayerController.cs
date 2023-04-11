@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private List<TrailRenderer> dashTrails;
     [SerializeField] private ParticleSystem dashParticles;
+    [SerializeField] private AfterImageSpawner afterImageSpawner;
     [SerializeField] private AudioClip dashSFX;
     [Tooltip("The layers which hurt the player")]
     [SerializeField] private LayerMask hurtLayers;
@@ -561,6 +562,8 @@ public class PlayerController : MonoBehaviour
 
         dashParticles.Play(true);
 
+        afterImageSpawner.gameObject.SetActive(true);
+
         // perform dash in dash direction
         velocity = direction * (dashDistance / dashDuration);
         mesh.forward = direction;
@@ -597,6 +600,8 @@ public class PlayerController : MonoBehaviour
         }
 
         dashParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+        afterImageSpawner.gameObject.SetActive(false);
 
         isDashing = false;
 
