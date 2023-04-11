@@ -97,13 +97,13 @@ public class PlayerVoiceLines : MonoBehaviour
                 PlayLine(critHurtChance, critHurt);
                 break;
             case VoiceLineType.Capture:
-                PlayLine(capChance, capture, 1.5f);
+                PlayLine(capChance, capture, .33f);
                 break;
             case VoiceLineType.CapCrit:
-                PlayLine(critCapChance, critCapture, 1.5f);
+                PlayLine(critCapChance, critCapture, .33f);
                 break;
             case VoiceLineType.CapWeak:
-                PlayLine(weakCapChance, weakCap, 1.5f);
+                PlayLine(weakCapChance, weakCap, .33f);
                 break;
             default:
                 break;
@@ -129,7 +129,7 @@ public class PlayerVoiceLines : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
 
         if (source) source.PlayOneShot(line.DialogueAudio[0]);
-        if (subtitle && line.DialogueText[0].Length >= 0)
+        if (subtitle && line.DialogueText[0].Length > 0)
         {
             subtitle.text = line.DialogueText[0];
         }
