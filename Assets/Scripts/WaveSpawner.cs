@@ -154,5 +154,14 @@ public class WaveSpawner : MonoBehaviour
         ToggleBarriers(false);
 
         activateOnClear.ToList().ForEach(obj => obj.SetActive(true));
+
+        // destory all enemy projectiles
+        GameObject.FindObjectsOfType<BulletBase>().ToList().ForEach(bullet =>
+        {
+            if (bullet)
+            {
+                Destroy(bullet.gameObject);
+            }
+        });
     }
 }

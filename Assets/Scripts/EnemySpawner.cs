@@ -184,7 +184,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if(activeEnemies <= minEnemyCount && !bossSpawned)
+        if(activeEnemies <= minEnemyCount && !bossSpawned && !completed)
         {
             DoSpawn();
         }
@@ -211,6 +211,15 @@ public class EnemySpawner : MonoBehaviour
             if (e)
             {
                 e.DealDamageDirect(1000);
+            }
+        });
+
+        // destory all enemy projectiles
+        GameObject.FindObjectsOfType<BulletBase>().ToList().ForEach(bullet =>
+        {
+            if (bullet)
+            {
+                Destroy(bullet.gameObject);
             }
         });
     }
