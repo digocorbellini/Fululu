@@ -6,7 +6,6 @@ public class MummySwordSlam : MummyState
 {
     public GameObject swordObject;
     public Transform mummyMesh;
-    public ParticleSystem swordDisapearParticles;
     public EnemyFireControl swordRing;
     [Header("Pre-Attack stats")]
     public float shakeAmount = .01f;
@@ -23,6 +22,7 @@ public class MummySwordSlam : MummyState
     public float cameraShakeFrequency = 2f;
     public float cameraShakeDuration = 2f;
     public ParticleSystem swordAfterimage;
+    public ParticleSystem swordFireParticles;
 
 
     private Animator swordAnim;
@@ -65,7 +65,7 @@ public class MummySwordSlam : MummyState
         // enable sword
         swordObject.SetActive(true);
 
-        swordAfterimage.Play();
+        //swordAfterimage.Play();
 
         // raise sword from ground
         swordAnim.Play("raise_sword_anim");
@@ -157,6 +157,8 @@ public class MummySwordSlam : MummyState
 
         // set hurt area on
         attackAreanObject.SetActive(true);
+        swordFireParticles.Play();
+
         yield return null;
         swordAnim.Play("swing_anim");
         yield return null;
@@ -170,11 +172,14 @@ public class MummySwordSlam : MummyState
 
         // TODO: play particles on animation end and shake camera
         playerCtrl.ShakeCamera(cameraShakeAmplitude, cameraShakeFrequency, cameraShakeDuration);
+        //swordDisapearParticles.Play();
+        swordFireParticles.Stop();
+
 
         // wait a little for ~impact~
         yield return new WaitForSeconds(endLagTime);
 
-        swordAfterimage.Stop();
+        //swordAfterimage.Stop();
         swordObject.SetActive(false);
 
         // change state
