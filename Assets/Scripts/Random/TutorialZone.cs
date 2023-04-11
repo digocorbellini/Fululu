@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,13 @@ public class TutorialZone : MonoBehaviour
     public bool enable;
     public bool disable;
     public UIPinger.PingLocation pingLocation;
+    public GameObject[] activateBefore;
     public GameObject[] activateDuring;
     public GameObject[] activateAfter;
+    public Cinemachine.CinemachineVirtualCamera[] camSwaps;
+    public bool respawnPlayer = false;
+
+    private Cinemachine.CinemachineVirtualCamera currCam;
 
     private int index;
     private float timer;
@@ -50,6 +56,17 @@ public class TutorialZone : MonoBehaviour
         {
             GameManager.instance.PlayVoiceLine(tut.voiceLines[i]);
         }
+
+        if (camSwaps[i])
+        {
+            if(currCam != null)
+            {
+                currCam.enabled = false;
+            }
+
+            currCam = camSwaps[i];
+            currCam.enabled = true;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -73,7 +90,7 @@ public class TutorialZone : MonoBehaviour
         {
             // Tutorial completed
 
-            cam.enabled = false;
+            currCam.enabled = false;
             if (input)
             {
                 input.enabled = false;
@@ -84,6 +101,10 @@ public class TutorialZone : MonoBehaviour
             if (pingLocation != UIPinger.PingLocation.None)
             {
                 GameManager.instance.StopPingUI(pingLocation);
+            }
+            if (respawnPlayer)
+            {
+                GameManager.instance.SpawnPlayer();
             }
             activateDuring.ToList().ForEach(obj => obj.SetActive(false));
             activateAfter.ToList().ForEach(obj => obj.SetActive(true));
@@ -107,12 +128,23 @@ public class TutorialZone : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 alreadyTriggered = true;
+
                 if (!input)
                 {
-                    return;
+                    GetComponent<PlayerInput>();
                 }
+
+                int l = tut.dialogue.Length;
+
+                if (camSwaps.Length < l)
+                {
+                    Cinemachine.CinemachineVirtualCamera[] temp = new Cinemachine.CinemachineVirtualCamera[l];
+                    Array.Copy(camSwaps, temp, camSwaps.Length);
+                    camSwaps = temp;
+                }
+
                 index = 0;
-                cam.enabled = true;
+                camSwaps[0] = cam;
 
                 input.enabled = true;
               
@@ -122,6 +154,7 @@ public class TutorialZone : MonoBehaviour
                 enable = false;
                 timer = -1;
 
+                activateBefore.ToList().ForEach(obj => obj.SetActive(true));
                 activateDuring.ToList().ForEach(obj => obj.SetActive(true));
 
                 if (pingLocation != UIPinger.PingLocation.None)
