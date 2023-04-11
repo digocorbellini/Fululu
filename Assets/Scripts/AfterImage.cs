@@ -11,8 +11,9 @@ public class AfterImage : MonoBehaviour
     [SerializeField] private AnimationCurve zVelocityOverLifetime;
     [SerializeField] private Gradient colorOverLifetime;
     private Transform modelTrans;
-    private SkinnedMeshRenderer m_Renderer;
+    private Renderer[] m_Renderers;
     private float currentLifetime = 0.0f;
+    private Material material;
 
     private void Start()
     {
@@ -24,12 +25,11 @@ public class AfterImage : MonoBehaviour
 
         modelTrans = Instantiate(modelToCopy, transform, true);
 
-        m_Renderer = modelTrans.GetComponentInChildren<SkinnedMeshRenderer>();
+        m_Renderers = modelTrans.GetComponentsInChildren<Renderer>();
 
         AfterImageSpawner spawner = modelTrans.GetComponentInChildren<AfterImageSpawner>();
         if (spawner)
         {
-            Debug.Log("Recursive spawner disabled");
             spawner.enabled = false;
             spawner.gameObject.SetActive(false);
         }
@@ -46,7 +46,12 @@ public class AfterImage : MonoBehaviour
             source.enabled = false;
         }
 
-        m_Renderer.material = new Material(afterImageMaterial);
+        material = new Material(afterImageMaterial);
+
+        foreach (Renderer renderer in m_Renderers)
+        {
+            renderer.material = material;
+        }
     }
 
     /*private void CopyPoseGeneral()
@@ -85,17 +90,12 @@ public class AfterImage : MonoBehaviour
                 position.z += zChange;
                 modelTrans.localPosition = position;
 
-                m_Renderer.material.color = colorOverLifetime.Evaluate(time);
+                material.color = colorOverLifetime.Evaluate(time);
             }
         } else
         {
             Destroy(gameObject);
         }
         
-    }
-
-    private void Reset()
-    {
-        m_Renderer = GetComponent<SkinnedMeshRenderer>();
     }
 }

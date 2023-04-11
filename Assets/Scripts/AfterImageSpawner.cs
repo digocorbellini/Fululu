@@ -29,8 +29,6 @@ public class AfterImageSpawner : MonoBehaviour
         degreesRotated += Quaternion.Angle(lastRotation, transform.rotation);
         lastRotation = transform.rotation;
 
-        Debug.Log("distance: " + distanceTraveled);
-
         bool spawnImage = false;
 
         if (distanceTraveled * emissionOverDistance >= 1.0f)
