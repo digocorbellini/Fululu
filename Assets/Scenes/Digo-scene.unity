@@ -520,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 2064575258932405939, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5
+      value: -5.0000305
       objectReference: {fileID: 0}
     - target: {fileID: 2862842658970657247, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -540,7 +540,7 @@ PrefabInstance:
     - target: {fileID: 4023178638950964769, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.999878
+      value: -4.9999084
       objectReference: {fileID: 0}
     - target: {fileID: 4125125885194665031, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -560,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 4184647528973778968, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5
+      value: -5.0000305
       objectReference: {fileID: 0}
     - target: {fileID: 4235188445669580180, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -715,7 +715,7 @@ PrefabInstance:
     - target: {fileID: 5988391259148842880, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.999878
+      value: -4.9999084
       objectReference: {fileID: 0}
     - target: {fileID: 6642046224359443804, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -765,7 +765,7 @@ PrefabInstance:
     - target: {fileID: 7628456625929378598, guid: 956951a3030e020428f675566075d665,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8608112178187329979, guid: 956951a3030e020428f675566075d665,
         type: 3}
@@ -3324,7 +3324,22 @@ PrefabInstance:
     - target: {fileID: 5794022517914021220, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.3
+      value: 21.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
+        type: 3}
+      propertyPath: rockSpawningArea.x
+      value: 19.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
+        type: 3}
+      propertyPath: rockSpawningArea.y
+      value: 6.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794022518067877260, guid: b0dbfb2be8c3f04459f39c75324d68a2,
+        type: 3}
+      propertyPath: rockSpawningArea.z
+      value: 24.57
       objectReference: {fileID: 0}
     - target: {fileID: 5794022518067877261, guid: b0dbfb2be8c3f04459f39c75324d68a2,
         type: 3}

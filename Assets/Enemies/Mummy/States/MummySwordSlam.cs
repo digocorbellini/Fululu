@@ -6,7 +6,6 @@ public class MummySwordSlam : MummyState
 {
     public GameObject swordObject;
     public Transform mummyMesh;
-    public ParticleSystem swordDisapearParticles;
     public EnemyFireControl swordRing;
     [Header("Pre-Attack stats")]
     public float shakeAmount = .01f;
@@ -22,6 +21,8 @@ public class MummySwordSlam : MummyState
     public float cameraShakeAmplitude = 2f;
     public float cameraShakeFrequency = 2f;
     public float cameraShakeDuration = 2f;
+    public ParticleSystem swordAfterimage;
+    public ParticleSystem swordFireParticles;
 
 
     private Animator swordAnim;
@@ -64,32 +65,13 @@ public class MummySwordSlam : MummyState
         // enable sword
         swordObject.SetActive(true);
 
+        //swordAfterimage.Play();
+
         // raise sword from ground
         swordAnim.Play("raise_sword_anim");
         yield return null;
 
         // wait for sword raising anim to finish playing
-        while (swordAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            float randX = Random.Range(-shakeAmount, shakeAmount);
-            float randY = Random.Range(-shakeAmount, shakeAmount);
-            float randZ = Random.Range(-shakeAmount, shakeAmount);
-
-            mummyMesh.localPosition += new Vector3(randX, randY, randZ);
-
-            randX = Random.Range(-shakeAmount, shakeAmount);
-            randY = Random.Range(-shakeAmount, shakeAmount);
-            randZ = Random.Range(-shakeAmount, shakeAmount);
-
-            swordObject.transform.localPosition += new Vector3(randX, randY, randZ);
-
-            yield return null;
-        }
-
-        swordAnim.Play("above_head_anim");
-        yield return null;
-
-        // wait for raising sword above head
         while (swordAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
             float randX = Random.Range(-shakeAmount, shakeAmount);
@@ -175,9 +157,12 @@ public class MummySwordSlam : MummyState
 
         // set hurt area on
         attackAreanObject.SetActive(true);
+        swordFireParticles.Play();
 
+        yield return null;
         swordAnim.Play("swing_anim");
         yield return null;
+        
 
         // wait for sword swing to end
         while (swordAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
@@ -187,10 +172,14 @@ public class MummySwordSlam : MummyState
 
         // TODO: play particles on animation end and shake camera
         playerCtrl.ShakeCamera(cameraShakeAmplitude, cameraShakeFrequency, cameraShakeDuration);
+        //swordDisapearParticles.Play();
+        swordFireParticles.Stop();
+
 
         // wait a little for ~impact~
         yield return new WaitForSeconds(endLagTime);
 
+        //swordAfterimage.Stop();
         swordObject.SetActive(false);
 
         // change state
@@ -217,6 +206,7 @@ public class MummySwordSlam : MummyState
 
         afterimage.Stop();
         afterimage.gameObject.SetActive(false);
+        swordAfterimage.Stop();
 
         controller.rb.velocity = Vector3.zero;
 

@@ -15,5 +15,5 @@ MonoBehaviour:
   DialogueAudio:
   - {fileID: 8300000, guid: 7143bc944b7b7c142afc1150483f456e, type: 3}
   DialogueText:
-  - Hold on!
-  DialogueName: Huh
+  - 
+  DialogueName: HoldOn

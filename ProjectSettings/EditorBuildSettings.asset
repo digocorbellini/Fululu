@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 03e3da36ad58aeb48a49f1b5c854b7b5
+  - enabled: 1
+    path: Assets/Scenes/Cave Arena.unity
+    guid: 58d6bf8dbb2c6fb44abf25122b964b2c
   m_configObjects: {}
