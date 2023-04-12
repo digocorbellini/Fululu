@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 6afde17d34cbf0d4d987296fa3e8f914, type: 3}
+        m_Texture: {fileID: 2800000, guid: 440e5721a4b2efd42941282f52667b2f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AngelRing_Sampler:
@@ -155,7 +155,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
-        m_Texture: {fileID: 2800000, guid: 87d3863dc1d66d043b79781b7a580c2b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9c8cc69f793dbfb4189b6debe50774ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -227,11 +227,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TopDiffuse:
-        m_Texture: {fileID: 2800000, guid: 355c2b55e345fe145a54916e33c4e8b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5660fc58c4fe47840a1382183b83f1ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Top_Normals:
-        m_Texture: {fileID: 2800000, guid: 355c2b55e345fe145a54916e33c4e8b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 92443d3151d85ca449d2ff4227f84311, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransmittanceColorMap:
@@ -481,7 +481,7 @@ Material:
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
     - _ThicknessMultiplier: 1
-    - _Top_Blend: 0.59
+    - _Top_Blend: 0.529
     - _TransmissionEnable: 1
     - _TransmissionMask: 1
     - _TransparentBackfaceEnable: 0
