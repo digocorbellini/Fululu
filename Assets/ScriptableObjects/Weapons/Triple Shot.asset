@@ -23,9 +23,9 @@ MonoBehaviour:
     type: 3}
   chargedBullet: {fileID: 1763858908160990358, guid: e674f791c53734543a27b99a50381d68,
     type: 3}
-  sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: 540908bbb51edde48805991a33a6a2a5,
+  sacrificeSpreadPrefab: {fileID: 2202035863254959303, guid: d2fb01d303e4592499502cbd51f005e6,
     type: 3}
-  sacrificeBullet: {fileID: 1763858908160990358, guid: 10795ebbb1734da448e3b315a63ba602,
+  sacrificeBullet: {fileID: 4930174440943673148, guid: d60bea504e0e73b49a4656dc900c957d,
     type: 3}
   sacVoiceLines:
   - {fileID: 11400000, guid: 84395f2e57dfcbd429173f93cbde1741, type: 2}
