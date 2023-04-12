@@ -92,7 +92,7 @@ MonoBehaviour:
   waves: []
   spawnSFX: {fileID: 3985417385824523491}
   activateOnClear: []
-  spawnParticles: {fileID: 7293548890296902405, guid: 53017725a1fe2ec4098a0d4dfcc15038,
+  spawnParticles: {fileID: 5004128677704914083, guid: 49af977bef79ead46b409672c2533925,
     type: 3}
   OnActivate:
     _PersistentCalls: []
