@@ -84,22 +84,25 @@ MonoBehaviour:
   rockWallObject: {fileID: 4158169511820044538, guid: 01dea3841a967154092c6946f9300660,
     type: 3}
   rockWallSpawnPos: {fileID: 521569507}
-  startHealth: 0.25
-  shakeAmount: 0.07
-  startLagTime: 2
-  maxDamage: 6
   mummyMesh: {fileID: 1476593225847586213}
   swordRing: {fileID: 1278277696}
-  maxDuration: 10
   rockExplosionParticles: {fileID: 2443047879297467644, guid: 93583df2767577a429859909923c03f7,
     type: 3}
   afterimages: {fileID: 3078244958758203703}
+  rainAttack: {fileID: 1577846739}
+  mummyCollider: {fileID: 1438707435552642945}
+  maxDuration: 10
+  startHealth: 0.8
+  shakeAmount: 0.07
+  startLagTime: 2
+  maxDamage: 6
   spawnPoints:
   - {fileID: 7862846118483119343}
   - {fileID: 7127063801113343119}
   bomberEnemy: {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218,
     type: 3}
-  rainAttack: {fileID: 1577846739}
+  startVoiceLine: {fileID: 11400000, guid: b94cfcd3883ed5a4280ed005e0fcd820, type: 2}
+  endVoiceLine: {fileID: 11400000, guid: 569202f2649602b4889813542de9b04c, type: 2}
 --- !u!114 &1577846739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5746,7 +5749,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2604595959433372713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10589,7 +10592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6035625885063550617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

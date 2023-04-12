@@ -6,21 +6,24 @@ public class MummyRockShield : MummyState
 {
     public GameObject rockWallObject;
     public Transform rockWallSpawnPos;
+    public Transform mummyMesh;
+    public EnemyFireControl swordRing;
+    public GameObject rockExplosionParticles;
+    public ParticleSystem afterimages;
+    public AOERainAttack rainAttack;
+    public Collider mummyCollider;
+    [Header("Stats")]
+    public float maxDuration = 10f;
     public float startHealth = .25f;
     public float shakeAmount = 5f;
     public float startLagTime = 2f;
     public float maxDamage = 12f;
-    public Transform mummyMesh;
-    public EnemyFireControl swordRing;
-    public float maxDuration = 10f;
-    public GameObject rockExplosionParticles;
-    public ParticleSystem afterimages;
     [Header("Enemy spawning")]
     public Transform[] spawnPoints;
     public GameObject bomberEnemy;
-
-    // TODO: maybe add lancer attack
-    public AOERainAttack rainAttack;
+    [Header("Dialogue")]
+    public Dialogue startVoiceLine;
+    public Dialogue endVoiceLine;
 
     private Vector3 originalPos;
     private Coroutine activeCoroutine;
@@ -64,8 +67,13 @@ public class MummyRockShield : MummyState
 
         attackTimer = rainAttack.getTotalAttackTime();
 
+        mummyCollider.enabled = false;
+
         shakeComplete = false;
         activeCoroutine = StartCoroutine(preAttack());
+
+        // play start voiceline
+        GameManager.instance.PlayVoiceLine(startVoiceLine, 1.0f, 0.0f);
     }
 
     private void spawnEnemies()
@@ -111,6 +119,9 @@ public class MummyRockShield : MummyState
 
     private IEnumerator preAttack()
     {
+        // make mummy invincible
+        controller.hitbox.GiveIFrames(.3f + 1 + startLagTime);
+
         // give time for afterimages to run
         afterimages.gameObject.SetActive(true);
         afterimages.Play();
@@ -148,6 +159,8 @@ public class MummyRockShield : MummyState
 
         shakeComplete = true;
 
+        mummyCollider.enabled = true;
+
         activeCoroutine = StartCoroutine(waitForExplosion());
     }
 
@@ -168,6 +181,8 @@ public class MummyRockShield : MummyState
 
         // go to next state
         controller.switchState(controller.GetRandomState());
+
+        GameManager.instance.PlayVoiceLine(endVoiceLine);
     }
 
     // <summary>
@@ -206,6 +221,7 @@ public class MummyRockShield : MummyState
         controller.hitbox.OnHurt -= HurtListener;
         shakeComplete = false;
         bobbing.enabled = true;
+        mummyCollider.enabled = true;
     }
 
     private void OnDestroy()
