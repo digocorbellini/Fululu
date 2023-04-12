@@ -31,6 +31,104 @@ Transform:
   m_Father: {fileID: 1438707436317388881}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &312089639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312089640}
+  - component: {fileID: 312089641}
+  - component: {fileID: 1577846739}
+  m_Layer: 7
+  m_Name: RockShield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &312089640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312089639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 521569507}
+  - {fileID: 1609869474}
+  - {fileID: 7862846118483119343}
+  - {fileID: 7127063801113343119}
+  m_Father: {fileID: 1438707435214530372}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &312089641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312089639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a56dec482e9a748bad46d41ce7ef69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyFireControl: {fileID: 0}
+  rockWallObject: {fileID: 4158169511820044538, guid: 01dea3841a967154092c6946f9300660,
+    type: 3}
+  rockWallSpawnPos: {fileID: 521569507}
+  mummyMesh: {fileID: 1476593225847586213}
+  swordRing: {fileID: 1278277696}
+  rockExplosionParticles: {fileID: 2443047879297467644, guid: 93583df2767577a429859909923c03f7,
+    type: 3}
+  afterimages: {fileID: 3078244958758203703}
+  rainAttack: {fileID: 1577846739}
+  mummyCollider: {fileID: 1438707435552642945}
+  maxDuration: 10
+  startHealth: 0.8
+  shakeAmount: 0.07
+  startLagTime: 2
+  maxDamage: 6
+  spawnPoints:
+  - {fileID: 7862846118483119343}
+  - {fileID: 7127063801113343119}
+  bomberEnemy: {fileID: 2472773012463916786, guid: ada345692eaf8974fa7090409d501218,
+    type: 3}
+  startVoiceLine: {fileID: 11400000, guid: b94cfcd3883ed5a4280ed005e0fcd820, type: 2}
+  endVoiceLine: {fileID: 11400000, guid: 569202f2649602b4889813542de9b04c, type: 2}
+--- !u!114 &1577846739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312089639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c025b5b9cb9e248b65b570ea7efe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfAttacks: 4
+  attackRadius: 0.8
+  shouldBeLeading: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  initialShotDuration: 1
+  timeBetweenAttacks: 0.5
+  attackChargeTime: 0.3
+  aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
+    type: 3}
+  initialShotObject: {fileID: 2784118232142776212, guid: fd26eccea3f914143904c5b9c34e7c76,
+    type: 3}
+  rainLanceSpawn: {fileID: 1609869474}
 --- !u!1 &392036222
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +226,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &521569506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521569507}
+  m_Layer: 7
+  m_Name: Rock Wall Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521569507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521569506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312089640}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502346880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,6 +5078,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &1609869473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1609869474}
+  m_Layer: 7
+  m_Name: Rain Attack Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1609869474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609869473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312089640}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721149417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,6 +5344,7 @@ Transform:
   - {fileID: 1438707435054107465}
   - {fileID: 1035873866483185088}
   - {fileID: 1721149418}
+  - {fileID: 312089640}
   m_Father: {fileID: 1438707436317388881}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5564,6 +5725,37 @@ MonoBehaviour:
   telegraphParticles: {fileID: 0}
   telegraphTime: 0.5
   controller: {fileID: 1438707436317388883}
+--- !u!1 &2604595959433372713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7862846118483119343}
+  m_Layer: 7
+  m_Name: Bomber Spawn 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7862846118483119343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604595959433372713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312089640}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5690060387406967239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10376,6 +10568,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6035625885063550617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7127063801113343119}
+  m_Layer: 7
+  m_Name: Bomber Spawn 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7127063801113343119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035625885063550617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312089640}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7025486992767213975
 GameObject:
   m_ObjectHideFlags: 0

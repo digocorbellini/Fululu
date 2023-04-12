@@ -18,6 +18,9 @@ public class MummyController : ControllerBase
 
     private bool HasDoneFlamethrower = false;
     private float flamethrowerThreshold = -1;
+
+    private bool HasDoneRockShield = false;
+    private float rockShieldThreshold = -1;
     public override void init()
     {
         base.init();
@@ -37,7 +40,10 @@ public class MummyController : ControllerBase
             if(state is MummyFlamethrower)
             {
                 flamethrowerThreshold = ((MummyFlamethrower)state).startHP;
-                break;
+            } 
+            else if(state is MummyRockShield)
+            {
+                rockShieldThreshold = ((MummyRockShield)state).startHealth;
             }
         }
 
@@ -52,6 +58,12 @@ public class MummyController : ControllerBase
         {
             HasDoneFlamethrower = true;
             switchState("BFlamethrower");
+        } 
+        
+        if(hitbox.HealthPercent() <= rockShieldThreshold && !HasDoneRockShield)
+        {
+            HasDoneRockShield = true;
+            switchState("BRockShield");
         }
     }
 
@@ -99,7 +111,7 @@ public class MummyController : ControllerBase
 
             randomState = states[randomIndex];
 
-            if(randomState is MummyFlamethrower)
+            if(randomState is MummyFlamethrower || randomState is MummyRockShield)
             {
                 randomState = states[0]; 
             }
