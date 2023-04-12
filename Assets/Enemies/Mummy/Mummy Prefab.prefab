@@ -88,6 +88,9 @@ MonoBehaviour:
   maxDamage: 6
   mummyMesh: {fileID: 1476593225847586213}
   swordRing: {fileID: 1278277696}
+  maxDuration: 10
+  rockExplosionParticles: {fileID: 2443047879297467644, guid: 93583df2767577a429859909923c03f7,
+    type: 3}
   rainAttack: {fileID: 1577846739}
 --- !u!114 &1577846739
 MonoBehaviour:

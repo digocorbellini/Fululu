@@ -12,6 +12,8 @@ public class MummyRockShield : MummyState
     public float maxDamage = 12f;
     public Transform mummyMesh;
     public EnemyFireControl swordRing;
+    public float maxDuration = 10f;
+    public GameObject rockExplosionParticles;
 
     // TODO: maybe add lancer attack
     public AOERainAttack rainAttack;
@@ -22,9 +24,18 @@ public class MummyRockShield : MummyState
     private Animator rockWallsAnim;
     private float originalHealth;
     private bool shakeComplete;
+    private float durationTimer = 10f;
+    private EnemyBobbing bobbing;
     public override string getStateName()
     {
         return "BRockShield";
+    }
+
+    public override void init()
+    {
+        base.init();
+
+        bobbing = mummyMesh.gameObject.GetComponent<EnemyBobbing>();
     }
 
     public override void enter()
@@ -35,6 +46,10 @@ public class MummyRockShield : MummyState
         }
 
         originalPos = mummyMesh.localPosition;
+
+        bobbing.enabled = false;
+
+        durationTimer = 0;
 
         controller.rb.velocity = Vector3.zero;
 
@@ -53,6 +68,13 @@ public class MummyRockShield : MummyState
 
         if (!shakeComplete)
             return;
+
+        durationTimer += Time.deltaTime;
+        if (durationTimer > maxDuration)
+        {
+            controller.switchState(controller.GetRandomState());
+            return;
+        }
 
         if (attackTimer <= 0)
         {
@@ -146,13 +168,16 @@ public class MummyRockShield : MummyState
         if (activeCoroutine != null)
             StopCoroutine(activeCoroutine);
 
+        // destory rock if it hasn't been destoryed yet
         if (rockWallsAnim != null && !isDestroyed(rockWallsAnim.gameObject))
         {
+            Instantiate(rockExplosionParticles, rockWallsAnim.gameObject.transform.position, Quaternion.identity);
             Destroy(rockWallsAnim.gameObject);
         }
 
         controller.hitbox.OnHurt -= HurtListener;
         shakeComplete = false;
+        bobbing.enabled = true;
     }
 
     private void OnDestroy()
