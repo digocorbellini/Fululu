@@ -48,9 +48,19 @@ public class TutorialZone : MonoBehaviour
 
     private void SetTutorial(int i)
     {
-        UIManager.instance.SetTutorialText(tut.dialogue[i]);
-        UIManager.instance.SetTutorialNametag(tut.names[i]);
-        UIManager.instance.SetPotraitImage(tut.potraits[i]);
+        if (i < tut.dialogue.Length)
+        {
+            UIManager.instance.SetTutorialText(tut.dialogue[i]);
+        }
+        
+        if (i < tut.names.Length) {
+            UIManager.instance.SetTutorialNametag(tut.names[i]);
+        }
+        
+        if (i < tut.potraits.Length)
+        {
+            UIManager.instance.SetPotraitImage(tut.potraits[i]);
+        }
 
         if(tut.voiceLines[i])
         {
