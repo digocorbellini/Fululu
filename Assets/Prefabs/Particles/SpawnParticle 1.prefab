@@ -45,7 +45,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5004128677704914083}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -288,7 +288,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1053,8 +1053,17 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.57180786
-          value: 0.9325161
+          time: 0.04493408
+          value: 0.7714292
+          inSlope: 2.1882944
+          outSlope: 2.1882944
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.35279846
+          value: 0.981596
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -4924,7 +4933,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5209855294841057881}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 1.5
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -4998,7 +5007,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9745,7 +9754,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5209855295344155520}
   serializedVersion: 8
   lengthInSec: 0.5
-  simulationSpeed: 1.2
+  simulationSpeed: 2.4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -14566,7 +14575,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5209855295792216941}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 1.5
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -14640,7 +14649,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
