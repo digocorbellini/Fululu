@@ -14,6 +14,10 @@ public class MummyRockShield : MummyState
     public EnemyFireControl swordRing;
     public float maxDuration = 10f;
     public GameObject rockExplosionParticles;
+    public ParticleSystem afterimages;
+    [Header("Enemy spawning")]
+    public Transform[] spawnPoints;
+    public GameObject bomberEnemy;
 
     // TODO: maybe add lancer attack
     public AOERainAttack rainAttack;
@@ -26,6 +30,7 @@ public class MummyRockShield : MummyState
     private bool shakeComplete;
     private float durationTimer = 10f;
     private EnemyBobbing bobbing;
+    private Transform arenaCenter;
     public override string getStateName()
     {
         return "BRockShield";
@@ -36,6 +41,7 @@ public class MummyRockShield : MummyState
         base.init();
 
         bobbing = mummyMesh.gameObject.GetComponent<EnemyBobbing>();
+        arenaCenter = GameObject.FindGameObjectWithTag("Center").transform;
     }
 
     public override void enter()
@@ -59,13 +65,22 @@ public class MummyRockShield : MummyState
         attackTimer = rainAttack.getTotalAttackTime();
 
         shakeComplete = false;
-        activeCoroutine = StartCoroutine(shakeAbout());
+        activeCoroutine = StartCoroutine(preAttack());
+    }
+
+    private void spawnEnemies()
+    {
+        Vector3 dirToPlayer = controller.player.transform.position - controller.transform.position;
+        dirToPlayer.Normalize();
+        foreach (Transform t in spawnPoints)
+        {
+            // spawn enemies
+            Instantiate(bomberEnemy, t.position, Quaternion.LookRotation(dirToPlayer));
+        }
     }
 
     public override void run()
     {
-        attackTimer -= Time.deltaTime;
-
         if (!shakeComplete)
             return;
 
@@ -76,6 +91,7 @@ public class MummyRockShield : MummyState
             return;
         }
 
+        attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
             attackTimer = rainAttack.getTotalAttackTime();
@@ -93,10 +109,19 @@ public class MummyRockShield : MummyState
         }
     }
 
-    private IEnumerator shakeAbout()
+    private IEnumerator preAttack()
     {
-        float timer = 0;
+        // give time for afterimages to run
+        afterimages.gameObject.SetActive(true);
+        afterimages.Play();
+        yield return new WaitForSeconds(.3f);
+        // teleport to center
+        controller.gameObject.transform.position = arenaCenter.position;
+        yield return new WaitForSeconds(1f);
+        afterimages.Stop();
 
+        // make mummy shake
+        float timer = 0;
         while (timer < startLagTime)
         {
             float randX = Random.Range(-shakeAmount, shakeAmount);
@@ -111,11 +136,15 @@ public class MummyRockShield : MummyState
         }
         mummyMesh.localPosition = originalPos;
 
+        // raise rocks arond mummy
         GameObject rocks = Instantiate(rockWallObject, rockWallSpawnPos.position, Quaternion.LookRotation(controller.transform.forward));
         rockWallsAnim = rocks.GetComponent<Animator>();
         rockWallsAnim.Play("raise_anim");
         print("rocks initialized and anim played. State of anim: " + (rockWallsAnim == null));
         yield return null;
+
+        // spawn bombers
+        spawnEnemies();
 
         shakeComplete = true;
 
@@ -127,11 +156,8 @@ public class MummyRockShield : MummyState
         // wait for rock to be destroyed
         while (rockWallsAnim != null && !isDestroyed(rockWallsAnim.gameObject))
         {
-            print("rock not yet destroyed");
             yield return null;
         }
-
-        print("ROCK DESTROYED");
 
         // turn to face player
         controller.transform.LookAt(controller.player.transform.position);
@@ -174,6 +200,8 @@ public class MummyRockShield : MummyState
             Instantiate(rockExplosionParticles, rockWallsAnim.gameObject.transform.position, Quaternion.identity);
             Destroy(rockWallsAnim.gameObject);
         }
+
+        afterimages.gameObject.SetActive(false);
 
         controller.hitbox.OnHurt -= HurtListener;
         shakeComplete = false;
