@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerSpawn: {fileID: 0}
-  playerPrefab: {fileID: 2002906366990509868, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
+  playerPrefab: {fileID: 2002906366990509868, guid: 35a673eb9cea42f489f15541aa3f3b1d,
     type: 3}
   player: {fileID: 0}
   UIManager: {fileID: 0}

@@ -523,6 +523,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformDash()
     {
+        anim.SetBool("IsDashing", true);
         audioSource.PlayOneShot(dashSFX);
 
         // update player state
@@ -607,6 +608,7 @@ public class PlayerController : MonoBehaviour
         afterImageSpawner.gameObject.SetActive(false);
 
         isDashing = false;
+        anim.SetBool("IsDashing", false);
 
         // reset state
         stateManager.SetState(PlayerState.Idle);
