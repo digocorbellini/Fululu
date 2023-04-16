@@ -61,8 +61,8 @@ public class AOECircle : MonoBehaviour
         redRingObject.transform.localScale = Vector3.one * (attackRadius * 2);
 
         // set ring rendering layer order
-        redCircleObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
-        redRingObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
+        // redCircleObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
+        // redRingObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = orderInLayer;
 
         if (bulletSpawnHeight > 0)
         {
