@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2882041764140456484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2995220945723045844}
+  - component: {fileID: 3458683577832894701}
+  m_Layer: 0
+  m_Name: Decal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2995220945723045844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882041764140456484}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.0006, y: -0.1372, z: -0.0126}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7738726526961530718}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &3458683577832894701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882041764140456484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 07e6296bcc93efc45bdca82799840399, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.874
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 0.76673126, y: 1}
+  m_UVBias: {x: 0.11430806, y: 0}
+  m_ScaleMode: 0
+  m_Offset: {x: 0.029064178, y: -0.15514278, z: -0.3896501}
+  m_Size: {x: 0.76673126, y: 12.010286, z: 2.4459672}
+  m_FadeFactor: 1
 --- !u!1 &4391266524179397786
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.44516546, y: 1.7445242, z: 12.686568}
-  m_Center: {x: 0.014459783, y: 0.3722632, z: 6.3143997}
+  m_Size: {x: 0.44516546, y: 2.9156594, z: 12.686568}
+  m_Center: {x: 0.014459783, y: -0.21330434, z: 6.3143997}
 --- !u!114 &4391266524179397780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +169,7 @@ Transform:
   - {fileID: 7849707883591539872}
   - {fileID: 7849707885569066748}
   - {fileID: 4748929881180160369}
+  - {fileID: 2995220945723045844}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -89.98, y: 90, z: 0}
