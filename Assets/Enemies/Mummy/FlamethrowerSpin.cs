@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FlamethrowerSpin : MonoBehaviour
 {
@@ -10,16 +11,15 @@ public class FlamethrowerSpin : MonoBehaviour
 
     private bool isSpinning;
     private Collider[] colliders;
+    private DecalProjector[] decals;
     private ParticleSystem[] ps;
 
     private bool isDestroyed = false;
     public void Awake()
     {
         colliders = GetComponentsInChildren<Collider>();
+        decals = GetComponentsInChildren<DecalProjector>();
         ps = GetComponentsInChildren<ParticleSystem>();
-
-        Debug.Log("C: " + colliders);
-        Debug.Log("PS: " + ps);
 
         GameManager.instance.OnReset += OnReset;
     }
@@ -35,6 +35,7 @@ public class FlamethrowerSpin : MonoBehaviour
     {
         ps.ToList().ForEach(p => p.Stop());
         colliders.ToList().ForEach(c => c.enabled = false);
+        decals.ToList().ForEach(d => d.enabled = false);
         isSpinning = false;
         GameManager.instance.OnReset -= OnReset;
         isDestroyed = true;
@@ -44,6 +45,7 @@ public class FlamethrowerSpin : MonoBehaviour
     public void StartSpinning()
     {
         colliders.ToList().ForEach(collider => collider.enabled = true);
+        decals.ToList().ForEach(d => d.enabled = true);
         isSpinning = true;
     }
 
