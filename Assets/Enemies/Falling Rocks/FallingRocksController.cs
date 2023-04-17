@@ -19,6 +19,13 @@ public class FallingRocksController : MonoBehaviour
 
     private Coroutine rockRoutine;
 
+    private void Start()
+    {
+        if (rockRoutine != null)
+            StopCoroutine(rockRoutine);
+        rockRoutine = StartCoroutine(spawnRocks());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player")

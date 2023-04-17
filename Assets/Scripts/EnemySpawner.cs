@@ -74,6 +74,11 @@ public class EnemySpawner : MonoBehaviour
                 DoSpawn();
             } 
         } */
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            DoSpawn();
+        }
     }
 
     private void OnReset()
