@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Julianna Vales - UI Art and VFX
+  m_text: Julianna Valle - UI Art and VFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Paul Torpac - Producer
+  m_text: Paul Toprac - Producer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Angelica Choi - Enviromental and Technical Art
+  m_text: Angelica Choi - Environmental and Technical Art
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Guest Starting Mesa Brown as Lucy
+  m_text: Guest Starring Mesa Brown as Lucy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
