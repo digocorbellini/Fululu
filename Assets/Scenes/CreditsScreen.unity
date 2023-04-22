@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mihir Kolte - Character Modeling / SFX
+  m_text: Mihir Kolte - Character Artist / SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Emmalee Clubb - Assitant Producer
+  m_text: Emmalee Clubb - Assistant Producer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Issac Adams - Programming / VFX
+  m_text: Isaac Adams - Programming / VFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
