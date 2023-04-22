@@ -1319,6 +1319,7 @@ GameObject:
   - component: {fileID: 1281584173}
   - component: {fileID: 1281584172}
   - component: {fileID: 1281584171}
+  - component: {fileID: 1281584174}
   m_Layer: 5
   m_Name: Credits Button
   m_TagString: Untagged
@@ -1391,9 +1392,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280534959}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: ChangeSceneAsync
+      - m_Target: {fileID: 1281584174}
+        m_TargetAssemblyTypeName: SceneChangeButton, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1441,6 +1442,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281584169}
   m_CullTransparentMesh: 1
+--- !u!114 &1281584174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281584169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfa865b0cc5dfa44a204b7f17aaa71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1543933694
 GameObject:
   m_ObjectHideFlags: 0

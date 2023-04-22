@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Julianna Vales - UI and VFX
+  m_text: Julianna Vales - UI Art and VFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -1043,18 +1043,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &647143966 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7437498843462199657, guid: d2c145050f8b1624ca141dea09586aba,
-    type: 3}
-  m_PrefabInstance: {fileID: 324182685}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccbaeb5eca5e3b459faa4c426b26ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &667738178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Emmalee _____ - Assitant Producer
+  m_text: Emmalee Clubb - Assitant Producer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -1385,7 +1373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Anglecia Choi - Enviromental and Technical Art
+  m_text: Angelica Choi - Enviromental and Technical Art
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf9a2641201faa24eb2a50403c874b87, type: 2}
   m_sharedMaterial: {fileID: 3257252565826640272, guid: cf9a2641201faa24eb2a50403c874b87,
@@ -2149,8 +2137,9 @@ GameObject:
   - component: {fileID: 1651825294}
   - component: {fileID: 1651825293}
   - component: {fileID: 1651825292}
+  - component: {fileID: 1651825295}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2221,9 +2210,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 647143966}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: ChangeSceneAsync
+      - m_Target: {fileID: 1651825295}
+        m_TargetAssemblyTypeName: SceneChangeButton, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2271,6 +2260,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651825290}
   m_CullTransparentMesh: 1
+--- !u!114 &1651825295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651825290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfa865b0cc5dfa44a204b7f17aaa71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1964984494
 GameObject:
   m_ObjectHideFlags: 0
