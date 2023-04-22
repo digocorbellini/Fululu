@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Arena.unity
     guid: 5bd19edb48d1e4103ae1e8770054fbf0
   - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
+    path: Assets/Scenes/CreditsScreen.unity
     guid: 03e3da36ad58aeb48a49f1b5c854b7b5
   - enabled: 1
     path: Assets/Scenes/Cave Arena.unity
