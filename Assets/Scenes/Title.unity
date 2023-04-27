@@ -270,18 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f45bfb7ca0e9140bdcb5e78414c5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &280534959 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7437498843462199657, guid: d2c145050f8b1624ca141dea09586aba,
-    type: 3}
-  m_PrefabInstance: {fileID: 7437498843719661254}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccbaeb5eca5e3b459faa4c426b26ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &574789496
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.216}
   m_AnchorMin: {x: 0.020347686, y: 0.7372678}
   m_AnchorMax: {x: 0.4903477, y: 0.97700006}
-  m_AnchoredPosition: {x: -16.7, y: -37.6}
+  m_AnchoredPosition: {x: -16.699707, y: -37.600006}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794371635
@@ -662,7 +650,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 178.65
+  m_fontSize: 178.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -865,7 +853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 37, y: -9}
+  m_AnchoredPosition: {x: 37, y: -8.999817}
   m_SizeDelta: {x: 89.809814, y: 32.026184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960603833
@@ -1466,6 +1454,7 @@ GameObject:
   - component: {fileID: 1543933698}
   - component: {fileID: 1543933697}
   - component: {fileID: 1543933696}
+  - component: {fileID: 1543933699}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -1538,9 +1527,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 280534959}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: ChangeSceneAsync
+      - m_Target: {fileID: 1543933699}
+        m_TargetAssemblyTypeName: SceneChangeButton, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1588,6 +1577,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543933694}
   m_CullTransparentMesh: 1
+--- !u!114 &1543933699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543933694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfa865b0cc5dfa44a204b7f17aaa71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1692083107
 GameObject:
   m_ObjectHideFlags: 0
