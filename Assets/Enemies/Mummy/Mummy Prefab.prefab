@@ -5174,6 +5174,13 @@ MonoBehaviour:
   cameraShakeDuration: 1
   swordAfterimage: {fileID: 2974570644020680937}
   swordFireParticles: {fileID: 1502346883}
+  attackLandSound:
+    clip: {fileID: 8300000, guid: 11fde727163e39e4f9accc797892373f, type: 3}
+    volume: 1
+    pitch: 1
+    pitchFluctuation: 0
+    outputAudioMixerGroup: {fileID: -8873601490943232294, guid: 9d172f389264eb745a47524889ac906e,
+      type: 2}
 --- !u!1 &1438707435054107464
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class MummySwordSlam : MummyState
     public float cameraShakeDuration = 2f;
     public ParticleSystem swordAfterimage;
     public ParticleSystem swordFireParticles;
+    public SoundEffect attackLandSound;
 
 
     private Animator swordAnim;
@@ -186,6 +187,7 @@ public class MummySwordSlam : MummyState
         playerCtrl.ShakeCamera(cameraShakeAmplitude, cameraShakeFrequency, cameraShakeDuration);
         //swordDisapearParticles.Play();
         swordFireParticles.Stop();
+        AudioManager.instance.PlayEffectAt(attackLandSound, swordFireParticles.gameObject.transform.position);
 
 
         // wait a little for ~impact~
