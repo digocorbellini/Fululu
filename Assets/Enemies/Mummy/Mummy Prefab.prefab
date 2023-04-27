@@ -121,9 +121,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
-  initialShotDuration: 1
-  timeBetweenAttacks: 0.5
-  attackChargeTime: 0.3
+  initialShotDuration: 0.4
+  timeBetweenAttacks: 0.3
+  attackChargeTime: 0.15
   aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
     type: 3}
   initialShotObject: {fileID: 2784118232142776212, guid: fd26eccea3f914143904c5b9c34e7c76,
@@ -5175,7 +5175,7 @@ MonoBehaviour:
   swordAfterimage: {fileID: 2974570644020680937}
   swordFireParticles: {fileID: 1502346883}
   attackLandSound:
-    clip: {fileID: 8300000, guid: 11fde727163e39e4f9accc797892373f, type: 3}
+    clip: {fileID: 8300000, guid: 830b71780dc7d504788e932c29ec3901, type: 3}
     volume: 1
     pitch: 1
     pitchFluctuation: 0

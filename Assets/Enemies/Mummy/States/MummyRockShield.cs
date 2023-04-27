@@ -99,12 +99,13 @@ public class MummyRockShield : MummyState
             return;
         }
 
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
-        {
-            attackTimer = rainAttack.getTotalAttackTime();
-            rainAttack.attack();
-        }
+        //attackTimer -= Time.deltaTime;
+        //if (attackTimer <= 0)
+        //{
+        //    attackTimer = rainAttack.getTotalAttackTime();
+        //    rainAttack.attack();
+        //}
+        rainAttack.attack();
     }
 
     private void HurtListener(float damage, bool isExplosive, Collider other)
