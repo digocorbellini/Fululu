@@ -198,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 1438707436317388884, guid: 89f7d5b3fb6b4cf40aa722f1f3881579,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89f7d5b3fb6b4cf40aa722f1f3881579, type: 3}
@@ -2769,7 +2769,7 @@ PrefabInstance:
     - target: {fileID: 386429837, guid: 138c03f94d9cd2e4e9e4907f0839a39b, type: 3}
       propertyPath: cheatWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: e42296495964d234ea575164e4b3c8be,
+      objectReference: {fileID: 11400000, guid: 2cbe9958b3cab6f46874f556d96179f9,
         type: 2}
     - target: {fileID: 386429837, guid: 138c03f94d9cd2e4e9e4907f0839a39b, type: 3}
       propertyPath: recticleRing
@@ -3257,12 +3257,12 @@ PrefabInstance:
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15125358
+      value: 0.15125361
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0014702436
+      value: -0.0014702424
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
@@ -3272,7 +3272,7 @@ PrefabInstance:
     - target: {fileID: 2002906368117636266, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13098288
+      value: 0.13098286
       objectReference: {fileID: 0}
     - target: {fileID: 2002906368399052512, guid: 138c03f94d9cd2e4e9e4907f0839a39b,
         type: 3}
