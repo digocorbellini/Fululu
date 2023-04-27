@@ -228,5 +228,9 @@ public class MummyRockShield : MummyState
     private void OnDestroy()
     {
         controller.hitbox.OnHurt -= HurtListener;
+        if (!isDestroyed(rockWallsAnim.gameObject))
+        {
+            Destroy(rockWallsAnim.gameObject);
+        }
     }
 }
