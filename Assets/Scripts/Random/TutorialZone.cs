@@ -115,6 +115,7 @@ public class TutorialZone : MonoBehaviour
             if (respawnPlayer)
             {
                 GameManager.instance.SpawnPlayer();
+                GameManager.instance.UIManager.Reset();
             }
             activateDuring.ToList().ForEach(obj => obj.SetActive(false));
             activateAfter.ToList().ForEach(obj => obj.SetActive(true));
