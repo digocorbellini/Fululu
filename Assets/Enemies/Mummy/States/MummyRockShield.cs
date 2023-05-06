@@ -99,13 +99,12 @@ public class MummyRockShield : MummyState
             return;
         }
 
-        //attackTimer -= Time.deltaTime;
-        //if (attackTimer <= 0)
-        //{
-        //    attackTimer = rainAttack.getTotalAttackTime();
-        //    rainAttack.attack();
-        //}
-        rainAttack.attack();
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0)
+        {
+            attackTimer = rainAttack.getTotalAttackTime();
+            rainAttack.attack();
+        }
     }
 
     private void HurtListener(float damage, bool isExplosive, Collider other)
@@ -228,9 +227,5 @@ public class MummyRockShield : MummyState
     private void OnDestroy()
     {
         controller.hitbox.OnHurt -= HurtListener;
-        if (!isDestroyed(rockWallsAnim.gameObject))
-        {
-            Destroy(rockWallsAnim.gameObject);
-        }
     }
 }

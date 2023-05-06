@@ -38,10 +38,7 @@ public class AOECircle : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded)
-        {
-            GameManager.instance.OnReset -= OnReset;
-        }
+        GameManager.instance.OnReset -= OnReset;
     }
 
     /// <summary>
