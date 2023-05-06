@@ -38,6 +38,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameManager.instance.OnReset += Reset;
+    }
+
+    public void Reset()
+    {
+        // reset screen tint
+        if (screenTintRoutine != null)
+            StopCoroutine(screenTintRoutine);
+        Color screenTintColor = screenTint.color;
+        screenTintColor.a = 0.0f;
+        screenTint.color = screenTintColor;
+    }
+
     public void Initialize(PlayerController player)
     {
         healthbar.Initialize(player);
@@ -120,5 +135,10 @@ public class UIManager : MonoBehaviour
         yield return tween.WaitForCompletion();
         tween = screenTint.DOFade(0f, duration);
         yield return new WaitForSeconds(duration);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnReset -= Reset;
     }
 }

@@ -91,11 +91,11 @@ MonoBehaviour:
   afterimages: {fileID: 3078244958758203703}
   rainAttack: {fileID: 1577846739}
   mummyCollider: {fileID: 1438707435552642945}
-  maxDuration: 10
+  maxDuration: 15
   startHealth: 0.8
   shakeAmount: 0.07
   startLagTime: 2
-  maxDamage: 6
+  maxDamage: 100
   spawnPoints:
   - {fileID: 7862846118483119343}
   - {fileID: 7127063801113343119}
@@ -121,9 +121,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
-  initialShotDuration: 1
-  timeBetweenAttacks: 0.5
-  attackChargeTime: 0.3
+  initialShotDuration: 0.4
+  timeBetweenAttacks: 0.3
+  attackChargeTime: 0.15
   aoeCircleObject: {fileID: 412106858641501215, guid: 1bf13a4ac2763754ab5af32e039b1fbd,
     type: 3}
   initialShotObject: {fileID: 2784118232142776212, guid: fd26eccea3f914143904c5b9c34e7c76,
@@ -5174,6 +5174,13 @@ MonoBehaviour:
   cameraShakeDuration: 1
   swordAfterimage: {fileID: 2974570644020680937}
   swordFireParticles: {fileID: 1502346883}
+  attackLandSound:
+    clip: {fileID: 8300000, guid: 830b71780dc7d504788e932c29ec3901, type: 3}
+    volume: 1
+    pitch: 1
+    pitchFluctuation: 0
+    outputAudioMixerGroup: {fileID: -8873601490943232294, guid: 9d172f389264eb745a47524889ac906e,
+      type: 2}
 --- !u!1 &1438707435054107464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,7 +5756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2604595959433372713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0.8, z: 0}
+  m_LocalPosition: {x: -12.67, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10592,7 +10599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6035625885063550617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0.8, z: 0}
+  m_LocalPosition: {x: 12.74, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
