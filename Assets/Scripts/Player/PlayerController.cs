@@ -650,12 +650,12 @@ public class PlayerController : MonoBehaviour
 
         // rotate mesh to face movement direction
         Vector3 direction = mesh.forward;
-        /*if (input.actions["Attack"].IsPressed() || input.actions["AltFire"].IsPressed() || stateManager.IsAttackAnim)
+        if (input.actions["Attack"].IsPressed() || input.actions["AltFire"].IsPressed() || stateManager.IsAttackAnim)
         {
             // TODO: probably want to replace this since this is so choppy, maybe only upper body?
             Vector3 end = new Vector3(Camera.main.transform.forward.x, 0.0f, Camera.main.transform.forward.z);
             direction = Vector3.RotateTowards(mesh.forward, end, meshRotationSpeed * Time.deltaTime, 0.0f);
-        } else if (moveDirection != Vector3.zero)*/
+        } else if (moveDirection != Vector3.zero)
         {
             direction = Vector3.RotateTowards(mesh.forward, moveDirection, meshRotationSpeed * Time.deltaTime, 0.0f);
         }

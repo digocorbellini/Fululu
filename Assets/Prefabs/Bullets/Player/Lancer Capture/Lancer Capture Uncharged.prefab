@@ -54,7 +54,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &394750987122949246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,7 +92,6 @@ MonoBehaviour:
   - {fileID: 7774120296836221488}
   hitParticles: {fileID: 8645237660611998494, guid: d7b01e6009ceba849bf729dfb723680d,
     type: 3}
-  enemyHitParticles: {fileID: 0}
   hitParticlesSpawn: {fileID: 2505302757321107276}
   hasDefaultBehaviour: 1
 --- !u!136 &4233488624094409356

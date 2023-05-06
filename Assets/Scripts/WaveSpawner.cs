@@ -55,7 +55,7 @@ public class WaveSpawner : MonoBehaviour
     private int activeEnemies = 0;
     private int waveNum = 0;
     private bool initialSpawn = false;
-    private bool isCleared = false;
+
     private void Start()
     {
         GameManager.instance.OnReset += OnReset;
@@ -72,11 +72,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void OnReset()
     {
-        if (isCleared)
-        {
-            return;
-        }
-
         initialSpawn = false;
         activeEnemies = 0;
         waveNum = 0;
@@ -160,7 +155,6 @@ public class WaveSpawner : MonoBehaviour
     {
         OnClear.Invoke();
         isActive = false;
-        isCleared = true;
         ToggleBarriers(false);
 
         activateOnClear.ToList().ForEach(obj => obj.SetActive(true));
